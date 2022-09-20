@@ -1,4 +1,9 @@
-export interface Suggestion {}
+import { values } from "faunadb"
+
+export interface Suggestion {
+  title: string
+  content: string
+}
 
 export interface Question {
   question: string
@@ -12,9 +17,16 @@ export interface Option {
 }
 
 export interface Application {
-  // id: string
   email: string
   firstName: string
   lastName: string
+  answers: unknown
+}
+
+export interface StoredApplication extends Application {
   createdAt: Date
 }
+
+export type ApiResponseBody =
+  | values.Document<StoredApplication>
+  | { error: string }

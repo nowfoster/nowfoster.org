@@ -13,9 +13,11 @@
     "cypress": "cypress open --e2e --browser electron"
   },
   "dependencies": {
+    "faunadb": "^4.7.0",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@testing-library/cypress": "^8.0.3",
