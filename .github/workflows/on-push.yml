@@ -20,11 +20,8 @@ jobs:
       - name: 🧩 Install dependencies
         run: npm i
 
-      # - name: 📚 Check types
-      #   run: npm run typecheck
-
-      # - name: 💅 Lint code
-      #   run: npm run lint
+      - name: 💅 Lint code
+        run: npm run lint
 
       - name: 🧪 Run unit tests
         run: npm test

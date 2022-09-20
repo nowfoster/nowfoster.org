@@ -12,6 +12,6 @@ Next.js app for the III fostering project.
 
 To run locally, do `npm run dev`
 
-To check types, do `npm run typecheck`.
+To lint, do `npm run lint`.
 
 To run unit tests, do `npm test`.
