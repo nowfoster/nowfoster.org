@@ -15,6 +15,7 @@
     "cypress": "cypress open --e2e --browser electron"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.12.1",
     "@hookform/resolvers": "^2.9.8",
     "@sendgrid/mail": "^7.7.0",
     "contentful": "^9.2.4",

@@ -9,9 +9,10 @@ function useQueryState<T extends SupportedTypes>(
   initialValue?: T
 ): [T | undefined, (newValue: T) => void] {
   const { replace } = useRouter()
-  const { origin, pathname, search } = window.location
 
   const getValue = (key: string) => {
+    const { search } = window.location
+
     const values = qs.parse(search, {
       parseBooleans: true,
       parseNumbers: true,
@@ -20,10 +21,12 @@ function useQueryState<T extends SupportedTypes>(
   }
 
   const [value, setValue] = useState<T | undefined>(
-    getValue(key) || initialValue
+    typeof window !== "undefined" ? getValue(key) || initialValue : initialValue
   )
 
   const onSetValue = (newValue: T) => {
+    const { origin, pathname, search } = window.location
+
     setValue(newValue)
 
     const values = qs.parse(search)

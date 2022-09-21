@@ -1,3 +1,4 @@
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Suggestion } from "../types"
 
 interface Props {
@@ -7,7 +8,9 @@ interface Props {
 const Suggestion = ({ suggestion }: Props) => (
   <article>
     <h3>{suggestion.title}</h3>
-    <div>{JSON.stringify(suggestion.content)}</div>
+    {suggestion.content && (
+      <div>{documentToReactComponents(suggestion.content)}</div>
+    )}
   </article>
 )
 

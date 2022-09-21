@@ -1,5 +1,8 @@
 .dialog {
   padding: 0;
+  width: 100%;
+  height: 70vh;
+  max-width: 700px;
 
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.75);
@@ -7,5 +10,22 @@
 }
 
 .inner {
-  padding: 1rem
+  padding: 1rem;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  display: flex;
+  cursor: pointer;
+}
+
+.closeIcon {
+  width: 50px;
+  height: 50px;
 }

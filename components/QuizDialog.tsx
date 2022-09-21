@@ -1,10 +1,12 @@
-import { MouseEventHandler, useEffect, useRef, useState } from "react"
 import useQuizAnswers from "../hooks/useQuiz"
 import { Quiz } from "../types"
 import QuizSection from "./QuizSection"
 import QuizSectionList from "./QuizSectionList"
 import s from "./QuizDialog.module.scss"
-import useQueryState from "../hooks/useUrlQuery"
+import crossIcon from "./cross.svg"
+import Image from "next/image"
+import { useRouter } from "next/router"
+import useDialog from "../hooks/useDialog"
 
 interface Props {
   quiz: Quiz
@@ -12,25 +14,16 @@ interface Props {
 
 const QuizDialog = ({ quiz, ...props }: Props) => {
   const { quizAnswers, quizStarted } = useQuizAnswers()
-  const [activeSectionIndex, setActiveSectionIndex] =
-    useQueryState<number>("quiz_section")
 
-  const [dialogOpen, setDialogOpen] = useState<boolean>(false)
-  const dialogRef = useRef<HTMLDialogElement | null>(null)
+  const { query } = useRouter()
+  const { quiz_section } = query
 
-  // keep dialog and react in sync
-  useEffect(() => {
-    const dialog = dialogRef.current
-    if (dialog) dialogOpen && !dialog.open ? dialog.showModal() : dialog.close()
-  }, [dialogOpen])
-
-  // by default, html dialogs don't close when backdrop is clicked
-  const handleClickBackdrop: MouseEventHandler<HTMLDialogElement> = e => {
-    if (e.target === dialogRef.current) dialogRef.current.close()
-  }
+  const { dialogOpen, dialogRef, handleClickBackdrop, setDialogOpen } =
+    useDialog()
 
   return (
     <>
+      {quiz_section}
       <button onClick={() => setDialogOpen(true)}>
         {quizStarted ? "Resume" : "Could you foster?"}
       </button>
@@ -43,10 +36,18 @@ const QuizDialog = ({ quiz, ...props }: Props) => {
         className={s.dialog}
       >
         <div className={s.inner}>
-          <button onClick={() => setDialogOpen(false)}>Close</button>
+          <button
+            onClick={() => setDialogOpen(false)}
+            className={s.closeButton}
+          >
+            <Image src={crossIcon} alt="" height={20} width={20} />
+            <span className="visually-hidden">Close</span>
+          </button>
 
-          {typeof activeSectionIndex === "number" ? (
-            <QuizSection section={quiz.sections[activeSectionIndex]} />
+          {quiz_section ? (
+            <QuizSection
+              section={quiz.sections[parseInt(quiz_section as string)]}
+            />
           ) : (
             <QuizSectionList sections={quiz.sections} />
           )}

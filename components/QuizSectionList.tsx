@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { QuizSection } from "../types"
 
 interface Props {
@@ -5,13 +6,20 @@ interface Props {
 }
 
 const QuizSectionList = ({ sections }: Props) => (
-  <ul>
-    {sections.map(section => (
-      <li key={section.id}>
-        <button onClick={() => null}>{section.title}</button>
-      </li>
-    ))}
-  </ul>
+  <>
+    <h2>Explore topics</h2>
+
+    <p>You can answer questions in any order.</p>
+    <ol>
+      {sections.map((section, i) => (
+        <li key={section.id}>
+          <Link href={`/?quiz_section=${i}`}>{section.title}</Link>
+
+          {/* <button onClick={() => null}>{section.title}</button> */}
+        </li>
+      ))}
+    </ol>
+  </>
 )
 
 export default QuizSectionList

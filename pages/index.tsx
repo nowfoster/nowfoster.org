@@ -5,8 +5,6 @@ import { Quiz } from "../types"
 
 const Home: NextPage<Quiz> = quiz => (
   <>
-    {console.log(quiz)}
-
     <h1>The fostering service with heart</h1>
     <p>Forget everything you think you know about fostering.</p>
     <p>
