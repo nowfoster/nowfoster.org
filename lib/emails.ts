@@ -3,27 +3,31 @@ import { StoredApplication } from "../types"
 
 sg.setApiKey(process.env.SENDGRID_API_KEY as string)
 
-const ADMIN_MAILBOX = "foo@bar.com"
-const DEFAULT_FROM = "foo@bar.com"
-
 /** send alert to admin inbox that new application has been made */
 export const notifyAdmin = async (application: StoredApplication) =>
   await sg.send({
-    to: ADMIN_MAILBOX,
-    from: DEFAULT_FROM,
-    subject: "A new application has been made",
-    text: "foo bar",
-    html: "content",
+    from: process.env.DEFAULT_FROM as string,
+    replyTo: application.email,
+    templateId: process.env.NOTIFY_ADMIN_TEMPLATE_ID as string,
+    personalizations: [
+      {
+        to: process.env.ADMIN_MAILBOX as string,
+        dynamicTemplateData: application,
+      },
+    ],
   })
 
 /** send copy of responses back to applicant */
 export const notifyApplicant = async (application: StoredApplication) =>
   await sg.send({
-    to: application.email,
-    from: DEFAULT_FROM,
-    subject: "Your application to foster",
-    text: "foo bar",
-    html: "foo bar",
+    from: process.env.DEFAULT_FROM as string,
+    templateId: process.env.NOTIFY_ADPPLICANT_TEMPLATE_ID as string,
+    personalizations: [
+      {
+        to: application.email,
+        dynamicTemplateData: application,
+      },
+    ],
   })
 
 /** save a smidge of time by doing both in parallel */

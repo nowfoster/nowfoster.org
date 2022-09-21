@@ -35,6 +35,7 @@ const handler = async (
 
     res.status(201).json(result)
   } catch (e: any) {
+    console.error(e.response.body.errors)
     // TODO: improve types, send whole zod error back
     res.status(400).json({ error: e?.name || e })
   }
