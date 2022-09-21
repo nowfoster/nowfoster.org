@@ -1,17 +1,21 @@
 import { fireEvent, render, screen } from "@testing-library/react"
 import useUrlQuery from "./useUrlQuery"
-import { useRouter } from "next/router"
 
 const mockReplace = jest.fn()
-jest.mock("next/router")
-;(useRouter as jest.Mock).mockReturnValue({
-  replace: mockReplace,
-})
+
+jest.mock("next/router", () => ({
+  useRouter() {
+    return {
+      replace: mockReplace,
+    }
+  },
+}))
 
 beforeEach(() => {
   jest.clearAllMocks()
 
-  delete window.location
+  delete (window as any).location
+
   window.location = {
     origin: "foo",
     pathname: "bar",
