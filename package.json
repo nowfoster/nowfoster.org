@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm-run-all build:*",
+    "build:types": "contentful-typescript-codegen --output types/generated/contentful.d.ts",
+    "build:next": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "npm-run-all -p test:*",
     "test:jest": "jest",
     "test:cypress": "cypress run",
-    "cypress": "cypress open --e2e --browser electron",
-    "generate-contentful-types": "contentful-typescript-codegen --output types/generated/contentful.d.ts"
+    "cypress": "cypress open --e2e --browser electron"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",

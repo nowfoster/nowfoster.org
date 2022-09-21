@@ -20,8 +20,8 @@ export const getQuizContent = async (): Promise<Quiz> => {
       questions: item.fields.questions.map(question => ({
         id: question.sys.id,
         ...question.fields,
-        suggestion: {
-          id: question.fields.suggestion?.sys.id,
+        suggestion: question.fields.suggestion && {
+          id: question.fields.suggestion.sys.id,
           ...question.fields.suggestion?.fields,
         },
       })),

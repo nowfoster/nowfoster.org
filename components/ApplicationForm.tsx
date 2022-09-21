@@ -32,8 +32,8 @@ const ApplicationForm = () => {
       <p>{errors.email?.message}</p>
 
       <label htmlFor="include answers">Include my answers?</label>
-      <input type="checkbox" {...register("includeAnswers")} />
-      <p>{errors.includeAnswers?.message}</p>
+      {/* <input type="checkbox" {...register("includeAnswers")} />
+      <p>{errors.includeAnswers?.message}</p> */}
 
       <input type="submit" disabled={isSubmitting} />
     </form>
