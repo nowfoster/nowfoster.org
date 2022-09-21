@@ -1,8 +1,12 @@
-import type { NextPage } from "next"
-import Quiz from "../components/Dialog"
+import type { NextPage, NextPageContext } from "next"
+import QuizDialog from "../components/QuizDialog"
+import { getQuizContent } from "../lib/cms"
+import { Quiz } from "../types"
 
-const Home: NextPage = () => (
+const Home: NextPage<Quiz> = quiz => (
   <>
+    {console.log(quiz)}
+
     <h1>The fostering service with heart</h1>
     <p>Forget everything you think you know about fostering.</p>
     <p>
@@ -16,7 +20,7 @@ const Home: NextPage = () => (
       be a great foster carer.
     </p>
 
-    <Quiz />
+    <QuizDialog quiz={quiz} />
 
     <h2>Fostering stories</h2>
 
@@ -28,3 +32,11 @@ const Home: NextPage = () => (
 )
 
 export default Home
+
+export const getStaticProps = async (context: NextPageContext) => {
+  const quiz = await getQuizContent()
+
+  return {
+    props: quiz,
+  }
+}

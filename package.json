@@ -10,15 +10,20 @@
     "test": "npm-run-all -p test:*",
     "test:jest": "jest",
     "test:cypress": "cypress run",
-    "cypress": "cypress open --e2e --browser electron"
+    "cypress": "cypress open --e2e --browser electron",
+    "generate-contentful-types": "contentful-typescript-codegen --output types/generated/contentful.d.ts"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.8",
     "@reach/dialog": "^0.17.0",
     "@sendgrid/mail": "^7.7.0",
+    "contentful": "^9.2.4",
     "faunadb": "^4.7.0",
     "next": "12.2.5",
+    "query-string": "^7.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.36.0",
     "zod": "^3.19.1"
   },
   "devDependencies": {
@@ -28,6 +33,8 @@
     "@types/node": "18.7.15",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
+    "contentful-management": "^10.15.0",
+    "contentful-typescript-codegen": "^3.2.3",
     "cypress": "^10.7.0",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
