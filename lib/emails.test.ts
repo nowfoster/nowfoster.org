@@ -12,11 +12,11 @@ describe("notifyAdmin", () => {
       personalizations: [
         {
           dynamicTemplateData: {
-            createdAt:
-              "Mon Jan 12 1970 14:46:40 GMT+0100 (Greenwich Mean Time)",
+            createdAt: expect.anything(),
             email: "foo@bar.com",
             firstName: "Foo",
             lastName: "Bar",
+            phone: "0447777777777",
           },
           to: expect.anything(),
         },
@@ -35,11 +35,11 @@ describe("notifyApplicant", () => {
       personalizations: [
         {
           dynamicTemplateData: {
-            createdAt:
-              "Mon Jan 12 1970 14:46:40 GMT+0100 (Greenwich Mean Time)",
+            createdAt: expect.anything(),
             email: "foo@bar.com",
             firstName: "Foo",
             lastName: "Bar",
+            phone: "0447777777777",
           },
           to: "foo@bar.com",
         },

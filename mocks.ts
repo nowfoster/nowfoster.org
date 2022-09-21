@@ -4,6 +4,7 @@ export const mockApplication: Application = {
   firstName: "Foo",
   lastName: "Bar",
   email: "foo@bar.com",
+  phone: "0447777777777",
 }
 
 export const mockStoredApplication: StoredApplication = {
