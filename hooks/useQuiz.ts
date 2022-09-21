@@ -1,7 +1,7 @@
 import { Answers } from "../types"
 import useLocalStorage from "./useLocalStorage"
 
-const useQuizAnswers = (): { quizAnswers: Answers } => {
+const useQuizAnswers = () => {
   const [quizAnswers, setQuizAnswers] = useLocalStorage<Answers>(
     "fostering_quiz",
     {}
@@ -9,7 +9,8 @@ const useQuizAnswers = (): { quizAnswers: Answers } => {
 
   return {
     quizAnswers,
-    // resetAll: () => setQuizAnswers({}),
+    quizStarted: Object.keys(quizAnswers).length > 0,
+    resetAll: () => setQuizAnswers({}),
     // TODO more utils
   }
 }

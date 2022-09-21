@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.8",
-    "@reach/dialog": "^0.17.0",
     "@sendgrid/mail": "^7.7.0",
     "contentful": "^9.2.4",
     "faunadb": "^4.7.0",
@@ -27,6 +26,7 @@
     "zod": "^3.19.1"
   },
   "devDependencies": {
+    "@contentful/rich-text-types": "^15.13.2",
     "@testing-library/cypress": "^8.0.3",
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.0.3",

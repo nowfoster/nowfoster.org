@@ -6,8 +6,8 @@ type SupportedTypes = string | number | boolean | (string | number | boolean)[]
 
 function useQueryState<T extends SupportedTypes>(
   key: string,
-  initialValue: T
-): [T, (newValue: T) => void] {
+  initialValue?: T
+): [T | undefined, (newValue: T) => void] {
   const { replace } = useRouter()
   const { origin, pathname, search } = window.location
 
@@ -19,7 +19,9 @@ function useQueryState<T extends SupportedTypes>(
     return values[key] as T
   }
 
-  const [value, setValue] = useState<T>(getValue(key) || initialValue)
+  const [value, setValue] = useState<T | undefined>(
+    getValue(key) || initialValue
+  )
 
   const onSetValue = (newValue: T) => {
     setValue(newValue)

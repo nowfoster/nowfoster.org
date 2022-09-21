@@ -11,7 +11,7 @@ export interface Suggestion extends ISuggestionFields {
 
 export interface Question extends Omit<IQuestionFields, "suggestion"> {
   id: string
-  suggestion?: ISuggestionFields
+  suggestion?: Suggestion
 }
 
 export interface QuizSection extends Omit<IQuizSectionFields, "questions"> {
@@ -25,7 +25,7 @@ export interface Quiz {
 
 export interface Answers {
   [key: string]: {
-    [key: string]: string
+    [key: string]: string | string[]
   }
 }
 
@@ -38,7 +38,10 @@ export interface Application {
   firstName: string
   lastName: string
   email: string
+  phone: string
   answers?: unknown
+  // introEventBooked: string
+  // attendedIntroEventAt: string
 }
 
 export interface StoredApplication extends Application {

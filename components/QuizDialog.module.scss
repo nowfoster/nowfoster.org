@@ -1,0 +1,11 @@
+.dialog {
+  padding: 0;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
+
+.inner {
+  padding: 1rem
+}
