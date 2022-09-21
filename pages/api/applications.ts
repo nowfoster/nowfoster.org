@@ -10,7 +10,7 @@ const handler = async (
   try {
     if (req.method !== "POST") throw "Method not allowed"
 
-    const data = JSON.parse(req.body as string) as Application
+    const data = req.body
 
     applicationSchema.parse(data)
 
@@ -29,8 +29,9 @@ const handler = async (
     )
 
     res.status(201).json(result)
-  } catch (e) {
-    res.status(400).json({ error: (e as any).toString() })
+  } catch (e: any) {
+    // TODO: improve types, send whole zod error back
+    res.status(400).json({ error: e?.name || e })
   }
 }
 
