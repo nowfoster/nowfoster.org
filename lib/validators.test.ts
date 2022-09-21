@@ -2,7 +2,7 @@ import { mockApplication } from "../mocks"
 import { applicationSchema } from "./validators"
 
 describe("applicationSchema", () => {
-  it("passes a complete application", () => {
+  it("does not throw on a complete application", () => {
     applicationSchema.parse(mockApplication)
   })
 

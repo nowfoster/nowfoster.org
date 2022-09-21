@@ -21,7 +21,7 @@ export const notifyAdmin = async (application: StoredApplication) =>
 export const notifyApplicant = async (application: StoredApplication) =>
   await sg.send({
     from: process.env.DEFAULT_FROM as string,
-    templateId: process.env.NOTIFY_ADPPLICANT_TEMPLATE_ID as string,
+    templateId: process.env.NOTIFY_APPLICANT_TEMPLATE_ID as string,
     personalizations: [
       {
         to: application.email,

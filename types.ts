@@ -44,7 +44,7 @@ export interface Application {
 }
 
 export interface StoredApplication extends Application {
-  createdAt: Date
+  createdAt: string
 }
 
 export type ApiResponseBody =

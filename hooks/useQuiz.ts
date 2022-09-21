@@ -1,4 +1,4 @@
-import { Answers, Quiz } from "../types"
+import { Answers } from "../types"
 import useLocalStorage from "./useLocalStorage"
 
 const useQuizAnswers = (): { quizAnswers: Answers } => {

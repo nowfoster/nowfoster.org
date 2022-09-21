@@ -1,4 +1,5 @@
 import type { NextPage } from "next"
+import Quiz from "../components/Dialog"
 
 const Home: NextPage = () => (
   <>
@@ -14,7 +15,8 @@ const Home: NextPage = () => (
       There are a lot of myths around fostering. Explore what it really takes to
       be a great foster carer.
     </p>
-    <a href="#">Could you foster?</a>
+
+    <Quiz />
 
     <h2>Fostering stories</h2>
 

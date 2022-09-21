@@ -13,6 +13,7 @@
     "cypress": "cypress open --e2e --browser electron"
   },
   "dependencies": {
+    "@reach/dialog": "^0.17.0",
     "@sendgrid/mail": "^7.7.0",
     "faunadb": "^4.7.0",
     "next": "12.2.5",
