@@ -2,6 +2,11 @@ import type { NextApiRequest, NextApiResponse } from "next"
 import faunadb, { query, values } from "faunadb"
 import { Application, ApiResponseBody, StoredApplication } from "../../types"
 import { applicationSchema } from "../../lib/validators"
+import {
+  notifyAdmin,
+  notifyApplicant,
+  sendNotifications,
+} from "../../lib/emails"
 
 const handler = async (
   req: NextApiRequest,
@@ -10,9 +15,7 @@ const handler = async (
   try {
     if (req.method !== "POST") throw "Method not allowed"
 
-    const data = req.body
-
-    applicationSchema.parse(data)
+    applicationSchema.parse(req.body)
 
     const db = new faunadb.Client({
       secret: process.env.FAUNADB_SECRET as string,
@@ -23,10 +26,12 @@ const handler = async (
       query.Create(query.Collection("applications"), {
         data: {
           createdAt: new Date().toString(),
-          ...data,
+          ...req.body,
         },
       })
     )
+
+    await sendNotifications(result.data)
 
     res.status(201).json(result)
   } catch (e: any) {
