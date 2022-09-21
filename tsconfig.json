@@ -18,10 +18,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": [
-      "cypress",
-      "@testing-library/cypress"
-    ]
+    // "types": [
+    //   // "cypress",
+    //   // "@testing-library/cypress",
+    //   "jest"
+    // ]
   },
   "include": [
     "next-env.d.ts",
@@ -29,6 +30,7 @@
     "**/*.tsx",
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    // "cypress.config.js"
   ]
 }
