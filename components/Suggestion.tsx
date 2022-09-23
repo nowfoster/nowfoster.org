@@ -1,12 +1,13 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { Suggestion } from "../types"
+import s from "./Suggestion.module.scss"
 
 interface Props {
   suggestion: Suggestion
 }
 
 const Suggestion = ({ suggestion }: Props) => (
-  <article>
+  <article className={s.article}>
     <h3>{suggestion.title}</h3>
     {suggestion.content && (
       <div>{documentToReactComponents(suggestion.content)}</div>

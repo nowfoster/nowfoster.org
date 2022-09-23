@@ -15,7 +15,9 @@ const handler = async (
   try {
     if (req.method !== "POST") throw "Method not allowed"
 
-    applicationSchema.parse(req.body)
+    const data = JSON.parse(req.body)
+
+    applicationSchema.parse(data)
 
     const db = new faunadb.Client({
       secret: process.env.FAUNADB_SECRET as string,
@@ -26,7 +28,7 @@ const handler = async (
       query.Create(query.Collection("applications"), {
         data: {
           createdAt: new Date().toString(),
-          ...req.body,
+          ...data,
         },
       })
     )
@@ -35,7 +37,7 @@ const handler = async (
 
     res.status(201).json(result)
   } catch (e: any) {
-    console.error(e.response.body.errors)
+    console.error(e)
     // TODO: improve types, send whole zod error back
     res.status(400).json({ error: e?.name || e })
   }

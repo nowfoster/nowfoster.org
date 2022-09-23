@@ -1,7 +1,7 @@
-describe("empty spec", () => {
+describe("Apply to foster", () => {
   it("passes", () => {
     cy.visit("/")
 
-    cy.findByRole("heading")
+    cy.findByRole("button", { name: "Could you foster?" })
   })
 })

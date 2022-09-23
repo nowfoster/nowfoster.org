@@ -3,6 +3,9 @@ import Link from "next/link"
 import { useState } from "react"
 import { QuizSection } from "../types"
 import Question from "./Question"
+import backIcon from "./back.svg"
+import Image from "next/image"
+import s from "./QuizSection.module.scss"
 
 interface Props {
   section: QuizSection
@@ -14,22 +17,22 @@ const QuizSection = ({ section }: Props) => {
   const lastQuestion = activeQuestionIndex === section.questions.length - 1
 
   return (
-    <section>
-      {/* <button>{activeQuestionIndex > 0 ? "Go back" : "Back to topics"}</button> */}
-
+    <section className={s.section}>
       <Link href="/">
-        {activeQuestionIndex > 0 ? "Go back" : "Back to topics"}
+        <a>
+          <Image src={backIcon} alt="" height={20} width={20} />
+          {activeQuestionIndex > 0 ? "Go back" : "Back to topics"}
+        </a>
       </Link>
 
-      <h2>{section.title}</h2>
-      {section.intro && <div>{documentToReactComponents(section.intro)}</div>}
+      {/* TODO: where do we show this stuff? */}
+      {/* <h2>{section.title}</h2>
+      {section.intro && <div>{documentToReactComponents(section.intro)}</div>} */}
 
       <Question
         question={section.questions[activeQuestionIndex]}
         section={section}
       />
-
-      <button>{lastQuestion ? "Finish" : "Next"}</button>
     </section>
   )
 }

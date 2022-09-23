@@ -7,6 +7,8 @@ const useQuizAnswers = () => {
     {}
   )
 
+  console.log(quizAnswers)
+
   const answerQuestion = (
     section: string,
     question: string,
@@ -22,9 +24,12 @@ const useQuizAnswers = () => {
 
   const startOver = () => setQuizAnswers({})
 
+  const sectionsCompleted = Object.keys(quizAnswers).length
+
   return {
     quizAnswers,
     quizStarted: Object.keys(quizAnswers).length > 0,
+    sectionsCompleted,
     startOver,
     answerQuestion,
   }

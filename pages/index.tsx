@@ -1,5 +1,6 @@
 import type { NextPage, NextPageContext } from "next"
 import QuizDialog from "../components/QuizDialog"
+import QuizFooter from "../components/QuizFooter"
 import { getQuizContent } from "../lib/cms"
 import { Quiz } from "../types"
 
@@ -26,6 +27,8 @@ const Home: NextPage<Quiz> = quiz => (
     <a href="#">See all options</a>
 
     <h2>Why foster?</h2>
+
+    <QuizFooter totalSections={quiz.sections.length} />
   </>
 )
 

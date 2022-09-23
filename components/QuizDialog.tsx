@@ -1,12 +1,12 @@
 import useQuizAnswers from "../hooks/useQuiz"
 import { Quiz } from "../types"
 import QuizSection from "./QuizSection"
-import QuizSectionList from "./QuizSectionList"
 import s from "./QuizDialog.module.scss"
 import crossIcon from "./cross.svg"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import useDialog from "../hooks/useDialog"
+import SectionList from "./SectionList"
 
 interface Props {
   quiz: Quiz
@@ -23,7 +23,8 @@ const QuizDialog = ({ quiz, ...props }: Props) => {
 
   return (
     <>
-      {quiz_section}
+      {JSON.stringify(quizAnswers)}
+
       <button onClick={() => setDialogOpen(true)}>
         {quizStarted ? "Resume" : "Could you foster?"}
       </button>
@@ -49,7 +50,7 @@ const QuizDialog = ({ quiz, ...props }: Props) => {
               section={quiz.sections[parseInt(quiz_section as string)]}
             />
           ) : (
-            <QuizSectionList sections={quiz.sections} />
+            <SectionList sections={quiz.sections} />
           )}
         </div>
       </dialog>

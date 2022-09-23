@@ -9,4 +9,5 @@ export const applicationSchema = z.object({
   lastName: z.string().min(2, {
     message: "Last name must be at least two characters",
   }),
+  includeAnswers: z.boolean(),
 })

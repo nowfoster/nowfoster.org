@@ -23,15 +23,25 @@ export interface Quiz {
   sections: QuizSection[]
 }
 
+export type Answer = string | string[]
+
 export interface Answers {
   [key: string]: {
-    [key: string]: string | string[]
+    [key: string]: Answer
   }
 }
 
 export interface Option {
   label: string
   value: string
+}
+
+export interface ApplicationInput {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  includeAnswers: boolean
 }
 
 export interface Application {

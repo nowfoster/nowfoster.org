@@ -1,42 +1,49 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
 import useQuizAnswers from "../hooks/useQuiz"
 import { applicationSchema } from "../lib/validators"
-import { Application } from "../types"
+import { ApplicationInput } from "../types"
+import Field from "./Field"
 
 const ApplicationForm = () => {
-  const { quizAnswers } = useQuizAnswers()
-  const {
-    register,
-    handleSubmit,
-
-    formState: { errors, isSubmitting },
-  } = useForm<Application>({
+  const methods = useForm<ApplicationInput>({
     resolver: zodResolver(applicationSchema),
   })
 
-  const onSubmit = (data: Application) => console.log(data)
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+  } = methods
+
+  const onSubmit = async (data: ApplicationInput) => {
+    const res = await fetch("/api/applications", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+    if (res.ok) alert("application sent ✅")
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="firstName">First name</label>
-      <input {...register("firstName")} />
-      <p>{errors.firstName?.message}</p>
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Field label="First name" name="firstName" />
+        <Field label="Last name" name="lastName" />
+        <Field
+          label="Email"
+          name="email"
+          type="email"
+          hint="We'll send a copy of your application to this address."
+        />
+        <Field label="Phone" name="phone" type="tel" />
+        <Field
+          label="Include my answers?"
+          name="includeAnswers"
+          type="checkbox"
+        />
 
-      <label htmlFor="lastName">Last name</label>
-      <input {...register("firstName")} />
-      <p>{errors.firstName?.message}</p>
-
-      <label htmlFor="email">Email address</label>
-      <input {...register("email")} />
-      <p>{errors.email?.message}</p>
-
-      <label htmlFor="include answers">Include my answers?</label>
-      {/* <input type="checkbox" {...register("includeAnswers")} />
-      <p>{errors.includeAnswers?.message}</p> */}
-
-      <input type="submit" disabled={isSubmitting} />
-    </form>
+        <button disabled={isSubmitting}>Apply</button>
+      </form>
+    </FormProvider>
   )
 }
 

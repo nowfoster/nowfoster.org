@@ -48,6 +48,9 @@ export interface IQuizSectionFields {
 
   /** Questions */
   questions: IQuestion[];
+
+  /** Order in quiz */
+  order?: number | undefined;
 }
 
 /** A group of questions in the quiz */

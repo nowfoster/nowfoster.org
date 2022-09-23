@@ -1,11 +1,16 @@
 import { useForm } from "react-hook-form"
 import useQuizAnswers from "../hooks/useQuiz"
-import { Question, QuizSection } from "../types"
+import { Answer, Question, QuizSection } from "../types"
 import Suggestion from "./Suggestion"
+import s from "./Question.module.scss"
 
 interface Props {
   question: Question
   section: QuizSection
+}
+
+interface FormValues {
+  answer: Answer
 }
 
 const Question = ({ question, section }: Props) => {
@@ -13,27 +18,37 @@ const Question = ({ question, section }: Props) => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm()
+    getValues,
+  } = useForm<FormValues>({
+    defaultValues: {
+      answer: question.multiple ? [] : "",
+    },
+  })
 
   const { answerQuestion } = useQuizAnswers()
 
-  const onSubmit = data =>
+  const onSubmit = (data: FormValues) => {
     answerQuestion(section.title, question.question, data.answer)
+  }
 
   return (
-    <div aria-live="polite">
+    <div aria-live="polite" className={s.question}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <legend>{question.question}</legend>
+        <p className={s.caption}>{section.title}</p>
+        <legend className={s.legend}>{question.question}</legend>
 
-        <fieldset>
-          {question.options.map(option => (
-            <div key={option}>
+        {JSON.stringify(getValues())}
+
+        <fieldset className={s.fieldset}>
+          {question.options.map((option, i) => (
+            <div key={`${i}-${option}`}>
               <input
                 type={question.multiple ? "checkbox" : "radio"}
                 value={option}
-                id={option}
+                id={`${i}-${option}`}
+                {...register("answer")}
               />
-              <label htmlFor={option}>{option}</label>
+              <label htmlFor={`${i}-${option}`}>{option}</label>
             </div>
           ))}
         </fieldset>
