@@ -1,4 +1,5 @@
 import type { NextPage, NextPageContext } from "next"
+import ConfirmationDialog from "../components/ConfirmationDialog"
 import QuizDialog from "../components/QuizDialog"
 import QuizFooter from "../components/QuizFooter"
 import { getQuizContent } from "../lib/cms"

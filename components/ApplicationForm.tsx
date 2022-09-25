@@ -1,5 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
+import { useConfirmDialog } from "../contexts/confirmDialog"
 import { useQuiz } from "../contexts/quiz"
 import { applicationSchema } from "../lib/validators"
 import { ApplicationInput } from "../types"
@@ -7,6 +9,8 @@ import Field from "./Field"
 
 const ApplicationForm = () => {
   const { quizAnswers } = useQuiz()
+  const { push } = useRouter()
+  const { triggerDialog } = useConfirmDialog()
 
   const methods = useForm<ApplicationInput>({
     resolver: zodResolver(applicationSchema),
@@ -28,11 +32,15 @@ const ApplicationForm = () => {
         answers: data.includeAnswers ? quizAnswers : false, // take quiz answers if opted in
       }),
     })
-    if (res.ok) alert("application sent ✅")
+    if (res.ok) {
+      triggerDialog() // open confirmation dialog
+      push("/")
+    }
   }
 
   return (
     <FormProvider {...methods}>
+      <button onClick={triggerDialog}>fooo</button>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Field label="First name" name="firstName" />
         <Field label="Last name" name="lastName" />
