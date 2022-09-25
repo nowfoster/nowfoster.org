@@ -1,7 +1,11 @@
-import { MouseEventHandler, useEffect, useRef, useState } from "react"
+import { useRouter } from "next/router"
+import { MouseEventHandler, useEffect, useRef } from "react"
+import useUrlQuery from "./useUrlQuery"
 
 const useDialog = () => {
-  const [dialogOpen, setDialogOpen] = useState<boolean>(false)
+  const { query, push } = useRouter()
+  const dialogOpen = query.quiz_open
+
   const dialogRef = useRef<HTMLDialogElement | null>(null)
 
   // keep dialog and react in sync
@@ -18,7 +22,6 @@ const useDialog = () => {
   return {
     dialogRef,
     handleClickBackdrop,
-    setDialogOpen,
     dialogOpen,
   }
 }

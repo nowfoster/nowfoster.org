@@ -49,6 +49,7 @@ export interface Application {
   lastName: string
   email: string
   phone: string
+  includeAnswers: boolean
   answers?: unknown
   // introEventBooked: string
   // attendedIntroEventAt: string

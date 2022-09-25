@@ -1,13 +1,18 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
-import useQuizAnswers from "../hooks/useQuiz"
+import { useQuiz } from "../contexts/quiz"
 import { applicationSchema } from "../lib/validators"
 import { ApplicationInput } from "../types"
 import Field from "./Field"
 
 const ApplicationForm = () => {
+  const { quizAnswers } = useQuiz()
+
   const methods = useForm<ApplicationInput>({
     resolver: zodResolver(applicationSchema),
+    defaultValues: {
+      includeAnswers: true,
+    },
   })
 
   const {
@@ -18,7 +23,10 @@ const ApplicationForm = () => {
   const onSubmit = async (data: ApplicationInput) => {
     const res = await fetch("/api/applications", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        ...data,
+        answers: data.includeAnswers ? quizAnswers : false, // take quiz answers if opted in
+      }),
     })
     if (res.ok) alert("application sent ✅")
   }
@@ -37,6 +45,7 @@ const ApplicationForm = () => {
         <Field label="Phone" name="phone" type="tel" />
         <Field
           label="Include my answers?"
+          hint="Send us a copy of your quiz answers to support your application"
           name="includeAnswers"
           type="checkbox"
         />

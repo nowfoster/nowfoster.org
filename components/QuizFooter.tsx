@@ -1,4 +1,5 @@
-import useQuizAnswers from "../hooks/useQuiz"
+import Link from "next/link"
+import { useQuiz } from "../contexts/quiz"
 import { Quiz } from "../types"
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
 }
 
 const QuizFooter = ({ totalSections }: Props) => {
-  const { quizStarted, sectionsCompleted } = useQuizAnswers()
+  const { quizStarted, sectionsCompleted } = useQuiz()
 
   if (quizStarted)
     return (
@@ -22,7 +23,7 @@ const QuizFooter = ({ totalSections }: Props) => {
           </label>
         </>
 
-        <button>Resume</button>
+        <Link href="/?quiz_open=true">Resume</Link>
       </footer>
     )
 

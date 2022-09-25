@@ -18,7 +18,7 @@ const QuizSection = ({ section }: Props) => {
 
   return (
     <section className={s.section}>
-      <Link href="/">
+      <Link href="/?quiz_open=true">
         <a>
           <Image src={backIcon} alt="" height={20} width={20} />
           {activeQuestionIndex > 0 ? "Go back" : "Back to topics"}

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import useQuizAnswers from "../hooks/useQuiz"
+import { useQuiz } from "../contexts/quiz"
 import { Answer, Question, QuizSection } from "../types"
 import Suggestion from "./Suggestion"
 import s from "./Question.module.scss"
@@ -14,6 +14,10 @@ interface FormValues {
 }
 
 const Question = ({ question, section }: Props) => {
+  const { answerQuestion, quizAnswers } = useQuiz()
+
+  const existingAnswer = quizAnswers?.[section.title]?.[question.question]
+
   const {
     register,
     handleSubmit,
@@ -21,11 +25,9 @@ const Question = ({ question, section }: Props) => {
     getValues,
   } = useForm<FormValues>({
     defaultValues: {
-      answer: question.multiple ? [] : "",
+      answer: existingAnswer ? existingAnswer : question.multiple ? [] : "",
     },
   })
-
-  const { answerQuestion } = useQuizAnswers()
 
   const onSubmit = (data: FormValues) => {
     answerQuestion(section.title, question.question, data.answer)
@@ -36,8 +38,6 @@ const Question = ({ question, section }: Props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <p className={s.caption}>{section.title}</p>
         <legend className={s.legend}>{question.question}</legend>
-
-        {JSON.stringify(getValues())}
 
         <fieldset className={s.fieldset}>
           {question.options.map((option, i) => (

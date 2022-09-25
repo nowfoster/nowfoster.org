@@ -1,25 +1,28 @@
-import { useEffect, useState } from "react"
+import { useState, useEffect, Dispatch } from "react"
 
-function useLocalStorage<T>(
+const useLocalStorage = <T>(
   key: string,
-  initialValue: T
-): [T, (newVal: T) => void] {
-  const getValue = () => {}
-
-  const [value, setValue] = useState<T>(initialValue)
+  defaultValue: T
+): [value: T, setValue: Dispatch<T>] => {
+  const [value, setValue] = useState(defaultValue)
 
   useEffect(() => {
     try {
-      const item = window.localStorage.getItem(key)
-      if (item) setValue(JSON.parse(item))
-    } catch (e) {}
-  }, [key])
+      const retr = localStorage.getItem(key)
+      setValue(retr ? JSON.parse(retr) : defaultValue)
+    } catch (e) {
+      setValue(defaultValue)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value))
-  }, [value, key])
-
-  return [value, setValue]
+  return [
+    value,
+    newValue => {
+      setValue(newValue)
+      localStorage.setItem(key, JSON.stringify(newValue))
+    },
+  ]
 }
 
 export default useLocalStorage
