@@ -36,13 +36,7 @@ export interface Option {
   value: string
 }
 
-export interface ApplicationInput {
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  includeAnswers: boolean
-}
+export type ApplicationInput = Omit<Application, "createdAt">
 
 export interface Application {
   firstName: string
@@ -50,15 +44,11 @@ export interface Application {
   email: string
   phone: string
   includeAnswers: boolean
-  answers?: unknown
-  // introEventBooked: string
-  // attendedIntroEventAt: string
-}
-
-export interface StoredApplication extends Application {
+  answers?: Answers
+  introCallAt: string
   createdAt: string
 }
 
-export type ApiResponseBody =
-  | values.Document<StoredApplication>
-  | { error: string }
+export type ApiResponseBody = values.Document<Application> | { error: string }
+
+export interface Availability {}

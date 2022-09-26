@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { ApplicationInput } from "../types"
 
 export const applicationSchema = z.object({
   email: z.string().email("That doesn't look like a valid email"),
@@ -15,4 +16,5 @@ export const applicationSchema = z.object({
     message: "Last name must be at least two characters",
   }),
   includeAnswers: z.boolean(),
+  introCallAt: z.string(),
 })

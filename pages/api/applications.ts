@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import faunadb, { query as q, values } from "faunadb"
-import { ApiResponseBody, StoredApplication } from "../../types"
+import { ApiResponseBody, Application } from "../../types"
 import { applicationSchema } from "../../lib/validators"
 import { sendNotifications } from "../../lib/emails"
+import { bookSlot } from "../../lib/calendar"
 
 const db = new faunadb.Client({
   secret: process.env.FAUNADB_SECRET as string,
@@ -18,7 +19,7 @@ const handler = async (
       case "POST":
         const data = JSON.parse(req.body)
         applicationSchema.parse(data) // check payload is correctly formed
-        const result: values.Document<StoredApplication> = await db.query(
+        const result: values.Document<Application> = await db.query(
           q.Create(q.Collection("applications"), {
             data: {
               createdAt: new Date().toISOString(),
@@ -27,11 +28,12 @@ const handler = async (
           })
         )
         await sendNotifications(result.data)
+        await bookSlot(result.data)
         res.status(201).json(result)
         break
 
       case "GET":
-        const results: values.Document<StoredApplication> = await db.query(
+        const results: values.Document<Application> = await db.query(
           q.Map(
             q.Paginate(q.Documents(q.Collection("applications"))),
             q.Lambda(doc => q.Get(doc))

@@ -28,13 +28,16 @@ export const QuizAnswersProvider = ({
 }: {
   children: React.ReactNode
 }) => {
-  const [quizAnswers, setQuizAnswers] = useLocalStorage("quiz_answers", {})
+  const [quizAnswers, setQuizAnswers] = useLocalStorage<Answers>(
+    "quiz_answers",
+    {}
+  )
 
   const answerQuestion = (
     section: string,
     question: string,
     answer: string | string[]
-  ) =>
+  ) => {
     setQuizAnswers({
       ...quizAnswers,
       [section]: {
@@ -42,6 +45,7 @@ export const QuizAnswersProvider = ({
         [question]: answer,
       },
     })
+  }
 
   const startOver = () => setQuizAnswers({})
 

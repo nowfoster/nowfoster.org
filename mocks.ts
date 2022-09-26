@@ -1,4 +1,4 @@
-import { Application, StoredApplication } from "./types"
+import { Application } from "./types"
 
 export const mockApplication: Application = {
   firstName: "Foo",
@@ -6,9 +6,6 @@ export const mockApplication: Application = {
   email: "foo@bar.com",
   phone: "0777 777 7777",
   includeAnswers: true,
-}
-
-export const mockStoredApplication: StoredApplication = {
-  ...mockApplication,
   createdAt: new Date(1000000000).toISOString(),
+  introCallAt: new Date(1000000000).toISOString(),
 }

@@ -4,10 +4,14 @@ import { FormProvider, useForm } from "react-hook-form"
 import { useConfirmDialog } from "../contexts/confirmDialog"
 import { useQuiz } from "../contexts/quiz"
 import { applicationSchema } from "../lib/validators"
-import { ApplicationInput } from "../types"
+import { ApplicationInput, Availability } from "../types"
 import Field from "./Field"
 
-const ApplicationForm = () => {
+interface Props {
+  availability: Availability
+}
+
+const ApplicationForm = ({ availability }: Props) => {
   const { quizAnswers } = useQuiz()
   const { push } = useRouter()
   const { triggerDialog } = useConfirmDialog()
@@ -29,7 +33,7 @@ const ApplicationForm = () => {
       method: "POST",
       body: JSON.stringify({
         ...data,
-        answers: data.includeAnswers ? quizAnswers : false, // take quiz answers if opted in
+        answers: data.includeAnswers ? quizAnswers : undefined, // take quiz answers if opted in
       }),
     })
     if (res.ok) {
@@ -40,7 +44,6 @@ const ApplicationForm = () => {
 
   return (
     <FormProvider {...methods}>
-      <button onClick={triggerDialog}>fooo</button>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Field label="First name" name="firstName" />
         <Field label="Last name" name="lastName" />
@@ -57,6 +60,8 @@ const ApplicationForm = () => {
           name="includeAnswers"
           type="checkbox"
         />
+        {/* TODO: replace with proper datepicker */}
+        <Field label="Book a call" name="introCallBooked" type="date" />
 
         <button disabled={isSubmitting}>Apply</button>
       </form>

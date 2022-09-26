@@ -9,6 +9,7 @@ Next.js app for the III fostering project.
 - Node.js
 - FaunaDB account
 - Contentful account
+- Calendly account
 
 ## Running it locally
 
