@@ -1,7 +1,9 @@
+import google from "googleapis"
 import { Application, Availability } from "../types"
 
 export const getAvailability = async (): Promise<Availability> => {
   // TODO: get gcal events
+
   return {}
 }
 
