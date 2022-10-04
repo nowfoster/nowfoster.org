@@ -1,4 +1,5 @@
 import { values } from "faunadb"
+import { calendar_v3 } from "googleapis"
 import {
   IQuestionFields,
   IQuizSectionFields,
@@ -51,4 +52,6 @@ export interface Application {
 
 export type ApiResponseBody = values.Document<Application> | { error: string }
 
-export interface Availability {}
+export type Event = Required<
+  Pick<calendar_v3.Schema$Event, "id" | "end" | "start">
+>

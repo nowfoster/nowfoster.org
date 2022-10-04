@@ -4,11 +4,12 @@ import { FormProvider, useForm } from "react-hook-form"
 import { useConfirmDialog } from "../contexts/confirmDialog"
 import { useQuiz } from "../contexts/quiz"
 import { applicationSchema } from "../lib/validators"
-import { ApplicationInput, Availability } from "../types"
+import { ApplicationInput, Event } from "../types"
 import Field from "./Field"
+import { DateTime } from "luxon"
 
 interface Props {
-  availability: Availability
+  availability: Event[]
 }
 
 const ApplicationForm = ({ availability }: Props) => {
@@ -61,7 +62,34 @@ const ApplicationForm = ({ availability }: Props) => {
           type="checkbox"
         />
         {/* TODO: replace with proper datepicker */}
-        <Field label="Book a call" name="introCallBooked" type="date" />
+
+        <fieldset>
+          <legend>Book a call</legend>
+          {availability.map(event => {
+            const start = DateTime.fromISO(event.start?.dateTime)
+            return (
+              <div key={event.id}>
+                <input
+                  type="radio"
+                  name="introCallBooked"
+                  value={event.start?.dateTime || ""}
+                  id={event.id || ""}
+                />
+                <label htmlFor={event.id || ""}>
+                  {start.toLocaleString({
+                    month: "short",
+                    day: "numeric",
+                    weekday: "short",
+                  })}{" "}
+                  at{" "}
+                  {start.toLocaleString({
+                    timeStyle: "short",
+                  })}
+                </label>
+              </div>
+            )
+          })}
+        </fieldset>
 
         <button disabled={isSubmitting}>Apply</button>
       </form>

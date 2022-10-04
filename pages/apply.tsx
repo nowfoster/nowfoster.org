@@ -1,12 +1,15 @@
 import { NextPageContext } from "next"
 import ApplicationForm from "../components/ApplicationForm"
 import { getAvailability } from "../lib/calendar"
-import { Availability } from "../types"
+import { Event } from "../types"
 
-const ApplyPage = (availability: Availability) => {
+interface Props {
+  availability: Event[]
+}
+
+const ApplyPage = ({ availability }: Props) => {
   return (
     <>
-      {console.log(availability)}
       <h1>Apply to foster</h1>
       <ApplicationForm availability={availability} />
     </>
