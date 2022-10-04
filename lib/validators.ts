@@ -16,5 +16,8 @@ export const applicationSchema = z.object({
     message: "Last name must be at least two characters",
   }),
   includeAnswers: z.boolean(),
-  introCallAt: z.string(),
+  eventId: z.string({
+    required_error: "You must choose a time for a call",
+    invalid_type_error: "You must choose a time for a call",
+  }),
 })

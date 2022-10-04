@@ -46,12 +46,10 @@ export interface Application {
   phone: string
   includeAnswers: boolean
   answers?: Answers
-  introCallAt: string
+  eventId: string // gcal event id
   createdAt: string
 }
 
 export type ApiResponseBody = values.Document<Application> | { error: string }
 
-export type Event = Required<
-  Pick<calendar_v3.Schema$Event, "id" | "end" | "start">
->
+export type Event = Pick<calendar_v3.Schema$Event, "id" | "end" | "start">

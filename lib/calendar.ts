@@ -27,6 +27,7 @@ export const getAvailability = async (): Promise<Event[]> => {
     calendarId: GOOGLE_CALENDAR_ID,
     singleEvents: true,
     maxResults: 50, // only show soonest 50 slots
+    orderBy: "starttime",
   })
 
   return (

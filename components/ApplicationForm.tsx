@@ -7,6 +7,7 @@ import { applicationSchema } from "../lib/validators"
 import { ApplicationInput, Event } from "../types"
 import Field from "./Field"
 import { DateTime } from "luxon"
+import s from "./Field.module.scss"
 
 interface Props {
   availability: Event[]
@@ -26,7 +27,8 @@ const ApplicationForm = ({ availability }: Props) => {
 
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
+    register,
   } = methods
 
   const onSubmit = async (data: ApplicationInput) => {
@@ -61,35 +63,44 @@ const ApplicationForm = ({ availability }: Props) => {
           name="includeAnswers"
           type="checkbox"
         />
-        {/* TODO: replace with proper datepicker */}
 
-        <fieldset>
-          <legend>Book a call</legend>
-          {availability.map(event => {
-            const start = DateTime.fromISO(event.start?.dateTime)
-            return (
-              <div key={event.id}>
-                <input
-                  type="radio"
-                  name="introCallBooked"
-                  value={event.start?.dateTime || ""}
-                  id={event.id || ""}
-                />
-                <label htmlFor={event.id || ""}>
-                  {start.toLocaleString({
-                    month: "short",
-                    day: "numeric",
-                    weekday: "short",
-                  })}{" "}
-                  at{" "}
-                  {start.toLocaleString({
-                    timeStyle: "short",
-                  })}
-                </label>
-              </div>
-            )
-          })}
-        </fieldset>
+        {availability.length > 0 ? (
+          <fieldset>
+            <legend>Book a call</legend>
+            {errors.eventId && (
+              <p className={s.error}>{errors.eventId.message?.toString()}</p>
+            )}
+            {availability.map(event => {
+              const start = DateTime.fromISO(event.start?.dateTime || "")
+              return (
+                <div key={event.id}>
+                  <input
+                    type="radio"
+                    value={event.id || ""}
+                    id={event.id || ""}
+                    {...register("eventId")}
+                  />
+                  <label htmlFor={event.id || ""}>
+                    {start.toLocaleString({
+                      month: "short",
+                      day: "numeric",
+                      weekday: "short",
+                    })}{" "}
+                    at{" "}
+                    {start.toLocaleString({
+                      timeStyle: "short",
+                    })}
+                  </label>
+                </div>
+              )
+            })}
+          </fieldset>
+        ) : (
+          <p>
+            There are no calls available right now, but you can still send an
+            application and we&apos;ll get in touch when we can.
+          </p>
+        )}
 
         <button disabled={isSubmitting}>Apply</button>
       </form>
