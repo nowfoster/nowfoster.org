@@ -6,6 +6,7 @@ import { Availability } from "../types"
 const ApplyPage = (availability: Availability) => {
   return (
     <>
+      {console.log(availability)}
       <h1>Apply to foster</h1>
       <ApplicationForm availability={availability} />
     </>
@@ -14,10 +15,10 @@ const ApplyPage = (availability: Availability) => {
 
 export default ApplyPage
 
-export const getStaticProps = async (context: NextPageContext) => {
+export const getServerSideProps = async (context: NextPageContext) => {
   const availability = await getAvailability()
 
   return {
-    props: availability,
+    props: { availability },
   }
 }
