@@ -1,4 +1,5 @@
-import { DateTime } from "luxon"
+import { DateTime, Interval } from "luxon"
+import { useMemo } from "react"
 import { useFormContext } from "react-hook-form"
 import { Event } from "../types"
 import s from "./Field.module.scss"
@@ -17,17 +18,22 @@ const CallBookingField = ({ availability }: Props) => {
     formState: { errors },
   } = useFormContext()
 
-  const groupedEvents = availability.reduce<GroupedEvents>((acc, event, i) => {
-    const day = event.start?.dateTime || "" // TODO: use luxon to extract date only
+  const groupedEvents = useMemo(
+    () =>
+      availability.reduce<GroupedEvents>((acc, event) => {
+        const dt = DateTime.fromISO(event.start?.dateTime || "")
+        const day = dt.startOf("day").toString()
 
-    if (acc.day) {
-      acc[day].push(event)
-    } else {
-      acc[day] = [event]
-    }
+        if (Object.hasOwn(acc, day)) {
+          acc[day].push(event)
+        } else {
+          acc[day] = [event]
+        }
 
-    return acc
-  }, {})
+        return acc
+      }, {}),
+    [availability]
+  )
 
   return (
     <fieldset>
@@ -38,9 +44,18 @@ const CallBookingField = ({ availability }: Props) => {
 
       {Object.entries(groupedEvents).map(([day, eventsOnThisDay]) => (
         <fieldset key={day}>
-          <legend>{day}</legend>
+          <legend>
+            {DateTime.fromISO(day).toLocaleString({
+              month: "short",
+              day: "numeric",
+              weekday: "short",
+            })}
+          </legend>
           {eventsOnThisDay.map(event => {
             const start = DateTime.fromISO(event.start?.dateTime || "")
+            const end = DateTime.fromISO(event.end?.dateTime || "")
+            const duration = Interval.fromDateTimes(start, end)
+
             return (
               <div key={event.id}>
                 <input
@@ -50,14 +65,10 @@ const CallBookingField = ({ availability }: Props) => {
                   {...register("eventId")}
                 />
                 <label htmlFor={event.id || ""}>
-                  {/* {start.toLocaleString({
-                    month: "short",
-                    day: "numeric",
-                    weekday: "short",
-                  })} */}
                   {start.toLocaleString({
                     timeStyle: "short",
-                  })}
+                  })}{" "}
+                  ({duration.length("minutes")}m)
                 </label>
               </div>
             )
