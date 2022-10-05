@@ -1,11 +1,14 @@
-import type { NextPage, NextPageContext } from "next"
-import ConfirmationDialog from "../components/ConfirmationDialog"
+import type { NextApiRequest } from "next"
 import QuizDialog from "../components/QuizDialog"
 import QuizFooter from "../components/QuizFooter"
 import { getQuizContent } from "../lib/cms"
 import { Quiz } from "../types"
 
-const Home: NextPage<Quiz> = quiz => (
+interface Props {
+  quiz: Quiz
+}
+
+const Home = ({ quiz }: Props) => (
   <>
     <h1>The fostering service with heart</h1>
     <p>Forget everything you think you know about fostering.</p>
@@ -35,10 +38,13 @@ const Home: NextPage<Quiz> = quiz => (
 
 export default Home
 
-export const getStaticProps = async (context: NextPageContext) => {
-  const quiz = await getQuizContent()
+export const getStaticProps = async ({ preview }: NextApiRequest) => {
+  const quiz = await getQuizContent({ preview: !!preview })
 
   return {
-    props: quiz,
+    props: {
+      quiz,
+      showPreviewBanner: !!preview,
+    },
   }
 }

@@ -27,6 +27,8 @@ When the user finishes the quiz, they can choose to convert their quiz answers i
 
 They can also choose an interview slot, powered by fetching all events on a Google calendar with zero attendees. The logic is stored in `lib/calendar.ts`.
 
+Google recommends using a service account for this, but instead we use an OAuth2 refresh token to impersonate a normal user. This is because you seem to need a paid GSuite subscription in order to add attendees to an event with a service account.
+
 Applying will:
 
 - Save the user's details to FaunaDB
@@ -50,20 +52,22 @@ It's suitable for deploying anywhere a normal Next.js app is, like Netlify, Hero
 
 ## 🏕 Environment
 
-All values are required for normal functionality.
+Most values are required for normal functionality.
 
-| Key                                  | Required? | Description                                                                                      |
-| ------------------------------------ | --------- | ------------------------------------------------------------------------------------------------ |
-| `FAUNADB_SECRET`                     | Yes       | Allows applications to be stored to a Fauna database                                             |
-| `CONTENTFUL_SPACE_ID`                | Yes       | Allows content to be fetched from Contentful                                                     |
-| `CONTENTFUL_ACCESS_TOKEN`            | Yes       | Allows content to be fetched from Contentful                                                     |
-| `CONTENTFUL_MANAGEMENT_ACCESS_TOKEN` | Yes       | For automatically generating types from Contentful content model, via the content management API |
-| `SENDGRID_API_KEY`                   | Yes       | Allows email sending via Sendgrid                                                                |
-| `NOTIFY_ADMIN_TEMPLATE_ID`           | Yes       | Allows emails to be sent to admin user                                                           |
-| `NOTIFY_APPLICANT_TEMPLATE_ID`       | Yes       | Allows emails to be sent to applicants                                                           |
-| `ADMIN_MAILBOX`                      | Yes       | Address to reach admin user at                                                                   |
-| `DEFAULT_FROM_ADDRESS`               | Yes       | Where will emails be shown as coming from                                                        |
-| `GOOGLE_CALENDAR_ID`                 | Yes       | Which calendar will we use to find available interview slots?                                    |
-| `GOOGLE_CLIENT_ID`                   | Yes       | Google cloud project credentials                                                                 |
-| `GOOGLE_CLIENT_SECRET`               | Yes       | Google cloud project credentials                                                                 |
-| `GOOGLE_REFRESH_TOKEN`               | Yes       | OAuth2 refresh token for a user who has read/write access to the calendar above                  |
+| Key                                  | Required?     | Description                                                                                                                                                                                                     |
+| ------------------------------------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FAUNADB_SECRET`                     | Yes, to apply | Allows applications to be stored to a Fauna database                                                                                                                                                            |
+| `CONTENTFUL_SPACE_ID`                | Yes           | Allows content to be fetched from Contentful                                                                                                                                                                    |
+| `CONTENTFUL_ACCESS_TOKEN`            | Yes           | Allows content to be fetched from Contentful                                                                                                                                                                    |
+| `CONTENTFUL_PREVIEW_TOKEN`           | No            | Allows access to the Contentful preview API                                                                                                                                                                     |
+| `PREVIEW_TOKEN`                      | No            | Must match the token passed in with Contentful-generated preview URLs                                                                                                                                           |
+| `CONTENTFUL_MANAGEMENT_ACCESS_TOKEN` | Yes           | For automatically generating types from Contentful content model, via the content management API                                                                                                                |
+| `SENDGRID_API_KEY`                   | Yes, to apply | Allows email sending via Sendgrid                                                                                                                                                                               |
+| `NOTIFY_ADMIN_TEMPLATE_ID`           | Yes, to apply | Allows emails to be sent to admin user                                                                                                                                                                          |
+| `NOTIFY_APPLICANT_TEMPLATE_ID`       | Yes, to apply | Allows emails to be sent to applicants                                                                                                                                                                          |
+| `ADMIN_MAILBOX`                      | Yes, to apply | Address to reach admin user at                                                                                                                                                                                  |
+| `DEFAULT_FROM_ADDRESS`               | Yes, to apply | Where will emails be shown as coming from                                                                                                                                                                       |
+| `GOOGLE_CALENDAR_ID`                 | Yes, to apply | Which calendar will we use to find available interview slots?                                                                                                                                                   |
+| `GOOGLE_CLIENT_ID`                   | Yes, to apply | Google cloud project credentials, with the calendar API enabled                                                                                                                                                 |
+| `GOOGLE_CLIENT_SECRET`               | Yes, to apply | Google cloud project credentials, with the calendar API enabled                                                                                                                                                 |
+| `GOOGLE_REFRESH_TOKEN`               | Yes, to apply | OAuth2 refresh token for a user who has read/write access to the calendar above, and scopes to access the calendar API. You can generate one with the [OAuth playground](developers.google.com/oauthplayground) |
