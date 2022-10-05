@@ -7,10 +7,9 @@ Next.js app for the III fostering project.
 ## ✅ Prerequisites
 
 - Node.js
-- FaunaDB account
-- Contentful account
-- Calendly account
-- Google account and calendar
+- [FaunaDB](https://fauna.com/) account (free tier is fine)
+- [Contentful](https://www.contentful.com) account (free tier is fine)
+- Google account and calendar (free)
 
 ## 🧱 How it works
 
@@ -18,7 +17,7 @@ Next.js app for the III fostering project.
 
 The quiz is a series of sections, each of which has several questions, which in tern has several possible answers.
 
-The content comes in dynamically from Contentful. We have some type-safety for the returned content by using `contentful-typescript-codegen` and the Contentful management API to automatically generate types for it.
+The content comes in dynamically from Contentful. We have some type-safety for the returned content by using `contentful-typescript-codegen` and the [Contentful management API](https://www.contentful.com/developers/docs/references/content-management-api/) to automatically generate types for it.
 
 As the user completes the quiz, it is saved to their browser's local storage.
 
@@ -26,7 +25,7 @@ As the user completes the quiz, it is saved to their browser's local storage.
 
 When the user finishes the quiz, they can choose to convert their quiz answers into a full application.
 
-They can also choose an interview slot, powered by fetching all events on a Google calendar with zero attendees.
+They can also choose an interview slot, powered by fetching all events on a Google calendar with zero attendees. The logic is stored in `lib/calendar.ts`.
 
 Applying will:
 
