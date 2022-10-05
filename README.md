@@ -2,6 +2,8 @@
 
 [![On push](https://github.com/jhackett1/iii-fostering-nextjs/actions/workflows/on-push.yml/badge.svg)](https://github.com/jhackett1/iii-fostering-nextjs/actions/workflows/on-push.yml)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/917863e6-cdb7-429a-98f1-147473c1aead/deploy-status)](https://app.netlify.com/sites/iii-fostering/deploys)
+
 Next.js app for the III fostering project.
 
 ## ✅ Prerequisites
