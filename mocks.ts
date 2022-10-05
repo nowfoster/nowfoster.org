@@ -7,5 +7,5 @@ export const mockApplication: Application = {
   phone: "0777 777 7777",
   includeAnswers: true,
   createdAt: new Date(1000000000).toISOString(),
-  introCallAt: new Date(1000000000).toISOString(),
+  eventId: "123abc",
 }
