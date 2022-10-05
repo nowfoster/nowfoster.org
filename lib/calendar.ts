@@ -1,28 +1,26 @@
 import { google } from "googleapis"
-import { Application, Event } from "../types"
+import { ApplicationInput, Event } from "../types"
 
-const { JWT } = google.auth
+const { OAuth2 } = google.auth
 const {
   GOOGLE_CALENDAR_ID,
-  GOOGLE_SRV_ACCT_CLIENT_EMAIL,
-  GOOGLE_SRV_ACCT_PRIVATE_KEY,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  GOOGLE_REFRESH_TOKEN,
 } = process.env
 
-const auth = new JWT(
-  GOOGLE_SRV_ACCT_CLIENT_EMAIL,
-  undefined,
-  GOOGLE_SRV_ACCT_PRIVATE_KEY,
-  [
-    "https://www.googleapis.com/auth/calendar",
-    "https://www.googleapis.com/auth/calendar.events",
-  ]
-)
+const auth = new OAuth2({
+  clientId: GOOGLE_CLIENT_ID,
+  clientSecret: GOOGLE_CLIENT_SECRET,
+})
+
+auth.setCredentials({
+  refresh_token: GOOGLE_REFRESH_TOKEN,
+})
 
 const calendar = google.calendar({ auth, version: "v3" })
 
 export const getAvailability = async (): Promise<Event[]> => {
-  await auth.authorize()
-
   const res = await calendar.events.list({
     calendarId: GOOGLE_CALENDAR_ID,
     singleEvents: true,
@@ -39,14 +37,26 @@ export const getAvailability = async (): Promise<Event[]> => {
 }
 
 export const bookSlot = async (
-  eventId: string,
-  application: Application
+  application: ApplicationInput
 ): Promise<void> => {
-  await auth.authorize()
+  const res = await calendar.events.get({
+    calendarId: GOOGLE_CALENDAR_ID,
+    eventId: application.eventId,
+  })
+  const event = res.data
 
-  const res = await calendar.events.patch({
-    eventId,
-    // requestBody: attendees
+  const newEvent = {
+    ...event,
+    attendees: event.attendees
+      ? event.attendees?.concat({ email: application.email })
+      : [{ email: application.email }],
+    summary: `${event.summary} (BOOKED)`, // append title
+  }
+
+  await calendar.events.update({
+    calendarId: GOOGLE_CALENDAR_ID,
+    eventId: application.eventId,
+    requestBody: newEvent,
   })
 
   return

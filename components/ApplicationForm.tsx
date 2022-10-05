@@ -5,9 +5,9 @@ import { useConfirmDialog } from "../contexts/confirmDialog"
 import { useQuiz } from "../contexts/quiz"
 import { applicationSchema } from "../lib/validators"
 import { ApplicationInput, Event } from "../types"
+import CallBookingField from "./CallBookingField"
 import Field from "./Field"
-import { DateTime } from "luxon"
-import s from "./Field.module.scss"
+import { bookSlot } from "../lib/calendar"
 
 interface Props {
   availability: Event[]
@@ -27,8 +27,8 @@ const ApplicationForm = ({ availability }: Props) => {
 
   const {
     handleSubmit,
-    formState: { isSubmitting, errors },
-    register,
+    formState: { isSubmitting },
+    getValues,
   } = methods
 
   const onSubmit = async (data: ApplicationInput) => {
@@ -65,36 +65,7 @@ const ApplicationForm = ({ availability }: Props) => {
         />
 
         {availability.length > 0 ? (
-          <fieldset>
-            <legend>Book a call</legend>
-            {errors.eventId && (
-              <p className={s.error}>{errors.eventId.message?.toString()}</p>
-            )}
-            {availability.map(event => {
-              const start = DateTime.fromISO(event.start?.dateTime || "")
-              return (
-                <div key={event.id}>
-                  <input
-                    type="radio"
-                    value={event.id || ""}
-                    id={event.id || ""}
-                    {...register("eventId")}
-                  />
-                  <label htmlFor={event.id || ""}>
-                    {start.toLocaleString({
-                      month: "short",
-                      day: "numeric",
-                      weekday: "short",
-                    })}{" "}
-                    at{" "}
-                    {start.toLocaleString({
-                      timeStyle: "short",
-                    })}
-                  </label>
-                </div>
-              )
-            })}
-          </fieldset>
+          <CallBookingField availability={availability} />
         ) : (
           <p>
             There are no calls available right now, but you can still send an
