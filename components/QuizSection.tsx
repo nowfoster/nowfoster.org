@@ -16,6 +16,8 @@ const QuizSection = ({ section }: Props) => {
 
   const lastQuestion = activeQuestionIndex === section.questions.length - 1
 
+  const question = section.questions[activeQuestionIndex]
+
   return (
     <section className={s.section}>
       <Link href="/?quiz_open=true">
@@ -29,10 +31,7 @@ const QuizSection = ({ section }: Props) => {
       {/* <h2>{section.title}</h2>
       {section.intro && <div>{documentToReactComponents(section.intro)}</div>} */}
 
-      <Question
-        question={section.questions[activeQuestionIndex]}
-        section={section}
-      />
+      {question && <Question question={question} section={section} />}
     </section>
   )
 }

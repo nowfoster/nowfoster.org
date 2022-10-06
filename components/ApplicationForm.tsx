@@ -7,7 +7,6 @@ import { applicationSchema } from "../lib/validators"
 import { ApplicationInput, Event } from "../types"
 import CallBookingField from "./CallBookingField"
 import Field from "./Field"
-import { bookSlot } from "../lib/calendar"
 
 interface Props {
   availability: Event[]
@@ -28,7 +27,6 @@ const ApplicationForm = ({ availability }: Props) => {
   const {
     handleSubmit,
     formState: { isSubmitting },
-    getValues,
   } = methods
 
   const onSubmit = async (data: ApplicationInput) => {
@@ -56,7 +54,12 @@ const ApplicationForm = ({ availability }: Props) => {
           type="email"
           hint="We'll send a copy of your application to this address."
         />
-        <Field label="Phone" name="phone" type="tel" />
+        <Field
+          label="Phone"
+          name="phone"
+          type="tel"
+          hint="We'll call you on this number"
+        />
         <Field
           label="Include my answers?"
           hint="Send us a copy of your quiz answers to support your application"
