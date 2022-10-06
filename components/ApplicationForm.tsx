@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
@@ -8,14 +9,18 @@ import { ApplicationInput, Event } from "../types"
 import CallBookingField from "./CallBookingField"
 import Field from "./Field"
 
-interface Props {
-  availability: Event[]
-}
-
-const ApplicationForm = ({ availability }: Props) => {
+const ApplicationForm = () => {
   const { quizAnswers } = useQuiz()
   const { push } = useRouter()
   const { triggerDialog } = useConfirmDialog()
+
+  const [availability, setAvailability] = useState<Event[] | null>(null)
+
+  useEffect(() => {
+    fetch("/api/slots")
+      .then(res => res.json())
+      .then(data => setAvailability(data))
+  }, [])
 
   const methods = useForm<ApplicationInput>({
     resolver: zodResolver(applicationSchema),
@@ -67,13 +72,17 @@ const ApplicationForm = ({ availability }: Props) => {
           type="checkbox"
         />
 
-        {availability.length > 0 ? (
-          <CallBookingField availability={availability} />
+        {availability ? (
+          availability.length > 0 ? (
+            <CallBookingField availability={availability} />
+          ) : (
+            <p>
+              There are no calls available right now, but you can still send an
+              application and we&apos;ll get in touch when we can.
+            </p>
+          )
         ) : (
-          <p>
-            There are no calls available right now, but you can still send an
-            application and we&apos;ll get in touch when we can.
-          </p>
+          <p>Loading...</p>
         )}
 
         <button disabled={isSubmitting}>Apply</button>

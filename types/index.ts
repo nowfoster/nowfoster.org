@@ -52,4 +52,6 @@ export interface Application {
 
 export type ApiResponseBody = values.Document<Application> | { error: string }
 
+export type EventResponseBody = Event[] | { error: string }
+
 export type Event = Pick<calendar_v3.Schema$Event, "id" | "end" | "start">
