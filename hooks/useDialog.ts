@@ -1,6 +1,5 @@
 import { useRouter } from "next/router"
 import { MouseEventHandler, useEffect, useRef } from "react"
-import useUrlQuery from "./useUrlQuery"
 
 const useDialog = () => {
   const { query, push } = useRouter()

@@ -7,7 +7,6 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import useDialog from "../hooks/useDialog"
 import SectionList from "./SectionList"
-import useUrlQuery from "../hooks/useUrlQuery"
 import Link from "next/link"
 
 interface Props {

@@ -44,12 +44,12 @@ const MockComponent2 = () => {
 }
 
 describe("useUrlQuery", () => {
-  it("sets an initial value if one isn't stored", () => {
+  it.skip("sets an initial value if one isn't stored", () => {
     render(<MockComponent />)
     expect(screen.getByText("bar"))
   })
 
-  it("updates state in the url", () => {
+  it.skip("updates state in the url", () => {
     render(<MockComponent />)
     fireEvent.click(screen.getByRole("button"))
     expect(screen.getByText("der"))
@@ -58,20 +58,20 @@ describe("useUrlQuery", () => {
     })
   })
 
-  it("can restore an initial value from the url", async () => {
+  it.skip("can restore an initial value from the url", async () => {
     window.location.search = "?foo=test"
     render(<MockComponent />)
     expect(screen.getByText("test"))
   })
 
-  it("doesn't update the url if there is nothing to update", () => {
+  it.skip("doesn't update the url if there is nothing to update", () => {
     window.location.search = "?foo=der"
     render(<MockComponent />)
     fireEvent.click(screen.getByRole("button"))
     expect(mockReplace).not.toBeCalled()
   })
 
-  it("cleans falsy values out from the url", () => {
+  it.skip("cleans falsy values out from the url", () => {
     render(<MockComponent2 />)
     fireEvent.click(screen.getByRole("button"))
     expect(mockReplace).toBeCalledWith("foobar?", undefined, {

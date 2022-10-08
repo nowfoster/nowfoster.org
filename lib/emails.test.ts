@@ -1,4 +1,4 @@
-import { mockStoredApplication } from "../mocks"
+import { mockApplication } from "../mocks"
 import { notifyAdmin, notifyApplicant } from "./emails"
 import sg from "@sendgrid/mail"
 
@@ -6,7 +6,7 @@ jest.mock("@sendgrid/mail")
 
 describe("notifyAdmin", () => {
   it("calls sendgrid correctly", async () => {
-    await notifyAdmin(mockStoredApplication)
+    await notifyAdmin(mockApplication)
     expect(sg.send).toBeCalledWith({
       from: expect.anything(),
       personalizations: [
@@ -18,6 +18,7 @@ describe("notifyAdmin", () => {
             lastName: "Bar",
             phone: "0777 777 7777",
             includeAnswers: true,
+            eventId: "123abc",
           },
           to: expect.anything(),
         },
@@ -30,7 +31,7 @@ describe("notifyAdmin", () => {
 
 describe("notifyApplicant", () => {
   it("calls sendgrid correctly", async () => {
-    await notifyApplicant(mockStoredApplication)
+    await notifyApplicant(mockApplication)
     expect(sg.send).toBeCalledWith({
       from: "jaye.hackett@gmail.com",
       personalizations: [
@@ -42,6 +43,7 @@ describe("notifyApplicant", () => {
             lastName: "Bar",
             phone: "0777 777 7777",
             includeAnswers: true,
+            eventId: "123abc",
           },
           to: "foo@bar.com",
         },
