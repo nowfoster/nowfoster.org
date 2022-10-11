@@ -3,11 +3,14 @@ import { useQuiz } from "../contexts/quiz"
 import { Quiz } from "../types"
 
 interface Props {
-  totalSections: number
+  quiz: Quiz
 }
 
-const QuizFooter = ({ totalSections }: Props) => {
-  const { quizStarted, sectionsCompleted } = useQuiz()
+const QuizFooter = ({ quiz }: Props) => {
+  const { quizStarted, getSectionsCompleted } = useQuiz()
+
+  const sectionsCompleted = getSectionsCompleted(quiz)
+  const totalSections = quiz.sections.length
 
   if (quizStarted)
     return (

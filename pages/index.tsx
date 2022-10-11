@@ -32,7 +32,7 @@ const Home = ({ quiz }: Props) => (
 
     <h2>Why foster?</h2>
 
-    <QuizFooter totalSections={quiz.sections.length} />
+    <QuizFooter quiz={quiz} />
   </>
 )
 

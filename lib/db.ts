@@ -1,7 +1,7 @@
-import faunadb, { query as q, values } from "faunadb"
+import { query as q, values, Client } from "faunadb"
 import { Application, ApplicationInput } from "../types"
 
-const db = new faunadb.Client({
+const db = new Client({
   secret: process.env.FAUNADB_SECRET as string,
   domain: "db.eu.fauna.com",
 })

@@ -1,12 +1,12 @@
 import React, { createContext, useContext } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
-import { Answer, Answers } from "../types"
+import { Answer, Answers, Quiz } from "../types"
 
 interface ContextType {
   quizAnswers: Answers
   // setQuizAnswers: (newVal: Answers) => void
   quizStarted: boolean
-  sectionsCompleted: number
+  getSectionsCompleted: (quiz: Quiz) => number
   startOver: () => void
   answerQuestion: (
     section: string,
@@ -18,7 +18,7 @@ interface ContextType {
 const QuizAnswersContext = createContext<ContextType>({
   quizAnswers: {},
   quizStarted: false,
-  sectionsCompleted: 0,
+  getSectionsCompleted: () => 0,
   startOver: () => null,
   answerQuestion: () => null,
 })
@@ -49,7 +49,16 @@ export const QuizAnswersProvider = ({
 
   const startOver = () => setQuizAnswers({})
 
-  const sectionsCompleted = Object.keys(quizAnswers).length
+  const getSectionsCompleted = (quiz: Quiz): number =>
+    quiz.sections.reduce(
+      (runningTotal, section) =>
+        quizAnswers?.[section?.title] &&
+        Object.keys(quizAnswers[section.title])?.length >=
+          section.questions.length
+          ? runningTotal + 1
+          : runningTotal,
+      0
+    )
 
   const quizStarted = Object.keys(quizAnswers).length > 0
 
@@ -58,7 +67,7 @@ export const QuizAnswersProvider = ({
       value={{
         quizStarted,
         quizAnswers,
-        sectionsCompleted,
+        getSectionsCompleted,
         startOver,
         answerQuestion,
       }}
