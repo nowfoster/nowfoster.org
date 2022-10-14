@@ -8,6 +8,7 @@ import { applicationSchema } from "../lib/validators"
 import { ApplicationInput, Event } from "../types"
 import CallBookingField from "./CallBookingField"
 import Field from "./Field"
+import Button from "./Button"
 
 const ApplicationForm = () => {
   const { quizAnswers } = useQuiz()
@@ -85,7 +86,7 @@ const ApplicationForm = () => {
           <p>Loading...</p>
         )}
 
-        <button disabled={isSubmitting}>Apply</button>
+        <Button disabled={isSubmitting}>Apply</Button>
       </form>
     </FormProvider>
   )

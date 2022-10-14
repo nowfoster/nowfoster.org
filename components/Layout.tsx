@@ -1,4 +1,5 @@
 import Link from "next/link"
+import s from "./Layout.module.scss"
 
 interface Props {
   children: React.ReactNode
@@ -6,24 +7,32 @@ interface Props {
 
 const Layout = ({ children }: Props) => (
   <>
-    <header>
-      <Link href="/">Now Foster</Link>
+    <a className={s.skip} href="#main">
+      Skip to main content
+    </a>
 
-      <nav>
+    <header className={s.header}>
+      <Link href="/">
+        <a className={s.masthead}>Now Foster</a>
+      </Link>
+
+      <nav className={s.nav}>
         <ul>
           <li>
             <Link href="/?quiz_open=true">Could you foster?</Link>
           </li>
           <li>
-            <Link href="/apply">Apply now</Link>
+            <Link href="/apply">
+              <a className={s.primary}>Apply now</a>
+            </Link>
           </li>
         </ul>
       </nav>
     </header>
-    <hr />
+
     {children}
-    <hr />
-    <footer>© Now Foster 2022</footer>
+
+    <footer className={s.footer}>© Now Foster 2022</footer>
   </>
 )
 

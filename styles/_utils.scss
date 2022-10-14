@@ -1,0 +1,12 @@
+.visually-hidden {
+  height: 1px;
+  overflow: hidden;
+  width: 1px;
+  /* Keep the layout */
+  position: absolute;
+  /* Remove any visible trace (e.g. background color) */
+  clip: rect(1px 1px 1px 1px);
+  /* browsers in the future */
+  /* Prevent the screen reader to skip spaces between words */
+  white-space: nowrap;
+}

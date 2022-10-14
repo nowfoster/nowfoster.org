@@ -1,44 +1,5 @@
 @import "_vars";
+@import "_globals";
+@import "_utils";
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
-
-html,
-body {
-  background-color: $bg;
-  color: $text;
-  padding: 0;
-  margin: 0;
-}
-
-* {
-  font-family: 'IBM Plex Sans', sans-serif;
-  box-sizing: border-box;
-}
-
-input,
-label {
-  padding: 0;
-  margin: 0;
-}
-
-button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  background: $text;
-  color: $bg;
-}
-
-.visually-hidden {
-  height: 1px;
-  overflow: hidden;
-  width: 1px;
-  /* Keep the layout */
-  position: absolute;
-  /* Remove any visible trace (e.g. background color) */
-  clip: rect(1px 1px 1px 1px);
-  /* browsers in the future */
-  /* Prevent the screen reader to skip spaces between words */
-  white-space: nowrap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400&display=swap');

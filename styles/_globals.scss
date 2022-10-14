@@ -1,0 +1,32 @@
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: $white;
+  color: $black;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: $blue;
+
+  &:hover {
+    color: darken($blue, 10)
+  }
+
+  &:focus {
+    background: $yellow;
+    outline: 3px solid $yellow;
+    color: $black;
+  }
+}
+
+input,
+label {
+  padding: 0;
+  margin: 0;
+}
