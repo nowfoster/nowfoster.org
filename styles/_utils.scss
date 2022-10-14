@@ -2,11 +2,67 @@
   height: 1px;
   overflow: hidden;
   width: 1px;
-  /* Keep the layout */
   position: absolute;
-  /* Remove any visible trace (e.g. background color) */
   clip: rect(1px 1px 1px 1px);
-  /* browsers in the future */
-  /* Prevent the screen reader to skip spaces between words */
   white-space: nowrap;
+}
+
+.container {
+  @include contained-width-l;
+  @include standard-padding;
+}
+
+// .wavy {
+//   background: $blue;
+//   color: $white;
+//   position: relative;
+
+//   &:before {
+//     @include wavy;
+//     background-color: $yellow;
+//     top: -4rem;
+//     left: -50%;
+//     transform: rotate(180deg);
+//   }
+// }
+
+.hero {
+  background: $blue;
+  color: $white;
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  &:before {
+    @include wavy;
+    background-color: $blue;
+    bottom: -3rem;
+    // left: -50%;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 6rem;
+    }
+  }
+
+  a {
+    @include button;
+    border: 2px solid $white;
+    color: $white;
+    margin-top: 2rem;
+
+  }
 }

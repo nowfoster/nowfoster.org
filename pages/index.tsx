@@ -1,4 +1,5 @@
 import type { NextApiRequest } from "next"
+import { Icon } from "../components/Button"
 import QuizDialog from "../components/QuizDialog"
 import QuizFooter from "../components/QuizFooter"
 import { getQuizContent } from "../lib/cms"
@@ -10,29 +11,39 @@ interface Props {
 
 const Home = ({ quiz }: Props) => (
   <>
-    <h1>The fostering service with heart</h1>
-    <p>Forget everything you think you know about fostering.</p>
-    <p>
-      We’re a not-for-profit start-up building a brand new way of doing things
-      that empowers brilliant people to care for children and young people.
-    </p>
-    <a href="#">Learn about us</a>
+    <section className="hero">
+      <div className="container">
+        <h1>The fostering service with heart</h1>
+        <a href="#">
+          Learn about us <Icon />
+        </a>
+      </div>
+    </section>
 
-    <p>
-      There are a lot of myths around fostering. Explore what it really takes to
-      be a great foster carer.
-    </p>
+    <div className="container">
+      <p>Forget everything you think you know about fostering.</p>
+      <p>
+        We’re a not-for-profit start-up building a brand new way of doing things
+        that empowers brilliant people to care for children and young people.
+      </p>
+      <a href="#">Learn about us</a>
 
-    <QuizDialog quiz={quiz} />
+      <p>
+        There are a lot of myths around fostering. Explore what it really takes
+        to be a great foster carer.
+      </p>
 
-    <h2>Fostering stories</h2>
+      <QuizDialog quiz={quiz} />
 
-    <h2>Your fostering options</h2>
-    <a href="#">See all options</a>
+      <h2>Fostering stories</h2>
 
-    <h2>Why foster?</h2>
+      <h2>Your fostering options</h2>
+      <a href="#">See all options</a>
 
-    <QuizFooter quiz={quiz} />
+      <h2>Why foster?</h2>
+
+      <QuizFooter quiz={quiz} />
+    </div>
   </>
 )
 
