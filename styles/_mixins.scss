@@ -45,7 +45,9 @@
     transition: 0.1s ease-out;
   }
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     background-color: darken($blue, 10);
 
     svg {
@@ -53,9 +55,10 @@
     }
   }
 
-  &:focus {
-    background: $yellow;
+  &:focus,
+  &:active {
     outline: none;
+    background: $yellow;
     color: $black;
 
     svg path {

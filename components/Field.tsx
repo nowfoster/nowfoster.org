@@ -8,7 +8,7 @@ interface Props extends HTMLProps<HTMLInputElement> {
   hint?: string
 }
 
-const Field = ({ label, name, hint, ...props }: Props) => {
+const Field = ({ label, name, hint, type, ...props }: Props) => {
   const {
     register,
     formState: { errors },
@@ -16,12 +16,22 @@ const Field = ({ label, name, hint, ...props }: Props) => {
 
   const error = errors?.[name]?.message
 
+  if (type === "checkbox")
+    return (
+      <div className={s.checkboxField}>
+        <input {...register(name)} id={name} type={type} {...props} />
+        <label htmlFor={name}>{label}</label>
+        {hint && <p className={s.hint}>{hint}</p>}
+        {error && <p className={s.error}>{error?.toString()}</p>}
+      </div>
+    )
+
   return (
     <div className={s.field}>
       <label htmlFor={name}>{label}</label>
       {hint && <p className={s.hint}>{hint}</p>}
       {error && <p className={s.error}>{error?.toString()}</p>}
-      <input {...register(name)} id={name} {...props} />
+      <input {...register(name)} id={name} type={type} {...props} />
     </div>
   )
 }

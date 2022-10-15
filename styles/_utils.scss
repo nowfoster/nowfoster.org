@@ -60,9 +60,20 @@
 
   a {
     @include button;
+    width: auto;
     border: 2px solid $white;
     color: $white;
     margin-top: 2rem;
+
+    &:hover {
+      background: $blue;
+    }
+
+    &:focus,
+    &:active {
+      background: $yellow;
+      border-color: $yellow;
+    }
 
   }
 }
