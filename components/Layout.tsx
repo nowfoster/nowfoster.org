@@ -1,3 +1,4 @@
+import Head from "next/head"
 import Link from "next/link"
 import s from "./Layout.module.scss"
 
@@ -7,6 +8,11 @@ interface Props {
 
 const Layout = ({ children }: Props) => (
   <>
+    <Head>
+      <link rel="shortcut icon" href="/favicon.png" />
+      <title>Now Foster · The fostering service with heart</title>
+    </Head>
+
     <a className={s.skip} href="#main-content">
       Skip to main content
     </a>

@@ -1,0 +1,17 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 1rem;
+  background: $white;
+  @include standard-padding;
+  border-radius: 15px 15px 0px 0px;
+  border: 3px solid $black;
+  border-bottom: none;
+  z-index: 3;
+
+  display: flex;
+  gap: 1rem;
+}

@@ -1,6 +1,8 @@
 @import "../styles/vars";
+@import "../styles/mixins";
 
 .article {
-  background: $black;
+  background: $blue;
   color: $white;
+  @include standard-padding;
 }

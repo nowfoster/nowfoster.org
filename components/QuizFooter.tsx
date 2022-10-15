@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { useQuiz } from "../contexts/quiz"
 import { Quiz } from "../types"
+import s from "./QuizFooter.module.scss"
 
 interface Props {
   quiz: Quiz
@@ -14,7 +15,7 @@ const QuizFooter = ({ quiz }: Props) => {
 
   if (quizStarted)
     return (
-      <footer>
+      <footer className={s.footer}>
         <>
           <meter
             id="completed-sections"
