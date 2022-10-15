@@ -34,13 +34,18 @@
   padding: 1rem 1rem 1rem 5rem;
 
   input {
-    position: absolute;
     height: 40px;
     width: 40px;
-    top: 3px;
-    left: 3px;
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
     opacity: 0;
     cursor: pointer;
+
+    &:focus+label:before {
+      outline: 3px solid $yellow;
+    }
 
     &:checked+label {
       &:before {
@@ -50,8 +55,9 @@
       &:after {
         // mark
         position: absolute;
-        top: 8px;
-        left: 8px;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
         content: "";
         display: block;
         height: 30px;
@@ -67,7 +73,6 @@
   label {
     font-size: 1.1rem;
     display: block;
-    position: relative;
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -76,6 +81,10 @@
     &:before {
       // box
       content: "";
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
       display: block;
       height: 40px;
       width: 40px;

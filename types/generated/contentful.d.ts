@@ -3,6 +3,34 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
+export interface IFosteringOptionFields {
+  /** Title */
+  title: string;
+
+  /** Description */
+  description: string;
+
+  /** Conclusion */
+  conclusion: string;
+}
+
+export interface IFosteringOption extends Entry<IFosteringOptionFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "fosteringOption";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IQuestionFields {
   /** Question */
   question: string;
@@ -46,11 +74,14 @@ export interface IQuizSectionFields {
   /** Intro */
   intro?: Document | undefined;
 
-  /** Questions */
-  questions: IQuestion[];
+  /** This is a mandatory section */
+  mandatorySection?: boolean | undefined;
 
   /** Order in quiz */
   order?: number | undefined;
+
+  /** Questions */
+  questions: IQuestion[];
 }
 
 /** A group of questions in the quiz */
@@ -99,7 +130,11 @@ export interface ISuggestion extends Entry<ISuggestionFields> {
   };
 }
 
-export type CONTENT_TYPE = "question" | "quizSection" | "suggestion";
+export type CONTENT_TYPE =
+  | "fosteringOption"
+  | "question"
+  | "quizSection"
+  | "suggestion";
 
 export type LOCALE_CODE = "en-GB";
 

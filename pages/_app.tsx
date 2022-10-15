@@ -9,9 +9,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QuizAnswersProvider>
       <ConfirmDialogProvider>
-        {pageProps?.showPreviewBanner && <PreviewBanner />}
-
         <Layout>
+          {pageProps?.showPreviewBanner && <PreviewBanner />}
           <Component {...pageProps} />
         </Layout>
       </ConfirmDialogProvider>

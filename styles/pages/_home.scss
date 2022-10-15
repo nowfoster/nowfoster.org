@@ -1,0 +1,127 @@
+.hero {
+  background: $blue;
+  color: $white;
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  &:before {
+    @include wavy;
+    background-color: $blue;
+    bottom: -4rem;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__headline {
+    font-size: 3rem;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 6rem;
+    }
+  }
+
+  &__button {
+    @include button;
+    width: auto;
+    border: 2px solid $white;
+    color: $white;
+
+    &:hover {
+      background: $blue;
+      color: $white;
+    }
+
+    &:focus,
+    &:active {
+      background: $yellow;
+      border-color: $yellow;
+      color: $black;
+    }
+
+  }
+}
+
+.options {
+  background: $grey;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  position: relative;
+
+  &:before {
+    @include wavy;
+    background-color: $grey;
+    bottom: -4rem;
+  }
+
+  &__headline {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 0;
+  }
+
+  &__button {
+    @include button;
+    margin-top: 1rem;
+    margin: 2rem auto 0;
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus,
+    &:active {
+      color: $black;
+    }
+  }
+}
+
+.options-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    grid-template-columns: 1fr 1fr; // 2x2 grid
+  }
+
+  @media screen and (min-width: $breakpoint-l) {
+    grid-template-columns: 1fr 1fr 1fr 1fr; // 1x4 grid
+  }
+
+  &__option {
+    background: $white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: grid;
+    gap: 1rem;
+
+    * {
+      margin: 0;
+    }
+
+    @media screen and (min-width: $breakpoint-m) {
+      grid-template-rows: min-content auto auto;
+    }
+  }
+
+  &__option-last-para {
+    font-weight: bold;
+    display: block;
+  }
+
+  &__option-title {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+}

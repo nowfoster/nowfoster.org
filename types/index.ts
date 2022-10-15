@@ -1,12 +1,18 @@
 import { values } from "faunadb"
 import { calendar_v3 } from "googleapis"
 import {
+  IFosteringOption,
+  IFosteringOptionFields,
   IQuestionFields,
   IQuizSectionFields,
   ISuggestionFields,
 } from "./generated/contentful"
 
 export interface Suggestion extends ISuggestionFields {
+  id: string
+}
+
+export interface FosteringOption extends IFosteringOptionFields {
   id: string
 }
 

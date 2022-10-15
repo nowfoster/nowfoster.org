@@ -18,7 +18,8 @@ a {
     color: darken($blue, 10)
   }
 
-  &:focus {
+  &:focus,
+  &:active {
     background: $yellow;
     outline: 3px solid $yellow;
     color: $black;
@@ -29,4 +30,19 @@ input,
 label {
   padding: 0;
   margin: 0;
+}
+
+meter {
+  background: none;
+  border: 3px solid $black;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 10rem;
+
+  &::-moz-meter-bar,
+  &::-webkit-meter-bar {
+    appearance: none;
+    background: $blue;
+    border: 5px solid $blue;
+  }
 }

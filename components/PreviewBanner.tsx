@@ -1,7 +1,5 @@
 import Link from "next/link"
 import Head from "next/head"
-import crossIcon from "./cross.svg"
-import Image from "next/image"
 import s from "./PreviewBanner.module.scss"
 
 const PreviewBanner = () => (
@@ -12,8 +10,23 @@ const PreviewBanner = () => (
     This is a preview
     <Link href="/api/preview/exit">
       <a>
-        <Image src={crossIcon} alt="" height={20} width={20} />
         Exit preview mode
+        <svg
+          width="6"
+          height="6"
+          viewBox="0 0 6 6"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0.121308 0.828445L0.828414 0.121338L5.77816 5.07109L5.07105 5.77819L0.121308 0.828445Z"
+            fill="black"
+          />
+          <path
+            d="M5.07105 0.121338L5.77816 0.828445L0.828414 5.77819L0.121307 5.07108L5.07105 0.121338Z"
+            fill="black"
+          />
+        </svg>
       </a>
     </Link>
   </header>

@@ -1,6 +1,10 @@
 import * as contentful from "contentful"
-import { Quiz } from "../types"
-import { IQuizSectionFields } from "../types/generated/contentful"
+import { FosteringOption, Quiz } from "../types"
+import {
+  IFosteringOption,
+  IFosteringOptionFields,
+  IQuizSectionFields,
+} from "../types/generated/contentful"
 
 interface Opts {
   preview: boolean
@@ -37,4 +41,27 @@ export const getQuizContent = async (opts?: Opts): Promise<Quiz> => {
         })) || [],
     })),
   }
+}
+
+export const getFosteringOptions = async (
+  opts?: Opts
+): Promise<FosteringOption[]> => {
+  const client = contentful.createClient({
+    space: process.env.CONTENTFUL_SPACE_ID as string,
+    // get draft content if this is a preview
+    accessToken: opts?.preview
+      ? (process.env.CONTENTFUL_PREVIEW_TOKEN as string)
+      : (process.env.CONTENTFUL_ACCESS_TOKEN as string),
+    host: opts?.preview ? "preview.contentful.com" : undefined,
+  })
+
+  const data = await client.getEntries<IFosteringOptionFields>({
+    include: 2,
+    content_type: "fosteringOption",
+  })
+
+  return data.items.map(item => ({
+    id: item.sys.id,
+    ...item.fields,
+  }))
 }

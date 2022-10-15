@@ -1,0 +1,53 @@
+.page-masthead {
+  background: $blue;
+  @include standard-padding;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  &__breadcrumbs {
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__crumb {
+    display: inline-block;
+    color: $white;
+
+    &:not(:last-child):after {
+      content: ">";
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__crumb-link {
+    color: $white;
+
+    &:hover {
+      color: darken($white, 10);
+    }
+
+    &:focus,
+    &:active {
+      color: $black;
+    }
+  }
+
+
+  &__headline {
+    margin: 0;
+    font-size: 2.5rem;
+    color: $white;
+    text-align: center;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 3rem;
+    }
+  }
+}

@@ -7,14 +7,39 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: $black;
+  background: $red;
   color: $white;
 
   a {
     color: $white;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus,
+    &:active {
+      color: $black;
+
+
+      path {
+        fill: $black;
+      }
+    }
   }
 
-  svg path {
-    fill: $white;
+  svg {
+    width: 15px;
+    height: 15px;
+
+
+    path {
+      fill: $white;
+    }
   }
 }
