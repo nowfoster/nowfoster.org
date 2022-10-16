@@ -1,6 +1,7 @@
 @import "../styles/vars";
 @import "../styles/mixins";
 
+
 .fieldset,
 .day {
   border: none;
@@ -10,14 +11,23 @@
   gap: 1rem;
 }
 
+.day {
+  gap: 0.5rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .legend {
   font-size: 1.1rem;
   margin-bottom: 1rem;
   font-weight: bold;
+  grid-column: 1/3;
 }
 
 .dayLegend {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   color: $light-black;
 }
 
@@ -27,7 +37,7 @@
 
   span {
     color: $light-black;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin-left: auto;
   }
 }

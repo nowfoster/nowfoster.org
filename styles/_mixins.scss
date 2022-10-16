@@ -114,7 +114,6 @@
 
 
 @mixin field {
-  padding: 1rem;
   background: $grey;
   border-radius: 5px;
   position: relative;
@@ -130,12 +129,15 @@
     height: 1.5rem;
     width: 1.5rem;
     opacity: 0;
+    cursor: pointer;
   }
 
   label {
     display: flex;
     gap: 0.75rem;
+    padding: 1rem;
     align-items: center;
+    cursor: pointer;
 
     &:before {
       content: "";
@@ -152,6 +154,7 @@
     content: "";
     display: block;
     position: absolute;
+    cursor: pointer;
   }
 }
 
