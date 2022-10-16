@@ -25,9 +25,15 @@
   background: $grey;
   padding: 2rem;
   border-radius: 15px;
+  position: sticky;
+  top: 2rem;
 }
 
 .noSlots {
   margin: 0;
   font-size: 1.1rem;
+}
+
+.error {
+  color: $red;
 }

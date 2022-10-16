@@ -26,3 +26,7 @@
   gap: 1rem;
   animation: moveUp 1s cubic-bezier(.87, -.41, .19, 1.44);
 }
+
+.button {
+  @include link;
+}

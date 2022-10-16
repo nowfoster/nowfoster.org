@@ -1,0 +1,33 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.fieldset,
+.day {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.legend {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.dayLegend {
+  margin-bottom: 0.5rem;
+  color: $light-black;
+}
+
+.option {
+  @include radioField;
+  background: $white;
+
+  span {
+    color: $light-black;
+    font-size: 0.9rem;
+    margin-left: auto;
+  }
+}

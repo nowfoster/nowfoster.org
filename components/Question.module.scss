@@ -33,83 +33,12 @@
   gap: 0.5rem;
 }
 
-@mixin field {
-  padding: 1rem;
-  background: $grey;
-  border-radius: 15px;
-  position: relative;
-
-  &:focus-within {
-    outline: 3px solid $yellow;
-  }
-
-  input {
-    position: absolute;
-    top: 1.2rem;
-    left: 1.175rem;
-    height: 1.5rem;
-    width: 1.5rem;
-    opacity: 0;
-  }
-
-  label {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-
-    &:before {
-      content: "";
-      display: block;
-      height: 1.5rem;
-      width: 1.5rem;
-      border: 3px solid $black;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  }
-
-  input:checked+label:after {
-    content: "";
-    display: block;
-    position: absolute;
-  }
-}
-
 .checkboxField {
-  @include field;
-
-  input:checked+label {
-    &:before {
-      background: $black;
-    }
-
-    &:after {
-      height: 1.1rem;
-      width: 1.1rem;
-      left: 1.4rem;
-      top: 1.4rem;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      background-image: url("data:image/svg+xml,%3Csvg width='12' height='10' viewBox='0 0 12 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 5L4.5 8L11 1.5' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
-    }
-  }
+  @include checkboxField;
 }
 
 .radioField {
-  @include field;
-
-  label:before {
-    border-radius: 100%;
-  }
-
-  input:checked+label:after {
-    height: 1rem;
-    width: 1rem;
-    background: $black;
-    border-radius: 100%;
-    left: 1.45rem;
-  }
+  @include radioField;
 }
 
 .button {

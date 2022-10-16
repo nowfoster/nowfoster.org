@@ -33,7 +33,7 @@ const ApplicationForm = () => {
 
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isValid, submitCount },
   } = methods
 
   const onSubmit = async (data: ApplicationInput) => {
@@ -92,6 +92,10 @@ const ApplicationForm = () => {
             )}
           </div>
         </div>
+
+        {!isValid && submitCount > 0 && (
+          <p className={s.error}>There were some problems with your answers</p>
+        )}
 
         <Button disabled={isSubmitting}>Apply</Button>
       </form>

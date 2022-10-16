@@ -26,7 +26,9 @@ const QuizFooter = ({ quiz }: Props) => {
         </label>
       </>
 
-      <button onClick={openQuiz}>Resume</button>
+      <button className={s.button} onClick={openQuiz}>
+        Resume
+      </button>
     </footer>
   )
 
