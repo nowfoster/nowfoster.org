@@ -20,7 +20,12 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
   const isLastQuestion = activeQuestionIndex === section.questions.length - 1
 
   const nextQuestion = () => {
-    if (!isLastQuestion) setActiveQuestionIndex(activeQuestionIndex + 1)
+    if (isLastQuestion) {
+      setActiveSectionId(null)
+      setActiveQuestionIndex(0)
+    } else {
+      setActiveQuestionIndex(activeQuestionIndex + 1)
+    }
   }
 
   return (

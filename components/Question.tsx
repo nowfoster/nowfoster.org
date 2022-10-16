@@ -35,6 +35,7 @@ const Question = ({
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    getValues,
   } = useForm<FormValues>({
     defaultValues: {
       answer: existingAnswer ? existingAnswer : question.multiple ? [] : "",
@@ -42,7 +43,13 @@ const Question = ({
     resolver: zodResolver(generateQuestionSchema(question)),
   })
 
-  useEffect(() => reset(), [question.id, reset])
+  useEffect(
+    () =>
+      reset({
+        answer: existingAnswer ? existingAnswer : question.multiple ? [] : "",
+      }),
+    [question, reset, existingAnswer]
+  )
 
   const onSubmit = (data: FormValues) => {
     answerQuestion(section.title, question.question, data.answer)
