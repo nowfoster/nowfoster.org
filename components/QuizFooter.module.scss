@@ -1,6 +1,16 @@
 @import "../styles/vars";
 @import "../styles/mixins";
 
+@keyframes moveUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -14,4 +24,6 @@
 
   display: flex;
   gap: 1rem;
+
+  animation: moveUp 1s cubic-bezier(.87, -.41, .19, 1.44);
 }

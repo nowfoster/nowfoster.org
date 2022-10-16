@@ -58,6 +58,7 @@ export const getFosteringOptions = async (
   const data = await client.getEntries<IFosteringOptionFields>({
     include: 2,
     content_type: "fosteringOption",
+    order: "sys.createdAt", // oldest first
   })
 
   return data.items.map(item => ({
