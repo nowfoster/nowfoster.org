@@ -15,7 +15,13 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<number>(0)
 
   const question = section.questions[activeQuestionIndex]
+
+  const isFirstQuestion = activeQuestionIndex === 0
   const isLastQuestion = activeQuestionIndex === section.questions.length - 1
+
+  const nextQuestion = () => {
+    if (!isLastQuestion) setActiveQuestionIndex(activeQuestionIndex + 1)
+  }
 
   return (
     <section className={s.section}>
@@ -24,8 +30,20 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
       {section.intro && <div>{documentToReactComponents(section.intro)}</div>} */}
 
       {question && (
-        <Question question={question} section={section}>
-          <button onClick={() => setActiveSectionId(null)} className={s.goBack}>
+        <Question
+          question={question}
+          section={section}
+          nextQuestion={nextQuestion}
+          isLastQuestion={isLastQuestion}
+        >
+          <button
+            onClick={() =>
+              isFirstQuestion
+                ? setActiveSectionId(null)
+                : setActiveQuestionIndex(activeQuestionIndex - 1)
+            }
+            className={s.goBack}
+          >
             <svg
               width="15"
               height="20"
@@ -38,7 +56,7 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
                 stroke="black"
               />
             </svg>
-            Back to topics
+            {isFirstQuestion ? "Back to topics" : "Go back"}
           </button>
         </Question>
       )}

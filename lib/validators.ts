@@ -26,8 +26,5 @@ export const generateQuestionSchema = (question: Question) =>
   z.object({
     answer: question.multiple
       ? z.array(z.string()).min(1, "You must choose at least one option")
-      : z.string({
-          required_error: "You must choose an option",
-          invalid_type_error: "You must choose an option",
-        }),
+      : z.string().min(1, { message: "You must choose an option" }),
   })

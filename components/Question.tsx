@@ -5,18 +5,27 @@ import Suggestion from "./Suggestion"
 import s from "./Question.module.scss"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { generateQuestionSchema } from "../lib/validators"
+import { useEffect } from "react"
 
 interface Props {
   question: Question
   section: QuizSection
   children: React.ReactElement
+  nextQuestion: () => void
+  isLastQuestion: boolean
 }
 
 interface FormValues {
   answer: Answer
 }
 
-const Question = ({ question, section, children }: Props) => {
+const Question = ({
+  question,
+  section,
+  children,
+  nextQuestion,
+  isLastQuestion,
+}: Props) => {
   const { answerQuestion, quizAnswers } = useQuiz()
 
   const existingAnswer = quizAnswers?.[section.title]?.[question.question]
@@ -25,7 +34,7 @@ const Question = ({ question, section, children }: Props) => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    getValues,
+    reset,
   } = useForm<FormValues>({
     defaultValues: {
       answer: existingAnswer ? existingAnswer : question.multiple ? [] : "",
@@ -33,8 +42,11 @@ const Question = ({ question, section, children }: Props) => {
     resolver: zodResolver(generateQuestionSchema(question)),
   })
 
+  useEffect(() => reset(), [question.id, reset])
+
   const onSubmit = (data: FormValues) => {
     answerQuestion(section.title, question.question, data.answer)
+    nextQuestion()
   }
 
   const error = errors.answer?.message
@@ -71,7 +83,7 @@ const Question = ({ question, section, children }: Props) => {
         </fieldset>
 
         <button className={s.button} disabled={isSubmitting}>
-          Next
+          {isLastQuestion ? "Finish" : "Next"}
         </button>
       </form>
 
