@@ -15,7 +15,6 @@
   }
 }
 
-
 .header {
   background: $black;
   color: $white;
@@ -92,7 +91,7 @@ a.primary {
 
     &:hover {
       text-decoration: none;
-      background: darken($white, 10);
+      background: $dark-white;
     }
 
     &:focus {

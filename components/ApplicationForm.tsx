@@ -9,6 +9,7 @@ import { ApplicationInput, Event } from "../types"
 import CallBookingField from "./CallBookingField"
 import Field from "./Field"
 import Button from "./Button"
+import s from "./ApplicationForm.module.scss"
 
 const ApplicationForm = () => {
   const { quizAnswers } = useQuiz()
@@ -51,40 +52,46 @@ const ApplicationForm = () => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Field label="First name" name="firstName" />
-        <Field label="Last name" name="lastName" />
-        <Field
-          label="Email"
-          name="email"
-          type="email"
-          hint="We'll send a copy of your application to this address."
-        />
-        <Field
-          label="Phone"
-          name="phone"
-          type="tel"
-          hint="We'll call you on this number"
-        />
-        <Field
-          label="Include my answers?"
-          hint="Send us a copy of your quiz answers to support your application"
-          name="includeAnswers"
-          type="checkbox"
-        />
+      <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
+        <div className={s.grid}>
+          <div className={s.fields}>
+            <Field label="First name" name="firstName" />
+            <Field label="Last name" name="lastName" />
+            <Field
+              label="Email"
+              name="email"
+              type="email"
+              hint="We'll send a copy of your application to this address."
+            />
+            <Field
+              label="Phone"
+              name="phone"
+              type="tel"
+              hint="We'll call you on this number"
+            />
+            <Field
+              label="Include my answers?"
+              hint="Send us a copy of your quiz answers to support your application"
+              name="includeAnswers"
+              type="checkbox"
+            />
+          </div>
 
-        {availability ? (
-          availability.length > 0 ? (
-            <CallBookingField availability={availability} />
-          ) : (
-            <p>
-              There are no calls available right now, but you can still send an
-              application and we&apos;ll get in touch when we can.
-            </p>
-          )
-        ) : (
-          <p>Loading...</p>
-        )}
+          <div className={s.appointmentSlots}>
+            {availability ? (
+              availability.length > 0 ? (
+                <CallBookingField availability={availability} />
+              ) : (
+                <p className={s.noSlots}>
+                  There are no calls available right now, but you can still send
+                  an application and we&apos;ll get in touch when we can.
+                </p>
+              )
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
+        </div>
 
         <Button disabled={isSubmitting}>Apply</Button>
       </form>

@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { ApplicationInput } from "../types"
+import { ApplicationInput, Question } from "../types"
 
 export const applicationSchema = z.object({
   email: z.string().email("That doesn't look like a valid email"),
@@ -21,3 +21,13 @@ export const applicationSchema = z.object({
     invalid_type_error: "You must choose a time for a call",
   }),
 })
+
+export const generateQuestionSchema = (question: Question) =>
+  z.object({
+    answer: question.multiple
+      ? z.array(z.string()).min(1, "You must choose at least one option")
+      : z.string({
+          required_error: "You must choose an option",
+          invalid_type_error: "You must choose an option",
+        }),
+  })

@@ -2,8 +2,6 @@ import { NextPageContext } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import ApplicationForm from "../components/ApplicationForm"
-import { getAvailability } from "../lib/calendar"
-import { Event } from "../types"
 
 const ApplyPage = () => {
   return (

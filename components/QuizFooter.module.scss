@@ -12,18 +12,17 @@
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  right: 1rem;
   background: $white;
   @include standard-padding;
+  padding-bottom: 3rem;
+  position: fixed;
+  bottom: -2rem; // one less than bottom padding
+  right: 1rem;
   border-radius: 15px 15px 0px 0px;
   border: 3px solid $black;
   border-bottom: none;
   z-index: 3;
-
   display: flex;
   gap: 1rem;
-
   animation: moveUp 1s cubic-bezier(.87, -.41, .19, 1.44);
 }

@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react"
+import React, { createContext, useContext, useState } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 import { Answer, Answers, Quiz } from "../types"
 
@@ -13,6 +13,9 @@ interface ContextType {
     question: string,
     answer: string | string[]
   ) => void
+  quizOpen: boolean
+  openQuiz: () => void
+  closeQuiz: () => void
 }
 
 const QuizAnswersContext = createContext<ContextType>({
@@ -21,6 +24,9 @@ const QuizAnswersContext = createContext<ContextType>({
   getSectionsCompleted: () => 0,
   startOver: () => null,
   answerQuestion: () => null,
+  quizOpen: false,
+  openQuiz: () => null,
+  closeQuiz: () => null,
 })
 
 export const QuizAnswersProvider = ({
@@ -28,6 +34,8 @@ export const QuizAnswersProvider = ({
 }: {
   children: React.ReactNode
 }) => {
+  const [quizOpen, setQuizOpen] = useState<boolean>(false)
+
   const [quizAnswers, setQuizAnswers] = useLocalStorage<Answers>(
     "quiz_answers",
     {}
@@ -70,6 +78,9 @@ export const QuizAnswersProvider = ({
         getSectionsCompleted,
         startOver,
         answerQuestion,
+        quizOpen,
+        openQuiz: () => setQuizOpen(true),
+        closeQuiz: () => setQuizOpen(false),
       }}
     >
       {children}

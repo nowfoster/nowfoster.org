@@ -1,13 +1,15 @@
 import Link from "next/link"
 import { QuizSection } from "../types"
+import s from "./SectionList.module.scss"
 
 interface Props {
   sections: QuizSection[]
+  setActiveSectionId: (id: string) => void
 }
 
-const SectionList = ({ sections }: Props) => (
-  <>
-    <h2>Explore topics</h2>
+const SectionList = ({ sections, setActiveSectionId }: Props) => (
+  <div className={s.sectionList}>
+    <h2 className={s.headline}>Explore topics</h2>
 
     <p>You can answer questions in any order.</p>
     <p>
@@ -15,18 +17,21 @@ const SectionList = ({ sections }: Props) => (
       making an application.
     </p>
 
-    <ol>
+    <ol className={s.list}>
       {sections
         .sort((a, b) => (a.order || 0) - (b.order || 0)) // respect sort order
-        .map((section, i) => (
+        .map(section => (
           <li key={section.id}>
-            <Link href={`/?quiz_open=true&quiz_section=${i}`}>
+            <button
+              className={s.sectionLink}
+              onClick={() => setActiveSectionId(section.id)}
+            >
               {section.title}
-            </Link>
+            </button>
           </li>
         ))}
     </ol>
-  </>
+  </div>
 )
 
 export default SectionList

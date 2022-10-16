@@ -1,3 +1,41 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
 .section {
   height: 100%;
+}
+
+.goBack {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: $blue;
+  padding: 0;
+  cursor: pointer;
+
+  svg path {
+    stroke: $blue;
+  }
+
+  &:hover {
+    color: $dark-blue;
+
+    svg path {
+      stroke: $dark-blue;
+    }
+  }
+
+  &:focus,
+  &:active {
+    background: $yellow;
+    color: $black;
+    outline: 3px solid $yellow;
+
+    svg path {
+      stroke: $black;
+    }
+  }
 }

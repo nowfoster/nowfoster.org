@@ -1,8 +1,7 @@
 .page-masthead {
   background: $blue;
   @include standard-padding;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  @include section-padding-s;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,6 +10,7 @@
 
   &__breadcrumbs {
     margin: 0;
+    padding-left: 0;
     list-style: none;
     display: flex;
     gap: 0.5rem;
@@ -30,7 +30,7 @@
     color: $white;
 
     &:hover {
-      color: darken($white, 10);
+      color: $dark-white;
     }
 
     &:focus,

@@ -6,6 +6,13 @@ $blue: #2628D9;
 $yellow: #F7D956;
 $red: #B41616;
 
+// extended palette
+$light-black: lighten($black, 30);
+$dark-blue: darken($blue, 10);
+$very-light-blue: lighten($blue, 45);
+$dark-white: darken($white, 10);
+
 // breakpoints
+$breakpoint-s: 500px;
 $breakpoint-m: 700px;
 $breakpoint-l: 1000px;

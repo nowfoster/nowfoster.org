@@ -1,8 +1,6 @@
 @import "../styles/vars";
 
 .field {
-  margin-bottom: 1rem;
-
   label {
     font-size: 1.1rem;
     display: block;
@@ -21,14 +19,10 @@
       outline: 3px solid $yellow;
     }
 
-    @media screen and (min-width: $breakpoint-m) {
-      width: auto;
-    }
   }
 }
 
 .checkboxField {
-  margin-bottom: 1rem;
   position: relative;
   background-color: $grey;
   padding: 1rem 1rem 1rem 5rem;
@@ -60,6 +54,7 @@
         transform: translateY(-50%);
         content: "";
         display: block;
+        cursor: pointer;
         height: 30px;
         width: 30px;
         background-repeat: no-repeat;
@@ -92,12 +87,7 @@
       border: 3px solid $black;
       cursor: pointer;
     }
-
-
-
-
   }
-
 }
 
 .hint,

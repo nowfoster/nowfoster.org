@@ -8,28 +8,27 @@ interface Props {
 }
 
 const QuizFooter = ({ quiz }: Props) => {
-  const { quizStarted, getSectionsCompleted } = useQuiz()
+  const { quizStarted, getSectionsCompleted, openQuiz } = useQuiz()
 
   const sectionsCompleted = getSectionsCompleted(quiz)
   const totalSections = quiz.sections.length
 
-  if (quizStarted)
-    return (
-      <footer className={s.footer}>
-        <>
-          <meter
-            id="completed-sections"
-            value={sectionsCompleted}
-            max={totalSections}
-          />
-          <label htmlFor="completed-sections">
-            {sectionsCompleted} of {totalSections} completed
-          </label>
-        </>
+  return (
+    <footer className={s.footer}>
+      <>
+        <meter
+          id="completed-sections"
+          value={sectionsCompleted}
+          max={totalSections}
+        />
+        <label htmlFor="completed-sections">
+          {sectionsCompleted} of {totalSections} completed
+        </label>
+      </>
 
-        <Link href="/?quiz_open=true">Resume</Link>
-      </footer>
-    )
+      <button onClick={openQuiz}>Resume</button>
+    </footer>
+  )
 
   return null
 }

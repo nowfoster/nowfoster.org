@@ -1,9 +1,9 @@
 import { useRouter } from "next/router"
 import { MouseEventHandler, useEffect, useRef } from "react"
+import { useQuiz } from "../contexts/quiz"
 
 const useDialog = () => {
-  const { query, push } = useRouter()
-  const dialogOpen = query.quiz_open
+  const { quizOpen: dialogOpen } = useQuiz()
 
   const dialogRef = useRef<HTMLDialogElement | null>(null)
 

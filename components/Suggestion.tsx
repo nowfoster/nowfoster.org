@@ -8,7 +8,7 @@ interface Props {
 
 const Suggestion = ({ suggestion }: Props) => (
   <article className={s.article}>
-    <h3>{suggestion.title}</h3>
+    <h3 className={s.headline}>{suggestion.title}</h3>
     {suggestion.content && (
       <div>{documentToReactComponents(suggestion.content)}</div>
     )}

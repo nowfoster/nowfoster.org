@@ -16,6 +16,21 @@
   padding: 1rem;
 }
 
+@mixin section-padding-xs {
+  padding-top: 2rem;
+  padding-bottom: 3rem; // deliberate
+}
+
+@mixin section-padding-s {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@mixin section-padding-m {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 @mixin wavy {
   content: '';
   position: absolute;
@@ -49,7 +64,7 @@
   &:hover,
   &:focus,
   &:active {
-    background-color: darken($blue, 10);
+    background-color: $dark-blue;
 
     svg {
       transform: translateX(5px)

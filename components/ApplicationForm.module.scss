@@ -1,0 +1,33 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.form {
+  @include section-padding-xs;
+}
+
+.grid {
+  display: grid;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+.fields {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.appointmentSlots {
+  background: $grey;
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.noSlots {
+  margin: 0;
+  font-size: 1.1rem;
+}

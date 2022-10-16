@@ -44,21 +44,23 @@ const Home = ({ quiz, fosteringOptions }: Props) => (
       </div>
     </section>
 
-    <div className="container">
-      <p>Forget everything you think you know about fostering.</p>
-      <p>
-        We’re a not-for-profit start-up building a brand new way of doing things
-        that empowers brilliant people to care for children and young people.
-      </p>
-      <p>
-        There are a lot of myths around fostering. Explore what it really takes
-        to be a great foster carer.
-      </p>
+    <section className="story">
+      <div className="container">
+        <p>Forget everything you think you know about fostering.</p>
+        <p>
+          We’re a not-for-profit start-up building a brand new way of doing
+          things that empowers brilliant people to care for children and young
+          people.
+        </p>
+        <p>
+          There are a lot of myths around fostering. Explore what it really
+          takes to be a great foster carer.
+        </p>
+      </div>
+    </section>
 
-      <QuizDialog quiz={quiz} />
-
-      <QuizFooter quiz={quiz} />
-    </div>
+    <QuizDialog quiz={quiz} />
+    <QuizFooter quiz={quiz} />
   </>
 )
 
