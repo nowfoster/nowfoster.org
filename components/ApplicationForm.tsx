@@ -42,7 +42,11 @@ const ApplicationForm = () => {
         answers: data.includeAnswers ? quizAnswers : undefined, // take quiz answers if opted in
       }),
     })
-    if (res.ok) push("/?application_confirmed=true")
+    if (res.ok) {
+      push("/?application_confirmed=true")
+    } else {
+      // TODO: handle bad responses (eg. appointment slot gone)
+    }
   }
 
   return (
