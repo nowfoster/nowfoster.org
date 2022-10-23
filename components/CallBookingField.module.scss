@@ -35,7 +35,10 @@
   @include radioField;
   background: $white;
 
-  span {
+
+
+
+  &:span {
     color: $light-black;
     font-size: 0.8rem;
     margin-left: auto;

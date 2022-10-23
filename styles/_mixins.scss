@@ -118,6 +118,11 @@
   background: $grey;
   border-radius: 5px;
   position: relative;
+  transition: transform 0.1s;
+
+  &:active {
+    transform: scale(0.97);
+  }
 
   &:focus-within {
     outline: 3px solid $yellow;
