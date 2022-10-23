@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
-import { useConfirmDialog } from "../contexts/confirmDialog"
 import { useQuiz } from "../contexts/quiz"
 import { applicationSchema } from "../lib/validators"
 import { ApplicationInput, Event } from "../types"
@@ -14,7 +13,6 @@ import s from "./ApplicationForm.module.scss"
 const ApplicationForm = () => {
   const { quizAnswers } = useQuiz()
   const { push } = useRouter()
-  const { triggerDialog } = useConfirmDialog()
 
   const [availability, setAvailability] = useState<Event[] | null>(null)
 
@@ -44,10 +42,7 @@ const ApplicationForm = () => {
         answers: data.includeAnswers ? quizAnswers : undefined, // take quiz answers if opted in
       }),
     })
-    if (res.ok) {
-      triggerDialog() // open confirmation dialog
-      push("/")
-    }
+    if (res.ok) push("/?application_confirmed=true")
   }
 
   return (

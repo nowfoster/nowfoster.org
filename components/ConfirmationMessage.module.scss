@@ -1,0 +1,50 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.applicationConfirmed {
+  background: $yellow;
+
+  svg {
+    width: 5rem;
+    height: 5rem;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    margin-top: 0
+  }
+
+  a {
+    color: $black;
+
+    &:hover {
+      color: $light-black;
+    }
+
+    &:focus,
+    &:active {
+      color: $yellow;
+      background: $black;
+      outline-color: $black;
+    }
+
+
+  }
+}
+
+.inner {
+  @include contained-width-l;
+  @include standard-padding;
+  @include section-padding-xs;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-s;
+    flex-direction: row;
+
+    gap: 3rem;
+  }
+}

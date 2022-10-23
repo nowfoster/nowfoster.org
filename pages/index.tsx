@@ -1,4 +1,4 @@
-import type { NextApiRequest } from "next"
+import type { GetServerSideProps, GetStaticProps, NextApiRequest } from "next"
 import { Icon } from "../components/Button"
 import QuizDialog from "../components/QuizDialog"
 import QuizFooter from "../components/QuizFooter"
@@ -66,7 +66,7 @@ const Home = ({ quiz, fosteringOptions }: Props) => (
 
 export default Home
 
-export const getStaticProps = async ({ preview }: NextApiRequest) => {
+export const getStaticProps: GetStaticProps = async ({ preview }) => {
   const quiz = await getQuizContent({ preview: !!preview })
   const fosteringOptions = await getFosteringOptions({ preview: !!preview })
 

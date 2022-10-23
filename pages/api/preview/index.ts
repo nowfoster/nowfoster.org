@@ -3,8 +3,6 @@ import { NextApiRequest, NextApiResponse } from "next"
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { entryId, contentType, previewToken, slug } = req.query
 
-  console.log(req.query)
-
   if (previewToken !== process.env.PREVIEW_TOKEN)
     return res.status(401).send("Invalid preview token")
 

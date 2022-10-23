@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { ApplicationInput, Question } from "../types"
+import { Question } from "../types"
 
 export const applicationSchema = z.object({
   email: z.string().email("That doesn't look like a valid email"),
