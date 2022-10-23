@@ -4,3 +4,35 @@
 .button {
   @include button;
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.spinnerWrapper {
+  display: flex;
+  animation: grow 0.3s ease-out;
+  transform: scale(1);
+}
+
+.spinner {
+  height: 1.5rem;
+  width: 1.5rem;
+  animation: spin 0.75s infinite;
+}

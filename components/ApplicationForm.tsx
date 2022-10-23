@@ -97,7 +97,9 @@ const ApplicationForm = () => {
           <p className={s.error}>There were some problems with your answers</p>
         )}
 
-        <Button disabled={isSubmitting}>Apply</Button>
+        <Button disabled={isSubmitting} loading={isSubmitting}>
+          Apply
+        </Button>
       </form>
     </FormProvider>
   )
