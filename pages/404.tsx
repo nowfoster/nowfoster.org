@@ -1,26 +1,24 @@
 import Head from "next/head"
 import Link from "next/link"
+import s from "./404.module.scss"
 
 const NotFoundPage = () => (
   <>
     <Head>
       <title>
-        Page not found · Now Foster · The fostering service with heart
+        🤷‍♀️ Page not found · Now Foster · The fostering service with heart
       </title>
     </Head>
 
-    <section className="page-masthead">
-      <ul className="page-masthead__breadcrumbs">
-        <li className="page-masthead__crumb">
-          <Link href="/">
-            <a className="page-masthead__crumb-link">Home</a>
-          </Link>
-        </li>
-        <li className="page-masthead__crumb">404</li>
-      </ul>
-      <h1 className="page-masthead__headline">Page not found</h1>
+    <section className={s.notFound}>
+      <div className="container">
+        <p>404</p>
+        <h1>Page not found</h1>
+        <p>
+          <Link href="/">Go back to the home page</Link>
+        </p>
+      </div>
     </section>
-    <div className="container"></div>
   </>
 )
 
