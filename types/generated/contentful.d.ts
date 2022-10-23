@@ -10,7 +10,7 @@ export interface IFosteringOptionFields {
   /** Description */
   description: string;
 
-  /** Conclusion */
+  /** Sting */
   conclusion: string;
 }
 
@@ -24,6 +24,39 @@ export interface IFosteringOption extends Entry<IFosteringOptionFields> {
     contentType: {
       sys: {
         id: "fosteringOption";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface IPageFields {
+  /** Page title */
+  pageTitle: string;
+
+  /** Short title */
+  shortTitle?: string | undefined;
+
+  /** Slug */
+  slug: string;
+
+  /** Content */
+  content: Document;
+}
+
+/** Generic empty pages for arbitrary text or HTML content */
+
+export interface IPage extends Entry<IPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "page";
         linkType: "ContentType";
         type: "Link";
       };
@@ -132,6 +165,7 @@ export interface ISuggestion extends Entry<ISuggestionFields> {
 
 export type CONTENT_TYPE =
   | "fosteringOption"
+  | "page"
   | "question"
   | "quizSection"
   | "suggestion";

@@ -1,8 +1,10 @@
 import * as contentful from "contentful"
+import { create } from "domain"
 import { FosteringOption, Quiz } from "../types"
 import {
-  IFosteringOption,
   IFosteringOptionFields,
+  IPage,
+  IPageFields,
   IQuizSectionFields,
 } from "../types/generated/contentful"
 
@@ -10,15 +12,32 @@ interface Opts {
   preview: boolean
 }
 
-export const getQuizContent = async (opts?: Opts): Promise<Quiz> => {
-  const client = contentful.createClient({
+const createClient = (preview?: boolean) =>
+  contentful.createClient({
     space: process.env.CONTENTFUL_SPACE_ID as string,
     // get draft content if this is a preview
-    accessToken: opts?.preview
+    accessToken: preview
       ? (process.env.CONTENTFUL_PREVIEW_TOKEN as string)
       : (process.env.CONTENTFUL_ACCESS_TOKEN as string),
-    host: opts?.preview ? "preview.contentful.com" : undefined,
+    host: preview ? "preview.contentful.com" : undefined,
   })
+
+export const getPageContentBySlug = async (
+  slug: string,
+  opts?: Opts
+): Promise<contentful.Entry<IPageFields> | null> => {
+  const client = createClient(opts?.preview)
+
+  const data = await client.getEntries<IPageFields>({
+    content_type: "page",
+    "fields.slug[in]": slug,
+  })
+
+  return data.items[0] || null
+}
+
+export const getQuizContent = async (opts?: Opts): Promise<Quiz> => {
+  const client = createClient(opts?.preview)
 
   const data = await client.getEntries<IQuizSectionFields>({
     include: 2,
@@ -46,14 +65,7 @@ export const getQuizContent = async (opts?: Opts): Promise<Quiz> => {
 export const getFosteringOptions = async (
   opts?: Opts
 ): Promise<FosteringOption[]> => {
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID as string,
-    // get draft content if this is a preview
-    accessToken: opts?.preview
-      ? (process.env.CONTENTFUL_PREVIEW_TOKEN as string)
-      : (process.env.CONTENTFUL_ACCESS_TOKEN as string),
-    host: opts?.preview ? "preview.contentful.com" : undefined,
-  })
+  const client = createClient(opts?.preview)
 
   const data = await client.getEntries<IFosteringOptionFields>({
     include: 2,

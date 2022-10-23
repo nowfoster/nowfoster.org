@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { entryId, contentType, previewToken } = req.query
+  const { entryId, contentType, previewToken, slug } = req.query
+
+  console.log(req.query)
 
   if (previewToken !== process.env.PREVIEW_TOKEN)
     return res.status(401).send("Invalid preview token")
@@ -16,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   ) // set preview cookie
 
-  res.redirect("/?quiz_open=true") // redirect to home page
+  res.redirect(slug ? `/${slug}` : "/") // redirect to slug if supplied, else home page
 }
 
 export default handler
