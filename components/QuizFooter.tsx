@@ -8,9 +8,8 @@ interface Props {
 }
 
 const QuizFooter = ({ quiz }: Props) => {
-  const { quizStarted, getSectionsCompleted, openQuiz } = useQuiz()
+  const { quizStarted, completedSectionsCount, openQuiz } = useQuiz()
 
-  const sectionsCompleted = getSectionsCompleted(quiz)
   const totalSections = quiz.sections.length
 
   return (
@@ -18,11 +17,11 @@ const QuizFooter = ({ quiz }: Props) => {
       <>
         <meter
           id="completed-sections"
-          value={sectionsCompleted}
+          value={completedSectionsCount}
           max={totalSections}
         />
         <label htmlFor="completed-sections">
-          {sectionsCompleted} of {totalSections} completed
+          {completedSectionsCount} of {totalSections} completed
         </label>
       </>
 

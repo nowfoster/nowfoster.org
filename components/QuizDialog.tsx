@@ -58,10 +58,7 @@ const QuizDialog = ({ quiz, ...props }: Props) => {
               setActiveSectionId={setActiveSectionId}
             />
           ) : (
-            <SectionList
-              sections={quiz.sections}
-              setActiveSectionId={setActiveSectionId}
-            />
+            <SectionList quiz={quiz} setActiveSectionId={setActiveSectionId} />
           )}
         </div>
       </dialog>

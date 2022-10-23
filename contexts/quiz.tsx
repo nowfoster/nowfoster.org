@@ -6,7 +6,8 @@ interface ContextType {
   quizAnswers: Answers
   // setQuizAnswers: (newVal: Answers) => void
   quizStarted: boolean
-  getSectionsCompleted: (quiz: Quiz) => number
+  completedSectionsCount: number
+  getAllMandatorySectionsCompleted: (quiz: Quiz) => boolean
   startOver: () => void
   answerQuestion: (
     section: string,
@@ -21,7 +22,8 @@ interface ContextType {
 const QuizAnswersContext = createContext<ContextType>({
   quizAnswers: {},
   quizStarted: false,
-  getSectionsCompleted: () => 0,
+  completedSectionsCount: 0,
+  getAllMandatorySectionsCompleted: () => false,
   startOver: () => null,
   answerQuestion: () => null,
   quizOpen: false,
@@ -57,16 +59,18 @@ export const QuizAnswersProvider = ({
 
   const startOver = () => setQuizAnswers({})
 
-  const getSectionsCompleted = (quiz: Quiz): number =>
-    quiz.sections.reduce(
-      (runningTotal, section) =>
-        quizAnswers?.[section?.title] &&
-        Object.keys(quizAnswers[section.title])?.length >=
-          section.questions.length
-          ? runningTotal + 1
-          : runningTotal,
-      0
+  const completedSectionsCount = Object.keys(quizAnswers).length
+
+  // check that the keys of all mandatory sections appear in the saved answers
+  const getAllMandatorySectionsCompleted = (quiz: Quiz): boolean => {
+    const mandatorySections = quiz.sections
+      .filter(section => section.mandatorySection)
+      .map(section => section.id)
+    const completedSections = Object.keys(quizAnswers)
+    return mandatorySections.every(id1 =>
+      completedSections.find(id2 => id1 === id2)
     )
+  }
 
   const quizStarted = Object.keys(quizAnswers).length > 0
 
@@ -75,7 +79,8 @@ export const QuizAnswersProvider = ({
       value={{
         quizStarted,
         quizAnswers,
-        getSectionsCompleted,
+        completedSectionsCount,
+        getAllMandatorySectionsCompleted,
         startOver,
         answerQuestion,
         quizOpen,

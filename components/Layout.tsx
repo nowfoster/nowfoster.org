@@ -26,7 +26,10 @@ const Layout = ({ children }: Props) => (
         <nav className={s.nav}>
           <ul>
             <li>
-              <Link href="/?quiz_open=true">Could you foster?</Link>
+              <Link href="#">Example</Link>
+            </li>
+            <li>
+              <Link href="#">Example 2</Link>
             </li>
             <li>
               <Link href="/apply">

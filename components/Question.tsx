@@ -28,7 +28,7 @@ const Question = ({
 }: Props) => {
   const { answerQuestion, quizAnswers } = useQuiz()
 
-  const existingAnswer = quizAnswers?.[section.title]?.[question.question]
+  const existingAnswer = quizAnswers?.[section.id]?.[question.question]
 
   const {
     register,
@@ -52,7 +52,7 @@ const Question = ({
   )
 
   const onSubmit = (data: FormValues) => {
-    answerQuestion(section.title, question.question, data.answer)
+    answerQuestion(section.id, question.question, data.answer)
     nextQuestion()
   }
 
