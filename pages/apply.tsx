@@ -1,7 +1,8 @@
-import { NextPageContext } from "next"
+import { GetStaticProps, NextPageContext } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import ApplicationForm from "../components/ApplicationForm"
+import { getQuizContent } from "../lib/cms"
 
 const ApplyPage = () => {
   return (
@@ -29,3 +30,14 @@ const ApplyPage = () => {
 }
 
 export default ApplyPage
+
+export const getStaticProps: GetStaticProps = async ({ preview }) => {
+  const quiz = await getQuizContent({ preview: !!preview })
+
+  return {
+    props: {
+      quiz,
+      showPreviewBanner: !!preview,
+    },
+  }
+}

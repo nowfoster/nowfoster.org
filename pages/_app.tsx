@@ -8,7 +8,7 @@ import ConfirmationMessage from "../components/ConfirmationMessage"
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QuizAnswersProvider>
-      <Layout>
+      <Layout {...pageProps}>
         {pageProps?.showPreviewBanner && <PreviewBanner />}
 
         <ConfirmationMessage />

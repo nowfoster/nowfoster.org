@@ -82,7 +82,26 @@
   }
 }
 
-a.primary {
+a.primary,
+button.primary {
+  border: none;
+  background: none;
+  color: $white;
+  font-size: 1rem;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus,
+  &:active {
+    background: $yellow;
+    outline: 3px solid $yellow;
+    color: $black;
+  }
+
   @media screen and (min-width: $breakpoint-m) {
     background: $white;
     color: $black;

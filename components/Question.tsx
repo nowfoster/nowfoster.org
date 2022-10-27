@@ -10,6 +10,7 @@ const Question = ({ question }: Props) => {
   const {
     formState: { errors },
     register,
+    watch,
   } = useFormContext()
 
   const error = errors?.[question.id]?.message

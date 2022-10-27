@@ -57,18 +57,22 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
     if (valid) setActiveQuestionIndex(activeQuestionIndex + 1)
   }
 
+  formHelpers.watch((value, { name }) => {
+    if (question.id == name) {
+      const currentOption = question.options.find(
+        opt => opt.id === value[question.id]
+      )
+
+      if (currentOption) setSuggestion(currentOption)
+    }
+  })
+
   return (
     <section className={s.section}>
       <FormProvider {...formHelpers}>
         <div className={s.form}>
           <button onClick={goBack} className={s.goBack}>
-            <svg
-              width="15"
-              height="20"
-              viewBox="0 0 4 5"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="15" height="20" viewBox="0 0 4 5" fill="none">
               <path
                 d="M2.95652 0.5L1.02433 2.47513L1 2.5L2.95652 4.5"
                 stroke="black"

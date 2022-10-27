@@ -58,9 +58,6 @@ const Home = ({ quiz, fosteringOptions }: Props) => (
         </p>
       </div>
     </section>
-
-    <QuizDialog quiz={quiz} />
-    <QuizFooter quiz={quiz} />
   </>
 )
 

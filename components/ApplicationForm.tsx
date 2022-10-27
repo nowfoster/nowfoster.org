@@ -32,6 +32,7 @@ const ApplicationForm = () => {
   const {
     handleSubmit,
     formState: { isSubmitting, isValid, submitCount },
+    watch,
   } = methods
 
   const onSubmit = async (data: ApplicationInput) => {
@@ -70,7 +71,11 @@ const ApplicationForm = () => {
             />
             <Field
               label="Include my answers?"
-              hint="Send us a copy of your quiz answers to support your application"
+              hint={
+                watch("includeAnswers")
+                  ? "A copy of your quiz answers will be included to support your application."
+                  : "Your answers won't be shared."
+              }
               name="includeAnswers"
               type="checkbox"
             />
