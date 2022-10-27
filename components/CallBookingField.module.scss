@@ -14,9 +14,9 @@
 .day {
   gap: 0.5rem;
 
-  @media screen and (min-width: $breakpoint-m) {
-    grid-template-columns: 1fr 1fr;
-  }
+  // @media screen and (min-width: $breakpoint-m) {
+  //   grid-template-columns: 1fr 1fr;
+  // }
 }
 
 .legend {
@@ -36,9 +36,11 @@
   background: $white;
 
 
+  label {
+    padding: 0.5rem 1rem;
+  }
 
-
-  &:span {
+  span {
     color: $light-black;
     font-size: 0.8rem;
     margin-left: auto;

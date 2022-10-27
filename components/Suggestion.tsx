@@ -1,9 +1,9 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { Suggestion } from "../types"
+import { Option, Suggestion as ISuggestion } from "../types"
 import s from "./Suggestion.module.scss"
 
 interface Props {
-  suggestion: Suggestion
+  suggestion: ISuggestion
 }
 
 const Suggestion = ({ suggestion }: Props) => (

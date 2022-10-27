@@ -3,6 +3,19 @@
 
 .section {
   height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.form {
+  padding: 1.5rem;
+}
+
+
+.caption {
+  font-size: 1.2rem;
+  color: $light-black;
+  margin-bottom: 0;
 }
 
 .goBack {
@@ -38,4 +51,9 @@
       stroke: $black;
     }
   }
+}
+
+.button {
+  @include button;
+  margin-top: 2rem;
 }

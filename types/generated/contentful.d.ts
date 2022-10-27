@@ -71,14 +71,8 @@ export interface IQuestionFields {
   /** Hint */
   hint?: Document | undefined;
 
-  /** Select multiple answers? */
-  multiple: boolean;
-
   /** Options */
-  options: string[];
-
-  /** Suggestion */
-  suggestion?: ISuggestion | undefined;
+  options: ISuggestion[];
 }
 
 /** One "step" or question in the quiz. Grouped into sections. */
@@ -137,14 +131,17 @@ export interface IQuizSection extends Entry<IQuizSectionFields> {
 }
 
 export interface ISuggestionFields {
-  /** Title */
+  /** Option text */
+  optionText: string;
+
+  /** Suggestion title */
   title?: string | undefined;
 
   /** Content */
   content?: Document | undefined;
 }
 
-/** Appears alongside the active quiz question to add context and aid understanding. */
+/** Possible answers to quiz questions, plus content that appears alongside the active quiz question to add context and aid understanding. */
 
 export interface ISuggestion extends Entry<ISuggestionFields> {
   sys: {

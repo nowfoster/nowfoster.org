@@ -52,11 +52,10 @@ export const getQuizContent = async (opts?: Opts): Promise<Quiz> => {
         item.fields?.questions?.map(question => ({
           id: question.sys.id,
           ...question.fields,
-          suggestion: question.fields.suggestion && {
-            id: question.fields.suggestion.sys.id,
-
-            ...question.fields.suggestion?.fields,
-          },
+          options: question.fields.options.map(option => ({
+            id: option.sys.id,
+            ...option.fields,
+          })),
         })) || [],
     })),
   }

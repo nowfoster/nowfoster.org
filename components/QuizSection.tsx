@@ -1,10 +1,20 @@
 import Link from "next/link"
 import { useState } from "react"
-import { QuizSection } from "../types"
+import {
+  Answer,
+  QuizSection,
+  SectionAnswers,
+  Suggestion as ISuggestion,
+} from "../types"
 import Question from "./Question"
 import backIcon from "./back.svg"
 import Image from "next/image"
 import s from "./QuizSection.module.scss"
+import { useForm, FormProvider } from "react-hook-form"
+import { generateQuizSchema } from "../lib/validators"
+import { useQuiz } from "../contexts/quiz"
+import { zodResolver } from "@hookform/resolvers/zod"
+import Suggestion from "./Suggestion"
 
 interface Props {
   section: QuizSection
@@ -12,43 +22,46 @@ interface Props {
 }
 
 const QuizSection = ({ section, setActiveSectionId }: Props) => {
+  const { quizAnswers, answerSection } = useQuiz()
+
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<number>(0)
 
   const question = section.questions[activeQuestionIndex]
-
   const isFirstQuestion = activeQuestionIndex === 0
   const isLastQuestion = activeQuestionIndex === section.questions.length - 1
 
-  const nextQuestion = () => {
-    if (isLastQuestion) {
-      setActiveSectionId(null)
-      setActiveQuestionIndex(0)
-    } else {
-      setActiveQuestionIndex(activeQuestionIndex + 1)
-    }
+  const goBack = () =>
+    isFirstQuestion
+      ? setActiveSectionId(null)
+      : setActiveQuestionIndex(activeQuestionIndex - 1)
+
+  const [suggestion, setSuggestion] = useState<ISuggestion>({
+    title: section.title,
+    content: section.intro,
+  })
+
+  const formHelpers = useForm<SectionAnswers>({
+    defaultValues: {
+      ...quizAnswers[section.id],
+    },
+    resolver: zodResolver(generateQuizSchema(section.questions)),
+  })
+
+  const onSubmit = (answers: SectionAnswers) => {
+    answerSection(section.id, answers)
+    setActiveSectionId(null)
+  }
+
+  const nextQuestion = async () => {
+    const valid = await formHelpers.trigger(question.id)
+    if (valid) setActiveQuestionIndex(activeQuestionIndex + 1)
   }
 
   return (
     <section className={s.section}>
-      {/* TODO: where do we show this stuff? */}
-      {/* <h2>{section.title}</h2>
-      {section.intro && <div>{documentToReactComponents(section.intro)}</div>} */}
-
-      {question && (
-        <Question
-          question={question}
-          section={section}
-          nextQuestion={nextQuestion}
-          isLastQuestion={isLastQuestion}
-        >
-          <button
-            onClick={() =>
-              isFirstQuestion
-                ? setActiveSectionId(null)
-                : setActiveQuestionIndex(activeQuestionIndex - 1)
-            }
-            className={s.goBack}
-          >
+      <FormProvider {...formHelpers}>
+        <div className={s.form}>
+          <button onClick={goBack} className={s.goBack}>
             <svg
               width="15"
               height="20"
@@ -63,8 +76,33 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
             </svg>
             {isFirstQuestion ? "Back to topics" : "Go back"}
           </button>
-        </Question>
-      )}
+
+          <form onSubmit={formHelpers.handleSubmit(onSubmit)}>
+            <p className={s.caption}>
+              Question {activeQuestionIndex + 1} of {section.questions.length}
+            </p>
+
+            {question && <Question question={question} />}
+
+            {isLastQuestion && (
+              <button
+                className={s.button}
+                disabled={formHelpers.formState.isSubmitting}
+              >
+                Finish
+              </button>
+            )}
+          </form>
+
+          {!isLastQuestion && (
+            <button className={s.button} onClick={nextQuestion}>
+              Next
+            </button>
+          )}
+        </div>
+
+        <Suggestion suggestion={suggestion} />
+      </FormProvider>
     </section>
   )
 }

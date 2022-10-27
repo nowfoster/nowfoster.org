@@ -1,19 +1,14 @@
 import React, { createContext, useContext, useState } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
-import { Answer, Answers, Quiz } from "../types"
+import { Answer, Answers, Quiz, SectionAnswers } from "../types"
 
 interface ContextType {
   quizAnswers: Answers
-  // setQuizAnswers: (newVal: Answers) => void
   quizStarted: boolean
   completedSectionsCount: number
   getAllMandatorySectionsCompleted: (quiz: Quiz) => boolean
   startOver: () => void
-  answerQuestion: (
-    section: string,
-    question: string,
-    answer: string | string[]
-  ) => void
+  answerSection: (sectionId: string, answers: SectionAnswers) => void
   quizOpen: boolean
   openQuiz: () => void
   closeQuiz: () => void
@@ -25,7 +20,7 @@ const QuizAnswersContext = createContext<ContextType>({
   completedSectionsCount: 0,
   getAllMandatorySectionsCompleted: () => false,
   startOver: () => null,
-  answerQuestion: () => null,
+  answerSection: () => null,
   quizOpen: false,
   openQuiz: () => null,
   closeQuiz: () => null,
@@ -43,17 +38,10 @@ export const QuizAnswersProvider = ({
     {}
   )
 
-  const answerQuestion = (
-    section: string,
-    question: string,
-    answer: string | string[]
-  ) => {
+  const answerSection = (sectionId: string, answers: SectionAnswers) => {
     setQuizAnswers({
       ...quizAnswers,
-      [section]: {
-        ...quizAnswers?.[section],
-        [question]: answer,
-      },
+      [sectionId]: answers,
     })
   }
 
@@ -82,7 +70,7 @@ export const QuizAnswersProvider = ({
         completedSectionsCount,
         getAllMandatorySectionsCompleted,
         startOver,
-        answerQuestion,
+        answerSection,
         quizOpen,
         openQuiz: () => setQuizOpen(true),
         closeQuiz: () => setQuizOpen(false),

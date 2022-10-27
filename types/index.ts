@@ -1,5 +1,6 @@
 import { values } from "faunadb"
 import { calendar_v3 } from "googleapis"
+import { optional } from "zod"
 import {
   IFosteringOption,
   IFosteringOptionFields,
@@ -8,17 +9,19 @@ import {
   ISuggestionFields,
 } from "./generated/contentful"
 
-export interface Suggestion extends ISuggestionFields {
+export interface Option extends ISuggestionFields {
   id: string
 }
+
+export type Suggestion = Omit<ISuggestionFields, "optionText">
 
 export interface FosteringOption extends IFosteringOptionFields {
   id: string
 }
 
-export interface Question extends Omit<IQuestionFields, "suggestion"> {
+export interface Question extends Omit<IQuestionFields, "options"> {
   id: string
-  suggestion?: Suggestion
+  options: Option[]
 }
 
 export interface QuizSection extends Omit<IQuizSectionFields, "questions"> {
@@ -32,16 +35,18 @@ export interface Quiz {
 
 export type Answer = string | string[]
 
-export interface Answers {
-  [key: string]: {
-    [key: string]: Answer
-  }
+export interface SectionAnswers {
+  [key: string]: Answer
 }
 
-export interface Option {
-  label: string
-  value: string
+export interface Answers {
+  [key: string]: SectionAnswers
 }
+
+// export interface Option {
+//   label: string
+//   value: string
+// }
 
 export type ApplicationInput = Omit<Application, "createdAt">
 

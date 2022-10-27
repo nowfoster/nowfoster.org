@@ -18,13 +18,21 @@ export const applicationSchema = z.object({
   includeAnswers: z.boolean(),
   eventId: z.string({
     required_error: "You must choose a time for a call",
-    invalid_type_error: "You must choose a time for a call",
+    invalid_type_error: "Y`ou must choose a time for a call",
   }),
 })
 
-export const generateQuestionSchema = (question: Question) =>
-  z.object({
-    answer: question.multiple
-      ? z.array(z.string()).min(1, "You must choose at least one option")
-      : z.string().min(1, { message: "You must choose an option" }),
-  })
+export const questionSchema = z.object({
+  answer: z.string().min(1, { message: "You must choose an option" }),
+})
+
+export const generateQuizSchema = (questions: Question[]) => {
+  const shape = questions.reduce<Record<string, any>>((shape, question, i) => {
+    shape[question.id] = z
+      .string({ invalid_type_error: "You must choose an option" })
+      .min(1, { message: "You must choose an option" })
+    return shape
+  }, {})
+
+  return z.object(shape)
+}

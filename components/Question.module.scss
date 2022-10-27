@@ -1,21 +1,7 @@
 @import "../styles/vars";
 @import "../styles/mixins";
 
-.question {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 100%;
 
-  form {
-    padding: 1.5rem;
-  }
-}
-
-.caption {
-  font-size: 1.2rem;
-  color: $light-black;
-  margin-bottom: 0;
-}
 
 .legend {
   font-size: 2rem;
@@ -39,11 +25,6 @@
 
 .radioField {
   @include radioField;
-}
-
-.button {
-  @include button;
-  margin-top: 2rem;
 }
 
 .error {
