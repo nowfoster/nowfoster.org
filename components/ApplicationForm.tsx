@@ -20,7 +20,7 @@ const ApplicationForm = ({ quiz }: Props) => {
   const { quizAnswers } = useQuiz()
   const { push } = useRouter()
 
-  const { data: availability, error } = useSWR("/api/slots/errr")
+  const { data: availability, error } = useSWR("/api/slots")
 
   const [status, setStatus] = useState<string>("")
 
