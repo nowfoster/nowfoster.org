@@ -18,7 +18,7 @@ export const applicationSchema = z.object({
   includeAnswers: z.boolean(),
   eventId: z.string({
     required_error: "You must choose a time for a call",
-    invalid_type_error: "Y`ou must choose a time for a call",
+    invalid_type_error: "You must choose a time for a call",
   }),
 })
 

@@ -17,6 +17,7 @@
   padding-bottom: 3rem;
   position: fixed;
   bottom: -2rem; // one less than bottom padding
+  left: 1rem;
   right: 1rem;
   border-radius: 15px 15px 0px 0px;
   border: 3px solid $black;
@@ -26,6 +27,10 @@
   align-items: center;
   gap: 1rem;
   animation: moveUp 1s cubic-bezier(.87, -.41, .19, 1.44);
+
+  @media screen and (min-width: $breakpoint-m) {
+    left: inherit;
+  }
 }
 
 .button {

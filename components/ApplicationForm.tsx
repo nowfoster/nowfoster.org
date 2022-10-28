@@ -4,24 +4,25 @@ import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
 import { useQuiz } from "../contexts/quiz"
 import { applicationSchema } from "../lib/validators"
-import { ApplicationInput, Event } from "../types"
+import { ApplicationInput, Event, Quiz } from "../types"
 import CallBookingField, { CallBookingFieldSkeleton } from "./CallBookingField"
 import Field from "./Field"
 import Button from "./Button"
 import s from "./ApplicationForm.module.scss"
+import { decodeAnswers } from "../lib/quiz"
+import useSWR from "swr"
 
-const ApplicationForm = () => {
+interface Props {
+  quiz: Quiz
+}
+
+const ApplicationForm = ({ quiz }: Props) => {
   const { quizAnswers } = useQuiz()
   const { push } = useRouter()
 
-  const [availability, setAvailability] = useState<Event[] | null>(null)
-  const [status, setStatus] = useState<string>("")
+  const { data: availability, error } = useSWR("/api/slots/errr")
 
-  useEffect(() => {
-    fetch("/api/slots")
-      .then(res => res.json())
-      .then(data => setAvailability(data))
-  }, [])
+  const [status, setStatus] = useState<string>("")
 
   const methods = useForm<ApplicationInput>({
     resolver: zodResolver(applicationSchema),
@@ -41,7 +42,9 @@ const ApplicationForm = () => {
       method: "POST",
       body: JSON.stringify({
         ...data,
-        answers: data.includeAnswers ? quizAnswers : undefined, // take quiz answers if opted in
+        answers: data.includeAnswers
+          ? decodeAnswers(quizAnswers, quiz)
+          : undefined, // take quiz answers if opted in
       }),
     })
     if (res.ok) {
@@ -85,8 +88,8 @@ const ApplicationForm = () => {
           </div>
 
           <div className={s.appointmentSlots}>
-            {availability ? (
-              availability.length > 0 ? (
+            {availability || error ? (
+              availability?.length > 0 ? (
                 <CallBookingField availability={availability} />
               ) : (
                 <p className={s.noSlots}>

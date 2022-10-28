@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import React, { createContext, useContext, useState, useEffect } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
-import { Answer, Answers, Quiz, SectionAnswers } from "../types"
+import { Answers, Quiz, SectionAnswers } from "../types"
 
 interface ContextType {
   quizAnswers: Answers

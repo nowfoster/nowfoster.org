@@ -3,8 +3,13 @@ import Head from "next/head"
 import Link from "next/link"
 import ApplicationForm from "../components/ApplicationForm"
 import { getQuizContent } from "../lib/cms"
+import { Quiz } from "../types"
 
-const ApplyPage = () => {
+interface Props {
+  quiz: Quiz
+}
+
+const ApplyPage = ({ quiz }: Props) => {
   return (
     <>
       <Head>
@@ -23,7 +28,7 @@ const ApplyPage = () => {
         <h1 className="page-masthead__headline">Apply to foster</h1>
       </section>
       <div className="container">
-        <ApplicationForm />
+        <ApplicationForm quiz={quiz} />
       </div>
     </>
   )
