@@ -3,8 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
 import { useQuiz } from "../contexts/quiz"
-import { applicationSchema } from "../lib/validators"
-import { ApplicationInput, Event, Quiz } from "../types"
+import { generateApplicationSchema } from "../lib/validators"
+import { ApplicationInput, EventResponseBody, Quiz } from "../types"
 import CallBookingField, { CallBookingFieldSkeleton } from "./CallBookingField"
 import Field from "./Field"
 import Button from "./Button"
@@ -20,12 +20,16 @@ const ApplicationForm = ({ quiz }: Props) => {
   const { quizAnswers } = useQuiz()
   const { push } = useRouter()
 
-  const { data: availability, error } = useSWR("/api/slots")
+  const { data: availability, error } = useSWR<EventResponseBody>("/api/slots")
 
   const [status, setStatus] = useState<string>("")
 
   const methods = useForm<ApplicationInput>({
-    resolver: zodResolver(applicationSchema),
+    resolver: zodResolver(
+      generateApplicationSchema(
+        Array.isArray(availability) && availability?.length > 0
+      )
+    ),
     defaultValues: {
       includeAnswers: true,
     },
@@ -89,7 +93,7 @@ const ApplicationForm = ({ quiz }: Props) => {
 
           <div className={s.appointmentSlots}>
             {availability || error ? (
-              availability?.length > 0 ? (
+              Array.isArray(availability) && availability?.length > 0 ? (
                 <CallBookingField availability={availability} />
               ) : (
                 <p className={s.noSlots}>

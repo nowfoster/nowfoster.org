@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import { ApiResponseBody } from "../../types"
-import { applicationSchema } from "../../lib/validators"
+import { generateApplicationSchema } from "../../lib/validators"
 import { sendNotifications } from "../../lib/emails"
 import { bookSlot } from "../../lib/calendar"
 import { createApplication, listApplications } from "../../lib/db"
@@ -13,7 +13,7 @@ const handler = async (
     switch (req.method) {
       case "POST":
         const data = JSON.parse(req.body)
-        applicationSchema.parse(data) // check payload is correctly formed
+        generateApplicationSchema(!!req.body.eventId).parse(data)
         const result = await createApplication(data)
         await bookSlot(result.data)
         await sendNotifications(result.data)
