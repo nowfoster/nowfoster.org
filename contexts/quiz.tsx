@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from "react"
+import { useRouter } from "next/router"
+import React, { createContext, useContext, useState, useEffect } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 import { Answer, Answers, Quiz, SectionAnswers } from "../types"
 
@@ -61,6 +62,9 @@ export const QuizAnswersProvider = ({
   }
 
   const quizStarted = Object.keys(quizAnswers).length > 0
+
+  const { pathname } = useRouter()
+  useEffect(() => setQuizOpen(false), [pathname])
 
   return (
     <QuizAnswersContext.Provider
