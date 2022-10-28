@@ -53,11 +53,13 @@ export const bookSlot = async (
     summary: `${event.summary} (BOOKED)`, // append title
   }
 
-  await calendar.events.update({
+  const res2 = await calendar.events.update({
     calendarId: GOOGLE_CALENDAR_ID,
     eventId: application.eventId,
     requestBody: newEvent,
   })
+
+  if (res2.status !== 200) throw "Failed to book slot"
 
   return
 }

@@ -15,6 +15,7 @@ const ApplicationForm = () => {
   const { push } = useRouter()
 
   const [availability, setAvailability] = useState<Event[] | null>(null)
+  const [status, setStatus] = useState<string>("")
 
   useEffect(() => {
     fetch("/api/slots")
@@ -46,7 +47,9 @@ const ApplicationForm = () => {
     if (res.ok) {
       push("/?application_confirmed=true")
     } else {
-      // TODO: handle bad responses (eg. appointment slot gone)
+      setStatus(
+        "There was a problem sending your application. Please refresh the page and try again."
+      )
     }
   }
 
@@ -99,6 +102,12 @@ const ApplicationForm = () => {
 
         {!isValid && submitCount > 0 && (
           <p className={s.error}>There were some problems with your answers</p>
+        )}
+
+        {status && (
+          <p role="alert" className={s.error}>
+            {status}
+          </p>
         )}
 
         <Button disabled={isSubmitting} loading={isSubmitting}>
