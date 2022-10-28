@@ -1,22 +1,16 @@
 @import "../styles/vars";
 @import "../styles/mixins";
 
-
 .fieldset,
 .day {
   border: none;
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 1rem;
 }
 
-.day {
-  gap: 0.5rem;
-
-  // @media screen and (min-width: $breakpoint-m) {
-  //   grid-template-columns: 1fr 1fr;
-  // }
+.fieldset {
+  gap: 1rem;
 }
 
 .legend {
@@ -34,7 +28,25 @@
 .option {
   @include radioField;
   background: $white;
+  border-radius: 0;
 
+  &:first-of-type {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  &:focus-within {
+    z-index: 2;
+  }
+
+  &:not(last-child) {
+    margin-bottom: 3px;
+  }
 
   label {
     padding: 0.5rem 1rem;
@@ -44,5 +56,76 @@
     color: $light-black;
     font-size: 0.8rem;
     margin-left: auto;
+  }
+}
+
+
+.skeleton {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  @keyframes loading {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(70%);
+    }
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, $grey, transparent);
+    background-repeat: no-repeat;
+    animation: loading 1s ease-out infinite;
+  }
+
+  &>div:first-child {
+    height: 1.2rem;
+    width: 200px;
+    background: $white;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  &>div {
+    display: grid;
+
+
+    div:first-child {
+      height: 1.2rem;
+      width: 120px;
+      margin-bottom: 0.25rem;
+      background: $white;
+      border-radius: 5px;
+    }
+
+    div {
+      height: 46px;
+      background: $white;
+
+      &:nth-of-type(2) {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      &:not(last-child) {
+        margin-bottom: 3px;
+      }
+    }
   }
 }

@@ -82,3 +82,23 @@ const CallBookingField = ({ availability }: Props) => {
 }
 
 export default CallBookingField
+
+export const CallBookingFieldSkeleton = () => (
+  <div aria-label="Loading appointment slots..." className={s.skeleton}>
+    <div></div>
+    <div>
+      <div></div>
+
+      <div></div>
+      <div></div>
+    </div>
+
+    <div>
+      <div></div>
+
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+)

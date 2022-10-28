@@ -5,7 +5,7 @@ import { FormProvider, useForm } from "react-hook-form"
 import { useQuiz } from "../contexts/quiz"
 import { applicationSchema } from "../lib/validators"
 import { ApplicationInput, Event } from "../types"
-import CallBookingField from "./CallBookingField"
+import CallBookingField, { CallBookingFieldSkeleton } from "./CallBookingField"
 import Field from "./Field"
 import Button from "./Button"
 import s from "./ApplicationForm.module.scss"
@@ -95,7 +95,7 @@ const ApplicationForm = () => {
                 </p>
               )
             ) : (
-              <p>Loading...</p>
+              <CallBookingFieldSkeleton />
             )}
           </div>
         </div>
