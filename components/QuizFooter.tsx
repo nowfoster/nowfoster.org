@@ -12,24 +12,25 @@ const QuizFooter = ({ quiz }: Props) => {
 
   const totalSections = quiz.sections.length
 
-  return (
-    <footer className={s.footer}>
-      <>
-        <meter
-          id="completed-sections"
-          value={completedSectionsCount}
-          max={totalSections}
-        />
-        <label htmlFor="completed-sections">
-          {completedSectionsCount} of {totalSections} completed
-        </label>
-      </>
+  if (quizStarted)
+    return (
+      <footer className={s.footer}>
+        <>
+          <meter
+            id="completed-sections"
+            value={completedSectionsCount}
+            max={totalSections}
+          />
+          <label htmlFor="completed-sections">
+            {completedSectionsCount} of {totalSections} completed
+          </label>
+        </>
 
-      <button className={s.button} onClick={openQuiz}>
-        Resume
-      </button>
-    </footer>
-  )
+        <button className={s.button} onClick={openQuiz}>
+          Resume
+        </button>
+      </footer>
+    )
 
   return null
 }
