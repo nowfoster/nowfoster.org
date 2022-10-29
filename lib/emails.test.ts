@@ -4,6 +4,8 @@ import sg from "@sendgrid/mail"
 
 jest.mock("@sendgrid/mail")
 
+process.env.DEFAULT_FROM = "foo@bar.com"
+
 describe("notifyAdmin", () => {
   it("calls sendgrid correctly", async () => {
     await notifyAdmin(mockApplication)
@@ -33,7 +35,7 @@ describe("notifyApplicant", () => {
   it("calls sendgrid correctly", async () => {
     await notifyApplicant(mockApplication)
     expect(sg.send).toBeCalledWith({
-      from: "jaye.hackett@gmail.com",
+      from: "foo@bar.com",
       personalizations: [
         {
           dynamicTemplateData: {
