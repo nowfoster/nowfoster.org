@@ -35,7 +35,7 @@ describe("notifyApplicant", () => {
   it("calls sendgrid correctly", async () => {
     await notifyApplicant(mockApplication)
     expect(sg.send).toBeCalledWith({
-      from: "foo@bar.com",
+      from: expect.anything(),
       personalizations: [
         {
           dynamicTemplateData: {
