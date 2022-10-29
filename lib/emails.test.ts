@@ -4,9 +4,12 @@ import sg from "@sendgrid/mail"
 
 jest.mock("@sendgrid/mail")
 
-process.env.DEFAULT_FROM = "foo@bar.com"
-
 describe("notifyAdmin", () => {
+  process.env.DEFAULT_FROM = "foo@bar.com"
+  process.env.NOTIFY_ADMIN_TEMPLATE_ID = ""
+  process.env.NOTIFY_APPLICANT_TEMPLATE_ID = ""
+  process.env.ADMIN_MAILBOX = "foo@bar.com"
+
   it("calls sendgrid correctly", async () => {
     await notifyAdmin(mockApplication)
     expect(sg.send).toBeCalledWith({
