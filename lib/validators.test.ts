@@ -1,14 +1,14 @@
 import { mockApplication } from "../mocks"
-import { applicationSchema } from "./validators"
+import { generateApplicationSchema } from "./validators"
 
 describe("applicationSchema", () => {
   it("does not throw on a complete application", () => {
-    applicationSchema.parse(mockApplication)
+    generateApplicationSchema(false).parse(mockApplication)
   })
 
   it("throws on an incomplete application", () => {
     expect(() =>
-      applicationSchema.parse({
+      generateApplicationSchema(false).parse({
         email: "blah",
       })
     ).toThrow()
