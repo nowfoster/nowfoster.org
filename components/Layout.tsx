@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Link from "next/link"
-import { decodeAnswers, useQuiz } from "../contexts/quiz"
+import { useQuiz } from "../contexts/quiz"
 import { Quiz } from "../types"
 import s from "./Layout.module.scss"
 import QuizDialog from "./QuizDialog"
