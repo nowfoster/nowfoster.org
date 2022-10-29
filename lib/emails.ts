@@ -1,7 +1,17 @@
 import sg from "@sendgrid/mail"
-import { Application } from "../types"
+import { Answers, Application } from "../types"
 
 sg.setApiKey(process.env.SENDGRID_API_KEY as string)
+
+const prettyAnswersPlain = (answers: Answers): string =>
+  Object.entries(answers)
+    .map(
+      ([sectionName, sectionAnswers]) =>
+        `${sectionName.toUpperCase()}\n${Object.entries(sectionAnswers)
+          .map(([question, answer]) => `${question}\n- ${answer}\n`)
+          .join("")}\n`
+    )
+    .join("")
 
 /** send alert to admin inbox that new application has been made */
 export const notifyAdmin = async (application: Application) =>
@@ -12,7 +22,11 @@ export const notifyAdmin = async (application: Application) =>
     personalizations: [
       {
         to: process.env.ADMIN_MAILBOX as string,
-        dynamicTemplateData: application,
+        dynamicTemplateData: {
+          ...application,
+          answers:
+            application.answers && prettyAnswersPlain(application.answers),
+        },
       },
     ],
   })
@@ -25,7 +39,11 @@ export const notifyApplicant = async (application: Application) =>
     personalizations: [
       {
         to: application.email,
-        dynamicTemplateData: application,
+        dynamicTemplateData: {
+          ...application,
+          answers:
+            application.answers && prettyAnswersPlain(application.answers),
+        },
       },
     ],
   })

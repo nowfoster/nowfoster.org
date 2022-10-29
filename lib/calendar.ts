@@ -1,4 +1,5 @@
-import { google } from "googleapis"
+import { calendar_v3, google } from "googleapis"
+import build from "next/dist/build"
 import { ApplicationInput, Event } from "../types"
 
 const { OAuth2 } = google.auth
@@ -46,12 +47,13 @@ export const bookSlot = async (
   })
   const event = res.data
 
-  const newEvent = {
+  const newEvent: calendar_v3.Schema$Event = {
     ...event,
     attendees: event.attendees
       ? event.attendees?.concat({ email: application.email })
       : [{ email: application.email }],
     summary: `${event.summary} (BOOKED)`, // append title
+    description: buildEventDescription(application),
   }
 
   const res2 = await calendar.events.update({
@@ -64,3 +66,24 @@ export const bookSlot = async (
 
   return
 }
+
+const buildEventDescription = (application: ApplicationInput): string =>
+  `<strong>Name:</strong> ${application.firstName} ${
+    application.lastName
+  }\n<strong>Email:</strong> ${application.email}\n<strong>Phone:</strong> ${
+    application.phone
+  }\n ${
+    application.answers
+      ? Object.entries(application.answers)
+          .map(
+            ([sectionName, sectionAnswers]) =>
+              `<h3>${sectionName}</h3>${Object.entries(sectionAnswers)
+                .map(
+                  ([question, answer]) =>
+                    `<strong>${question}</strong>\n${answer}\n`
+                )
+                .join("")}`
+          )
+          .join("")
+      : ""
+  }`
