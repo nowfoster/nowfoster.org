@@ -1,5 +1,6 @@
 * {
-  font-family: 'Poppins', sans-serif;
+  // font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
 }
 
@@ -44,7 +45,7 @@ meter {
   &::-moz-meter-bar,
   &::-webkit-meter-bar {
     appearance: none;
-    background: $blue;
-    border: 5px solid $blue;
+    background: $orange;
+    border: 5px solid $orange;
   }
 }

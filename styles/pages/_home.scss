@@ -4,11 +4,11 @@
   color: $white;
   position: relative;
 
-  &:before {
-    @include wavy;
-    background-color: $blue;
-    bottom: -4rem;
-  }
+  // &:before {
+  //   @include wavy;
+  //   background-color: $blue;
+  //   bottom: -4rem;
+  // }
 
   &__inner {
     display: flex;
@@ -23,6 +23,7 @@
     text-align: center;
     line-height: 1.1;
     margin: 0;
+    color: $orange;
 
     @media screen and (min-width: $breakpoint-m) {
       font-size: 6rem;
@@ -55,11 +56,11 @@
   background: $grey;
   position: relative;
 
-  &:before {
-    @include wavy;
-    background-color: $grey;
-    bottom: -4rem;
-  }
+  // &:before {
+  //   @include wavy;
+  //   background-color: $grey;
+  //   bottom: -4rem;
+  // }
 
   &__headline {
     text-align: center;
@@ -128,7 +129,7 @@
 
 .story {
   @include section-padding-m;
-  background: $black;
+  background: $blue;
   color: $white;
   text-align: center;
   font-size: 1.2rem;
