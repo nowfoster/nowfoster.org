@@ -14,7 +14,9 @@ const Home = ({ quiz, fosteringOptions }: Props) => (
   <>
     <section className="hero">
       <div className="container hero__inner">
-        <h1 className="hero__headline">The fostering service with heart</h1>
+        <h1 className="hero__headline">
+          Forget everything you think you know about fostering
+        </h1>
         <a href="#" className="hero__button">
           Learn about us <Icon />
         </a>
