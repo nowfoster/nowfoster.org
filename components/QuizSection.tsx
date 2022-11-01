@@ -57,16 +57,6 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
     if (valid) setActiveQuestionIndex(activeQuestionIndex + 1)
   }
 
-  formHelpers.watch((value, { name }) => {
-    if (question.id == name) {
-      const currentOption = question.options.find(
-        opt => opt.id === value[question.id]
-      )
-
-      if (currentOption) setSuggestion(currentOption)
-    }
-  })
-
   return (
     <section className={s.section}>
       <FormProvider {...formHelpers}>
@@ -86,7 +76,9 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
               Question {activeQuestionIndex + 1} of {section.questions.length}
             </p>
 
-            {question && <Question question={question} />}
+            {question && (
+              <Question question={question} setSuggestion={setSuggestion} />
+            )}
 
             {isLastQuestion && (
               <button
