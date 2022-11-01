@@ -80,7 +80,9 @@ const buildEventDescription = (application: ApplicationInput): string =>
               `<h3>${sectionName}</h3>${Object.entries(sectionAnswers)
                 .map(
                   ([question, answer]) =>
-                    `<strong>${question}</strong>\n${answer}\n`
+                    `<strong>${question}</strong>\n${
+                      Array.isArray(answer) ? answer.join(", ") : answer
+                    }\n`
                 )
                 .join("")}`
           )

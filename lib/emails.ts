@@ -8,7 +8,12 @@ const prettyAnswersPlain = (answers: Answers): string =>
     .map(
       ([sectionName, sectionAnswers]) =>
         `${sectionName.toUpperCase()}\n${Object.entries(sectionAnswers)
-          .map(([question, answer]) => `${question}\n- ${answer}\n`)
+          .map(
+            ([question, answer]) =>
+              `${question}\n- ${
+                Array.isArray(answer) ? answer.join(", ") : answer
+              }\n`
+          )
           .join("")}\n`
     )
     .join("")
