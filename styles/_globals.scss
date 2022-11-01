@@ -38,9 +38,7 @@ label {
 }
 
 meter {
-  background: none;
-  // border: 3px solid $black;
-  background: $very-light-blue;
+  background: $grey;
   border-radius: 15px;
   overflow: hidden;
   width: 10rem;

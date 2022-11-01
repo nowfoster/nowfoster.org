@@ -1,6 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
 import { useQuiz } from "../contexts/quiz"
+import { decodeAnswers } from "../lib/quiz"
 import { Quiz } from "../types"
 import s from "./Layout.module.scss"
 import QuizDialog from "./QuizDialog"
@@ -12,7 +13,12 @@ interface Props {
 }
 
 const Layout = ({ children, quiz }: Props) => {
-  const { quizStarted, getAllMandatorySectionsCompleted, openQuiz } = useQuiz()
+  const {
+    quizStarted,
+    getAllMandatorySectionsCompleted,
+    openQuiz,
+    quizAnswers,
+  } = useQuiz()
 
   const allMandatorySectionsCompleted =
     quiz && getAllMandatorySectionsCompleted(quiz)

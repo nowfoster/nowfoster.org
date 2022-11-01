@@ -26,15 +26,20 @@ export const generateApplicationSchema = (eventsAvailable: boolean) => {
   return eventsAvailable ? schema : schema.omit({ eventId: true })
 }
 
-export const questionSchema = z.object({
-  answer: z.string().min(1, { message: "You must choose an option" }),
-})
-
 export const generateQuizSchema = (questions: Question[]) => {
   const shape = questions.reduce<Record<string, any>>((shape, question, i) => {
-    shape[question.id] = z
-      .string({ invalid_type_error: "You must choose an option" })
-      .min(1, { message: "You must choose an option" })
+    if (question.selectMultipleOptions) {
+      shape[question.id] = z
+        .array(z.string(), {
+          invalid_type_error: "Explore some options to continue",
+        })
+        .min(1, { message: "Explore some options to continue" })
+    } else {
+      shape[question.id] = z
+        .string({ invalid_type_error: "You must choose an option" })
+        .min(1, { message: "You must choose an option" })
+    }
+
     return shape
   }, {})
 

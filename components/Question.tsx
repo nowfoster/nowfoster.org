@@ -27,9 +27,14 @@ const Question = ({ question }: Props) => {
 
       <fieldset className={s.fieldset}>
         {question.options.map((option, i) => (
-          <div className={s.radioField} key={`${i}-${option.id}`}>
+          <div
+            className={
+              question.selectMultipleOptions ? s.checkboxField : s.radioField
+            }
+            key={`${i}-${option.id}`}
+          >
             <input
-              type={"radio"}
+              type={question.selectMultipleOptions ? "checkbox" : "radio"}
               value={option.id}
               id={`${i}-${option.id}`}
               {...register(question.id)}
