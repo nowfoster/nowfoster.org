@@ -26,8 +26,17 @@
     color: $orange;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 6rem;
+      font-size: 5rem;
     }
+  }
+
+  &__strap {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0;
+    color: $white;
   }
 
   &__button {

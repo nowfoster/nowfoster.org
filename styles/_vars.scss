@@ -1,15 +1,15 @@
 // colours
-$black: #0B0C0C;
+$black: #09121a;
 $white: #ffffff;
 $grey: #F3F2F2;
-$orange: #EA7068;
+$orange: #FF645A; // #EA7068;
 $blue: #112231;
-$yellow: #EAE268;
+$yellow: #FFD65A;
 $red: #B41616;
 
 // extended palette
-$light-black: lighten($black, 30);
-$dark-blue: darken($blue, 10);
+$light-black: transparentize($blue, 0.25);
+$dark-blue: darken($blue, 2);
 $very-light-blue: lighten($blue, 45);
 $dark-white: darken($white, 10);
 

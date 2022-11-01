@@ -73,6 +73,12 @@ export interface IQuestionFields {
 
   /** Options */
   options: ISuggestion[];
+
+  /** Select multiple options? */
+  selectMultipleOptions?: boolean | undefined;
+
+  /** Show suggestions? */
+  showSuggestions?: boolean | undefined;
 }
 
 /** One "step" or question in the quiz. Grouped into sections. */

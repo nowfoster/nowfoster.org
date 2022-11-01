@@ -105,7 +105,7 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
           )}
         </div>
 
-        <Suggestion suggestion={suggestion} />
+        {question.showSuggestions && <Suggestion suggestion={suggestion} />}
       </FormProvider>
     </section>
   )
