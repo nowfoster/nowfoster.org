@@ -1,4 +1,5 @@
 import { z } from "zod"
+import allowedPrefixes from "../config/postcodes"
 import { Question } from "../types"
 
 export const generateApplicationSchema = (eventsAvailable: boolean) => {
@@ -45,3 +46,15 @@ export const generateQuizSchema = (questions: Question[]) => {
 
   return z.object(shape)
 }
+
+export const postcodeSchema = z.object({
+  postcode: z
+    .string()
+    .regex(
+      /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/,
+      "That doesn't look like a valid postcode"
+    )
+    .refine(val => allowedPrefixes.find(prefix => val.startsWith(prefix)), {
+      message: "You're not in our pilot area",
+    }),
+})
