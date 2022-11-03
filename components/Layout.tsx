@@ -98,8 +98,11 @@ const Layout = ({ children, quiz }: Props) => {
               <li>
                 <a href="#">Contact us</a>
               </li>
+
               <li>
-                <a href="/privacy">Privacy</a>
+                <Link href="/privacy">
+                  <a>Privacy</a>
+                </Link>
               </li>
               <li>
                 <a href="#">Inclusion</a>
