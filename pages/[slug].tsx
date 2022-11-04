@@ -27,8 +27,8 @@ const GenericPage = ({ page }: Props) => {
       <section className="page-masthead">
         <ul className="page-masthead__breadcrumbs">
           <li className="page-masthead__crumb">
-            <Link href="/">
-              <a className="page-masthead__crumb-link">Home</a>
+            <Link href="/" className="page-masthead__crumb-link">
+              Home
             </Link>
           </li>
           <li className="page-masthead__crumb">

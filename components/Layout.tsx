@@ -36,8 +36,8 @@ const Layout = ({ children, quiz }: Props) => {
 
       <header className={s.header}>
         <div className={s.inner}>
-          <Link href="/">
-            <a className={s.masthead}>Now Foster</a>
+          <Link href="/" className={s.masthead}>
+            Now Foster
           </Link>
 
           <nav className={s.nav}>
@@ -53,8 +53,8 @@ const Layout = ({ children, quiz }: Props) => {
               </li>
               <li>
                 {allMandatorySectionsCompleted ? (
-                  <Link href="/apply">
-                    <a className={s.primary}>Apply now</a>
+                  <Link href="/apply" className={s.primary}>
+                    Apply now
                   </Link>
                 ) : (
                   <button className={s.primary} onClick={openQuiz}>
@@ -100,9 +100,7 @@ const Layout = ({ children, quiz }: Props) => {
               </li>
 
               <li>
-                <Link href="/privacy">
-                  <a>Privacy</a>
-                </Link>
+                <Link href="/privacy">Privacy</Link>
               </li>
               <li>
                 <a href="#">Inclusion</a>
