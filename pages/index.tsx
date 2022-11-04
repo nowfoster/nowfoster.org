@@ -17,9 +17,11 @@ const Home = ({ quiz, fosteringOptions }: Props) => (
         <h1 className="hero__headline">
           Forget everything you think you know about fostering
         </h1>
-        <p className="hero__strap">Example strapline goes here</p>
+        <p className="hero__strap">
+          Explore what it really takes to be a great foster carer{" "}
+        </p>
         <a href="#" className="hero__button">
-          Learn about us <Icon />
+          Could you foster? <Icon />
         </a>
       </div>
     </section>
@@ -49,15 +51,14 @@ const Home = ({ quiz, fosteringOptions }: Props) => (
 
     <section className="story">
       <div className="container">
-        <p>Forget everything you think you know about fostering.</p>
+        <p>Fostering with us</p>
         <p>
-          We’re a not-for-profit start-up building a brand new way of doing
-          things that empowers brilliant people to care for children and young
-          people.
+          Now Foster is a team of innovative social workers, designers and
+          entrepreneurs who want to change how fostering is done.
         </p>
         <p>
-          There are a lot of myths around fostering. Explore what it really
-          takes to be a great foster carer.
+          We work alongside innovative councils across the UK to find and
+          empower brilliant people to care for children and young people.
         </p>
       </div>
     </section>

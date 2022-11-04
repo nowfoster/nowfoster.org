@@ -3,6 +3,37 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
+export interface IContentBlockFields {
+  /** Headline */
+  headline: string;
+
+  /** Subheadline */
+  subheadline?: string | undefined;
+
+  /** Body text */
+  bodyText: Document;
+
+  /** Image */
+  image: Asset;
+}
+
+export interface IContentBlock extends Entry<IContentBlockFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "contentBlock";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IFosteringOptionFields {
   /** Title */
   title: string;
@@ -31,6 +62,37 @@ export interface IFosteringOption extends Entry<IFosteringOptionFields> {
   };
 }
 
+export interface IFosteringStoriesFields {
+  /** Headline */
+  headline?: string | undefined;
+
+  /** URL */
+  url?: string | undefined;
+
+  /** Image */
+  image?: Asset | undefined;
+
+  /** Quote */
+  quote?: string | undefined;
+}
+
+export interface IFosteringStories extends Entry<IFosteringStoriesFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "fosteringStories";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export interface IPageFields {
   /** Page title */
   pageTitle: string;
@@ -40,6 +102,9 @@ export interface IPageFields {
 
   /** Slug */
   slug: string;
+
+  /** Content blocks */
+  contentBlocks?: IContentBlock[] | undefined;
 
   /** Content */
   content: Document;
@@ -71,14 +136,11 @@ export interface IQuestionFields {
   /** Hint */
   hint?: Document | undefined;
 
+  /** What kind of question is this? */
+  questionType: "radio" | "checkbox" | "explorer";
+
   /** Options */
   options: ISuggestion[];
-
-  /** Select multiple options? */
-  selectMultipleOptions?: boolean | undefined;
-
-  /** Show suggestions? */
-  showSuggestions?: boolean | undefined;
 }
 
 /** One "step" or question in the quiz. Grouped into sections. */
@@ -167,7 +229,9 @@ export interface ISuggestion extends Entry<ISuggestionFields> {
 }
 
 export type CONTENT_TYPE =
+  | "contentBlock"
   | "fosteringOption"
+  | "fosteringStories"
   | "page"
   | "question"
   | "quizSection"

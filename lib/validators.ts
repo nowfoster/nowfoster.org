@@ -22,6 +22,9 @@ export const generateApplicationSchema = (eventsAvailable: boolean) => {
       required_error: "You must choose a time for a call",
       invalid_type_error: "You must choose a time for a call",
     }),
+    contactPreference: z.string(),
+    stage: z.string(),
+    discussionTopics: z.string(),
   })
 
   return eventsAvailable ? schema : schema.omit({ eventId: true })
@@ -29,16 +32,16 @@ export const generateApplicationSchema = (eventsAvailable: boolean) => {
 
 export const generateQuizSchema = (questions: Question[]) => {
   const shape = questions.reduce<Record<string, any>>((shape, question, i) => {
-    if (question.selectMultipleOptions) {
+    if (question.questionType === "checkbox") {
+      shape[question.id] = z.optional(z.array(z.string()))
+    } else if (question.questionType === "explorer") {
       shape[question.id] = z
-        .array(z.string(), {
-          invalid_type_error: "Explore some options to continue",
-        })
+        .string({ invalid_type_error: "Explore some options to continue" })
         .min(1, { message: "Explore some options to continue" })
     } else {
       shape[question.id] = z
-        .string({ invalid_type_error: "You must choose an option" })
-        .min(1, { message: "You must choose an option" })
+        .string({ invalid_type_error: "Choose an option to continue" })
+        .min(1, { message: "Choose an option to continue" })
     }
 
     return shape

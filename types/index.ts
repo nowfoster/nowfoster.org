@@ -50,6 +50,12 @@ export interface Answers {
 
 export type ApplicationInput = Omit<Application, "createdAt">
 
+export enum ContactPreference {
+  Video = "video",
+  Phone = "phone",
+  Text = "text",
+}
+
 export interface Application {
   firstName: string
   lastName: string
@@ -59,6 +65,10 @@ export interface Application {
   answers?: Answers
   eventId: string // gcal event id
   createdAt: string
+  // more qs
+  contactPreference: ContactPreference
+  stage: string
+  discussionTopics: string
 }
 
 export type ApiResponseBody = values.Document<Application> | { error: string }

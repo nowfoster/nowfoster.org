@@ -2,6 +2,8 @@ import Link from "next/link"
 import { useState } from "react"
 import {
   Answer,
+  Answers,
+  Question as IQuestion,
   QuizSection,
   SectionAnswers,
   Suggestion as ISuggestion,
@@ -15,6 +17,7 @@ import { generateQuizSchema } from "../lib/validators"
 import { useQuiz } from "../contexts/quiz"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Suggestion from "./Suggestion"
+import { generateInitialAnswers, removeExplorerAnswers } from "../lib/quiz"
 
 interface Props {
   section: QuizSection
@@ -42,13 +45,13 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
 
   const formHelpers = useForm<SectionAnswers>({
     defaultValues: {
-      ...quizAnswers[section.id],
+      ...(quizAnswers[section.id] || generateInitialAnswers(section.questions)),
     },
     resolver: zodResolver(generateQuizSchema(section.questions)),
   })
 
   const onSubmit = (answers: SectionAnswers) => {
-    answerSection(section.id, answers)
+    answerSection(section.id, removeExplorerAnswers(answers, section.questions))
     setActiveSectionId(null)
   }
 
@@ -97,7 +100,9 @@ const QuizSection = ({ section, setActiveSectionId }: Props) => {
           )}
         </div>
 
-        {question.showSuggestions && <Suggestion suggestion={suggestion} />}
+        {question.questionType !== "checkbox" && (
+          <Suggestion suggestion={suggestion} />
+        )}
       </FormProvider>
     </section>
   )

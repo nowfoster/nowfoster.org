@@ -89,6 +89,11 @@ const ApplicationForm = ({ quiz }: Props) => {
               name="includeAnswers"
               type="checkbox"
             />
+
+            <Field
+              label="Is there anything in particular that you’d like to discuss? or remember to ask?"
+              name="discussionTopics"
+            />
           </div>
 
           <div className={s.appointmentSlots}>

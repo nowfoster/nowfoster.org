@@ -30,12 +30,14 @@ const Question = ({ question, setSuggestion }: Props) => {
         {question.options.map((option, i) => (
           <div
             className={
-              question.selectMultipleOptions ? s.checkboxField : s.radioField
+              question.questionType === "checkbox"
+                ? s.checkboxField
+                : s.radioField
             }
             key={`${i}-${option.id}`}
           >
             <input
-              type={question.selectMultipleOptions ? "checkbox" : "radio"}
+              type={question.questionType === "checkbox" ? "checkbox" : "radio"}
               value={option.id}
               id={`${i}-${option.id}`}
               {...register(question.id)}

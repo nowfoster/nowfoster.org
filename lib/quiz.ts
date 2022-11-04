@@ -1,4 +1,11 @@
-import { Answers, Option, Question, Quiz, QuizSection } from "../types"
+import {
+  Answers,
+  Option,
+  Question,
+  Quiz,
+  QuizSection,
+  SectionAnswers,
+} from "../types"
 
 const getOptionById = (
   optionId: string,
@@ -41,4 +48,23 @@ export const decodeAnswers = (answers: Answers, quiz: Quiz): Answers =>
         ),
       ]
     })
+  )
+
+export const generateInitialAnswers = (questions: Question[]): SectionAnswers =>
+  questions.reduce<SectionAnswers>((acc, question) => {
+    if (question.questionType === "radio") acc[question.id] = ""
+    if (question.questionType === "checkbox") acc[question.id] = []
+    return acc
+  }, {})
+
+export const removeExplorerAnswers = (
+  answers: SectionAnswers,
+  questions: Question[]
+): SectionAnswers =>
+  Object.fromEntries(
+    Object.entries(answers).filter(
+      ([questionId]) =>
+        questions.find(question => questionId === question.id)?.questionType !==
+        "explorer"
+    )
   )
