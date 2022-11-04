@@ -2,12 +2,8 @@ import { useQuiz } from "../contexts/quiz"
 import { Quiz } from "../types"
 import QuizSection from "./QuizSection"
 import s from "./QuizDialog.module.scss"
-import crossIcon from "./cross.svg"
-import Image from "next/image"
-import { useRouter } from "next/router"
 import useDialog from "../hooks/useDialog"
 import SectionList from "./SectionList"
-import Link from "next/link"
 import { useState } from "react"
 
 interface Props {
@@ -16,12 +12,14 @@ interface Props {
 
 const QuizDialog = ({ quiz, ...props }: Props) => {
   const { dialogRef, handleClickBackdrop } = useDialog()
-  const { quizOpen, closeQuiz } = useQuiz()
+  const { quizOpen, closeQuiz, completedSectionsCount } = useQuiz()
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null)
 
   const activeSection = quiz.sections.find(
     section => section.id === activeSectionId
   )
+
+  const totalSections = quiz.sections.length
 
   if (quizOpen)
     return (
@@ -33,6 +31,13 @@ const QuizDialog = ({ quiz, ...props }: Props) => {
         className={s.dialog}
         {...props}
       >
+        <meter
+          className={s.meter}
+          id="completed-sections"
+          value={completedSectionsCount}
+          max={totalSections}
+        />
+
         <div className={s.inner}>
           <button
             onClick={closeQuiz}

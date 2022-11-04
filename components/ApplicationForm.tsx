@@ -4,7 +4,13 @@ import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
 import { useQuiz } from "../contexts/quiz"
 import { generateApplicationSchema } from "../lib/validators"
-import { ApplicationInput, EventResponseBody, Quiz } from "../types"
+import {
+  ApplicationInput,
+  ContactPreference,
+  EventResponseBody,
+  LevelOfInterest,
+  Quiz,
+} from "../types"
 import CallBookingField, { CallBookingFieldSkeleton } from "./CallBookingField"
 import Field from "./Field"
 import Button from "./Button"
@@ -90,10 +96,36 @@ const ApplicationForm = ({ quiz }: Props) => {
               type="checkbox"
             />
 
-            <Field
-              label="Is there anything in particular that you’d like to discuss? or remember to ask?"
-              name="discussionTopics"
-            />
+            <fieldset>
+              <legend>How do you want to chat?</legend>
+
+              {Object.entries(ContactPreference).map(([label, value]) => (
+                <div key={`contactPreference-${value}`}>
+                  <input
+                    name="contactPreference"
+                    type="radio"
+                    value={value}
+                    id={`contactPreference-${value}`}
+                  />
+                  <label htmlFor={`contactPreference-${value}`}>{label}</label>
+                </div>
+              ))}
+            </fieldset>
+
+            <fieldset>
+              <legend>How interested are you?</legend>
+              {Object.entries(LevelOfInterest).map(([label, value]) => (
+                <div key={`levelOfInterest-${value}`}>
+                  <input
+                    name="levelOfInterest"
+                    type="radio"
+                    value={value}
+                    id={`levelOfInterest-${value}`}
+                  />
+                  <label htmlFor={`levelOfInterest-${value}`}>{value}</label>
+                </div>
+              ))}
+            </fieldset>
           </div>
 
           <div className={s.appointmentSlots}>

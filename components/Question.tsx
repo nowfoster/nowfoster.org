@@ -30,7 +30,9 @@ const Question = ({ question, setSuggestion }: Props) => {
         {question.options.map((option, i) => (
           <div
             className={
-              question.questionType === "checkbox"
+              question.questionType === "explorer"
+                ? s.explorerField
+                : question.questionType === "checkbox"
                 ? s.checkboxField
                 : s.radioField
             }

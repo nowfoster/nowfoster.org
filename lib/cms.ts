@@ -1,8 +1,9 @@
 import * as contentful from "contentful"
 import { create } from "domain"
-import { FosteringOption, Quiz } from "../types"
+import { FosteringOption, FosteringStory, Quiz } from "../types"
 import {
   IFosteringOptionFields,
+  IFosteringStoriesFields,
   IPage,
   IPageFields,
   IQuizSectionFields,
@@ -69,6 +70,23 @@ export const getFosteringOptions = async (
   const data = await client.getEntries<IFosteringOptionFields>({
     include: 2,
     content_type: "fosteringOption",
+    order: "sys.createdAt", // oldest first
+  })
+
+  return data.items.map(item => ({
+    id: item.sys.id,
+    ...item.fields,
+  }))
+}
+
+export const getFosteringStories = async (
+  opts?: Opts
+): Promise<FosteringStory[]> => {
+  const client = createClient(opts?.preview)
+
+  const data = await client.getEntries<IFosteringStoriesFields>({
+    include: 2,
+    content_type: "fosteringStories",
     order: "sys.createdAt", // oldest first
   })
 

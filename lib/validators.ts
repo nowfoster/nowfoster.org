@@ -1,5 +1,5 @@
 import { z } from "zod"
-import allowedPrefixes from "../config/postcodes"
+import { allowedPrefixes } from "../config"
 import { Question } from "../types"
 
 export const generateApplicationSchema = (eventsAvailable: boolean) => {
@@ -23,7 +23,7 @@ export const generateApplicationSchema = (eventsAvailable: boolean) => {
       invalid_type_error: "You must choose a time for a call",
     }),
     contactPreference: z.string(),
-    stage: z.string(),
+    levelOfInterest: z.string(),
     discussionTopics: z.string(),
   })
 

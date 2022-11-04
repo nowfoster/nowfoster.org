@@ -4,6 +4,7 @@ import { optional } from "zod"
 import {
   IFosteringOption,
   IFosteringOptionFields,
+  IFosteringStoriesFields,
   IQuestionFields,
   IQuizSectionFields,
   ISuggestionFields,
@@ -16,6 +17,10 @@ export interface Option extends ISuggestionFields {
 export type Suggestion = Omit<ISuggestionFields, "optionText">
 
 export interface FosteringOption extends IFosteringOptionFields {
+  id: string
+}
+
+export interface FosteringStory extends IFosteringStoriesFields {
   id: string
 }
 
@@ -43,17 +48,16 @@ export interface Answers {
   [key: string]: SectionAnswers
 }
 
-// export interface Option {
-//   label: string
-//   value: string
-// }
-
-export type ApplicationInput = Omit<Application, "createdAt">
-
 export enum ContactPreference {
-  Video = "video",
-  Phone = "phone",
-  Text = "text",
+  Video = "Video",
+  Phone = "Phone",
+  Text = "Text",
+}
+
+export enum LevelOfInterest {
+  Starting = "Just starting to think about it",
+  While = "Been thinking about it for a while",
+  Definitely = "I definitely want to foster",
 }
 
 export interface Application {
@@ -67,9 +71,11 @@ export interface Application {
   createdAt: string
   // more qs
   contactPreference: ContactPreference
-  stage: string
+  levelOfInterest: LevelOfInterest
   discussionTopics: string
 }
+
+export type ApplicationInput = Omit<Application, "createdAt">
 
 export type ApiResponseBody = values.Document<Application> | { error: string }
 

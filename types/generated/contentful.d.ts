@@ -64,16 +64,16 @@ export interface IFosteringOption extends Entry<IFosteringOptionFields> {
 
 export interface IFosteringStoriesFields {
   /** Headline */
-  headline?: string | undefined;
+  headline: string;
 
   /** URL */
-  url?: string | undefined;
+  url: string;
 
   /** Image */
-  image?: Asset | undefined;
+  image: Asset;
 
   /** Quote */
-  quote?: string | undefined;
+  quote: string;
 }
 
 export interface IFosteringStories extends Entry<IFosteringStoriesFields> {
@@ -107,7 +107,7 @@ export interface IPageFields {
   contentBlocks?: IContentBlock[] | undefined;
 
   /** Content */
-  content: Document;
+  content?: Document | undefined;
 }
 
 /** Generic empty pages for arbitrary text or HTML content */
