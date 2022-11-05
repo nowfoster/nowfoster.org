@@ -2,7 +2,7 @@
 $black: #09121a;
 $white: #ffffff;
 $grey: #F3F2F2;
-$orange: #FF645A; // #EA7068;
+$orange: #E6554B; // #EA7068;
 $blue: #112231;
 $yellow: #FFD65A;
 $red: #B41616;
@@ -12,6 +12,9 @@ $light-black: transparentize($blue, 0.25);
 $dark-blue: darken($blue, 2);
 $very-light-blue: lighten($blue, 45);
 $dark-white: darken($white, 10);
+
+
+$dark-orange: darken($orange, 3);
 
 // breakpoints
 $breakpoint-s: 500px;

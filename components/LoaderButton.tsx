@@ -1,5 +1,5 @@
 import Link from "next/link"
-import s from "./Button.module.scss"
+import s from "./LoaderButton.module.scss"
 
 export const Icon = () => (
   <svg width="21" height="14" viewBox="0 0 21 14" fill="none">
@@ -40,12 +40,12 @@ export const Spinner = () => (
 )
 
 //@ts-ignore
-const Button = ({ children, loading, ...props }) => (
-  <button className={s.button} {...props}>
+const LoaderButton = ({ children, loading, ...props }) => (
+  <button className="button" {...props}>
     {loading && <Spinner />}
     {children}
     <Icon />
   </button>
 )
 
-export default Button
+export default LoaderButton

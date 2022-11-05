@@ -2,7 +2,7 @@
 @import "../styles/mixins";
 
 .hero {
-  @include section-padding-m;
+  @include section-padding-l;
   background: $blue;
   color: $white;
   position: relative;
@@ -16,20 +16,20 @@
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     text-align: center;
     line-height: 1.1;
     margin: 0;
     color: $orange;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 5rem;
+      font-size: 4rem;
     }
   }
 
   p {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    // font-weight: bold;
     text-align: center;
     line-height: 1.1;
     margin: 0;
@@ -39,21 +39,6 @@
   a {
     @include button;
     width: auto;
-    border: 2px solid $white;
-    color: $white;
-
-    &:hover {
-      background: $blue;
-      color: $white;
-    }
-
-    &:focus,
-    &:active {
-      background: $yellow;
-      border-color: $yellow;
-      color: $black;
-    }
-
   }
 }
 
@@ -62,38 +47,15 @@
   background: $grey;
   position: relative;
 
-  // &:before {
-  //   @include wavy;
-  //   background-color: $grey;
-  //   bottom: -4rem;
-  // }
-
-  h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin: 0;
-  }
-
   a {
-    @include button;
-    margin-top: 1rem;
-    margin: 2rem auto 0;
-
-    &:hover {
-      color: $white;
-    }
-
-    &:focus,
-    &:active {
-      color: $black;
-    }
+    margin: 2.5rem auto 0 auto;
   }
 }
 
 .optionsList {
   display: grid;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 
   @media screen and (min-width: $breakpoint-m) {
     grid-template-columns: 1fr 1fr; // 2x2 grid
@@ -106,12 +68,10 @@
   article {
     background: $white;
     padding: 1.5rem;
-    border-radius: 15px;
-    border: 3px solid $black;
+    border-radius: $border-radius-s;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    text-align: center;
 
     * {
       margin: 0;
@@ -119,28 +79,49 @@
 
   }
 
-  p:last-child {
-    font-weight: bold;
-    display: block;
-    margin-top: auto;
-  }
-
   h3 {
     margin-top: 0;
     font-size: 1.5rem;
     margin-bottom: 0;
+    color: $orange;
   }
+
+  p {
+    color: $blue;
+
+    &:last-child {
+      font-weight: bold;
+      display: block;
+      margin-top: auto;
+    }
+  }
+}
+
+.stories {
+  @include section-padding-m;
 }
 
 
 .story {
   @include section-padding-m;
-  background: $blue;
-  color: $white;
+  background: $grey;
+  color: $black;
   text-align: center;
   font-size: 1.2rem;
 
-  @media screen and (min-width: $breakpoint-m) {
-    font-size: 1.5rem;
+  &:nth-child(odd) {
+    background: $white;
+  }
+
+  &>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  p {
+    @include contained-width-s;
+    margin: 0;
   }
 }

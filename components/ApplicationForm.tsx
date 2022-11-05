@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
@@ -13,10 +13,10 @@ import {
 } from "../types"
 import CallBookingField, { CallBookingFieldSkeleton } from "./CallBookingField"
 import Field from "./Field"
-import Button from "./Button"
 import s from "./ApplicationForm.module.scss"
 import { decodeAnswers } from "../lib/quiz"
 import useSWR from "swr"
+import LoaderButton from "./LoaderButton"
 
 interface Props {
   quiz: Quiz
@@ -154,9 +154,9 @@ const ApplicationForm = ({ quiz }: Props) => {
           </p>
         )}
 
-        <Button disabled={isSubmitting} loading={isSubmitting}>
+        <LoaderButton disabled={isSubmitting} loading={isSubmitting}>
           Apply
-        </Button>
+        </LoaderButton>
       </form>
     </FormProvider>
   )

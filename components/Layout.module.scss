@@ -18,6 +18,10 @@
 .header {
   background: $black;
   color: $white;
+
+  @media screen and (min-width: $breakpoint-m) {
+    background: $blue;
+  }
 }
 
 .inner {
@@ -34,7 +38,7 @@
 }
 
 .masthead {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: $white;
   text-decoration: none;
   font-weight: bold;
@@ -103,18 +107,13 @@ button.primary {
   }
 
   @media screen and (min-width: $breakpoint-m) {
-    background: $white;
-    color: $black;
-    padding: 0.3rem 1.2rem;
-    border-radius: 100px;
+    @include button;
+    font-weight: 600;
 
-    &:hover {
-      text-decoration: none;
-      background: $dark-white;
-    }
-
-    &:focus {
-      outline: none;
+    // bit hacky but overrides priority
+    @media screen and (min-width: $breakpoint-m) {
+      padding: 0.3rem 1.2rem;
+      font-size: 1rem;
     }
   }
 }

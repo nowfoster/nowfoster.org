@@ -1,5 +1,5 @@
 import type { GetStaticProps } from "next"
-import { Icon } from "../components/Button"
+import { Icon } from "../components/LoaderButton"
 import FosteringStory from "../components/FosteringStory"
 import s from "./index.module.scss"
 
@@ -37,9 +37,11 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
 
     <section className={s.options}>
       <div className="container">
-        <h2>Kinds of fostering</h2>
+        <h2 className="section-heading">Kinds of fostering</h2>
 
-        <p>There&apos;s lots of choice and flexibility in fostering.</p>
+        <p className="section-caption">
+          There&apos;s lots of choice and flexibility in fostering.
+        </p>
 
         <div className={s.optionsList}>
           {fosteringOptions.map(option => (
@@ -51,17 +53,17 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
           ))}
         </div>
 
-        <a className="options__button" href="#">
+        <a className="button" href="#">
           Could you foster?
           <Icon />
         </a>
       </div>
     </section>
 
-    <section className="stories">
+    <section className={s.stories}>
       <div className="container">
-        <h2>Fostering stories</h2>
-        <p>Join our community of foster carers</p>
+        <h2 className="section-heading">Fostering stories</h2>
+        <p className="section-caption">Join our community of foster carers</p>
 
         <div>
           {fosteringStories.map(story => (
@@ -69,7 +71,7 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
           ))}
         </div>
 
-        <a href={blogUrl}>
+        <a href={blogUrl} className="button">
           Explore more stories
           <Icon />
         </a>
@@ -78,7 +80,7 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
 
     <section className={s.story}>
       <div className="container">
-        <p>Fostering with us</p>
+        <h2 className="section-heading">Fostering with us</h2>
         <p>
           Now Foster is a team of innovative social workers, designers and
           entrepreneurs who want to change how fostering is done.
@@ -88,7 +90,7 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
           empower brilliant people to care for children and young people.
         </p>
 
-        <a href="#">
+        <a href="#" className="button">
           Learn more
           <Icon />
         </a>
@@ -97,7 +99,7 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
 
     <section className={s.story}>
       <div className="container">
-        <p>Why foster?</p>
+        <h2 className="section-heading">Why foster?</h2>
         <p>
           Now Foster is a team of innovative social workers, designers and
           entrepreneurs who want to change how fostering is done.

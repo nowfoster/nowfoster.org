@@ -11,3 +11,20 @@
   @include contained-width-l;
   @include standard-padding;
 }
+
+.button {
+  @include button;
+}
+
+.section-heading {
+  font-size: 2.5rem;
+  margin: 0;
+  color: $orange;
+  text-align: center;
+}
+
+.section-caption {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
