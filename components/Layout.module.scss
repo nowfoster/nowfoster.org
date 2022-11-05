@@ -123,8 +123,25 @@ button.primary {
   color: $white;
   padding: 3rem 1rem;
 
-  a {
+  a,
+  button {
+    background: none;
+    border: none;
+    padding: 0;
     color: $white;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus,
+    &:active {
+      background-color: $yellow;
+      color: $black;
+      outline: 3px solid $yellow;
+    }
   }
 
   @media screen and (min-width: $breakpoint-l) {

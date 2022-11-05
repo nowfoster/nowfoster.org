@@ -18,10 +18,7 @@ const ApplyPage = ({ quiz }: Props) => {
         </title>
       </Head>
 
-      <PageMasthead
-        crumbs={<li>Book</li>}
-        title="Book an intro chat"
-      ></PageMasthead>
+      <PageMasthead crumbs={<li>Book</li>} title="Book an intro chat" />
 
       <div className="container">
         <ApplicationForm quiz={quiz} />

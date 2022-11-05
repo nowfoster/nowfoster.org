@@ -1,5 +1,7 @@
+import { GetServerSideProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
+import { getQuizContent } from "../lib/cms"
 import s from "./404.module.scss"
 
 const NotFoundPage = () => (

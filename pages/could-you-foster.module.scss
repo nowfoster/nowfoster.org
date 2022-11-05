@@ -1,0 +1,82 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.canvas {
+  height: 100vh;
+  background: $black;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.header {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  @include standard-padding;
+  animation: fadeIn 0.5s cubic-bezier(.87, -.41, .19, 1.44);
+  ;
+
+  * {
+    margin: 0;
+  }
+}
+
+.mount {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.inner {
+  background: white;
+  max-width: 900px;
+  width: 100%;
+  height: 500px;
+  border-radius: $border-radius-s;
+  animation: fadeIn 1s cubic-bezier(.87, -.41, .19, 1.44);
+
+}
+
+.closeButton {
+  border-radius: 15px;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  display: flex;
+  cursor: pointer;
+
+  path {
+    fill: $white;
+  }
+
+  &:focus,
+  &:active {
+    background: $yellow;
+    outline: none;
+
+    path {
+      fill: black;
+    }
+  }
+}
+
+.closeIcon {
+  width: 30px;
+  height: 30px;
+}

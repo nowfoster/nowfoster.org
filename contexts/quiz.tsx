@@ -10,9 +10,6 @@ interface ContextType {
   getAllMandatorySectionsCompleted: (quiz: Quiz) => boolean
   startOver: () => void
   answerSection: (sectionId: string, answers: SectionAnswers) => void
-  quizOpen: boolean
-  openQuiz: () => void
-  closeQuiz: () => void
 }
 
 const QuizAnswersContext = createContext<ContextType>({
@@ -22,9 +19,6 @@ const QuizAnswersContext = createContext<ContextType>({
   getAllMandatorySectionsCompleted: () => false,
   startOver: () => null,
   answerSection: () => null,
-  quizOpen: false,
-  openQuiz: () => null,
-  closeQuiz: () => null,
 })
 
 export const QuizAnswersProvider = ({
@@ -32,8 +26,6 @@ export const QuizAnswersProvider = ({
 }: {
   children: React.ReactNode
 }) => {
-  const [quizOpen, setQuizOpen] = useState<boolean>(false)
-
   const [quizAnswers, setQuizAnswers] = useLocalStorage<Answers>(
     "quiz_answers",
     {}
@@ -63,9 +55,6 @@ export const QuizAnswersProvider = ({
 
   const quizStarted = Object.keys(quizAnswers).length > 0
 
-  const { pathname } = useRouter()
-  useEffect(() => setQuizOpen(false), [pathname])
-
   return (
     <QuizAnswersContext.Provider
       value={{
@@ -75,9 +64,6 @@ export const QuizAnswersProvider = ({
         getAllMandatorySectionsCompleted,
         startOver,
         answerSection,
-        quizOpen,
-        openQuiz: () => setQuizOpen(true),
-        closeQuiz: () => setQuizOpen(false),
       }}
     >
       {children}

@@ -3,6 +3,7 @@ import Image from "next/image"
 import { IContentBlockFields } from "../types/generated/contentful"
 
 import s from "./ContentBlock.module.scss"
+import ProcessTimeline from "./ProcessTimeline"
 
 const ContentBlock = (contentBlock: IContentBlockFields) => (
   <section className={s.contentBlock}>
@@ -15,6 +16,8 @@ const ContentBlock = (contentBlock: IContentBlockFields) => (
       {contentBlock.subheadline && (
         <p className="section-caption">{contentBlock.subheadline}</p>
       )}
+
+      {contentBlock.includeTimeline && <ProcessTimeline />}
 
       <div className={s.sideBySide}>
         <div>{documentToReactComponents(contentBlock.bodyText)}</div>

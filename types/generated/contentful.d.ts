@@ -18,6 +18,9 @@ export interface IContentBlockFields {
 
   /** Image */
   image: Asset;
+
+  /** Include timeline */
+  includeTimeline?: boolean | undefined;
 }
 
 /** Art-directed block of a subheading, some text and an illustration. Can be stacked together on a page. */

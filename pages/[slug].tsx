@@ -36,7 +36,7 @@ const GenericPage = ({ page }: Props) => {
         lede={page.fields.lede}
       >
         {page.fields.lede && (
-          <Link href="#" className="button">
+          <Link href="/could-you-foster" className="button">
             Could you foster? <Icon />
           </Link>
         )}
@@ -61,7 +61,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   preview,
   query,
 }) => {
-  const quiz = await getQuizContent({ preview: !!preview })
   const page = await getPageContentBySlug(query.slug as string, {
     preview: !!preview,
   })
@@ -73,7 +72,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      quiz,
       page,
       showPreviewBanner: !!preview,
     },

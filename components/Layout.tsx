@@ -1,12 +1,11 @@
 import Head from "next/head"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { blogUrl, facebookUrl, instaUrl, twitterUrl } from "../config"
 import { useQuiz } from "../contexts/quiz"
 import { decodeAnswers } from "../lib/quiz"
 import { Quiz } from "../types"
 import s from "./Layout.module.scss"
-import QuizDialog from "./QuizDialog"
-import QuizFooter from "./QuizFooter"
 
 interface Props {
   quiz?: Quiz
@@ -14,15 +13,15 @@ interface Props {
 }
 
 const Layout = ({ children, quiz }: Props) => {
-  const {
-    quizStarted,
-    getAllMandatorySectionsCompleted,
-    openQuiz,
-    quizAnswers,
-  } = useQuiz()
+  const { quizStarted, getAllMandatorySectionsCompleted, quizAnswers } =
+    useQuiz()
 
   const allMandatorySectionsCompleted =
     quiz && getAllMandatorySectionsCompleted(quiz)
+
+  const pathname = useRouter()
+
+  if (pathname.asPath.includes("/could-you-foster")) return children
 
   return (
     <>
@@ -58,9 +57,9 @@ const Layout = ({ children, quiz }: Props) => {
                     Apply now
                   </Link>
                 ) : (
-                  <button className={s.primary} onClick={openQuiz}>
+                  <Link href="/could-you-foster" className={s.primary}>
                     {quizStarted ? "Resume quiz" : "Take quiz"}
-                  </button>
+                  </Link>
                 )}
               </li>
             </ul>
@@ -80,16 +79,16 @@ const Layout = ({ children, quiz }: Props) => {
           <nav className={s.footerMenu}>
             <ul>
               <li>
-                <a href="#">About us</a>
+                <Link href="/fostering-with-us">About us</Link>
               </li>
               <li>
-                <a href="#">Could you foster</a>
+                <Link href="/could-you-foster">Could you foster</Link>
               </li>
               <li>
-                <a href="#">Types of fostering</a>
+                <Link href="/#kinds-of-fostering">Kinds of fostering</Link>
               </li>
               <li>
-                <a href="#">Why foster?</a>
+                <Link href="/#why-foster">Why foster?</Link>
               </li>
             </ul>
           </nav>
@@ -146,13 +145,6 @@ const Layout = ({ children, quiz }: Props) => {
           </nav>
         </div>
       </footer>
-
-      {quiz && (
-        <>
-          <QuizDialog quiz={quiz} />
-          <QuizFooter quiz={quiz} />
-        </>
-      )}
     </>
   )
 }

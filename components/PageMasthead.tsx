@@ -4,7 +4,7 @@ import s from "./PageMasthead.module.scss"
 
 interface Props {
   crumbs: React.ReactNode
-  children: React.ReactNode
+  children?: React.ReactNode
   title: string
   lede?: any
 }

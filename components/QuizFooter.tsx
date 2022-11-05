@@ -8,7 +8,7 @@ interface Props {
 }
 
 const QuizFooter = ({ quiz }: Props) => {
-  const { quizStarted, completedSectionsCount, openQuiz } = useQuiz()
+  const { quizStarted, completedSectionsCount } = useQuiz()
 
   const totalSections = quiz.sections.length
 
@@ -26,9 +26,9 @@ const QuizFooter = ({ quiz }: Props) => {
           </label>
         </>
 
-        <button className={s.button} onClick={openQuiz}>
+        <Link href="/could-you-foster" className={s.button}>
           Resume
-        </button>
+        </Link>
       </footer>
     )
 
