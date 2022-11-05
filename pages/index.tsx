@@ -1,6 +1,7 @@
 import type { GetStaticProps } from "next"
 import { Icon } from "../components/Button"
 import FosteringStory from "../components/FosteringStory"
+import s from "./index.module.scss"
 
 import { blogUrl } from "../config"
 import {
@@ -22,34 +23,30 @@ interface Props {
 
 const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
   <>
-    <section className="hero">
-      <div className="container hero__inner">
-        <h1 className="hero__headline">
-          Forget everything you think you know about fostering
-        </h1>
-        <p className="hero__strap">
-          Explore what it really takes to be a great foster carer{" "}
-        </p>
-        <a href="#" className="hero__button">
+    <section className={s.hero}>
+      <div className="container">
+        <h1>Forget everything you think you know about fostering</h1>
+
+        <p>Explore what it really takes to be a great foster carer </p>
+
+        <a href="#">
           Could you foster? <Icon />
         </a>
       </div>
     </section>
 
-    <section className="options">
+    <section className={s.options}>
       <div className="container">
-        <h2 className="options__headline">Kinds of fostering</h2>
+        <h2>Kinds of fostering</h2>
 
         <p>There&apos;s lots of choice and flexibility in fostering.</p>
 
-        <div className="options-list">
+        <div className={s.optionsList}>
           {fosteringOptions.map(option => (
-            <article key={option.id} className="options-list__option">
-              <h3 className="options-list__option-title">{option.title}</h3>
+            <article key={option.id}>
+              <h3>{option.title}</h3>
               <p>{option.description}</p>
-              <p className="options-list__option-last-para">
-                {option.conclusion}
-              </p>
+              <p>{option.conclusion}</p>
             </article>
           ))}
         </div>
@@ -79,7 +76,7 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
       </div>
     </section>
 
-    <section className="story">
+    <section className={s.story}>
       <div className="container">
         <p>Fostering with us</p>
         <p>
@@ -98,7 +95,7 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
       </div>
     </section>
 
-    <section className="story">
+    <section className={s.story}>
       <div className="container">
         <p>Why foster?</p>
         <p>

@@ -1,4 +1,8 @@
-.page-masthead {
+@import "../styles/vars";
+@import "../styles/mixins";
+
+
+.masthead {
   background: $blue;
   @include standard-padding;
   @include section-padding-s;
@@ -8,7 +12,7 @@
   align-items: center;
   gap: 0.5rem;
 
-  &__breadcrumbs {
+  ul {
     margin: 0;
     padding-left: 0;
     list-style: none;
@@ -16,7 +20,7 @@
     gap: 0.5rem;
   }
 
-  &__crumb {
+  li {
     display: inline-block;
     color: $white;
 
@@ -26,7 +30,7 @@
     }
   }
 
-  &__crumb-link {
+  a {
     color: $white;
 
     &:hover {
@@ -40,7 +44,7 @@
   }
 
 
-  &__headline {
+  h1 {
     margin: 0;
     font-size: 2.5rem;
     color: $white;
