@@ -6,7 +6,9 @@ export const generateApplicationSchema = (eventsAvailable: boolean) => {
   const schema = z.object({
     email: z.string().email("That doesn't look like a valid email"),
     phone: z
-      .string()
+      .string({
+        required_error: "That doesn't look like a valid phone number",
+      })
       .regex(
         /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/,
         "That doesn't look like a valid phone number"
@@ -19,11 +21,18 @@ export const generateApplicationSchema = (eventsAvailable: boolean) => {
     }),
     includeAnswers: z.boolean(),
     eventId: z.string({
-      required_error: "You must choose a time for a call",
-      invalid_type_error: "You must choose a time for a call",
+      required_error: "You need to choose a time for a call",
+      invalid_type_error: "You need to choose a time for a call",
     }),
-    contactPreference: z.string(),
-    levelOfInterest: z.string(),
+    contactPreference: z.string({
+      required_error: "You need to tell us how you'd prefer to be contacted",
+      invalid_type_error:
+        "You need to tell us how you'd prefer to be contacted",
+    }),
+    levelOfInterest: z.string({
+      required_error: "You need to tell us how interested you are",
+      invalid_type_error: "You need to tell us how interested you are",
+    }),
     discussionTopics: z.string(),
   })
 

@@ -1,11 +1,10 @@
 @import "../styles/vars";
 @import "../styles/mixins";
 
-
 .masthead {
   background: $blue;
   @include standard-padding;
-  @include section-padding-s;
+  @include section-padding-m;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,12 +45,20 @@
 
   h1 {
     margin: 0;
-    font-size: 2.5rem;
-    color: $white;
+    font-size: 3rem;
+    color: $orange;
     text-align: center;
+    line-height: 1.3;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 3rem;
+      font-size: 4rem;
     }
   }
+}
+
+.lede {
+  color: $white;
+  font-size: 1.4rem;
+  @include contained-width-s;
+  text-align: center;
 }

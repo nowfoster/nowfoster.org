@@ -1,10 +1,9 @@
-import { GetStaticProps, NextPageContext } from "next"
+import { GetStaticProps } from "next"
 import Head from "next/head"
-import Link from "next/link"
 import ApplicationForm from "../components/ApplicationForm"
+import PageMasthead from "../components/PageMasthead"
 import { getQuizContent } from "../lib/cms"
 import { Quiz } from "../types"
-import s from "./apply.module.scss"
 
 interface Props {
   quiz: Quiz
@@ -14,18 +13,15 @@ const ApplyPage = ({ quiz }: Props) => {
   return (
     <>
       <Head>
-        <title>Apply · Now Foster · The fostering service with heart</title>
+        <title>
+          Book a chat · Now Foster · The fostering service with heart
+        </title>
       </Head>
 
-      <section className={s.masthead}>
-        <ul className={s.breadcrumbs}>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>Apply</li>
-        </ul>
-        <h1>Apply to foster</h1>
-      </section>
+      <PageMasthead
+        crumbs={<li>Book</li>}
+        title="Book an intro chat"
+      ></PageMasthead>
 
       <div className="container">
         <ApplicationForm quiz={quiz} />

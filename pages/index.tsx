@@ -2,7 +2,6 @@ import type { GetStaticProps } from "next"
 import { Icon } from "../components/LoaderButton"
 import FosteringStory from "../components/FosteringStory"
 import s from "./index.module.scss"
-
 import { blogUrl } from "../config"
 import {
   getFosteringOptions,
@@ -14,6 +13,7 @@ import {
   FosteringStory as IFosteringStory,
   Quiz,
 } from "../types"
+import Slider from "../components/Slider"
 
 interface Props {
   quiz: Quiz
@@ -61,21 +61,15 @@ const Home = ({ quiz, fosteringOptions, fosteringStories }: Props) => (
     </section>
 
     <section className={s.stories}>
-      <div className="container">
-        <h2 className="section-heading">Fostering stories</h2>
-        <p className="section-caption">Join our community of foster carers</p>
+      <h2 className="section-heading">Fostering stories</h2>
+      <p className="section-caption">Join our community of foster carers.</p>
 
-        <div>
-          {fosteringStories.map(story => (
-            <FosteringStory {...story} key={story.id} />
-          ))}
-        </div>
+      <Slider stories={fosteringStories} />
 
-        <a href={blogUrl} className="button">
-          Explore more stories
-          <Icon />
-        </a>
-      </div>
+      <a href={blogUrl} className="button">
+        Explore more stories
+        <Icon />
+      </a>
     </section>
 
     <section className={s.story}>

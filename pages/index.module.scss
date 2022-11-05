@@ -99,6 +99,14 @@
 
 .stories {
   @include section-padding-m;
+
+  &>p {
+    margin-bottom: 2.5rem;
+  }
+
+  a:last-child {
+    margin: 2.5rem auto 0 auto
+  }
 }
 
 

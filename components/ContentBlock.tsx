@@ -1,23 +1,31 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { content } from "googleapis/build/src/apis/content"
 import Image from "next/image"
 import { IContentBlockFields } from "../types/generated/contentful"
 
+import s from "./ContentBlock.module.scss"
+
 const ContentBlock = (contentBlock: IContentBlockFields) => (
-  <section>
+  <section className={s.contentBlock}>
     <div className="container">
-      <h2>{contentBlock.headline}</h2>
+      {contentBlock.preCaption && (
+        <p className={s.preCaption}>{contentBlock.preCaption}</p>
+      )}
+      <h2 className="section-heading">{contentBlock.headline}</h2>
 
-      {contentBlock.subheadline && <p>{contentBlock.subheadline}</p>}
+      {contentBlock.subheadline && (
+        <p className="section-caption">{contentBlock.subheadline}</p>
+      )}
 
-      <div>{documentToReactComponents(contentBlock.bodyText)}</div>
+      <div className={s.sideBySide}>
+        <div>{documentToReactComponents(contentBlock.bodyText)}</div>
 
-      <Image
-        width="300"
-        height="300"
-        src={`https:${contentBlock.image?.fields.file.url}`}
-        alt={contentBlock.image?.fields.description}
-      />
+        <Image
+          width="300"
+          height="300"
+          src={`https:${contentBlock.image?.fields.file.url}`}
+          alt={contentBlock.image?.fields.description}
+        />
+      </div>
     </div>
   </section>
 )

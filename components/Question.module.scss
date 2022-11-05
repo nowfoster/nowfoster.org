@@ -52,10 +52,10 @@
 
   input:checked+label {
     color: $white;
-    font-weight: bold;
+    // font-weight: bold;
 
     &:before {
-      background: $black;
+      background: $blue;
     }
   }
 }

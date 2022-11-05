@@ -17,6 +17,7 @@ import s from "./ApplicationForm.module.scss"
 import { decodeAnswers } from "../lib/quiz"
 import useSWR from "swr"
 import LoaderButton from "./LoaderButton"
+import RadioField from "./RadioField"
 
 interface Props {
   quiz: Quiz
@@ -66,6 +67,8 @@ const ApplicationForm = ({ quiz }: Props) => {
     }
   }
 
+  const contactPref = methods.watch("contactPreference")
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
@@ -80,12 +83,6 @@ const ApplicationForm = ({ quiz }: Props) => {
               hint="We'll send a copy of your application to this address."
             />
             <Field
-              label="Phone"
-              name="phone"
-              type="tel"
-              hint="We'll call you on this number"
-            />
-            <Field
               label="Include my answers?"
               hint={
                 watch("includeAnswers")
@@ -96,36 +93,37 @@ const ApplicationForm = ({ quiz }: Props) => {
               type="checkbox"
             />
 
-            <fieldset>
-              <legend>How do you want to chat?</legend>
+            <RadioField
+              name="contactPreference"
+              label="How do you want to chat?"
+              options={ContactPreference}
+            />
 
-              {Object.entries(ContactPreference).map(([label, value]) => (
-                <div key={`contactPreference-${value}`}>
-                  <input
-                    name="contactPreference"
-                    type="radio"
-                    value={value}
-                    id={`contactPreference-${value}`}
-                  />
-                  <label htmlFor={`contactPreference-${value}`}>{label}</label>
-                </div>
-              ))}
-            </fieldset>
+            {contactPref === ContactPreference.Text && (
+              <Field
+                label="Mobile phone"
+                name="phone"
+                type="tel"
+                hint="We'll text you on this number"
+              />
+            )}
 
-            <fieldset>
-              <legend>How interested are you?</legend>
-              {Object.entries(LevelOfInterest).map(([label, value]) => (
-                <div key={`levelOfInterest-${value}`}>
-                  <input
-                    name="levelOfInterest"
-                    type="radio"
-                    value={value}
-                    id={`levelOfInterest-${value}`}
-                  />
-                  <label htmlFor={`levelOfInterest-${value}`}>{value}</label>
-                </div>
-              ))}
-            </fieldset>
+            {contactPref === ContactPreference.Phone && (
+              <Field
+                label="Phone"
+                name="phone"
+                type="tel"
+                hint="We'll call you on this number"
+              />
+            )}
+
+            <RadioField
+              name="levelOfInterest"
+              label="How interested are you?"
+              options={LevelOfInterest}
+            />
+
+            <Field label="Anything else to discuss?" name="discussionTopics" />
           </div>
 
           <div className={s.appointmentSlots}>

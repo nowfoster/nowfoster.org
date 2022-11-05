@@ -8,6 +8,10 @@
     width: 5rem;
     height: 5rem;
     flex-shrink: 0;
+
+    path {
+      stroke: $yellow;
+    }
   }
 
   h2 {

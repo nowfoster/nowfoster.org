@@ -21,7 +21,6 @@ const ConfirmationMessage = () => {
             />
             <path
               d="M2.8125 5.09375L4.0625 6.40625L7.1875 3.125"
-              stroke="#F7D956"
               strokeWidth="1.5"
             />
           </svg>

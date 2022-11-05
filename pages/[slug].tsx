@@ -1,11 +1,13 @@
 import { Entry } from "contentful"
 import type { GetServerSideProps } from "next"
 import Head from "next/head"
-import Link from "next/link"
 import { getPageContentBySlug, getQuizContent } from "../lib/cms"
 import { IPageFields } from "../types/generated/contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import ContentBlock from "../components/ContentBlock"
+import PageMasthead from "../components/PageMasthead"
+import Link from "next/link"
+import { Icon } from "../components/LoaderButton"
 
 interface Props {
   page: Entry<IPageFields>
@@ -24,28 +26,32 @@ const GenericPage = ({ page }: Props) => {
         </title>
       </Head>
 
-      <section className="page-masthead">
-        <ul className="page-masthead__breadcrumbs">
-          <li className="page-masthead__crumb">
-            <Link href="/" className="page-masthead__crumb-link">
-              Home
-            </Link>
-          </li>
+      <PageMasthead
+        crumbs={
           <li className="page-masthead__crumb">
             {page.fields.shortTitle || page.fields.pageTitle}
           </li>
-        </ul>
-        <h1 className="page-masthead__headline">{page.fields.pageTitle}</h1>
-      </section>
+        }
+        title={page.fields.pageTitle}
+        lede={page.fields.lede}
+      >
+        {page.fields.lede && (
+          <Link href="#" className="button">
+            Could you foster? <Icon />
+          </Link>
+        )}
+      </PageMasthead>
 
       {hasContentBlocks &&
         page.fields.contentBlocks?.map(block => (
           <ContentBlock key={block.sys.id} {...block.fields} />
         ))}
 
-      <div className="container generic-content">
-        {documentToReactComponents(page.fields.content)}
-      </div>
+      {page.fields.content && (
+        <div className="container generic-content">
+          {documentToReactComponents(page.fields.content)}
+        </div>
+      )}
     </>
   )
 }

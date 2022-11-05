@@ -1,0 +1,43 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.contentBlock {
+  @include standard-padding;
+  @include section-padding-s;
+
+  &:nth-child(odd) {
+    background-color: $grey;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+.preCaption {
+  color: $orange;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.sideBySide {
+  display: grid;
+  gap: 1rem;
+  margin-top: 3rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

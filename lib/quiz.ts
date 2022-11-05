@@ -54,6 +54,8 @@ export const generateInitialAnswers = (questions: Question[]): SectionAnswers =>
   questions.reduce<SectionAnswers>((acc, question) => {
     if (question.questionType === "radio") acc[question.id] = ""
     if (question.questionType === "checkbox") acc[question.id] = []
+    if (question.questionType === "explorer")
+      acc[question.id] = question.options[0].id
     return acc
   }, {})
 

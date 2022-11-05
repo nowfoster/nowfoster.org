@@ -1,0 +1,28 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.error {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: $red;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 1.1rem;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.radioField {
+  @include radioField;
+}

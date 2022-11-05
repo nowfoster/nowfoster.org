@@ -99,7 +99,7 @@
 }
 
 .hint {
-  color: transparentize($color: #000000, $amount: 0.25);
+  color: $light-black;
 }
 
 .error {

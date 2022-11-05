@@ -4,6 +4,9 @@ import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
 export interface IContentBlockFields {
+  /** Pre-caption */
+  preCaption?: string | undefined;
+
   /** Headline */
   headline: string;
 
@@ -16,6 +19,8 @@ export interface IContentBlockFields {
   /** Image */
   image: Asset;
 }
+
+/** Art-directed block of a subheading, some text and an illustration. Can be stacked together on a page. */
 
 export interface IContentBlock extends Entry<IContentBlockFields> {
   sys: {
@@ -44,6 +49,8 @@ export interface IFosteringOptionFields {
   /** Sting */
   conclusion: string;
 }
+
+/** Appears on the homepage. */
 
 export interface IFosteringOption extends Entry<IFosteringOptionFields> {
   sys: {
@@ -76,6 +83,8 @@ export interface IFosteringStoriesFields {
   quote: string;
 }
 
+/** Appears on the homepage. */
+
 export interface IFosteringStories extends Entry<IFosteringStoriesFields> {
   sys: {
     id: string;
@@ -94,14 +103,17 @@ export interface IFosteringStories extends Entry<IFosteringStoriesFields> {
 }
 
 export interface IPageFields {
-  /** Page title */
-  pageTitle: string;
-
   /** Short title */
   shortTitle?: string | undefined;
 
+  /** Page title */
+  pageTitle: string;
+
   /** Slug */
   slug: string;
+
+  /** Lede */
+  lede?: Document | undefined;
 
   /** Content blocks */
   contentBlocks?: IContentBlock[] | undefined;
