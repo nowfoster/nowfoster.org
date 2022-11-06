@@ -1,0 +1,59 @@
+@keyframes loading {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(70%);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes growHorizontally {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}

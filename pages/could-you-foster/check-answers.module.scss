@@ -1,0 +1,28 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.answers {
+  @media screen and (min-width: $breakpoint-m) {
+    column-count: 2;
+    column-gap: 2rem;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  dt,
+  dd {
+    font-size: 0.9rem;
+  }
+
+}

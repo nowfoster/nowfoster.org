@@ -66,16 +66,6 @@
   position: relative;
   overflow: hidden;
 
-  @keyframes loading {
-    from {
-      transform: translateX(-100%);
-    }
-
-    to {
-      transform: translateX(70%);
-    }
-  }
-
   &:after {
     content: "";
     display: block;

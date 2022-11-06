@@ -11,10 +11,9 @@ const Question = ({ question, setSuggestion }: Props) => {
   const {
     formState: { errors },
     register,
-    watch,
   } = useFormContext()
 
-  const error = errors?.[question.id]?.message
+  const error = errors?.[question.question]?.message
 
   return (
     <div aria-live="polite" className={s.question}>
@@ -40,9 +39,9 @@ const Question = ({ question, setSuggestion }: Props) => {
           >
             <input
               type={question.questionType === "checkbox" ? "checkbox" : "radio"}
-              value={option.id}
+              value={option.optionText}
               id={`${i}-${option.id}`}
-              {...register(question.id)}
+              {...register(question.question)}
               onClick={e => setSuggestion(option)}
             />
             <label htmlFor={`${i}-${option.id}`}>{option.optionText}</label>

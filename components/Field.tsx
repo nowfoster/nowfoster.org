@@ -6,9 +6,10 @@ interface Props extends HTMLProps<HTMLInputElement> {
   label: string
   name: string
   hint?: string
+  big?: boolean
 }
 
-const Field = ({ label, name, hint, type, ...props }: Props) => {
+const Field = ({ big, label, name, hint, type, ...props }: Props) => {
   const {
     register,
     formState: { errors },
@@ -27,7 +28,7 @@ const Field = ({ label, name, hint, type, ...props }: Props) => {
     )
 
   return (
-    <div className={s.field}>
+    <div className={big ? s.bigField : s.field}>
       <label htmlFor={name}>{label}</label>
       {hint && <p className={s.hint}>{hint}</p>}
       {error && <p className={s.error}>{error?.toString()}</p>}

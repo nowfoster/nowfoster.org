@@ -3,15 +3,20 @@ import { Suggestion as ISuggestion } from "../types"
 import s from "./Suggestion.module.scss"
 
 interface Props {
-  suggestion: ISuggestion
+  suggestion?: ISuggestion | null
 }
 
 const Suggestion = ({ suggestion }: Props) => (
-  <article className={s.article}>
-    <h3 className={s.headline}>{suggestion.title}</h3>
-
-    {suggestion.content && (
-      <div>{documentToReactComponents(suggestion.content)}</div>
+  <article className={suggestion ? s.article : s.emptyArticle}>
+    {suggestion ? (
+      <>
+        <h3 className={s.headline}>{suggestion.title}</h3>
+        {suggestion.content && (
+          <div>{documentToReactComponents(suggestion.content)}</div>
+        )}
+      </>
+    ) : (
+      <p>Choose an option to continue</p>
     )}
   </article>
 )

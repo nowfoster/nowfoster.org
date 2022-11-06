@@ -6,19 +6,18 @@ import { Answers, Quiz, SectionAnswers } from "../types"
 interface ContextType {
   quizAnswers: Answers
   quizStarted: boolean
-  completedSectionsCount: number
-  getAllMandatorySectionsCompleted: (quiz: Quiz) => boolean
+  completedAnswersCount: number
   startOver: () => void
-  answerSection: (sectionId: string, answers: SectionAnswers) => void
+  answerQuestion: (sectionId: string, answer: SectionAnswers) => void
 }
 
 const QuizAnswersContext = createContext<ContextType>({
   quizAnswers: {},
   quizStarted: false,
-  completedSectionsCount: 0,
-  getAllMandatorySectionsCompleted: () => false,
+  completedAnswersCount: 0,
+
   startOver: () => null,
-  answerSection: () => null,
+  answerQuestion: () => null,
 })
 
 export const QuizAnswersProvider = ({
@@ -31,27 +30,22 @@ export const QuizAnswersProvider = ({
     {}
   )
 
-  const answerSection = (sectionId: string, answers: SectionAnswers) => {
+  const answerQuestion = (sectionId: string, answer: SectionAnswers) => {
     setQuizAnswers({
       ...quizAnswers,
-      [sectionId]: answers,
+      [sectionId]: {
+        ...quizAnswers[sectionId],
+        ...answer,
+      },
     })
   }
 
   const startOver = () => setQuizAnswers({})
 
-  const completedSectionsCount = Object.keys(quizAnswers).length
-
-  // check that the keys of all mandatory sections appear in the saved answers
-  const getAllMandatorySectionsCompleted = (quiz: Quiz): boolean => {
-    const mandatorySections = quiz.sections
-      .filter(section => section.mandatorySection)
-      .map(section => section.id)
-    const completedSections = Object.keys(quizAnswers)
-    return mandatorySections.every(id1 =>
-      completedSections.find(id2 => id1 === id2)
-    )
-  }
+  const completedAnswersCount = Object.entries(quizAnswers).reduce(
+    (total, [, sectionAnswers]) => total + Object.keys(sectionAnswers).length,
+    0
+  )
 
   const quizStarted = Object.keys(quizAnswers).length > 0
 
@@ -60,10 +54,9 @@ export const QuizAnswersProvider = ({
       value={{
         quizStarted,
         quizAnswers,
-        completedSectionsCount,
-        getAllMandatorySectionsCompleted,
+        completedAnswersCount,
         startOver,
-        answerSection,
+        answerQuestion,
       }}
     >
       {children}

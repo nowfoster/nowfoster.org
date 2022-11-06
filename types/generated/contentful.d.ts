@@ -184,9 +184,6 @@ export interface IQuizSectionFields {
   /** Intro */
   intro?: Document | undefined;
 
-  /** This is a mandatory section */
-  mandatorySection?: boolean | undefined;
-
   /** Order in quiz */
   order?: number | undefined;
 

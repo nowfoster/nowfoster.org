@@ -1,25 +1,6 @@
 @import "../styles/vars";
 @import "../styles/mixins";
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes grow {
-  from {
-    transform: scale(0);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
 
 .spinnerWrapper {
   display: flex;

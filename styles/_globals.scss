@@ -36,18 +36,3 @@ label {
   padding: 0;
   margin: 0;
 }
-
-meter {
-  background: $grey;
-  border-radius: 15px;
-  overflow: hidden;
-  width: 10rem;
-  height: 1.5rem;
-
-  &::-moz-meter-bar,
-  &::-webkit-meter-bar {
-    appearance: none;
-    background: $orange;
-    border: 5px solid $orange;
-  }
-}

@@ -8,6 +8,17 @@
   font-size: 1.1rem;
 }
 
+.emptyArticle {
+  background: $blue;
+  padding: 3rem;
+  color: transparentize($white, 0.75);
+  text-align: center;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .headline {
   font-size: 2rem;
   line-height: 1.3;

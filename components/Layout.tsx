@@ -1,11 +1,13 @@
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import path from "path"
 import { blogUrl, facebookUrl, instaUrl, twitterUrl } from "../config"
 import { useQuiz } from "../contexts/quiz"
 import { decodeAnswers } from "../lib/quiz"
 import { Quiz } from "../types"
 import s from "./Layout.module.scss"
+import QuizLayout from "./QuizLayout"
 
 interface Props {
   quiz?: Quiz
@@ -13,15 +15,12 @@ interface Props {
 }
 
 const Layout = ({ children, quiz }: Props) => {
-  const { quizStarted, getAllMandatorySectionsCompleted, quizAnswers } =
-    useQuiz()
-
-  const allMandatorySectionsCompleted =
-    quiz && getAllMandatorySectionsCompleted(quiz)
+  const { quizStarted } = useQuiz()
 
   const pathname = useRouter()
 
-  if (pathname.asPath.includes("/could-you-foster")) return <>{children}</>
+  if (pathname.asPath.includes("/could-you-foster") && quiz)
+    return <QuizLayout quiz={quiz}>{children}</QuizLayout>
 
   return (
     <>
@@ -52,15 +51,9 @@ const Layout = ({ children, quiz }: Props) => {
                 <Link href={blogUrl}>Fostering stories</Link>
               </li>
               <li>
-                {allMandatorySectionsCompleted ? (
-                  <Link href="/apply" className={s.primary}>
-                    Apply now
-                  </Link>
-                ) : (
-                  <Link href="/could-you-foster" className={s.primary}>
-                    {quizStarted ? "Resume quiz" : "Take quiz"}
-                  </Link>
-                )}
+                <Link href="/could-you-foster" className={s.primary}>
+                  {quizStarted ? "Resume" : "Could you foster?"}
+                </Link>
               </li>
             </ul>
           </nav>

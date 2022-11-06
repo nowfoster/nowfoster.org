@@ -1,7 +1,10 @@
 @import "../styles/vars";
 @import "../styles/mixins";
 
-
+.question {
+  padding: 2rem;
+  z-index: 1;
+}
 
 .legend {
   font-size: 2rem;
@@ -30,6 +33,7 @@
 .explorerField {
   @include field;
   background: none;
+  position: relative;
 
   label {
     &:before {
@@ -52,7 +56,7 @@
 
   input:checked+label {
     color: $white;
-    // font-weight: bold;
+    font-weight: bold;
 
     &:before {
       background: $blue;
