@@ -96,10 +96,6 @@ const QuestionPage = ({
   return (
     <FormProvider {...methods}>
       <QuizForm onSubmit={methods.handleSubmit(onSubmit)}>
-        <p>
-          Question {questionIndex + 1} of {section.questions.length}
-        </p>
-
         {question.questionType === "checkbox" ? (
           <CentredQuestion>
             <Question question={question} setSuggestion={setSuggestion} />

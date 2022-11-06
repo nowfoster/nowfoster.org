@@ -60,13 +60,18 @@ export const generateQuestionSchema = (question: Question) => {
 export const postcodeSchema = yup.object({
   postcode: yup
     .string()
+    .required("You need to give us your postcode to continue")
     .matches(
       /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/,
       "That doesn't look like a valid postcode"
     )
     .transform(val => val.toLowerCase())
-    .oneOf(
-      allowedPrefixes.map(prefix => prefix.toLowerCase()),
-      "You're not in our pilot area"
+    .test(
+      "postcode",
+      "You're not in our pilot area",
+      val =>
+        !!allowedPrefixes.find(prefix =>
+          val?.toLowerCase().startsWith(prefix.toLowerCase())
+        )
     ),
 })
