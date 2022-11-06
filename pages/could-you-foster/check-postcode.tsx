@@ -8,7 +8,6 @@ import {
   CentredQuestion,
   QuizFooter,
   QuizForm,
-  QuizInner,
 } from "../../components/QuizLayout"
 import { useQuiz } from "../../contexts/quiz"
 import { getQuizContent } from "../../lib/cms"
