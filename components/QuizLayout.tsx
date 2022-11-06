@@ -1,7 +1,8 @@
+import { motion } from "framer-motion"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { HTMLAttributes, useEffect } from "react"
+import React, { HTMLAttributes, useEffect } from "react"
 import { useQuiz } from "../contexts/quiz"
 import { Quiz as IQuiz } from "../types"
 import s from "./QuizLayout.module.scss"
@@ -12,8 +13,10 @@ interface Props {
 }
 
 const QuizLayout = ({ quiz, children }: Props) => {
-  const { push } = useRouter()
-  const { completedAnswersCount } = useQuiz()
+  const { push, asPath } = useRouter()
+  const { completedAnswersCount, setLastVisitedPage } = useQuiz()
+
+  useEffect(() => setLastVisitedPage(asPath), [asPath, setLastVisitedPage])
 
   const totalQuestions = quiz.sections.reduce(
     (total, section) =>
@@ -42,7 +45,8 @@ const QuizLayout = ({ quiz, children }: Props) => {
         <h1>
           Could you foster?
           <span>
-            {Math.floor(completedAnswersCount / totalQuestions) * 100}% complete
+            {Math.round((completedAnswersCount / totalQuestions) * 100)}%
+            complete
           </span>
         </h1>
 
@@ -62,6 +66,14 @@ const QuizLayout = ({ quiz, children }: Props) => {
             max={totalQuestions}
             className={s.meter}
           />
+
+          {/* <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: "calc(100vw - 50%)" }}
+            key={route}
+          >
+            fuck
+          </motion.div> */}
 
           {children}
         </div>

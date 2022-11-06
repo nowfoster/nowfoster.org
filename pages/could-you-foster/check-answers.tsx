@@ -32,19 +32,19 @@ const CheckAnswers = ({ quiz }: Props) => {
 
         <div className={s.answers}>
           {Object.entries(quizAnswers).map(([sectionTitle, sectionAnswers]) => (
-            <>
+            <div key={sectionTitle}>
               <h4>{sectionTitle}</h4>
               <dl>
                 {Object.entries(sectionAnswers).map(([question, answer]) => (
-                  <>
+                  <div key={question}>
                     <dt>{question}</dt>
                     <dd>
                       {Array.isArray(answer) ? answer.join(", ") : answer}
                     </dd>
-                  </>
+                  </div>
                 ))}
               </dl>
-            </>
+            </div>
           ))}
         </div>
       </QuizMain>

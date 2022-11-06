@@ -1,76 +1,72 @@
-import { z } from "zod"
+// import { z } from "zod"
+import * as yup from "yup"
 import { allowedPrefixes } from "../config"
-import { Question } from "../types"
+import { ContactPreference, Question } from "../types"
 
-export const generateApplicationSchema = (eventsAvailable: boolean) => {
-  const schema = z.object({
-    email: z.string().email("That doesn't look like a valid email"),
-    phone: z
-      .string({
-        required_error: "That doesn't look like a valid phone number",
-      })
-      .regex(
-        /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/,
-        "That doesn't look like a valid phone number"
-      ),
-    firstName: z.string().min(1, {
-      message: "You need to give your first name",
+export const generateApplicationSchema = (eventsAvailable: boolean) =>
+  yup.object({
+    email: yup
+      .string()
+      .required("That doesn't look like a valid email")
+      .email("That doesn't look like a valid email"),
+    phone: yup.string().when("contactPreference", {
+      is: ContactPreference.Phone || ContactPreference.Text,
+      then: yup
+        .string()
+        .required("That doesn't look like a valid phone number")
+        .matches(
+          /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/,
+          "That doesn't look like a valid phone number"
+        ),
     }),
-    lastName: z.string().min(1, {
-      message: "You need to give your last name",
-    }),
-    includeAnswers: z.boolean(),
-    eventId: z.string({
-      required_error: "You need to choose a time for a call",
-      invalid_type_error: "You need to choose a time for a call",
-    }),
-    contactPreference: z.string({
-      required_error: "You need to tell us how you'd prefer to be contacted",
-      invalid_type_error:
-        "You need to tell us how you'd prefer to be contacted",
-    }),
-    levelOfInterest: z.string({
-      required_error: "You need to tell us how interested you are",
-      invalid_type_error: "You need to tell us how interested you are",
-    }),
-    discussionTopics: z.string(),
+    firstName: yup.string().required("You need to give your first name"),
+    lastName: yup.string().required("You need to give your last name"),
+    includeAnswers: yup.boolean(),
+    eventId: eventsAvailable
+      ? yup
+          .string()
+          .typeError("You need to choose a time for a call")
+          .required("You need to choose a time for a call")
+      : yup.string(),
+    contactPreference: yup
+      .string()
+      .typeError("You need to tell us how you'd prefer to be contacted")
+      .required("You need to tell us how you'd prefer to be contacted"),
+    levelOfInterest: yup
+      .string()
+      .typeError("You need to tell us how interested you are")
+      .required("You need to tell us how interested you are"),
+    discussionTopics: yup.string(),
   })
 
-  return eventsAvailable ? schema : schema.omit({ eventId: true })
-}
-
 export const generateQuestionSchema = (question: Question) => {
-  let shape: { [key: string]: z.ZodTypeAny } = {}
+  let shape: { [key: string]: yup.AnySchema } = {}
 
   if (question.questionType === "checkbox") {
-    shape[question.question] = z.optional(z.array(z.string()))
+    shape[question.question] = yup.array().of(yup.string())
   } else if (question.questionType === "explorer") {
-    shape[question.question] = z
-      .string({ invalid_type_error: "Explore some options to continue" })
-      .min(1, { message: "Explore some options to continue" })
+    shape[question.question] = yup
+      .string()
+      .required("Explore some options to continue")
   } else {
-    shape[question.question] = z
-      .string({ invalid_type_error: "Choose an option to continue" })
-      .min(1, { message: "Choose an option to continue" })
+    shape[question.question] = yup
+      .string()
+      .required("Choose an option to continue")
   }
 
-  return z.object(shape)
+  return yup.object(shape)
 }
 
-export const postcodeSchema = z.object({
-  postcode: z
+export const postcodeSchema = yup.object({
+  postcode: yup
     .string()
-    .regex(
+    .matches(
       /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/,
       "That doesn't look like a valid postcode"
     )
-    .refine(
-      val =>
-        allowedPrefixes.find(prefix =>
-          val.toLowerCase().startsWith(prefix.toLowerCase())
-        ),
-      {
-        message: "You're not in our pilot area",
-      }
+    .transform(val => val.toLowerCase())
+    .oneOf(
+      allowedPrefixes.map(prefix => prefix.toLowerCase()),
+      "You're not in our pilot area"
     ),
 })

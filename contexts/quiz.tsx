@@ -9,15 +9,18 @@ interface ContextType {
   completedAnswersCount: number
   startOver: () => void
   answerQuestion: (sectionId: string, answer: SectionAnswers) => void
+  lastVisitedPage: string
+  setLastVisitedPage: (path: string) => void
 }
 
 const QuizAnswersContext = createContext<ContextType>({
   quizAnswers: {},
   quizStarted: false,
   completedAnswersCount: 0,
-
   startOver: () => null,
   answerQuestion: () => null,
+  lastVisitedPage: "",
+  setLastVisitedPage: () => null,
 })
 
 export const QuizAnswersProvider = ({
@@ -28,6 +31,10 @@ export const QuizAnswersProvider = ({
   const [quizAnswers, setQuizAnswers] = useLocalStorage<Answers>(
     "quiz_answers",
     {}
+  )
+  const [lastVisitedPage, setLastVisitedPage] = useLocalStorage<string>(
+    "last_visited_page",
+    "/could-you-foster"
   )
 
   const answerQuestion = (sectionId: string, answer: SectionAnswers) => {
@@ -57,6 +64,8 @@ export const QuizAnswersProvider = ({
         completedAnswersCount,
         startOver,
         answerQuestion,
+        lastVisitedPage,
+        setLastVisitedPage,
       }}
     >
       {children}

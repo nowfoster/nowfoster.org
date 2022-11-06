@@ -1,8 +1,9 @@
-import { zodResolver } from "@hookform/resolvers/zod"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { SlowBuffer } from "buffer"
 import { GetStaticProps, NextPageContext } from "next"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { Icon } from "../../../components/LoaderButton"
 import Question from "../../../components/Question"
@@ -15,19 +16,18 @@ import {
 import Suggestion from "../../../components/Suggestion"
 import { useQuiz } from "../../../contexts/quiz"
 import { getQuizContent } from "../../../lib/cms"
-import {
-  generateInitialAnswer,
-  generateInitialAnswers,
-} from "../../../lib/quiz"
+import { generateInitialAnswer } from "../../../lib/quiz"
 import { generateQuestionSchema } from "../../../lib/validators"
 import {
   Question as IQuestion,
+  Quiz,
   QuizSection,
   SectionAnswers,
   Suggestion as ISuggestion,
 } from "../../../types"
 
 interface Props {
+  quiz: Quiz
   question: IQuestion
   section: QuizSection
   questionIndex: number
@@ -35,6 +35,7 @@ interface Props {
 }
 
 const QuestionPage = ({
+  quiz,
   question,
   section,
   questionIndex,
@@ -43,31 +44,47 @@ const QuestionPage = ({
   const { answerQuestion, quizAnswers } = useQuiz()
 
   const savedAnswer = quizAnswers?.[section.title]?.[question.question]
+
+  const { push } = useRouter()
+
+  const methods = useForm<SectionAnswers>({
+    resolver: yupResolver(generateQuestionSchema(question)),
+    defaultValues: {
+      [question.question]: savedAnswer
+        ? savedAnswer
+        : generateInitialAnswer(question),
+    },
+  })
+
+  // stop form state drifting out of sync
+  useEffect(() => {
+    methods.reset({
+      [question.question]: savedAnswer
+        ? savedAnswer
+        : generateInitialAnswer(question),
+    })
+  }, [questionIndex, methods, question, savedAnswer])
+
   const selectedOption = question.options.find(
-    option => option.optionText === savedAnswer
+    option => option.optionText === methods.getValues(question.question)
   )
 
   const [suggestion, setSuggestion] = useState<ISuggestion | null | undefined>(
     selectedOption
   )
-  const { push } = useRouter()
-
-  const methods = useForm<SectionAnswers>({
-    resolver: zodResolver(generateQuestionSchema(question)),
-    defaultValues: {
-      [question.question]: savedAnswer || generateInitialAnswer(question),
-    },
-  })
 
   const isFirstQuestion = questionIndex === 0
   const isLastQuestion = section.questions.length - 1 === questionIndex
+  const isLastSection = quiz.sections.length - 1 === sectionIndex
 
   const onSubmit = (answers: SectionAnswers) => {
     if (question.questionType !== "explorer")
       answerQuestion(section.title, answers)
     push(
       isLastQuestion
-        ? "/could-you-foster"
+        ? isLastSection
+          ? `/could-you-foster/check-answers`
+          : `/could-you-foster/${sectionIndex + 1}`
         : `/could-you-foster/${sectionIndex}/${questionIndex + 1}`
     )
   }
@@ -79,6 +96,10 @@ const QuestionPage = ({
   return (
     <FormProvider {...methods}>
       <QuizForm onSubmit={methods.handleSubmit(onSubmit)}>
+        <p>
+          Question {questionIndex + 1} of {section.questions.length}
+        </p>
+
         {question.questionType === "checkbox" ? (
           <CentredQuestion>
             <Question question={question} setSuggestion={setSuggestion} />

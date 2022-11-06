@@ -43,6 +43,7 @@ export const getQuizContent = async (opts?: Opts): Promise<Quiz> => {
   const data = await client.getEntries<IQuizSectionFields>({
     include: 2,
     content_type: "quizSection",
+    order: "fields.order",
   })
 
   return {

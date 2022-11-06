@@ -8,11 +8,14 @@
   }
 
   dl {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 0.5rem;
     margin-top: 0;
     margin-bottom: 1rem;
+
+    div {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 0.5rem;
+    }
   }
 
   h4 {

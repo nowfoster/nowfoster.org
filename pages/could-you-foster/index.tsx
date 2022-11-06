@@ -1,40 +1,22 @@
-import { GetStaticProps } from "next"
-import Link from "next/link"
-import { getQuizContent } from "../../lib/cms"
-import { Quiz as IQuiz } from "../../types"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
+import { useQuiz } from "../../contexts/quiz"
 
-interface Props {
-  quiz: IQuiz
+const CouldYouFoster = () => {
+  const { replace } = useRouter()
+  const { lastVisitedPage } = useQuiz()
+
+  useEffect(() => {
+    if (window) {
+      if (lastVisitedPage) {
+        replace(lastVisitedPage)
+      } else {
+        replace("/could-you-foster/0")
+      }
+    }
+  }, [replace, lastVisitedPage])
+
+  return null
 }
-
-const CouldYouFoster = ({ quiz }: Props) => (
-  <>
-    <p>TODO: remove all this</p>
-    {quiz.sections.map((sect, i) => (
-      <Link key={sect.id} href={`/could-you-foster/${i}`}>
-        {sect.title}
-      </Link>
-    ))}
-
-    <Link href={`/could-you-foster/check-answers`}>Check answers</Link>
-  </>
-)
 
 export default CouldYouFoster
-
-export const getStaticProps: GetStaticProps = async ({ preview }) => {
-  const quiz = await getQuizContent({ preview: !!preview })
-
-  // return {
-  //   redirect: {
-  //     destination: `/could-you-foster/${quiz.sections[0].id}`,
-  //     permanent: false,
-  //   },
-  // }
-
-  return {
-    props: {
-      quiz,
-    },
-  }
-}

@@ -53,6 +53,8 @@ export const decodeAnswers = (answers: Answers, quiz: Quiz): Answers =>
 
 export const generateInitialAnswer = (question: Question): Answer => {
   if (question.questionType === "checkbox") return []
+  if (question.questionType === "explorer")
+    return question.options[0].optionText
   return ""
 }
 

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { yupResolver } from "@hookform/resolvers/yup"
 import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
 import { useQuiz } from "../contexts/quiz"
@@ -32,7 +32,7 @@ const ApplicationForm = ({ quiz }: Props) => {
   const [status, setStatus] = useState<string>("")
 
   const methods = useForm<ApplicationInput>({
-    resolver: zodResolver(
+    resolver: yupResolver(
       generateApplicationSchema(
         Array.isArray(availability) && availability?.length > 0
       )
@@ -67,6 +67,8 @@ const ApplicationForm = ({ quiz }: Props) => {
     }
   }
 
+  console.log(methods.formState.errors)
+
   const contactPref = methods.watch("contactPreference")
 
   return (
@@ -86,7 +88,7 @@ const ApplicationForm = ({ quiz }: Props) => {
               label="Include my answers?"
               hint={
                 watch("includeAnswers")
-                  ? "A copy of your quiz answers will be included to support your application."
+                  ? "A copy of your answers will be sent to help shape our initial chat."
                   : "Your answers won't be shared."
               }
               name="includeAnswers"
@@ -95,7 +97,7 @@ const ApplicationForm = ({ quiz }: Props) => {
 
             <RadioField
               name="contactPreference"
-              label="How do you want to chat?"
+              label="How would you like to chat with us?"
               options={ContactPreference}
             />
 
@@ -119,11 +121,14 @@ const ApplicationForm = ({ quiz }: Props) => {
 
             <RadioField
               name="levelOfInterest"
-              label="How interested are you?"
+              label="What stage would you say you are at?"
               options={LevelOfInterest}
             />
 
-            <Field label="Anything else to discuss?" name="discussionTopics" />
+            <Field
+              label="Is there anything in particular that you’d like to discuss? Or remember to ask?"
+              name="discussionTopics"
+            />
           </div>
 
           <div className={s.appointmentSlots}>

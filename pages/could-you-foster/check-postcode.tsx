@@ -1,4 +1,4 @@
-import { zodResolver } from "@hookform/resolvers/zod"
+import { yupResolver } from "@hookform/resolvers/yup"
 import { GetStaticProps } from "next"
 import { useRouter } from "next/router"
 import { FormProvider, useForm } from "react-hook-form"
@@ -27,7 +27,7 @@ const CheckPostcode = ({ quiz }: Props) => {
   const { push } = useRouter()
 
   const methods = useForm<FormAnswers>({
-    resolver: zodResolver(postcodeSchema),
+    resolver: yupResolver(postcodeSchema),
   })
 
   const onSubmit = () => push("/apply")
