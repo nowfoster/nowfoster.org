@@ -10,6 +10,7 @@ import {
 import { FosteringOption, FosteringStory as IFosteringStory } from "../types"
 import Slider from "../components/Slider"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 interface Props {
   fosteringOptions: FosteringOption[]

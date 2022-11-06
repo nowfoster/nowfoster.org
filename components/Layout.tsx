@@ -21,7 +21,7 @@ const Layout = ({ children, quiz }: Props) => {
 
   const pathname = useRouter()
 
-  if (pathname.asPath.includes("/could-you-foster")) return children
+  if (pathname.asPath.includes("/could-you-foster")) return <>{children}</>
 
   return (
     <>

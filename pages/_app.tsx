@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 import PreviewBanner from "../components/PreviewBanner"
 import ConfirmationMessage from "../components/ConfirmationMessage"
 import { SWRConfig } from "swr"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
@@ -16,13 +16,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
           <ConfirmationMessage />
 
-          <AnimatePresence
-            exitBeforeEnter
-            initial={false}
-            onExitComplete={() => window.scrollTo(0, 0)}
-          >
-            <Component {...pageProps} key={router.route} />
-          </AnimatePresence>
+          <Component {...pageProps} />
         </Layout>
       </QuizAnswersProvider>
     </SWRConfig>
