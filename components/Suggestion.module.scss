@@ -10,16 +10,18 @@
 
 .emptyArticle {
   background: $blue;
-  padding: 3rem;
+  padding: 6rem;
   color: transparentize($white, 0.75);
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .headline {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
   font-size: 2rem;
   line-height: 1.3;
 }

@@ -6,10 +6,19 @@ import { useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { Icon } from "../../../components/LoaderButton"
 import Question from "../../../components/Question"
-import { QuizFooter, QuizForm, QuizMain } from "../../../components/QuizLayout"
+import {
+  CentredQuestion,
+  QuizFooter,
+  QuizForm,
+  QuizMain,
+} from "../../../components/QuizLayout"
 import Suggestion from "../../../components/Suggestion"
 import { useQuiz } from "../../../contexts/quiz"
 import { getQuizContent } from "../../../lib/cms"
+import {
+  generateInitialAnswer,
+  generateInitialAnswers,
+} from "../../../lib/quiz"
 import { generateQuestionSchema } from "../../../lib/validators"
 import {
   Question as IQuestion,
@@ -33,9 +42,9 @@ const QuestionPage = ({
 }: Props) => {
   const { answerQuestion, quizAnswers } = useQuiz()
 
+  const savedAnswer = quizAnswers?.[section.title]?.[question.question]
   const selectedOption = question.options.find(
-    option =>
-      option.optionText === quizAnswers?.[section.title]?.[question.question]
+    option => option.optionText === savedAnswer
   )
 
   const [suggestion, setSuggestion] = useState<ISuggestion | null | undefined>(
@@ -45,7 +54,9 @@ const QuestionPage = ({
 
   const methods = useForm<SectionAnswers>({
     resolver: zodResolver(generateQuestionSchema(question)),
-    defaultValues: quizAnswers[section.title] || {},
+    defaultValues: {
+      [question.question]: savedAnswer || generateInitialAnswer(question),
+    },
   })
 
   const isFirstQuestion = questionIndex === 0
@@ -68,10 +79,16 @@ const QuestionPage = ({
   return (
     <FormProvider {...methods}>
       <QuizForm onSubmit={methods.handleSubmit(onSubmit)}>
-        <QuizMain>
-          <Question question={question} setSuggestion={setSuggestion} />
-          <Suggestion suggestion={suggestion} />
-        </QuizMain>
+        {question.questionType === "checkbox" ? (
+          <CentredQuestion>
+            <Question question={question} setSuggestion={setSuggestion} />
+          </CentredQuestion>
+        ) : (
+          <QuizMain>
+            <Question question={question} setSuggestion={setSuggestion} />
+            <Suggestion suggestion={suggestion} />
+          </QuizMain>
+        )}
 
         <QuizFooter goBack={goBackLink}>
           <button className="button">

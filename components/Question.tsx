@@ -1,3 +1,4 @@
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { useFormContext } from "react-hook-form"
 import { Question, Suggestion } from "../types"
 import s from "./Question.module.scss"
@@ -18,6 +19,10 @@ const Question = ({ question, setSuggestion }: Props) => {
   return (
     <div aria-live="polite" className={s.question}>
       <legend className={s.legend}>{question.question}</legend>
+
+      {question.hint && (
+        <div className={s.hint}>{documentToReactComponents(question.hint)}</div>
+      )}
 
       {error && (
         <p role="alert" className={s.error}>

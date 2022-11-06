@@ -1,9 +1,11 @@
 @import "../styles/vars";
 @import "../styles/mixins";
+@import "../styles/keyframes";
 
 .question {
   padding: 2rem;
   z-index: 1;
+  animation: fadeIn 0.3s cubic-bezier(.87, -.41, .19, 1.44);
 }
 
 .legend {
@@ -64,6 +66,11 @@
   }
 }
 
+.hint {
+  margin-bottom: 1.5rem;
+}
+
 .error {
   color: $red;
+  margin-bottom: 1.5rem;
 }
