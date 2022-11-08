@@ -8,6 +8,7 @@ import ContentBlock from "../components/ContentBlock"
 import PageMasthead from "../components/PageMasthead"
 import Link from "next/link"
 import { Icon } from "../components/LoaderButton"
+import { useQuiz } from "../contexts/quiz"
 
 interface Props {
   page: Entry<IPageFields>
@@ -16,6 +17,8 @@ interface Props {
 const GenericPage = ({ page }: Props) => {
   const hasContentBlocks =
     page.fields.contentBlocks && page.fields.contentBlocks.length > 0
+
+  const { lastVisitedPage } = useQuiz()
 
   return (
     <>
@@ -36,7 +39,7 @@ const GenericPage = ({ page }: Props) => {
         lede={page.fields.lede}
       >
         {page.fields.lede && (
-          <Link href="/could-you-foster" className="button">
+          <Link href={lastVisitedPage} className="button">
             Could you foster? <Icon />
           </Link>
         )}

@@ -11,6 +11,7 @@ import { FosteringOption, FosteringStory as IFosteringStory } from "../types"
 import Slider from "../components/Slider"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { useQuiz } from "../contexts/quiz"
 
 interface Props {
   fosteringOptions: FosteringOption[]
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const Home = ({ fosteringOptions, fosteringStories }: Props) => {
+  const { lastVisitedPage } = useQuiz()
   return (
     <>
       <section className={s.hero}>
@@ -26,7 +28,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
           <p>Explore what it really takes to be a great foster carer </p>
 
-          <Link href="/could-you-foster" className="button">
+          <Link href={lastVisitedPage} className="button">
             Could you foster? <Icon />
           </Link>
         </div>
@@ -50,7 +52,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             ))}
           </div>
 
-          <Link href="/could-you-foster" className="button">
+          <Link href={lastVisitedPage} className="button">
             Could you foster? <Icon />
           </Link>
         </div>

@@ -34,7 +34,7 @@ export const QuizAnswersProvider = ({
   )
   const [lastVisitedPage, setLastVisitedPage] = useLocalStorage<string>(
     "last_visited_page",
-    "/could-you-foster"
+    "/could-you-foster/0"
   )
 
   const answerQuestion = (sectionId: string, answer: SectionAnswers) => {

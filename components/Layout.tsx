@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Layout = ({ children, quiz }: Props) => {
-  const { quizStarted } = useQuiz()
+  const { quizStarted, lastVisitedPage } = useQuiz()
 
   const pathname = useRouter()
 
@@ -51,7 +51,7 @@ const Layout = ({ children, quiz }: Props) => {
                 <Link href={blogUrl}>Fostering stories</Link>
               </li>
               <li>
-                <Link href="/could-you-foster" className={s.primary}>
+                <Link href={lastVisitedPage} className={s.primary}>
                   {quizStarted ? "Resume" : "Could you foster?"}
                 </Link>
               </li>
