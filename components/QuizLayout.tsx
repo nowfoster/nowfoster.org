@@ -45,8 +45,11 @@ const QuizLayout = ({ quiz, children }: Props) => {
         <h1>
           Could you foster?
           <span>
-            {Math.round((completedAnswersCount / totalQuestions) * 100)}%
-            complete
+            {Math.min(
+              100,
+              Math.round((completedAnswersCount / totalQuestions) * 100)
+            )}
+            % complete
           </span>
         </h1>
 

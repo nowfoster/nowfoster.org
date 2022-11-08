@@ -13,7 +13,7 @@ const handler = async (
     switch (req.method) {
       case "POST":
         const data = JSON.parse(req.body)
-        generateApplicationSchema(!!req.body.eventId).parse(data)
+        generateApplicationSchema(!!req.body.eventId).validate(data)
         const result = await createApplication(data)
         await bookSlot(result.data)
         await sendNotifications(result.data)
