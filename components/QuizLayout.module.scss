@@ -109,15 +109,14 @@
   overflow: hidden; // why does this make whole layout work???
 
   @media screen and (min-width: $breakpoint-m) {
-    @include standard-padding;
-    @include section-padding-s;
+    padding: 2rem 1rem;
   }
 
 }
 
 .dialog {
   background: white;
-  max-width: 900px;
+  max-width: 1000px;
   width: 100%;
   height: 100%;
   display: flex;
