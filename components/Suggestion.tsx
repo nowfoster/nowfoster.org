@@ -12,7 +12,9 @@ const Suggestion = ({ suggestion }: Props) => (
       <>
         <h3 className={s.headline}>{suggestion.title}</h3>
         {suggestion.content && (
-          <div>{documentToReactComponents(suggestion.content)}</div>
+          <div className={s.richText}>
+            {documentToReactComponents(suggestion.content)}
+          </div>
         )}
       </>
     ) : (

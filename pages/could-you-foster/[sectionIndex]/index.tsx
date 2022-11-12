@@ -4,9 +4,9 @@ import Link from "next/link"
 import { Icon } from "../../../components/LoaderButton"
 import ProgressTimeline from "../../../components/ProgressTimeline"
 import { QuizFooter, QuizMain } from "../../../components/QuizLayout"
-import { useQuiz } from "../../../contexts/quiz"
 import { getQuizContent } from "../../../lib/cms"
 import { Quiz, QuizSection } from "../../../types"
+import s from "./index.module.scss"
 
 interface Props {
   section: QuizSection
@@ -26,16 +26,22 @@ const SectionPage = ({ section, sectionIndex, quiz }: Props) => {
   return (
     <>
       <QuizMain padded>
-        <p>
-          Section {sectionIndex + 1} of {quiz.sections.length}
-        </p>
-        <h2>{section.title}</h2>
-        {section.intro && <div>{documentToReactComponents(section.intro)}</div>}
+        <div className={s.columns}>
+          <div>
+            <p>
+              Section {sectionIndex + 1} of {quiz.sections.length}
+            </p>
+            <h2>{section.title}</h2>
+            {section.intro && (
+              <div>{documentToReactComponents(section.intro)}</div>
+            )}
+          </div>
 
-        <ProgressTimeline
-          sections={quiz.sections}
-          currentSectionIndex={sectionIndex}
-        />
+          <ProgressTimeline
+            sections={quiz.sections}
+            currentSectionIndex={sectionIndex}
+          />
+        </div>
       </QuizMain>
 
       <QuizFooter goBack={goBackLink}>

@@ -1,0 +1,13 @@
+@import "../../../styles/vars";
+@import "../../../styles/mixins";
+
+.columns {
+  @media screen and (min-width: $breakpoint-m) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+  }
+}

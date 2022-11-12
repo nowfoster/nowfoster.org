@@ -47,10 +47,12 @@ export const generateQuestionSchema = (question: Question) => {
   } else if (question.questionType === "explorer") {
     shape[question.question] = yup
       .string()
+      .typeError("Explore some options to continue")
       .required("Explore some options to continue")
   } else {
     shape[question.question] = yup
       .string()
+      .typeError("Choose an option to continue")
       .required("Choose an option to continue")
   }
 
