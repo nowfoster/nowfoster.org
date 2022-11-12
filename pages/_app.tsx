@@ -6,11 +6,13 @@ import PreviewBanner from "../components/PreviewBanner"
 import ConfirmationMessage from "../components/ConfirmationMessage"
 import { SWRConfig } from "swr"
 import { AnimatePresence, motion } from "framer-motion"
+import { GoogleAnalytics } from "nextjs-google-analytics"
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <SWRConfig value={{ fetcher: url => fetch(url).then(res => res.json()) }}>
       <QuizAnswersProvider>
+        <GoogleAnalytics trackPageViews />
         <Layout {...pageProps}>
           {pageProps?.showPreviewBanner && <PreviewBanner />}
 
