@@ -8,7 +8,7 @@ $yellow: #FFD65A;
 $red: #E64B4B;
 
 // extended palette
-$light-black: transparentize($blue, 0.25);
+$light-black: transparentize($black, 0.25);
 $dark-white: darken($white, 10);
 $dark-orange: darken($orange, 3);
 $light-blue: lighten($blue, 20);

@@ -2,16 +2,19 @@
 @import "../styles/mixins";
 
 .article {
-  background: $blue;
-  color: $white;
+  background: $grey;
   padding: 2rem;
   font-size: 1.1rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    padding: 3rem;
+  }
 }
 
 .emptyArticle {
-  background: $blue;
+  background: $grey;
   padding: 6rem;
-  color: transparentize($white, 0.75);
+  color: $light-black;
   text-align: center;
   font-size: 1.75rem;
   display: flex;
