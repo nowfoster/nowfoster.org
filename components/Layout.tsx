@@ -1,13 +1,12 @@
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import path from "path"
 import { blogUrl, facebookUrl, instaUrl, twitterUrl } from "../config"
 import { useQuiz } from "../contexts/quiz"
-import { decodeAnswers } from "../lib/quiz"
 import { Quiz } from "../types"
 import s from "./Layout.module.scss"
 import QuizLayout from "./QuizLayout"
+import { AnimatePresence, motion } from "framer-motion"
 
 interface Props {
   quiz?: Quiz
@@ -17,10 +16,14 @@ interface Props {
 const Layout = ({ children, quiz }: Props) => {
   const { quizStarted, lastVisitedPage } = useQuiz()
 
-  const pathname = useRouter()
+  const { asPath } = useRouter()
 
-  if (pathname.asPath.includes("/could-you-foster") && quiz)
-    return <QuizLayout quiz={quiz}>{children}</QuizLayout>
+  if (asPath.includes("/could-you-foster") && quiz)
+    return (
+      <AnimatePresence mode="wait">
+        <QuizLayout quiz={quiz}>{children}</QuizLayout>
+      </AnimatePresence>
+    )
 
   return (
     <>

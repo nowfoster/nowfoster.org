@@ -1,5 +1,6 @@
 @import "../styles/vars";
 @import "../styles/mixins";
+@import "../styles/keyframes";
 
 .timeline {
   list-style: none;
@@ -43,9 +44,7 @@
       background: $white;
       border: 3px solid $orange;
       z-index: 2;
-
     }
-
   }
 }
 

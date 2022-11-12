@@ -108,6 +108,7 @@
   align-items: center;
   overflow: hidden; // why does this make whole layout work???
 
+
   @media screen and (min-width: $breakpoint-m) {
     padding: 2rem 1rem;
   }
@@ -121,7 +122,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  animation: fadeIn 1s cubic-bezier(.87, -.41, .19, 1.44);
   overflow: hidden;
   position: relative;
 
@@ -146,11 +146,6 @@
     appearance: none;
     background-color: $orange;
     background: linear-gradient(to right, $orange, $dark-orange);
-    transform-origin: left;
-    animation: growHorizontally 1s ease-in-out;
-    animation-delay: 0.3s;
-    animation-fill-mode: forwards;
-    transform: scaleX(0);
   }
 
 }
@@ -208,7 +203,6 @@
 }
 
 .centredQuestion {
-  animation: fadeIn 0.3s cubic-bezier(.87, -.41, .19, 1.44);
   grid-column: 1/3;
   display: flex;
   justify-content: center;

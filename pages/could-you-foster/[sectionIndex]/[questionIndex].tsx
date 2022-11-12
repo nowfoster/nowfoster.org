@@ -103,7 +103,10 @@ const QuestionPage = ({
         ) : (
           <QuizMain>
             <Question question={question} setSuggestion={setSuggestion} />
-            <Suggestion suggestion={suggestion} />
+            <Suggestion
+              suggestion={suggestion}
+              key={methods.getValues(question.question) as string}
+            />
           </QuizMain>
         )}
 

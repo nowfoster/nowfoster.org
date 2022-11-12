@@ -1,11 +1,44 @@
-import { motion } from "framer-motion"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import React, { HTMLAttributes, useEffect } from "react"
 import { useQuiz } from "../contexts/quiz"
-import { Quiz as IQuiz } from "../types"
+import { Quiz as IQuiz, Quiz } from "../types"
 import s from "./QuizLayout.module.scss"
+
+import { AnimatePresence, motion } from "framer-motion"
+
+const getProgressThroughScreens = (
+  quiz: Quiz,
+  sectionIndex?: string,
+  questionIndex?: string
+): [number, number] => {
+  const si = sectionIndex && parseInt(sectionIndex as string)
+  const qi = questionIndex && parseInt(questionIndex as string)
+
+  const totalScreens = quiz.sections.reduce(
+    // add one to account for section intro page
+    (total, section) => total + section.questions.length + 1,
+    0
+  )
+
+  if (typeof si !== "number") return [totalScreens, totalScreens]
+
+  let progress = 0
+
+  for (let i = 0; i < si; i++) {
+    progress += 1 // add 1 for intro screen
+    progress += quiz.sections[i].questions.length // all questions
+  }
+
+  if (typeof qi !== "number") {
+    progress += 1 // add intro screen
+  } else {
+    progress += qi + 1 + 1 // add completed questions only
+  }
+
+  return [progress, totalScreens]
+}
 
 interface Props {
   quiz: IQuiz
@@ -13,16 +46,18 @@ interface Props {
 }
 
 const QuizLayout = ({ quiz, children }: Props) => {
-  const { push, asPath } = useRouter()
-  const { completedAnswersCount, setLastVisitedPage } = useQuiz()
+  const { push, asPath, query } = useRouter()
+  const { setLastVisitedPage } = useQuiz()
 
+  // keep resume function synced up
   useEffect(() => setLastVisitedPage(asPath), [asPath, setLastVisitedPage])
 
-  const totalQuestions = quiz.sections.reduce(
-    (total, section) =>
-      total +
-      section.questions.filter(q => q.questionType !== "explorer").length,
-    0
+  const { sectionIndex, questionIndex } = query
+
+  const [progressThroughScreens, totalScreens] = getProgressThroughScreens(
+    quiz,
+    sectionIndex as string,
+    questionIndex as string
   )
 
   // handle ESC key
@@ -45,7 +80,7 @@ const QuizLayout = ({ quiz, children }: Props) => {
           <span>
             {Math.min(
               100,
-              Math.round((completedAnswersCount / totalQuestions) * 100)
+              Math.round((progressThroughScreens / totalScreens) * 100)
             )}
             % complete
           </span>
@@ -61,23 +96,42 @@ const QuizLayout = ({ quiz, children }: Props) => {
       </header>
 
       <div className={s.mount}>
-        <div className={s.dialog}>
-          <meter
-            value={completedAnswersCount}
-            max={totalQuestions}
-            className={s.meter}
-          />
-
-          {/* <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: "calc(100vw - 50%)" }}
-            key={route}
+        <AnimatePresence mode="wait">
+          <motion.div
+            className={s.dialog}
+            key={asPath}
+            initial="hidden"
+            animate="visible"
+            exit="pageExit"
+            variants={{
+              hidden: {
+                opacity: 0,
+                transform: "scale(0.95)",
+              },
+              visible: {
+                opacity: 1,
+                transform: "scale(1)",
+                transition: {
+                  type: "spring",
+                  duration: 0.5,
+                },
+              },
+              pageExit: {
+                opacity: 0,
+                transform: "scale(0.95)",
+                transition: { duration: 0.15 },
+              },
+            }}
           >
-            fuck
-          </motion.div> */}
+            <meter
+              value={progressThroughScreens}
+              max={totalScreens}
+              className={s.meter}
+            />
 
-          {children}
-        </div>
+            {children}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   )
