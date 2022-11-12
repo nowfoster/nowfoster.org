@@ -15,7 +15,6 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <GoogleAnalytics trackPageViews />
         <Layout {...pageProps}>
           {pageProps?.showPreviewBanner && <PreviewBanner />}
-
           <ConfirmationMessage />
 
           <Component {...pageProps} />

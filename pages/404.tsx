@@ -7,9 +7,7 @@ import s from "./404.module.scss"
 const NotFoundPage = () => (
   <>
     <Head>
-      <title>
-        🤷‍♀️ Page not found · Now Foster · The fostering service with heart
-      </title>
+      <title>🤷‍♀️ Page not found · Now Foster</title>
     </Head>
 
     <section className={s.notFound}>

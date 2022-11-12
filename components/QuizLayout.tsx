@@ -36,9 +36,7 @@ const QuizLayout = ({ quiz, children }: Props) => {
     <div className={s.backdrop}>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
-        <title>
-          Could you foster? · Now Foster · The fostering service with heart
-        </title>
+        <title>Could you foster? · Now Foster</title>
       </Head>
 
       <header className={s.header}>

@@ -13,9 +13,7 @@ const ApplyPage = ({ quiz }: Props) => {
   return (
     <>
       <Head>
-        <title>
-          Book a chat · Now Foster · The fostering service with heart
-        </title>
+        <title>Book a chat · Now Foster</title>
       </Head>
 
       <PageMasthead crumbs={<li>Book</li>} title="Book an intro chat" />

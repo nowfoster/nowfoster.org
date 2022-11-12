@@ -26,7 +26,7 @@ const Layout = ({ children, quiz }: Props) => {
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
-        <title>Now Foster · The fostering service with heart</title>
+        <title>Now Foster · Forget everything you know about fostering</title>
       </Head>
 
       <a className={s.skip} href="#main-content">
@@ -36,6 +36,29 @@ const Layout = ({ children, quiz }: Props) => {
       <header className={s.header}>
         <div className={s.inner}>
           <Link href="/" className={s.masthead}>
+            <svg width="101" height="94" viewBox="0 0 101 94" fill="none">
+              <path
+                d="M40.9446 9.58296C50.0329 4.29044 61.654 7.43125 66.9012 16.5982L90.6531 58.0936C95.9003 67.2605 92.7864 78.9822 83.6981 84.2747V84.2747C74.6098 89.5673 62.9886 86.4264 57.7415 77.2595L33.9895 35.7641C28.7424 26.5972 31.8563 14.8755 40.9446 9.58296V9.58296Z"
+                fill="url(#paint0_linear_753_280)"
+              />
+              <path
+                d="M59.2097 9.58296C50.1214 4.29044 38.5003 7.43125 33.2531 16.5982L9.50117 58.0936C4.25404 67.2605 7.36793 78.9822 16.4562 84.2747V84.2747C25.5445 89.5673 37.1657 86.4264 42.4128 77.2595L66.1648 35.7641C71.4119 26.5972 68.298 14.8755 59.2097 9.58296V9.58296Z"
+                fill="white"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_753_280"
+                  x1="54.0256"
+                  y1="38.5239"
+                  x2="85.1457"
+                  y2="84.8037"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="white" />
+                  <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
             Now Foster
           </Link>
 
