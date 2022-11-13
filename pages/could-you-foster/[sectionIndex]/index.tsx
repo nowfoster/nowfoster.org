@@ -7,6 +7,7 @@ import { QuizFooter, QuizMain } from "../../../components/QuizLayout"
 import { getQuizContent } from "../../../lib/cms"
 import { Quiz, QuizSection } from "../../../types"
 import s from "./index.module.scss"
+import "../../../components/Question.module.scss"
 
 interface Props {
   section: QuizSection

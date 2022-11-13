@@ -1,7 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import { SlowBuffer } from "buffer"
-import { GetStaticProps, NextPageContext } from "next"
-import Link from "next/link"
+import { GetStaticProps } from "next"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
