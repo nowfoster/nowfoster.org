@@ -32,7 +32,7 @@ const CheckAnswers = ({ quiz }: Props) => {
 
         <div className={s.answers}>
           {Object.entries(quizAnswers).map(([sectionTitle, sectionAnswers]) => (
-            <div key={sectionTitle}>
+            <div key={sectionTitle} className={s.section}>
               <h4>{sectionTitle}</h4>
               <dl>
                 {Object.entries(sectionAnswers).map(([question, answer]) => (

@@ -13,8 +13,15 @@
 
     div {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 0.5rem;
+      padding: 0.3rem;
+      align-items: center;
+
+      &:nth-child(odd) {
+        background-color: $grey;
+        border-radius: $border-radius-s;
+      }
     }
   }
 
@@ -27,5 +34,8 @@
   dd {
     font-size: 0.9rem;
   }
+}
 
+.section {
+  break-inside: avoid;
 }
