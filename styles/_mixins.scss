@@ -82,7 +82,11 @@
     background: $yellow;
     color: $black;
 
-    svg path {
+    svg:first-child path {
+      fill: $black;
+    }
+
+    svg:last-child path {
       stroke: $black;
     }
   }
