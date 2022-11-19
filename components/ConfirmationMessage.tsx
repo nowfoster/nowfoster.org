@@ -26,16 +26,16 @@ const ConfirmationMessage = () => {
           </svg>
 
           <div>
-            <h2>We&apos;ve got your application</h2>
+            <h2>You&apos;ve booked an initial chat</h2>
             <p>
-              We&apos;ll be in touch soon. We&apos;ll be in touch soon.
-              We&apos;ll be in touch soon. We&apos;ll be in touch soon.
-              We&apos;ll be in touch soon.
+              Thanks for booking an intro chat. You&apos;ll shortly get an email
+              with a copy of what you sent us.
             </p>
             <p>
-              We&apos;ll send a copy of your answers to the email address you
-              gave.
+              If there&apos;s anything more you want to add, or questions you
+              want to ask before you chat to us, just reply to that email.
             </p>
+
             <Link href="/">Close message</Link>
           </div>
         </div>

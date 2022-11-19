@@ -5,12 +5,17 @@
   background: $yellow;
 
   svg {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     flex-shrink: 0;
 
     path {
       stroke: $yellow;
+    }
+
+    @media screen and (min-width: $breakpoint-m) {
+      width: 5rem;
+      height: 5rem;
     }
   }
 
@@ -46,7 +51,7 @@
   gap: 1rem;
 
   @media screen and (min-width: $breakpoint-m) {
-    @include section-padding-s;
+    @include section-padding-l;
     flex-direction: row;
 
     gap: 3rem;
