@@ -19,21 +19,6 @@ import useSWR from "swr"
 import LoaderButton from "./LoaderButton"
 import RadioField from "./RadioField"
 
-export const prettyAnswersPlain = (answers: Answers): string =>
-  Object.entries(answers)
-    .map(
-      ([sectionName, sectionAnswers]) =>
-        `${sectionName.toUpperCase()}\n${Object.entries(sectionAnswers)
-          .map(
-            ([question, answer]) =>
-              `${question}\n- ${
-                Array.isArray(answer) ? answer.join(", ") : answer
-              }\n`
-          )
-          .join("")}\n`
-    )
-    .join("")
-
 interface Props {
   quiz: Quiz
 }
@@ -170,7 +155,7 @@ const ApplicationForm = ({ quiz }: Props) => {
 
         {JSON.stringify(methods.formState.errors)}
 
-        <LoaderButton disabled={isSubmitting} loading={true}>
+        <LoaderButton disabled={isSubmitting} loading={isSubmitting}>
           Apply
         </LoaderButton>
       </form>
