@@ -96,42 +96,15 @@ const QuizLayout = ({ quiz, children }: Props) => {
       </header>
 
       <div className={s.mount}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            className={s.dialog}
-            key={asPath}
-            initial="hidden"
-            animate="visible"
-            exit="pageExit"
-            variants={{
-              hidden: {
-                opacity: 0,
-                transform: "scale(0.95)",
-              },
-              visible: {
-                opacity: 1,
-                transform: "scale(1)",
-                transition: {
-                  type: "spring",
-                  duration: 0.5,
-                },
-              },
-              pageExit: {
-                opacity: 0,
-                transform: "scale(0.95)",
-                transition: { duration: 0.15 },
-              },
-            }}
-          >
-            <meter
-              value={progressThroughScreens}
-              max={totalScreens}
-              className={s.meter}
-            />
+        <div className={s.dialog} key={asPath}>
+          <meter
+            value={progressThroughScreens}
+            max={totalScreens}
+            className={s.meter}
+          />
 
-            {children}
-          </motion.div>
-        </AnimatePresence>
+          {children}
+        </div>
       </div>
     </div>
   )

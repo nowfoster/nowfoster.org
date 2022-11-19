@@ -125,7 +125,6 @@
   overflow: hidden;
   position: relative;
 
-
   @media screen and (min-width: $breakpoint-m) {
     border-radius: $border-radius-s;
   }
@@ -173,6 +172,7 @@
 @mixin main {
   flex: 1;
   overflow-y: auto;
+  animation: fadeIn 0.5s cubic-bezier(.87, -.41, .19, 1.44);
 
   h2 {
     margin-top: 0;
