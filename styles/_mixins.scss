@@ -87,16 +87,16 @@
     }
   }
 
-  &:disabled {
-    background: $grey;
-    color: $light-black;
-    cursor: default;
-    pointer-events: none;
+  // &:disabled {
+  //   background: $grey;
+  //   color: $light-black;
+  //   cursor: default;
+  //   pointer-events: none;
 
-    svg path {
-      stroke: $light-black;
-    }
-  }
+  //   svg path {
+  //     stroke: $light-black;
+  //   }
+  // }
 
   @media screen and (min-width: $breakpoint-m) {
     font-size: 1.2rem;
