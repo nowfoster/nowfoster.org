@@ -5,6 +5,7 @@ import { FormProvider, useForm } from "react-hook-form"
 import { useQuiz } from "../contexts/quiz"
 import { generateApplicationSchema } from "../lib/validators"
 import {
+  Answers,
   ApplicationInput,
   ContactPreference,
   EventResponseBody,
@@ -14,10 +15,24 @@ import {
 import CallBookingField, { CallBookingFieldSkeleton } from "./CallBookingField"
 import Field from "./Field"
 import s from "./ApplicationForm.module.scss"
-import { decodeAnswers } from "../lib/quiz"
 import useSWR from "swr"
 import LoaderButton from "./LoaderButton"
 import RadioField from "./RadioField"
+
+export const prettyAnswersPlain = (answers: Answers): string =>
+  Object.entries(answers)
+    .map(
+      ([sectionName, sectionAnswers]) =>
+        `${sectionName.toUpperCase()}\n${Object.entries(sectionAnswers)
+          .map(
+            ([question, answer]) =>
+              `${question}\n- ${
+                Array.isArray(answer) ? answer.join(", ") : answer
+              }\n`
+          )
+          .join("")}\n`
+    )
+    .join("")
 
 interface Props {
   quiz: Quiz
@@ -53,9 +68,7 @@ const ApplicationForm = ({ quiz }: Props) => {
       method: "POST",
       body: JSON.stringify({
         ...data,
-        answers: data.includeAnswers
-          ? decodeAnswers(quizAnswers, quiz)
-          : undefined, // take quiz answers if opted in
+        answers: data.includeAnswers ? quizAnswers : undefined, // take quiz answers if opted in
       }),
     })
     if (res.ok) {
@@ -66,8 +79,6 @@ const ApplicationForm = ({ quiz }: Props) => {
       )
     }
   }
-
-  console.log(methods.formState.errors)
 
   const contactPref = methods.watch("contactPreference")
 
@@ -157,7 +168,9 @@ const ApplicationForm = ({ quiz }: Props) => {
           </p>
         )}
 
-        <LoaderButton disabled={isSubmitting} loading={isSubmitting}>
+        {JSON.stringify(methods.formState.errors)}
+
+        <LoaderButton disabled={isSubmitting} loading={true}>
           Apply
         </LoaderButton>
       </form>

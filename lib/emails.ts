@@ -3,7 +3,7 @@ import { Answers, Application } from "../types"
 
 sg.setApiKey(process.env.SENDGRID_API_KEY as string)
 
-const prettyAnswersPlain = (answers: Answers): string =>
+export const prettyAnswersPlain = (answers: Answers): string =>
   Object.entries(answers)
     .map(
       ([sectionName, sectionAnswers]) =>
