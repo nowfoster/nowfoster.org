@@ -153,8 +153,6 @@ const ApplicationForm = ({ quiz }: Props) => {
           </p>
         )}
 
-        {JSON.stringify(methods.formState.errors)}
-
         <LoaderButton disabled={isSubmitting} loading={isSubmitting}>
           Apply
         </LoaderButton>
