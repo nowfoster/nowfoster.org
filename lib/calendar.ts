@@ -1,6 +1,5 @@
 import { calendar_v3, google } from "googleapis"
-import build from "next/dist/build"
-import { ApplicationInput, Event } from "../types"
+import { Application, Event } from "../types"
 
 const { OAuth2 } = google.auth
 const {
@@ -38,9 +37,7 @@ export const getAvailability = async (): Promise<Event[]> => {
   )
 }
 
-export const bookSlot = async (
-  application: ApplicationInput
-): Promise<void> => {
+export const bookSlot = async (application: Application): Promise<void> => {
   const res = await calendar.events.get({
     calendarId: GOOGLE_CALENDAR_ID,
     eventId: application.eventId,
@@ -67,12 +64,20 @@ export const bookSlot = async (
   return
 }
 
-const buildEventDescription = (application: ApplicationInput): string =>
+const buildEventDescription = (application: Application): string =>
   `<strong>Name:</strong> ${application.firstName} ${
     application.lastName
-  }\n<strong>Email:</strong> ${application.email}\n<strong>Phone:</strong> ${
-    application.phone
-  }\n ${
+  }\n<strong>Email:</strong> ${application.email}\n${
+    application.phone ? `<strong>Phone:</strong> ${application.phone}` : ""
+  }\n\n<strong>Made at:</strong> ${new Date(
+    "2022-11-19T21:10:07.208Z"
+  ).toLocaleString()}\n<strong>Contact preference:</strong> ${
+    application.contactPreference
+  }\n<strong>Level of interest:</strong> ${
+    application.levelOfInterest
+  }\n<strong>Topics to discuss:</strong> ${
+    application.discussionTopics
+  }\n<hr/>${
     application.answers
       ? Object.entries(application.answers)
           .map(

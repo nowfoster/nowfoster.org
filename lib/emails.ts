@@ -7,14 +7,15 @@ export const prettyAnswersPlain = (answers: Answers): string =>
   Object.entries(answers)
     .map(
       ([sectionName, sectionAnswers]) =>
-        `${sectionName.toUpperCase()}\n${Object.entries(sectionAnswers)
-          .map(
-            ([question, answer]) =>
-              `${question}\n- ${
-                Array.isArray(answer) ? answer.join(", ") : answer
-              }\n`
-          )
-          .join("")}\n`
+        `<h3>${sectionName}</h3>
+          ${Object.entries(sectionAnswers)
+            .map(
+              ([question, answer]) =>
+                `<p><strong>${question}</strong></p><p>${
+                  Array.isArray(answer) ? answer.join(", ") : answer
+                }</p>`
+            )
+            .join("")}`
     )
     .join("")
 
