@@ -27,7 +27,7 @@ export const generateApplicationSchema = (eventsAvailable: boolean) =>
           .string()
           .typeError("You need to choose a time for a call")
           .required("You need to choose a time for a call")
-      : yup.string(),
+      : yup.string().nullable(),
     contactPreference: yup
       .string()
       .typeError("You need to tell us how you'd prefer to be contacted")
