@@ -188,7 +188,10 @@ export interface IQuizSectionFields {
   order?: number | undefined;
 
   /** Questions */
-  questions: IQuestion[];
+  questions?: IQuestion[] | undefined;
+
+  /** Image */
+  image?: Asset | undefined;
 }
 
 /** A group of questions in the quiz */

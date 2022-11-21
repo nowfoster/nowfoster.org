@@ -19,7 +19,7 @@ const getProgressThroughScreens = (
   const totalScreens = quiz.sections.reduce(
     // add one to account for section intro page
     (total, section) => total + section.questions.length + 1,
-    0
+    1 // not zero, to account for pages around them
   )
 
   if (typeof si !== "number") return [totalScreens, totalScreens]

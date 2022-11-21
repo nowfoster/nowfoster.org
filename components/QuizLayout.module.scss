@@ -78,6 +78,9 @@
   align-items: center;
   @include standard-padding;
   animation: fadeIn 0.5s cubic-bezier(.87, -.41, .19, 1.44);
+  animation-delay: 0.2s;
+  opacity: 0;
+  animation-fill-mode: forwards;
   line-height: 1.3;
 
   h1 {

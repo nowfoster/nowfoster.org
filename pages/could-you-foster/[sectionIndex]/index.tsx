@@ -8,6 +8,7 @@ import { getQuizContent } from "../../../lib/cms"
 import { Quiz, QuizSection } from "../../../types"
 import s from "./index.module.scss"
 import "../../../components/Question.module.scss"
+import Image from "next/image"
 
 interface Props {
   section: QuizSection
@@ -18,10 +19,13 @@ interface Props {
 const SectionPage = ({ section, sectionIndex, quiz }: Props) => {
   const previousSection = quiz.sections[sectionIndex - 1]
 
+  const hasQuestions = section.questions.length > 0
+  const previousSectionHasQuestions = previousSection?.questions.length > 0
+
   const goBackLink =
     previousSection &&
     `/could-you-foster/${sectionIndex - 1}/${
-      previousSection.questions.length - 1
+      previousSectionHasQuestions ? previousSection.questions.length - 1 : ""
     }`
 
   return (
@@ -29,24 +33,37 @@ const SectionPage = ({ section, sectionIndex, quiz }: Props) => {
       <QuizMain padded>
         <div className={s.columns}>
           <div>
-            <p>
-              Section {sectionIndex + 1} of {quiz.sections.length}
-            </p>
             <h2>{section.title}</h2>
             {section.intro && (
               <div>{documentToReactComponents(section.intro)}</div>
             )}
           </div>
 
-          <ProgressTimeline
-            sections={quiz.sections}
-            currentSectionIndex={sectionIndex}
-          />
+          {hasQuestions ? (
+            <ProgressTimeline
+              sections={quiz.sections}
+              currentSectionIndex={sectionIndex}
+            />
+          ) : section.image ? (
+            <Image
+              width={500}
+              height={500}
+              src={`https:${section.image?.fields.file.url}`}
+              alt={section.image?.fields.description}
+            />
+          ) : null}
         </div>
       </QuizMain>
 
       <QuizFooter goBack={goBackLink}>
-        <Link href={`/could-you-foster/${sectionIndex}/0`} className="button">
+        <Link
+          href={
+            hasQuestions
+              ? `/could-you-foster/${sectionIndex}/0`
+              : `/could-you-foster/${sectionIndex + 1}`
+          }
+          className="button"
+        >
           Continue <Icon />
         </Link>
       </QuizFooter>
