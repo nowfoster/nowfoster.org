@@ -5,7 +5,6 @@ import Layout from "../components/Layout"
 import PreviewBanner from "../components/PreviewBanner"
 import ConfirmationMessage from "../components/ConfirmationMessage"
 import { SWRConfig } from "swr"
-import { AnimatePresence, motion } from "framer-motion"
 import { GoogleAnalytics } from "nextjs-google-analytics"
 
 function MyApp({ Component, pageProps, router }: AppProps) {

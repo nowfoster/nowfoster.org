@@ -6,8 +6,6 @@ import { useQuiz } from "../contexts/quiz"
 import { Quiz as IQuiz, Quiz } from "../types"
 import s from "./QuizLayout.module.scss"
 
-import { AnimatePresence, motion } from "framer-motion"
-
 const getProgressThroughScreens = (
   quiz: Quiz,
   sectionIndex?: string,

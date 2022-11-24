@@ -6,7 +6,6 @@ import { useQuiz } from "../contexts/quiz"
 import { Quiz } from "../types"
 import s from "./Layout.module.scss"
 import QuizLayout from "./QuizLayout"
-import { AnimatePresence, motion } from "framer-motion"
 
 interface Props {
   quiz?: Quiz
@@ -19,11 +18,7 @@ const Layout = ({ children, quiz }: Props) => {
   const { asPath } = useRouter()
 
   if (asPath.includes("/could-you-foster") && quiz)
-    return (
-      <AnimatePresence mode="wait">
-        <QuizLayout quiz={quiz}>{children}</QuizLayout>
-      </AnimatePresence>
-    )
+    return <QuizLayout quiz={quiz}>{children}</QuizLayout>
 
   return (
     <>
@@ -71,10 +66,10 @@ const Layout = ({ children, quiz }: Props) => {
                 <Link href="/fostering-with-us">Fostering with us</Link>
               </li>
               <li>
-                <Link href="/process">Our process</Link>
+                <Link href="/process">The process</Link>
               </li>
               <li>
-                <Link href={blogUrl}>Fostering stories</Link>
+                <Link href={blogUrl}>Blog</Link>
               </li>
               <li>
                 <Link href={lastVisitedPage} className={s.primary}>

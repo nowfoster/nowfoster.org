@@ -10,7 +10,6 @@ import {
 import { FosteringOption, FosteringStory as IFosteringStory } from "../types"
 import Slider from "../components/Slider"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { useQuiz } from "../contexts/quiz"
 
 interface Props {
@@ -26,7 +25,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         <div className="container">
           <h1>Forget everything you think you know about fostering</h1>
 
-          <p>Explore what it really takes to be a great foster carer </p>
+          <p>Find out what fostering could add to your life.</p>
 
           <Link href={lastVisitedPage} className="button">
             Could you foster? <Icon />
@@ -36,7 +35,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
       <section className={s.options} id="kinds-of-fostering">
         <div className="container">
-          <h2 className="section-heading">Kinds of fostering</h2>
+          <h2 className="section-heading">Your fostering options</h2>
 
           <p className="section-caption">
             There&apos;s lots of choice and flexibility in fostering.
@@ -60,7 +59,9 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
       <section className={s.stories}>
         <h2 className="section-heading">Fostering stories</h2>
-        <p className="section-caption">Join our community of foster carers.</p>
+        <p className="section-caption">
+          Not all heroes wear capes. Join our community of foster carers.
+        </p>
 
         <Slider stories={fosteringStories} />
 
@@ -92,14 +93,28 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
       <section className={s.story} id="why-foster">
         <div className="container">
           <h2 className="section-heading">Why foster?</h2>
-          <p>
-            Now Foster is a team of innovative social workers, designers and
-            entrepreneurs who want to change how fostering is done.
-          </p>
-          <p>
-            We work alongside innovative councils across the UK to find and
-            empower brilliant people to care for children and young people.
-          </p>
+
+          <p>First of all...why not?</p>
+          <ul>
+            <li>
+              If you don’t want to foster then you can make any reason fit, and
+              that’s ok. But if there’s any part of you that’s curious, your
+              potential is unimaginable
+            </li>
+            <li>
+              There will be a deficit of around 25,000 foster care families by
+              2026
+            </li>
+            <li>
+              Most young people in foster care have a sibling yet almost ¾ are
+              separated! This is a huge number of young people not living with
+              their brothers and sisters. The main reason… not enough bedrooms
+            </li>
+            <li>
+              We saw the country’s response to supporting people from Ukraine,
+              why can’t we do the same with foster care?
+            </li>
+          </ul>
         </div>
       </section>
     </>
