@@ -1,4 +1,4 @@
-import type { GetStaticProps } from "next"
+import type { GetServerSideProps, GetStaticProps } from "next"
 import { Icon } from "../components/LoaderButton"
 import s from "./index.module.scss"
 import { blogUrl } from "../config"
@@ -123,7 +123,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
 export default Home
 
-export const getStaticProps: GetStaticProps = async ({ preview }) => {
+export const getServerSideProps: GetServerSideProps = async ({ preview }) => {
   const fosteringOptions = await getFosteringOptions({ preview: !!preview })
   const fosteringStories = await getFosteringStories({ preview: !!preview })
 
