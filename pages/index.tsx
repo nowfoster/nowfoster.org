@@ -100,28 +100,23 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
       <section className={s.story} id="why-foster">
         <div className="container">
           <h2 className="section-heading">Why foster?</h2>
-
-          <p>First of all...why not?</p>
-          <ul>
-            <li>
-              If you don’t want to foster then you can make any reason fit, and
-              that’s ok. But if there’s any part of you that’s curious, your
-              potential is unimaginable
-            </li>
-            <li>
-              There will be a deficit of around 25,000 foster care families by
-              2026
-            </li>
-            <li>
-              Most young people in foster care have a sibling yet almost ¾ are
-              separated! This is a huge number of young people not living with
-              their brothers and sisters. The main reason… not enough bedrooms
-            </li>
-            <li>
-              We saw the country’s response to supporting people from Ukraine,
-              why can’t we do the same with foster care?
-            </li>
-          </ul>
+          <div className={s.inner}>
+            <div>
+              <h1>25,000</h1>
+              <p>the shortage of foster care families by 2026. The need for foster carers has never been greater</p>
+            </div>
+            <div>
+              <h1>3 in 4</h1>
+              <p>siblings are separated in foster care. The main reason... not enough bedrooms</p>
+            </div>
+            <div>
+              <h1>94,900</h1>
+              <p>the total number of Ukrainians staying with British families. Why can’t we do the same for UK children?</p>
+            </div>
+          </div>
+          <Link href={lastVisitedPage} className="button">
+            Could you foster?
+          </Link>
         </div>
       </section>
     </>

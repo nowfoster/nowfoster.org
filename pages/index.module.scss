@@ -163,4 +163,20 @@
     @include contained-width-s;
     margin: 0;
   }
+
+  .inner {
+    border: 5px solid $lilac;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 50px;
+  }
+
+    h1 {
+    font-size: 3rem;
+    line-height: 0;
+  }
 }
