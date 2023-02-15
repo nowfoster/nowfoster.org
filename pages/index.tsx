@@ -28,7 +28,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           <p>Find out what fostering could add to your life.</p>
 
           <Link href={lastVisitedPage} className="button">
-            Could you foster? <Icon />
+            Could you foster?
           </Link>
         </div>
       </section>
@@ -52,7 +52,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           </div>
 
           <Link href={lastVisitedPage} className="button">
-            Could you foster? <Icon />
+            Could you foster?
           </Link>
         </div>
       </section>
@@ -85,7 +85,6 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
           <Link href="/fostering-with-us" className="button">
             Learn more
-            <Icon />
           </Link>
         </div>
       </section>
