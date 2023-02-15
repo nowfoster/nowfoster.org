@@ -3,7 +3,7 @@
 
 .hero {
   @include section-padding-l;
-  background: $blue;
+  background: $green;
   color: $white;
   position: relative;
 
@@ -87,7 +87,7 @@
   }
 
   p {
-    color: $blue;
+    color: $green;
 
     &:last-child {
       font-weight: bold;

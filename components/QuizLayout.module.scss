@@ -46,12 +46,12 @@
   text-decoration: none;
 
   svg path {
-    stroke: $blue;
+    stroke: $green;
   }
 
   &:hover {
     svg path {
-      stroke: $light-blue;
+      stroke: $light-green;
     }
   }
 
@@ -202,7 +202,7 @@
 }
 
 .suggestion {
-  background: $blue;
+  background: $green;
 }
 
 .centredQuestion {
