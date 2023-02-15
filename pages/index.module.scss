@@ -20,7 +20,7 @@
     text-align: center;
     line-height: 1.1;
     margin: 0;
-    color: $orange;
+    color: $white;
 
     @media screen and (min-width: $breakpoint-m) {
       font-size: 4rem;
@@ -83,7 +83,7 @@
     margin-top: 0;
     font-size: 1.5rem;
     margin-bottom: 0;
-    color: $orange;
+    color: #163D45;
   }
 
   p {
@@ -112,13 +112,18 @@
 
 .story {
   @include section-padding-m;
-  background: $grey;
+  background: $white;
   color: $black;
   text-align: center;
   font-size: 1.2rem;
 
-  &:nth-child(odd) {
-    background: $white;
+  &:nth-child(even) {
+    background: $green;
+    color: $white;
+
+    h2 {
+      color: $white;
+    }
   }
 
   &>div {
