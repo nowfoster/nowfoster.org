@@ -2,17 +2,18 @@
 @import "../styles/mixins";
 
 .hero {
-  @include section-padding-l;
+  @include section-padding-xl;
   background: $green;
   color: $white;
   position: relative;
 
   div {
+    @include contained-width-m;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   h1 {
@@ -23,7 +24,7 @@
     color: $white;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 4rem;
+      font-size: 5.5rem;
     }
   }
 
