@@ -97,8 +97,33 @@
   }
 }
 
+.transition {
+  @include section-padding-s;
+  background-color: $lilac;
+  color: $green;
+  
+  div {
+    @include contained-width-m;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1 rem;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    text-align: center;
+  }
+
+  span {
+    color: $white;
+  }
+}
+
 .stories {
   @include section-padding-m;
+  background-color: $grey;
 
   &>p {
     margin-bottom: 2.5rem;

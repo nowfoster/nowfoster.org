@@ -57,6 +57,15 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         </div>
       </section>
 
+      <section className={s.transition}>
+        <div className="container">
+          <h1>
+            You're happier <span>+</span> busier <span>+</span> smilier. 
+            You're you <span>+</span> Fostering.
+          </h1>
+        </div>
+      </section>
+
       <section className={s.stories}>
         <h2 className="section-heading">Fostering stories</h2>
         <p className="section-caption">
