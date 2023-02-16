@@ -40,7 +40,7 @@ const GenericPage = ({ page }: Props) => {
       >
         {page.fields.lede && (
           <Link href={lastVisitedPage} className="button">
-            Could you foster? <Icon />
+            Could you foster?
           </Link>
         )}
       </PageMasthead>
