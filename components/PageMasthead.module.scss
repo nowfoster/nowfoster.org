@@ -2,7 +2,7 @@
 @import "../styles/mixins";
 
 .masthead {
-  background: $blue;
+  background: $green;
   @include standard-padding;
   @include section-padding-m;
   display: flex;
