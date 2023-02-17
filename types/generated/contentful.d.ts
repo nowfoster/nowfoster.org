@@ -51,6 +51,9 @@ export interface IFosteringOptionFields {
 
   /** Sting */
   conclusion: string;
+
+  /** Icon */
+  icon?: Asset | undefined;
 }
 
 /** Appears on the homepage. */
