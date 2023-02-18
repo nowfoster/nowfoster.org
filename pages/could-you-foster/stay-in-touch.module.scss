@@ -1,0 +1,9 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.optionList {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
