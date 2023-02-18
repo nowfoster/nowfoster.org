@@ -5,7 +5,7 @@
   margin-right: auto;
 }
 
-@mixin contained-width-m { //April
+@mixin contained-width-m { 
   max-width: 1000px;
   width: 100%;
   margin-left: auto;
@@ -258,4 +258,11 @@
   &:focus-within {
     outline: 3px solid $yellow;
   }
+}
+
+@mixin optionList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
 }

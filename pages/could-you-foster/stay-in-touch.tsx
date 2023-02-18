@@ -1,12 +1,10 @@
 import { GetStaticProps } from "next"
-import { Icon } from "../../components/LoaderButton"
 import {
   CentredQuestion,
   QuizFooter,
 } from "../../components/QuizLayout"
 import { getQuizContent } from "../../lib/cms"
 import Link from "next/link"
-import s from "./stay-in-touch.module.scss"
 
 const CheckPostcode = () => {
   return (
@@ -14,8 +12,8 @@ const CheckPostcode = () => {
     <CentredQuestion>
       <div>
         <h1>It’s normal to have doubts. Your time will come.</h1>
-        <p>"Please choose how you want to stay in touch.</p>
-          <div className={s.optionList}>
+        <p>Please choose how you want to stay in touch.</p>
+          <div className="optionList">
             <Link href="." className="squaredButton">Join our mailing list to stay in touch</Link>
             <Link href="." className="squaredButton">Invite me to the next info event</Link>
             <Link href="." className="squaredButton">Chat to a foster carer</Link>
