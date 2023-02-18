@@ -39,3 +39,8 @@
 .section {
   break-inside: avoid;
 }
+
+.choiceButtons{
+  display: flex;
+  gap: 10px;
+}

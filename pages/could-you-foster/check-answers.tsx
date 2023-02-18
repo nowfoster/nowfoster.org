@@ -50,9 +50,14 @@ const CheckAnswers = ({ quiz }: Props) => {
       </QuizMain>
 
       <QuizFooter goBack={goBackLink}>
-        <Link href="/could-you-foster/check-postcode" className="button">
-          Book an intro chat <Icon />
-        </Link>
+        <div className={s.choiceButtons}>
+          <Link href="/could-you-foster/stay-in-touch" className="button">
+            I'm not ready <Icon />
+          </Link>
+          <Link href="/could-you-foster/check-postcode" className="button">
+            Continue <Icon />
+          </Link>
+        </div>
       </QuizFooter>
     </>
   )

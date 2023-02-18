@@ -16,6 +16,10 @@
   @include button;
 }
 
+.squaredButton {
+  @include squaredButton;
+}
+
 .section-heading {
   font-size: 2.5rem;
   margin: 0;
