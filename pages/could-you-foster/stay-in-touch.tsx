@@ -13,7 +13,7 @@ const CheckPostcode = () => {
     <>
     <CentredQuestion>
       <div>
-        <h1>It’s normal to have doubts. Your time will come."</h1>
+        <h1>It’s normal to have doubts. Your time will come.</h1>
         <p>"Please choose how you want to stay in touch.</p>
           <div className={s.optionList}>
             <Link href="." className="squaredButton">Join our mailing list to stay in touch</Link>
