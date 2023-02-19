@@ -14,9 +14,10 @@ export const allowedPrefixes = [
     "SW1", "SW2", "SW3", "SW4", "SW5", "SW6", "SW7", "SW8", "SW9", 
     "WC1", "WC2"]
 
-// where is the blog on the web?
 export const blogUrl = "http://blog.nowfoster.org"
 
-export const facebookUrl = "https://example.com"
-export const instaUrl = "https://example.com"
-export const twitterUrl = "https://example.com"
+export const linkedInUrl = "https://www.linkedin.com/company/nowfoster/"
+export const facebookUrl = "https://example.com" // awaiting link
+export const instaUrl = "https://example.com" // awaiting link
+export const twitterUrl = "https://twitter.com/nowfostering"
+

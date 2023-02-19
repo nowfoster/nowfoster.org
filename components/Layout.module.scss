@@ -171,7 +171,7 @@ button.primary {
   gap: 1.5rem;
 
   @media screen and (min-width: $breakpoint-l) {
-    grid-template-columns: 3fr 1fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
     gap: 4rem;
   }
 }
@@ -204,6 +204,43 @@ button.primary {
 }
 
 .connect {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.mailingList {
+  width: 100%;
+  display: block;
+  height: 3rem;
+  border: 1px solid $white;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  border-radius: 5px;
+
+  a {
+    text-decoration: none;
+    padding: 0.5rem;
+    font-style: italic;
+    height: 100%;
+    width: 100%;
+
+    &:hover{
+      text-decoration: none;
+    }
+    &:active,
+    &:focus {
+      outline: none;
+      border-color: $yellow;
+
+      svg path {
+        fill: $black;
+      }
+    }
+  }
+}
+
+.socials {
   div {
     display: flex;
     flex-direction: row;
@@ -236,5 +273,23 @@ button.primary {
   svg {
     height: 1.25rem;
 
+  }
+}
+
+.footerLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+
+}
+
+.logoBlock {
+  display: flex;
+  gap: 20px;
+
+  p {
+    margin-top: 30px;
+    font-size: smaller;
   }
 }
