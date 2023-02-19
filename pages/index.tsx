@@ -61,8 +61,8 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
       <section className={s.transition}>
         <div className="container">
           <h1>
-            You're happier <span>+</span> busier <span>+</span> smilier. 
-            You're you <span>+</span> Fostering.
+            You&apos;re happier <span>+</span> busier <span>+</span> smilier. 
+            You&apos;re you <span>+</span> Fostering.
           </h1>
         </div>
       </section>
@@ -112,7 +112,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             </div>
             <div>
               <h1>94,900</h1>
-              <p>the total number of Ukrainians staying with British families. Why can’t we do the same for UK children?</p>
+              <p>the total number of Ukrainians staying with British families. Why can&apos;t we do the same for UK children?</p>
             </div>
           </div>
           <Link href={lastVisitedPage} className="button">
