@@ -1,7 +1,7 @@
 import { Entry } from "contentful"
 import type { GetServerSideProps } from "next"
 import Head from "next/head"
-import { getPageContentBySlug, getQuizContent } from "../lib/cms"
+import { getPageContentBySlug, getTeamMembers } from "../lib/cms"
 import { IPageFields } from "../types/generated/contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import ContentBlock from "../components/ContentBlock"
@@ -9,18 +9,18 @@ import PageMasthead from "../components/PageMasthead"
 import Link from "next/link"
 import { useQuiz } from "../contexts/quiz"
 import MeetTheTeam from "../components/MeetTheTeam"
+import { TeamMember } from "../types"
 
 interface Props {
   page: Entry<IPageFields>
+  teamMembers?: TeamMember[]
 }
 
-const GenericPage = ({ page }: Props) => {
+const GenericPage = ({ page, teamMembers }: Props) => {
   const hasContentBlocks =
     page.fields.contentBlocks && page.fields.contentBlocks.length > 0
 
   const { lastVisitedPage } = useQuiz()
-
-  const showTeam = page.fields.slug === "fostering-with-us"  
 
   return (
     <>
@@ -58,12 +58,10 @@ const GenericPage = ({ page }: Props) => {
         </div>
       )}
 
-      {showTeam && <MeetTheTeam/>}
-
-
+      {teamMembers && <MeetTheTeam teamMembers={teamMembers} />}
     </>
   )
-}    
+}
 
 export default GenericPage
 
@@ -75,6 +73,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     preview: !!preview,
   })
 
+  let teamMembers
+  if (query.slug === "fostering-with-us") teamMembers = await getTeamMembers()
+
   if (!page)
     return {
       notFound: true,
@@ -83,6 +84,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   return {
     props: {
       page,
+      teamMembers,
       showPreviewBanner: !!preview,
     },
   }

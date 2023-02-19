@@ -1,27 +1,23 @@
+import { TeamMember } from "../types"
 import s from "./MeetTheTeam.module.scss"
 
-const Card = () => (
+const Card = (teamMember: TeamMember) => (
   <div className={s.card}>
     <img
-      src="https://images.unsplash.com/photo-1573497161161-c3e73707e25c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-      alt=""
+      src={teamMember.portrait?.fields.file.url}
+      alt={teamMember.portrait?.fields.title || ""}
       width={250}
     />
-    <h2>Jane Doe</h2>
-    <p className="title">CEO &amp; Founder</p>
-    <p>
-      Co-founder of Now Foster. Service Designer and Partner for Impossible
-      Ideas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc orci
-      lacus, elementum vitae tortor sit amet, bibendum volutpat ex.
-    </p>
+    <h2>{teamMember.name}</h2>
+    <p>{teamMember.biography}</p>
   </div>
 )
 
-const MeetTheTeam = () => (
+const MeetTheTeam = ({ teamMembers }: { teamMembers: TeamMember[] }) => (
   <section className={s.meetTheTeam}>
     <div className={s.container} id="team">
       <div className={s.heading}>
-        <h1 className="section-heading">Meet The Team</h1>
+        <h1 className="section-heading">Meet the team</h1>
         <p className="section-caption">
           Now Foster is a team of innovative social workers, designers and
           entrepreneurs who want to change how fostering is done.
@@ -29,17 +25,17 @@ const MeetTheTeam = () => (
       </div>
       <div className={s.cards}>
         <div className={s.row}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {teamMembers
+            .filter(m => m.type === "Team")
+            .map(m => (
+              <Card {...m} key={m.id} />
+            ))}
         </div>
       </div>
     </div>
     <div className={s.container} id="team">
       <div className={s.heading}>
-        <h1 className="section-heading">Our Board</h1>
+        <h1 className="section-heading">Our board</h1>
         <p className="section-caption">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo
           dignissim.
@@ -47,9 +43,11 @@ const MeetTheTeam = () => (
       </div>
       <div className={s.cards}>
         <div className={s.row}>
-          <Card />
-          <Card />
-          <Card />
+          {teamMembers
+            .filter(m => m.type === "Board")
+            .map(m => (
+              <Card {...m} key={m.id} />
+            ))}
         </div>
       </div>
     </div>
