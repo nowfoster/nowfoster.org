@@ -19,7 +19,7 @@ const GenericPage = ({ page }: Props) => {
     page.fields.contentBlocks && page.fields.contentBlocks.length > 0
 
   const { lastVisitedPage } = useQuiz()
-  
+
   const showTeam = page.fields.slug === "fostering-with-us"  
 
   return (
@@ -57,10 +57,10 @@ const GenericPage = ({ page }: Props) => {
           {documentToReactComponents(page.fields.content)}
         </div>
       )}
-    
-      {showTeam
-        ? (<MeetTheTeam/>) : null
-      }
+
+      {showTeam && <MeetTheTeam/>}
+
+
     </>
   )
 }    
