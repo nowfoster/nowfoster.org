@@ -51,6 +51,9 @@ export interface IFosteringOptionFields {
 
   /** Sting */
   conclusion: string;
+
+  /** Icon */
+  icon?: Asset | undefined;
 }
 
 /** Appears on the homepage. */
@@ -243,6 +246,39 @@ export interface ISuggestion extends Entry<ISuggestionFields> {
   };
 }
 
+export interface ITeamMemberFields {
+  /** Name */
+  name?: string | undefined;
+
+  /** What kind of team member? */
+  type: "Team" | "Board";
+
+  /** Portrait */
+  portrait?: Asset | undefined;
+
+  /** Biography */
+  biography?: string | undefined;
+}
+
+/** Appears on the "fostering with us" page */
+
+export interface ITeamMember extends Entry<ITeamMemberFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "teamMember";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
 export type CONTENT_TYPE =
   | "contentBlock"
   | "fosteringOption"
@@ -250,7 +286,8 @@ export type CONTENT_TYPE =
   | "page"
   | "question"
   | "quizSection"
-  | "suggestion";
+  | "suggestion"
+  | "teamMember";
 
 export type LOCALE_CODE = "en-GB";
 

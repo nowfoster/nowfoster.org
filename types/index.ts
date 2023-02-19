@@ -7,6 +7,7 @@ import {
   IQuestionFields,
   IQuizSectionFields,
   ISuggestionFields,
+  ITeamMemberFields,
 } from "./generated/contentful"
 
 export interface Option extends ISuggestionFields {
@@ -20,6 +21,10 @@ export interface FosteringOption extends IFosteringOptionFields {
 }
 
 export interface FosteringStory extends IFosteringStoriesFields {
+  id: string
+}
+
+export interface TeamMember extends ITeamMemberFields {
   id: string
 }
 
