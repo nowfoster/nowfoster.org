@@ -44,7 +44,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           <div className={s.optionsList}>
             {fosteringOptions.map(option => (
               <article key={option.id}>
-                <img src={option.icon?.fields.file.url}/>
+                <img src={option.icon?.fields.file.url} />
                 <h3>{option.title}</h3>
                 <p>{option.description}</p>
                 <p>{option.conclusion}</p>
@@ -61,8 +61,8 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
       <section className={s.transition}>
         <div className="container">
           <h1>
-            You're happier <span>+</span> busier <span>+</span> smilier. 
-            You're you <span>+</span> Fostering.
+            You&apos;re happier <span>+</span> busier <span>+</span> smilier.
+            You&apos;re you <span>+</span> Fostering.
           </h1>
         </div>
       </section>
@@ -104,15 +104,24 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           <div className={s.inner}>
             <div>
               <h1>25,000</h1>
-              <p>the shortage of foster care families by 2026. The need for foster carers has never been greater</p>
+              <p>
+                the shortage of foster care families by 2026. The need for
+                foster carers has never been greater
+              </p>
             </div>
             <div>
               <h1>3 in 4</h1>
-              <p>siblings are separated in foster care. The main reason... not enough bedrooms</p>
+              <p>
+                siblings are separated in foster care. The main reason... not
+                enough bedrooms
+              </p>
             </div>
             <div>
               <h1>94,900</h1>
-              <p>the total number of Ukrainians staying with British families. Why can’t we do the same for UK children?</p>
+              <p>
+                the total number of Ukrainians staying with British families.
+                Why can’t we do the same for UK children?
+              </p>
             </div>
           </div>
           <Link href={lastVisitedPage} className="button">
