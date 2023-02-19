@@ -24,7 +24,7 @@
       top: 10px;
       left: -25px;
       height: calc(100% + 1.5rem);
-      border-left: 3px solid $orange;
+      border-left: 3px solid $lilac;
     }
 
     &:last-child:after {
@@ -42,7 +42,7 @@
       height: 18px;
       border-radius: 100%;
       background: $white;
-      border: 3px solid $orange;
+      border: 3px solid $lilac;
       z-index: 2;
     }
   }
@@ -52,7 +52,7 @@ li.completed {
 
   // circle, filled and ticked
   &:before {
-    background-color: $orange;
+    background-color: $lilac;
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.8125 3.09375L2.0625 4.40625L5.1875 1.125' stroke='white'/%3E%3C/svg%3E");
     background-size: 15px;
     background-position: center;

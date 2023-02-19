@@ -24,7 +24,7 @@
       left: -49px;
       height: calc(100% + 1.5rem);
 
-      border-left: 3px solid $orange;
+      border-left: 3px solid $green;
     }
 
     &:last-child:after {
@@ -40,14 +40,14 @@
       width: 25px;
       height: 25px;
       border-radius: 100%;
-      background: $orange;
+      background: $green;
     }
 
   }
 
   h3 {
     margin: 0;
-    color: $blue;
+    color: $green;
   }
 
   p {
