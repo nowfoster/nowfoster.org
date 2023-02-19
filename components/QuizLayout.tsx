@@ -68,7 +68,7 @@ const QuizLayout = ({ quiz, children }: Props) => {
   return (
     <div className={s.backdrop}>
       <Head>
-        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.svg" />
         <title>Could you foster? · Now Foster</title>
       </Head>
 
