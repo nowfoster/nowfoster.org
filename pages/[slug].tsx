@@ -41,7 +41,7 @@ const GenericPage = ({ page, teamMembers }: Props) => {
         lede={page.fields.lede}
       >
         {page.fields.lede && (
-          <Link href={lastVisitedPage} className="button">
+          <Link href={lastVisitedPage} className="button button--primary">
             Could you foster?
           </Link>
         )}

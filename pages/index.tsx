@@ -27,7 +27,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
           <p>Find out what fostering could add to your life.</p>
 
-          <Link href={lastVisitedPage} className="button">
+          <Link href={lastVisitedPage} className="button button--primary">
             Could you foster?
           </Link>
         </div>
@@ -52,7 +52,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             ))}
           </div>
 
-          <Link href={lastVisitedPage} className="button">
+          <Link href={lastVisitedPage} className="button button--primary">
             Could you foster?
           </Link>
         </div>
@@ -75,7 +75,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
         <Slider stories={fosteringStories} />
 
-        <a href={blogUrl} className="button">
+        <a href={blogUrl} className="button button--primary">
           Explore more
         </a>
       </section>
@@ -92,7 +92,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             empower brilliant people to care for children and young people.
           </p>
 
-          <Link href="/fostering-with-us" className="button">
+          <Link href="/fostering-with-us" className="button button--primary">
             Learn more
           </Link>
         </div>
@@ -124,7 +124,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
               </p>
             </div>
           </div>
-          <Link href={lastVisitedPage} className="button">
+          <Link href={lastVisitedPage} className="button button--primary">
             Could you foster?
           </Link>
         </div>

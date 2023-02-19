@@ -5,7 +5,7 @@
   margin-right: auto;
 }
 
-@mixin contained-width-m { 
+@mixin contained-width-m {
   max-width: 1000px;
   width: 100%;
   margin-left: auto;
@@ -139,7 +139,7 @@
 
 
 @mixin field {
-  background: $grey;
+  background: $white;
   border-radius: 5px;
   position: relative;
   transition: transform 0.1s;
