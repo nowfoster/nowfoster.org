@@ -52,7 +52,7 @@ const CheckAnswers = ({ quiz }: Props) => {
       <QuizFooter goBack={goBackLink}>
         <div className={s.choiceButtons}>
           <Link href="/could-you-foster/stay-in-touch" className="button">
-            I'm not ready <Icon />
+            I&apos;m not ready <Icon />
           </Link>
           <Link href="/could-you-foster/check-postcode" className="button">
             Continue <Icon />
