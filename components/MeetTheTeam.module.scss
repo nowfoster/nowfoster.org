@@ -1,0 +1,44 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.meetTheTeam {
+  @include standard-padding;
+  @include section-padding-xl;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-bottom: 80px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.heading {
+  @include contained-width-s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cards {
+  @include section-padding-s;
+  display: flex;
+  flex-direction: column;
+  gap: 40px
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+.card {
+  width: min-content;
+}

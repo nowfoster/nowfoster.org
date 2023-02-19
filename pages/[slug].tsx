@@ -7,8 +7,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import ContentBlock from "../components/ContentBlock"
 import PageMasthead from "../components/PageMasthead"
 import Link from "next/link"
-import { Icon } from "../components/LoaderButton"
 import { useQuiz } from "../contexts/quiz"
+import MeetTheTeam from "../components/MeetTheTeam"
 
 interface Props {
   page: Entry<IPageFields>
@@ -19,6 +19,8 @@ const GenericPage = ({ page }: Props) => {
     page.fields.contentBlocks && page.fields.contentBlocks.length > 0
 
   const { lastVisitedPage } = useQuiz()
+  
+  const showTeam = page.fields.slug === "fostering-with-us"  
 
   return (
     <>
@@ -55,9 +57,14 @@ const GenericPage = ({ page }: Props) => {
           {documentToReactComponents(page.fields.content)}
         </div>
       )}
+    
+      {showTeam
+        ? (<MeetTheTeam/>) : null
+      }
     </>
   )
-}
+}    
+
 export default GenericPage
 
 export const getServerSideProps: GetServerSideProps = async ({
