@@ -1,12 +1,12 @@
 import * as contentful from "contentful"
-import { create } from "domain"
-import { FosteringOption, FosteringStory, Quiz } from "../types"
+import { FosteringOption, FosteringStory, Quiz, TeamMember } from "../types"
 import {
   IFosteringOptionFields,
   IFosteringStoriesFields,
   IPage,
   IPageFields,
   IQuizSectionFields,
+  ITeamMemberFields,
 } from "../types/generated/contentful"
 
 interface Opts {
@@ -88,6 +88,21 @@ export const getFosteringStories = async (
   const data = await client.getEntries<IFosteringStoriesFields>({
     include: 2,
     content_type: "fosteringStories",
+    order: "sys.createdAt", // oldest first
+  })
+
+  return data.items.map(item => ({
+    id: item.sys.id,
+    ...item.fields,
+  }))
+}
+
+export const getTeamMembers = async (opts?: Opts): Promise<TeamMember[]> => {
+  const client = createClient(opts?.preview)
+
+  const data = await client.getEntries<ITeamMemberFields>({
+    include: 2,
+    content_type: "teamMember",
     order: "sys.createdAt", // oldest first
   })
 

@@ -7,15 +7,21 @@
 }
 
 .article {
-  background: $grey;
-  padding: 2rem;
+  background: $green;
+  color: $white;
   font-size: 1.1rem;
 
+  padding: 2rem;
+
   @media screen and (min-width: $breakpoint-m) {
-    padding: 3rem;
+    padding: 4rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
+  }
+
+  @media screen and (min-width: $breakpoint-l) {
+    padding: 6rem;
   }
 }
 
@@ -38,7 +44,7 @@
 
 .richText {
   blockquote {
-    border-left: 3px solid $black;
+    border-left: 3px solid $white;
     margin-left: 0;
     padding-left: 1.5rem;
   }
