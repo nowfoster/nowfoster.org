@@ -60,10 +60,11 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
       <section className={s.transition}>
         <div className="container">
-          <h1>
-            You&apos;re happier <span>+</span> busier <span>+</span> smilier.
-            You&apos;re you <span>+</span> Fostering.
-          </h1>
+          <h2>
+            Whether you&apos;re a brilliant barrister, a crap baker, a wannabe rocker, 
+            a software developer or a shakey skateboarder.
+          </h2>
+          <h1>You&apos;re you <span>+</span> Fostering.</h1>
         </div>
       </section>
 
