@@ -13,6 +13,7 @@ import { useQuiz } from "../../contexts/quiz"
 import { getQuizContent } from "../../lib/cms"
 import { postcodeSchema } from "../../lib/validators"
 import { Quiz as IQuiz } from "../../types"
+import { allowedPrefixes } from "../../config"
 
 interface Props {
   quiz: IQuiz
@@ -30,7 +31,16 @@ const CheckPostcode = ({ quiz }: Props) => {
     resolver: yupResolver(postcodeSchema),
   })
 
-  const onSubmit = () => push("/apply")
+  const onSubmit = (values: FormAnswers) => {
+    if (!!allowedPrefixes.find(prefix =>
+      values.postcode?.toLowerCase().startsWith(prefix.toLowerCase())
+    )) {
+      push("/apply")
+    }
+    else {
+      push("/could-you-foster/not-in-area")
+    }
+  }
 
   return (
     <FormProvider {...methods}>
@@ -45,7 +55,7 @@ const CheckPostcode = ({ quiz }: Props) => {
         </CentredQuestion>
 
         <QuizFooter goBack="/could-you-foster/check-answers">
-          <button className="button">
+          <button className="button" >
             Continue <Icon />
           </button>
         </QuizFooter>
