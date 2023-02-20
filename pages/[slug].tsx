@@ -84,7 +84,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   return {
     props: {
       page,
-      teamMembers,
+      teamMembers: teamMembers || null,
       showPreviewBanner: !!preview,
     },
   }
