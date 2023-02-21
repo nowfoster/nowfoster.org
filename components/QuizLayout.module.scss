@@ -126,6 +126,7 @@
   position: relative;
 }
 
+
 .meter {
   position: absolute;
   top: 0;
@@ -135,10 +136,13 @@
   height: 0.5rem;
   transition: 0.2s ease-in-out;
   z-index: 2;
+  appearance: none;
 
-  &::-moz-meter-bar &::-webkit-meter-bar {
-    appearance: none;
-    background-color: $orange;
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     background: linear-gradient(to right, $lilac, $dark-lilac);
   }
 

@@ -95,11 +95,13 @@ const QuizLayout = ({ quiz, children }: Props) => {
 
       <div className={s.mount}>
         <div className={s.dialog} key={asPath}>
-          <meter
-            value={progressThroughScreens}
-            max={totalScreens}
-            className={s.meter}
-          />
+          <div className={s.meter}>
+            <div
+              style={{
+                width: `${(progressThroughScreens / totalScreens) * 100}%`,
+              }}
+            ></div>
+          </div>
 
           {children}
         </div>
