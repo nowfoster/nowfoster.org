@@ -142,7 +142,7 @@ export const QuizFooter = ({
   goBack: string | false
 }) => (
   <footer className={s.dialogFooter}>
-    {goBack && (
+    {goBack ? (
       <Link className={s.goBack} href={goBack}>
         <svg width="15" height="20" viewBox="0 0 4 5" fill="none">
           <path
@@ -152,6 +152,8 @@ export const QuizFooter = ({
         </svg>
         Back
       </Link>
+    ) : (
+      <span></span>
     )}
 
     {children}
