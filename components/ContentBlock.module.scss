@@ -3,14 +3,14 @@
 
 .contentBlock {
   @include standard-padding;
-  @include section-padding-s;
+  @include section-padding-xl;
 
   &:nth-child(odd) {
     background-color: $grey;
   }
 
   h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 5.5rem;
   }
 }
 
@@ -24,12 +24,21 @@
 
 .sideBySide {
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   margin-top: 3rem;
+  margin-bottom: 3rem;
 
   @media screen and (min-width: $breakpoint-m) {
     grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+  }
+
+  p {
+    font-size: 1.3rem;  
+    margin-bottom: 2rem;
+  }
+
+  b {
+    font-size: 1.5rem;
   }
 
   p:first-child {
