@@ -37,7 +37,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         <div className="container">
           <h2 className="section-heading">Your fostering options</h2>
 
-          <p className="section-caption">
+          <p className="section-caption" classNAme>
             There&apos;s lots of choice and flexibility in fostering.
           </p>
 
@@ -84,22 +84,23 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
       <section className={s.story}>
         <div className="container">
           <h2 className="section-heading">Fostering with us</h2>
-          <p>
-            Now Foster is a team of innovative social workers, designers and
-            entrepreneurs who want to change how fostering is done.
-          </p>
-          <p>
-            We work alongside innovative councils across the UK to find and
-            empower brilliant people to care for children and young people.
-          </p>
-
+            <div className={s.story__body}>
+              <p className="section-caption">
+                Now Foster is a team of innovative social workers, designers and
+                entrepreneurs who want to change how fostering is done.
+              </p>
+              <p className="section-caption">
+                We work alongside innovative councils across the UK to find and
+                empower brilliant people to care for children and young people.
+              </p>
+            </div>
           <Link href="/fostering-with-us" className="button button--primary">
             Learn more
           </Link>
         </div>
       </section>
 
-      <section className={s.story} id="why-foster">
+      <section className={s.story}>
         <div className="container">
           <h2 className="section-heading">Why foster?</h2>
           <div className={s.inner}>

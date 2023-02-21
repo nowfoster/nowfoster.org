@@ -17,7 +17,7 @@
 
   &--primary {
     @media screen and (min-width: $breakpoint-m) {
-      min-width: 300px
+      min-width: 300px;
     }
   }
 }
@@ -39,8 +39,9 @@
 }
 
 .section-caption {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 1.6rem;
+  margin-bottom: 2.2rem;
   color: #112231
 }

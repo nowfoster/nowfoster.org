@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation } from "swiper"
 import { FosteringStory as IFosteringStory } from "../types"
 import FosteringStory from "./FosteringStory"
+import s from "./Slider.module.scss"
 
 import "swiper/css"
 import "swiper/css/navigation"
@@ -13,6 +14,7 @@ interface Props {
 const Slider = ({ stories }: Props) => {
   return (
     <Swiper
+      className={s.swiper}
       spaceBetween={50}
       slidesPerView={1}
       centeredSlides={true}
