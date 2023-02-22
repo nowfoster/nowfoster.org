@@ -12,6 +12,9 @@ export const allowedPrefixes = [
     "SE1", "SE2", "SE3", "SE4", "SE5", "SE6", "SE7", "SE8",
     "SS0", "SS11", "SS12", "SS13", "SS14", "SS15", "SS16", "SS17", "SS5", "SS6", "SS8", "SS9",
     "SW1", "SW2", "SW3", "SW4", "SW5", "SW6", "SW7", "SW8", "SW9", 
+    "W10", "W11", "W12", "W13", "W14", 
+    "W1B", "W1C", "W1D", "W1F", "W1G", "W1H", "W1J", "W1K", "W1M", "W1S", "W1T", "W1U", "W1W",
+    "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9",
     "WC1", "WC2"]
 
 export const blogUrl = "http://blog.nowfoster.org"
