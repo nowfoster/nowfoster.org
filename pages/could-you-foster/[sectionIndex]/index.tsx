@@ -62,7 +62,7 @@ const SectionPage = ({ section, sectionIndex, quiz }: Props) => {
               ? `/could-you-foster/${sectionIndex}/0`
               : `/could-you-foster/${sectionIndex + 1}`
           }
-          className="button"
+          className="quizButton"
         >
           Continue <Icon />
         </Link>

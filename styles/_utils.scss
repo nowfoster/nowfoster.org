@@ -22,6 +22,16 @@
   }
 }
 
+.quizButton {
+  @include button($green, $white);
+
+  &--primary {
+    @media screen and (min-width: $breakpoint-m) {
+      min-width: 300px;
+    }
+  }
+}
+
 .squaredButton {
   @include squaredButton;
 }

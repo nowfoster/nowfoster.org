@@ -109,7 +109,7 @@ const QuestionPage = ({
         )}
 
         <QuizFooter goBack={goBackLink}>
-          <button className="button">
+          <button className="quizButton">
             Continue <Icon />
           </button>
         </QuizFooter>
