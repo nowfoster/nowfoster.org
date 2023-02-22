@@ -37,7 +37,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         <div className="container">
           <h2 className="section-heading">Your fostering options</h2>
 
-          <p className="section-caption" classNAme>
+          <p className="section-caption">
             There&apos;s lots of choice and flexibility in fostering.
           </p>
 
