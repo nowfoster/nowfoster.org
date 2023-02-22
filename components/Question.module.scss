@@ -5,6 +5,7 @@
 .question {
   z-index: 1;
   padding: 2rem;
+  color: $green;
 
   @media screen and (min-width: $breakpoint-m) {
     padding: 4rem;
@@ -43,6 +44,8 @@
   @include field;
   background: none;
   position: relative;
+  font-weight: 700;
+
 
   label {
     &:before {
@@ -64,10 +67,10 @@
   }
 
   input:checked+label {
-    color: $white;
+    color: $green;
 
     &:before {
-      background: $green;
+      background: $lilac;
     }
   }
 }
