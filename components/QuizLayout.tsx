@@ -95,11 +95,13 @@ const QuizLayout = ({ quiz, children }: Props) => {
 
       <div className={s.mount}>
         <div className={s.dialog} key={asPath}>
-          <meter
-            value={progressThroughScreens}
-            max={totalScreens}
-            className={s.meter}
-          />
+          <div className={s.meter}>
+            <div
+              style={{
+                width: `${(progressThroughScreens / totalScreens) * 100}%`,
+              }}
+            ></div>
+          </div>
 
           {children}
         </div>
@@ -140,7 +142,7 @@ export const QuizFooter = ({
   goBack: string | false
 }) => (
   <footer className={s.dialogFooter}>
-    {goBack && (
+    {goBack ? (
       <Link className={s.goBack} href={goBack}>
         <svg width="15" height="20" viewBox="0 0 4 5" fill="none">
           <path
@@ -150,6 +152,8 @@ export const QuizFooter = ({
         </svg>
         Back
       </Link>
+    ) : (
+      <span></span>
     )}
 
     {children}

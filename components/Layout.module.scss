@@ -58,7 +58,7 @@
       stop-color: $black;
     }
 
-    svg path:nth-child(2) {
+    svg path {
       fill: $black;
     }
   }
@@ -208,13 +208,14 @@ button.primary {
   flex-direction: column;
   gap: 2rem;
 }
+
 .mailingList {
   width: 100%;
   display: block;
   height: 3rem;
   border: 1px solid $white;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
   border-radius: 5px;
 
@@ -226,9 +227,10 @@ button.primary {
     width: 100%;
     padding-top: 0.7em;
 
-    &:hover{
+    &:hover {
       text-decoration: none;
     }
+
     &:active,
     &:focus {
       outline: none;

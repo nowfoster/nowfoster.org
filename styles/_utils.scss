@@ -20,6 +20,27 @@
       min-width: 300px;
     }
   }
+
+  &--secondary {
+    background: none;
+    border: 2px solid $green;
+
+    svg path {
+      stroke: $green;
+    }
+
+    &:hover {
+      background: none;
+      color: $green;
+    }
+
+    &:focus,
+    &:active {
+      background: $yellow;
+      border-color: $black;
+      color: $black;
+    }
+  }
 }
 
 .quizButton {
