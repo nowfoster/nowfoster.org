@@ -17,7 +17,7 @@ const CheckPostcode = () => {
             >
               Find a local fostering service
             </Link>
-            <Link href="." className="squaredButton">
+            <Link href="https://tinyletter.com/NowFoster" className="squaredButton">
               Join our mailing list to stay in touch
             </Link>
           </div>

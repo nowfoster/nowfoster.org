@@ -170,9 +170,7 @@ const Layout = ({ children, quiz }: Props) => {
 
           <div className={s.connect}>
             <div className={s.mailingList}>
-              <Link href="https://tinyletter.com/amdamdamd56">
-                {" "}
-                {/*CHANGE THIS LINK*/}
+              <Link href="https://tinyletter.com/NowFoster">
                 Join our mailing list
               </Link>
             </div>
