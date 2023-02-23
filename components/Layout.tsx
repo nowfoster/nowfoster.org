@@ -1,6 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { useState } from "react"
 import {
   blogUrl,
   linkedInUrl,
@@ -18,10 +19,32 @@ interface Props {
   children: React.ReactNode
 }
 
-const Layout = ({ children, quiz }: Props) => {
+const NavLinks = () => {
   const { quizStarted, lastVisitedPage } = useQuiz()
 
+  return (
+    <ul>
+      <li>
+        <Link href="/fostering-with-us">Fostering with us</Link>
+      </li>
+      <li>
+        <Link href="/process">The process</Link>
+      </li>
+      <li>
+        <Link href={blogUrl}>Blog</Link>
+      </li>
+      <li>
+        <Link href={lastVisitedPage} className={s.primary}>
+          {quizStarted ? "Resume" : "Could you foster?"}
+        </Link>
+      </li>
+    </ul>
+  )
+}
+
+const Layout = ({ children, quiz }: Props) => {
   const { asPath } = useRouter()
+  const [navOpen, setNavOpen] = useState<boolean>(false)
 
   if (asPath.includes("/could-you-foster") && quiz)
     return <QuizLayout quiz={quiz}>{children}</QuizLayout>
@@ -86,26 +109,24 @@ const Layout = ({ children, quiz }: Props) => {
             </svg>
           </Link>
 
+          <button
+            className={s.mobileButton}
+            onClick={() => setNavOpen(!navOpen)}
+          >
+            {navOpen ? "Close menu" : "Menu"}
+          </button>
+
           <nav className={s.nav}>
-            <ul>
-              <li>
-                <Link href="/fostering-with-us">Fostering with us</Link>
-              </li>
-              <li>
-                <Link href="/process">The process</Link>
-              </li>
-              <li>
-                <Link href={blogUrl}>Blog</Link>
-              </li>
-              <li>
-                <Link href={lastVisitedPage} className={s.primary}>
-                  {quizStarted ? "Resume" : "Could you foster?"}
-                </Link>
-              </li>
-            </ul>
+            <NavLinks />
           </nav>
         </div>
       </header>
+
+      {navOpen && (
+        <div className={s.mobileMenu}>
+          <NavLinks />
+        </div>
+      )}
 
       <main id="main-content">{children}</main>
 
@@ -179,16 +200,17 @@ const Layout = ({ children, quiz }: Props) => {
               <div>
                 <Link href={linkedInUrl}>
                   <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="256"
-                  height="256"
-                  viewBox="0 0 256 256"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="256"
+                    height="256"
+                    viewBox="0 0 256 256"
                   >
-                  <g fill="#000" strokeMiterlimit="10" strokeWidth="1">
-                    <path
-                      d="M1.48 29.91h18.657v60.01H1.48V29.91zM10.809.08c5.963 0 10.809 4.846 10.809 10.819 0 5.967-4.846 10.813-10.809 10.813C4.832 21.712 0 16.866 0 10.899 0 4.926 4.832.08 10.809.08M31.835 29.91h17.89v8.206h.255c2.49-4.72 8.576-9.692 17.647-9.692C86.514 28.424 90 40.849 90 57.007V89.92H71.357V60.737c0-6.961-.121-15.912-9.692-15.912-9.706 0-11.187 7.587-11.187 15.412V89.92H31.835V29.91z"
-                      transform="matrix(2.81 0 0 2.81 1.407 1.407)" fill="white"
-                    ></path>
+                    <g fill="#000" strokeMiterlimit="10" strokeWidth="1">
+                      <path
+                        d="M1.48 29.91h18.657v60.01H1.48V29.91zM10.809.08c5.963 0 10.809 4.846 10.809 10.819 0 5.967-4.846 10.813-10.809 10.813C4.832 21.712 0 16.866 0 10.899 0 4.926 4.832.08 10.809.08M31.835 29.91h17.89v8.206h.255c2.49-4.72 8.576-9.692 17.647-9.692C86.514 28.424 90 40.849 90 57.007V89.92H71.357V60.737c0-6.961-.121-15.912-9.692-15.912-9.706 0-11.187 7.587-11.187 15.412V89.92H31.835V29.91z"
+                        transform="matrix(2.81 0 0 2.81 1.407 1.407)"
+                        fill="white"
+                      ></path>
                     </g>
                   </svg>
                   LinkedIn

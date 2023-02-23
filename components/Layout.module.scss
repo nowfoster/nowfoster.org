@@ -28,13 +28,11 @@
   @include contained-width-l;
   @include standard-padding;
 
-  @media screen and (min-width: $breakpoint-m) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 .masthead {
@@ -69,7 +67,55 @@
   }
 }
 
+.mobileButton {
+  // TODO
+  background: none;
+  color: $white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:focus,
+  &:active {
+    background: $yellow;
+    outline: 3px solid $yellow;
+    color: $black;
+  }
+
+
+
+
+  @media screen and (min-width: $breakpoint-m) {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  padding: 1rem 1.5rem;
+
+  // TODO
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li a {
+      color: $green;
+    }
+  }
+
+
+  @media screen and (min-width: $breakpoint-m) {
+    display: none;
+  }
+}
+
 .nav {
+  display: none;
+
+  @media screen and (min-width: $breakpoint-m) {
+    display: inherit;
+  }
+
   ul {
     margin-top: 1rem;
     margin-bottom: 0;
