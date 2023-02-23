@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
   padding-bottom: 8rem;
 
   ul {
@@ -31,11 +31,11 @@
 
     a {
       color: $white;
-  
+
       &:hover {
         color: $dark-white;
       }
-  
+
       &:focus,
       &:active {
         color: $black;
