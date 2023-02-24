@@ -25,7 +25,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         <div className="container">
           <h1>Forget everything you think you know about fostering</h1>
 
-          <p>Find out what fostering could add to your life.</p>
+          <p>Find out what it could add to your life.</p>
 
           <Link href={lastVisitedPage} className="button button--primary">
             Could you foster?

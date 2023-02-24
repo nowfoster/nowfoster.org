@@ -25,17 +25,17 @@ const NavLinks = () => {
   return (
     <ul>
       <li>
-        <Link href="/fostering-with-us">Fostering with us</Link>
+        <Link href="/fostering-with-us">Who we are</Link>
       </li>
       <li>
-        <Link href="/process">The process</Link>
+        <Link href="/process">How it works</Link>
       </li>
       <li>
-        <Link href={blogUrl}>Blog</Link>
+        <Link href={blogUrl}>What we think</Link>
       </li>
       <li>
         <Link href={lastVisitedPage} className={s.primary}>
-          {quizStarted ? "Resume" : "Could you foster?"}
+          {quizStarted ? "Continue" : "Could you foster?"}
         </Link>
       </li>
     </ul>
@@ -175,13 +175,13 @@ const Layout = ({ children, quiz }: Props) => {
           <nav className={s.footerMenu}>
             <ul>
               <li>
-                <Link href="/fostering-with-us">Fostering with us</Link>
+                <Link href="/fostering-with-us">Who we are</Link>
               </li>
               <li>
-                <Link href="/process">The process</Link>
+                <Link href="/process">How it works</Link>
               </li>
               <li>
-                <Link href="http://blog.nowfoster.org">Blog</Link>
+                <Link href="http://blog.nowfoster.org">What we think</Link>
               </li>
               <li>
                 <Link href="/privacy">Privacy</Link>

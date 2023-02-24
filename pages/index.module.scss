@@ -2,11 +2,12 @@
 @import "../styles/mixins";
 
 .hero {
-  @include section-padding-xl;
+  @include section-padding-m;
   background: $green;
   color: $white;
   position: relative;
   padding-bottom: 8rem;
+  }
 
   div {
     @include contained-width-m;

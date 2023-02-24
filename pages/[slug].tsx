@@ -32,11 +32,6 @@ const GenericPage = ({ page, teamMembers }: Props) => {
       </Head>
 
       <PageMasthead
-        crumbs={
-          <li className="page-masthead__crumb">
-            {page.fields.shortTitle || page.fields.pageTitle}
-          </li>
-        }
         title={page.fields.pageTitle}
         lede={page.fields.lede}
       >
