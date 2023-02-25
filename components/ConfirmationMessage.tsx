@@ -1,6 +1,5 @@
 import s from "./ConfirmationMessage.module.scss"
 import { useRouter } from "next/router"
-import Link from "next/link"
 
 const ConfirmationMessage = () => {
   const { query } = useRouter()
@@ -16,8 +15,8 @@ const ConfirmationMessage = () => {
               width="9"
               height="9"
               rx="4.5"
-              fill="black"
-              stroke="black"
+              fill="#164045"
+              stroke="#164045"
             />
             <path
               d="M2.8125 5.09375L4.0625 6.40625L7.1875 3.125"
@@ -26,17 +25,10 @@ const ConfirmationMessage = () => {
           </svg>
 
           <div>
-            <h2>You&apos;ve booked an initial chat</h2>
+            <h2>You&apos;ve booked your intro chat</h2>
             <p>
-              Thanks for booking an intro chat. You&apos;ll shortly get an email
-              with a copy of what you sent us.
+              Look out for a confirmation email in your inbox. If you have any questions, please reply to that email.
             </p>
-            <p>
-              If there&apos;s anything more you want to add, or questions you
-              want to ask before you chat to us, just reply to that email.
-            </p>
-
-            <Link href="/">Close message</Link>
           </div>
         </div>
       </section>
