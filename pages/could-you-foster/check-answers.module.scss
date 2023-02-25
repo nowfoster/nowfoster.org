@@ -1,6 +1,10 @@
 @import "../../styles/vars";
 @import "../../styles/mixins";
 
+.subheading {
+  color: $green;
+}
+
 .answers {
   @media screen and (min-width: $breakpoint-m) {
     column-count: 2;
@@ -23,11 +27,6 @@
         border-radius: $border-radius-s;
       }
     }
-  }
-
-  h4 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
   }
 
   dt,

@@ -22,18 +22,17 @@ const CheckAnswers = ({ quiz }: Props) => {
   return (
     <>
       <QuizMain padded>
-        <h2>Still with us?</h2>
+        <h2>Almost done</h2>
         <p>
           Book a 30 minute intro chat to ask us anything about fostering. Just a
           chat over the phone, video call or text. At a time that suits you.
         </p>
 
-        <h3>Your answers</h3>
+        <h3 className={s.subheading}>Your answers</h3>
 
         <div className={s.answers}>
           {Object.entries(quizAnswers).map(([sectionTitle, sectionAnswers]) => (
             <div key={sectionTitle} className={s.section}>
-              <h4>{sectionTitle}</h4>
               <dl>
                 {Object.entries(sectionAnswers).map(([question, answer]) => (
                   <div key={question}>
@@ -57,8 +56,8 @@ const CheckAnswers = ({ quiz }: Props) => {
           >
             I&apos;m not ready <Icon />
           </Link>
-          <Link href="/could-you-foster/check-postcode" className="button">
-            Continue <Icon />
+          <Link href="/could-you-foster/check-postcode" className="quizButton">
+            Book a chat <Icon />
           </Link>
         </div>
       </QuizFooter>
