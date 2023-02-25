@@ -1,5 +1,4 @@
 import type { GetServerSideProps, GetStaticProps } from "next"
-import { Icon } from "../components/LoaderButton"
 import s from "./index.module.scss"
 import { blogUrl } from "../config"
 import {

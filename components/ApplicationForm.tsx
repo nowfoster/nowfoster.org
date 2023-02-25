@@ -122,7 +122,7 @@ const ApplicationForm = ({ quiz }: Props) => {
             />
 
             <Field
-              label="Is there anything in particular that you’d like to discuss? Or remember to ask?"
+              label="Is there anything in particular that you’d like to discuss?"
               name="discussionTopics"
             />
           </div>
@@ -133,8 +133,8 @@ const ApplicationForm = ({ quiz }: Props) => {
                 <CallBookingField availability={availability} />
               ) : (
                 <p className={s.noSlots}>
-                  There are no calls available right now, but you can still send
-                  an application and we&apos;ll get in touch when we can.
+                  Oops, it looks like we&apos;re really busy at the moment. 
+                  Please complete the form and Laurie will be in touch as soon as she can with the next available time slots.
                 </p>
               )
             ) : (
@@ -154,7 +154,7 @@ const ApplicationForm = ({ quiz }: Props) => {
         )}
 
         <LoaderButton disabled={isSubmitting} loading={isSubmitting}>
-          Apply
+          Book chat
         </LoaderButton>
       </form>
     </FormProvider>
