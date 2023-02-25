@@ -1,0 +1,14 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.betaBanner {
+    background: $lilac;
+    color: $green;
+    padding: 0.2rem;
+  }
+  
+  .inner {
+    text-align: right;
+    padding-right: 5rem;
+    @include contained-width-l
+  }

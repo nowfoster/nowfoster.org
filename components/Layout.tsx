@@ -13,6 +13,7 @@ import { useQuiz } from "../contexts/quiz"
 import { Quiz } from "../types"
 import s from "./Layout.module.scss"
 import QuizLayout from "./QuizLayout"
+import BetaBanner from "./BetaBanner"
 
 interface Props {
   quiz?: Quiz
@@ -51,6 +52,7 @@ const Layout = ({ children, quiz }: Props) => {
 
   return (
     <>
+      <BetaBanner></BetaBanner>
       <Head>
         <link rel="shortcut icon" href="/favicon.svg" />
         <title>Now Foster · Forget everything you know about fostering</title>
