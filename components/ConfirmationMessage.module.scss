@@ -23,6 +23,21 @@
   h2 {
     margin-top: 0
   }
+
+  a {
+    color: $green;
+
+    &:hover {
+      color: $light-black;
+    }
+
+    &:focus,
+    &:active {
+      color: $yellow;
+      background: $black;
+      outline-color: $black;
+    }
+  }
 }
 
 .inner {

@@ -1,5 +1,6 @@
 import s from "./ConfirmationMessage.module.scss"
 import { useRouter } from "next/router"
+import Link from "next/link"
 
 const ConfirmationMessage = () => {
   const { query } = useRouter()
@@ -29,6 +30,7 @@ const ConfirmationMessage = () => {
             <p>
               Look out for a confirmation email in your inbox. If you have any questions, please reply to that email.
             </p>
+            <Link href="/">Close message</Link>
           </div>
         </div>
       </section>
