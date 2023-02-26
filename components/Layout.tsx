@@ -56,13 +56,12 @@ const Layout = ({ children, quiz }: Props) => {
         <link rel="shortcut icon" href="/favicon.svg" />
         <title>Now Foster · Forget everything you know about fostering</title>
       </Head>
-      <BetaBanner></BetaBanner>
 
 
       <a className={s.skip} href="#main-content">
         Skip to main content
       </a>
-
+      <BetaBanner></BetaBanner>
       <header className={s.header}>
         <div className={s.inner}>
           <Link href="/" className={s.masthead}>

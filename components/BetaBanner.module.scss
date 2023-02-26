@@ -4,11 +4,15 @@
 .betaBanner {
     background: $lilac;
     color: $green;
-    padding: 0.2rem;
+    padding: 0.4rem;
+    
+    p {
+      margin: 0px;
+    }
   }
   
-  .inner {
-    text-align: right;
-    padding-right: 5rem;
-    @include contained-width-l
-  }
+.inner {
+  text-align: right;
+  padding-right: 5rem;
+  @include contained-width-l
+}
