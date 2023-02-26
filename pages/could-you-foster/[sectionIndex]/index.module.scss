@@ -9,19 +9,18 @@
     justify-content: center;
     align-items: center;
     min-height: 100%;
+
+    h2 {
+      padding-bottom: 2rem;
+    }
+  
+    p {
+      padding-bottom: 1rem;
+    }
   }
 
   img {
     width: 100%;
     height: auto;
-  }
-
-  h2 {
-    padding-bottom: 2rem;
-  }
-
-  p {
-    padding-bottom: 1rem;
-    font-size: 1.3rem;
   }
 }
