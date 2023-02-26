@@ -176,7 +176,7 @@
   text-align: center;
   font-size: 1.2rem;
 
-  &:nth-of-type(odd) {
+  &:nth-last-child(1) {
     background: $green;
     color: $white;
 
