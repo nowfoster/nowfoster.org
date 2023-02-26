@@ -10,7 +10,7 @@
 
   @media screen and (min-width: $breakpoint-m) {
     @include section-padding-m;
-    padding-bottom: 5rem;
+    padding-bottom: 4rem;
   }
 
   div {
@@ -34,6 +34,7 @@
 
     @media screen and (min-width: $breakpoint-m) {
       font-size: 4.5rem;
+      @include contained-width-m;
     }
   }
 
