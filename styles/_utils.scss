@@ -8,14 +8,8 @@
 }
 
 .container {
-  @include contained-width-s;
+  @include contained-width-l;
   @include standard-padding;
-
-  @media screen and (min-width: $breakpoint-m) {
-    @include section-padding-l;
-    @include standard-padding;
-    padding-top: 7rem;
-  }
 }
 
 .button {
