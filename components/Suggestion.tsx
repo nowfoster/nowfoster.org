@@ -9,7 +9,7 @@ interface Props {
 
 const Suggestion = ({ suggestion }: Props) => (
   <article className={suggestion ? s.article : s.emptyArticle}>
-    {suggestion ? (
+    {suggestion && (
       <div className={s.content}>
         <h3 className={s.headline}>{suggestion.title}</h3>
         {suggestion.content && (
@@ -18,8 +18,6 @@ const Suggestion = ({ suggestion }: Props) => (
           </div>
         )}
       </div>
-    ) : (
-      <p>Choose an option to continue</p>
     )}
   </article>
 )
