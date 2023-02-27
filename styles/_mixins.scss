@@ -20,7 +20,11 @@
 }
 
 @mixin standard-padding {
-  padding: 1.5rem;
+  padding: 1.2rem;
+  
+  @media screen and (min-width: $breakpoint-m) {
+    padding: 1.5rem;
+  }
 }
 
 @mixin section-padding-xs {
@@ -31,6 +35,7 @@
 @mixin section-padding-s {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  
 }
 
 @mixin section-padding-m {

@@ -8,8 +8,14 @@
 }
 
 .container {
-  @include contained-width-l;
+  @include contained-width-s;
   @include standard-padding;
+
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-l;
+    @include standard-padding;
+    padding-top: 7rem;
+  }
 }
 
 .button {
@@ -62,11 +68,16 @@
 }
 
 .section-heading {
-  font-size: 2.5rem;
   margin: 0;
   color: $green;
   text-align: center;
   line-height: 1.3;
+
+  font-size: 2rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    font-size: 2.5rem;
+  }
 }
 
 .section-caption {
