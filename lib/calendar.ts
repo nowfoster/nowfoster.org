@@ -1,4 +1,5 @@
 import { calendar_v3, google } from "googleapis"
+import { DateTime } from "luxon"
 import { Application, Event } from "../types"
 
 const { OAuth2 } = google.auth
@@ -26,7 +27,7 @@ export const getAvailability = async (): Promise<Event[]> => {
     singleEvents: true,
     maxResults: 50, // only show soonest 50 slots
     orderBy: "starttime",
-    timeMin: new Date().toISOString(), // only show future events
+    timeMin: DateTime.now().plus({ hours: 48 }).toISODate(), // only show future events
   })
 
   return (
