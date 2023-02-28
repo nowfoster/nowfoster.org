@@ -17,7 +17,7 @@ const ProgressTimeline = ({ currentSectionIndex, sections }: Props) => {
               key={section.id}
               className={currentSectionIndex > i ? s.completed : undefined}
             >
-              {section.title}
+              {section.shortTitle || section.title}
               {currentSectionIndex > i && (
                 <span className="visually-hidden">Completed</span>
               )}

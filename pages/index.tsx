@@ -1,5 +1,4 @@
 import type { GetServerSideProps, GetStaticProps } from "next"
-import { Icon } from "../components/LoaderButton"
 import s from "./index.module.scss"
 import { blogUrl } from "../config"
 import {
@@ -25,7 +24,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         <div className="container">
           <h1>Forget everything you think you know about fostering</h1>
 
-          <p>Find out what fostering could add to your life.</p>
+          <p>Find out what it could add to your life.</p>
 
           <Link href={lastVisitedPage} className="button button--primary">
             Could you foster?
@@ -44,7 +43,9 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           <div className={s.optionsList}>
             {fosteringOptions.map(option => (
               <article key={option.id}>
-                <img src={option.icon?.fields.file.url} />
+                <div className={s.iconContainer}>
+                  <img src={option.icon?.fields.file.url} />
+                </div>
                 <h3>{option.title}</h3>
                 <p>{option.description}</p>
                 <p>{option.conclusion}</p>
@@ -61,7 +62,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
       <section className={s.transition}>
         <div className="container">
           <h2>
-            Whether you&apos;re a brilliant barrister, a crap baker, a wannabe rocker, 
+            Whether you&apos;re a brilliant barrister, a crap baker, a multitasking manager, 
             a software developer or a shakey skateboarder.
           </h2>
           <h1>You&apos;re you <span>+</span> Fostering.</h1>
@@ -71,7 +72,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
       <section className={s.stories}>
         <h2 className="section-heading">Fostering stories</h2>
         <p className="section-caption">
-          Not all heroes wear capes. Join our community of foster carers.
+          Hear about people&apos;s experiences
         </p>
 
         <Slider stories={fosteringStories} />
@@ -83,7 +84,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
       <section className={s.story}>
         <div className="container">
-          <h2 className="section-heading">Fostering with us</h2>
+          <h2 className="section-heading">Who we are</h2>
             <div className={s.story__body}>
               <p className="section-caption">
                 Now Foster is a team of innovative social workers, designers and

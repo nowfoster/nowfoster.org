@@ -2,7 +2,8 @@
 @import "../styles/mixins";
 
 .applicationConfirmed {
-  background: $yellow;
+  background: $lilac;
+  color: $green;
 
   svg {
     width: 4rem;
@@ -10,7 +11,7 @@
     flex-shrink: 0;
 
     path {
-      stroke: $yellow;
+      stroke: $lilac;
     }
 
     @media screen and (min-width: $breakpoint-m) {
@@ -24,7 +25,7 @@
   }
 
   a {
-    color: $black;
+    color: $green;
 
     &:hover {
       color: $light-black;
@@ -36,8 +37,6 @@
       background: $black;
       outline-color: $black;
     }
-
-
   }
 }
 
@@ -51,7 +50,7 @@
   gap: 1rem;
 
   @media screen and (min-width: $breakpoint-m) {
-    @include section-padding-l;
+    @include section-padding-m;
     flex-direction: row;
 
     gap: 3rem;

@@ -41,7 +41,7 @@ export const Spinner = () => (
 
 //@ts-ignore
 const LoaderButton = ({ children, loading, ...props }) => (
-  <button className="button" {...props}>
+  <button className="quizButton" {...props}>
     {loading && <Spinner />}
     {children}
     <Icon />

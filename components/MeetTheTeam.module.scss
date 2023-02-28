@@ -3,11 +3,15 @@
 
 .meetTheTeam {
   @include standard-padding;
-  @include section-padding-xl;
+  @include section-padding-s;
   display: flex;
   flex-direction: column;
   gap: 80px;
   margin-bottom: 80px;
+
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-l;
+  }
 }
 
 .container {

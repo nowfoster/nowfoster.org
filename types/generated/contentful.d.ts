@@ -181,8 +181,11 @@ export interface IQuestion extends Entry<IQuestionFields> {
 }
 
 export interface IQuizSectionFields {
-  /** Title */
+  /** Full Title */
   title: string;
+
+  /** Short Title */
+  shortTitle?: string | undefined;
 
   /** Intro */
   intro?: Document | undefined;

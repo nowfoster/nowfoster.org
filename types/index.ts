@@ -55,7 +55,7 @@ export interface Answers {
 export enum ContactPreference {
   Video = "Video call",
   Phone = "Phone",
-  Text = "Text message",
+  Text = "WhatsApp chat",
 }
 
 export enum LevelOfInterest {

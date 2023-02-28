@@ -2,41 +2,54 @@
 @import "../styles/mixins";
 
 .hero {
-  @include section-padding-xl;
+  @include section-padding-s;
   background: $green;
   color: $white;
   position: relative;
-  padding-bottom: 8rem;
+  padding-bottom: 4rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-m;
+    padding-bottom: 4rem;
+  }
 
   div {
-    @include contained-width-m;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      gap: 3rem;
+    }
   }
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 2rem;
     text-align: center;
     line-height: 1.1;
     margin: 0;
     color: $white;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 5.5rem;
+      font-size: 4.5rem;
+      @include contained-width-m;
     }
   }
 
   p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     // font-weight: bold;
     text-align: center;
     line-height: 1.1;
     margin: 0;
     color: $white;
     // @include standard-padding
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 1.5rem;
+    }
   }
 
   a {
@@ -47,12 +60,29 @@
 
 
 .options {
-  @include section-padding-xl;
+  @include section-padding-s;
   background: $white;
   position: relative;
 
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-l;
+    grid-template-columns: 1fr 1fr; // 2x2 grid
+  }
+
   a {
-    margin: 5rem auto 0 auto;
+    margin: 2rem auto 0 auto;
+
+    @media screen and (min-width: $breakpoint-m) {
+      margin: 5rem auto 0 auto;
+    }
+  }
+
+  h2 {
+    font-size: 2rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 2.5rem;
+    }
   }
 
   .optionsList {
@@ -88,16 +118,24 @@
     }
   }
 
-
   h3 {
     margin-top: 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 0;
     color: #163D45;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 1.5rem;
+    }
   }
 
   p {
     color: $green;
+    font-size: 1.1rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 1.3rem;
+    }
 
     &:last-child {
       font-weight: bold;
@@ -106,18 +144,26 @@
     }
   }
 
+  .iconContainer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
   img {
-    height: 3rem;
+    height: 3.5rem;
     width: auto;
   }
 }
 
 .transition {
   @include standard-padding;
-  @include section-padding-xl;
-  padding-top: 8rem;
+  @include section-padding-s;
   background-color: $lilac;
   color: $green;
+
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-l;
+    padding-top: 7rem;
+  }
 
   div {
     display: flex;
@@ -131,52 +177,79 @@
   }
 
   h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     text-align: right;
     margin: 10px;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 3.1rem;
+      font-size: 2.8rem;
     }
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 0px;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 2.9rem;
+      font-size: 2.5rem;
     }
   }
-
-
+  
   span {
     color: $white;
   }
 }
 
 .stories {
-  @include section-padding-xl;
+  @include section-padding-s;
   background-color: $grey;
+
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-l;
+  }
 
   &>p {
     margin-bottom: 2.5rem;
   }
 
   a:last-child {
-    margin: 6.5rem auto 0 auto
+    margin: 2rem auto 0 auto;
+
+    @media screen and (min-width: $breakpoint-m) {
+      margin: 5rem auto 1rem auto;
+    }
+  }
+  
+  h2 {
+    font-size: 2rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 2.5rem;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 1.5rem;
+    }
   }
 }
 
 
 .story {
-  @include section-padding-xl;
+  @include section-padding-s;
   background: $white;
   color: $black;
   text-align: center;
   font-size: 1.2rem;
 
-  &:nth-child(even) {
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-l;
+  }
+
+  &:nth-last-child(1) {
     background: $green;
     color: $white;
 
@@ -189,15 +262,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      gap: 1.5rem;
+    }
   }
 
   .story__body {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     padding-top: 2rem;
     padding-bottom: 3rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      gap: 1.5rem;
+    }
   }
 
   p {
@@ -210,18 +291,41 @@
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
     margin-top: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     padding: 50px;
 
     @media screen and (min-width: $breakpoint-m) {
       flex-direction: row;
+      gap: 4rem;
+      margin-bottom: 4rem;
     }
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 0;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 3rem;
+    }
+  }
+
+
+  h2 {
+    font-size: 2rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 2.5rem;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 1.3rem;
+    }
   }
 }

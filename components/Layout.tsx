@@ -13,6 +13,7 @@ import { useQuiz } from "../contexts/quiz"
 import { Quiz } from "../types"
 import s from "./Layout.module.scss"
 import QuizLayout from "./QuizLayout"
+import BetaBanner from "./BetaBanner"
 
 interface Props {
   quiz?: Quiz
@@ -25,17 +26,17 @@ const NavLinks = () => {
   return (
     <ul>
       <li>
-        <Link href="/fostering-with-us">Fostering with us</Link>
+        <Link href="/fostering-with-us">Who we are</Link>
       </li>
       <li>
-        <Link href="/process">The process</Link>
+        <Link href="/process">How it works</Link>
       </li>
       <li>
-        <Link href={blogUrl}>Blog</Link>
+        <Link href={blogUrl}>What we think</Link>
       </li>
       <li>
         <Link href={lastVisitedPage} className={s.primary}>
-          {quizStarted ? "Resume" : "Could you foster?"}
+          {quizStarted ? "Continue" : "Could you foster?"}
         </Link>
       </li>
     </ul>
@@ -56,10 +57,11 @@ const Layout = ({ children, quiz }: Props) => {
         <title>Now Foster · Forget everything you know about fostering</title>
       </Head>
 
+
       <a className={s.skip} href="#main-content">
         Skip to main content
       </a>
-
+      <BetaBanner></BetaBanner>
       <header className={s.header}>
         <div className={s.inner}>
           <Link href="/" className={s.masthead}>
@@ -175,13 +177,13 @@ const Layout = ({ children, quiz }: Props) => {
           <nav className={s.footerMenu}>
             <ul>
               <li>
-                <Link href="/fostering-with-us">Fostering with us</Link>
+                <Link href="/fostering-with-us">Who we are</Link>
               </li>
               <li>
-                <Link href="/process">The process</Link>
+                <Link href="/process">How it works</Link>
               </li>
               <li>
-                <Link href="http://blog.nowfoster.org">Blog</Link>
+                <Link href="http://blog.nowfoster.org">What we think</Link>
               </li>
               <li>
                 <Link href="/privacy">Privacy</Link>

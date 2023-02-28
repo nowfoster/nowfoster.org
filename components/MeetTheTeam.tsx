@@ -37,8 +37,7 @@ const MeetTheTeam = ({ teamMembers }: { teamMembers: TeamMember[] }) => (
       <div className={s.heading}>
         <h1 className="section-heading">Our board</h1>
         <p className="section-caption">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id leo
-          dignissim.
+        
         </p>
       </div>
       <div className={s.cards}>

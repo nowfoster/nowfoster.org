@@ -4,13 +4,18 @@
 .masthead {
   background: $green;
   @include standard-padding;
-  @include section-padding-xl;
+  @include section-padding-s;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding-bottom: 8rem;
+  gap: 2rem;
+  padding-bottom: 4rem;
+
+  @media screen and (min-width: $breakpoint-m) {
+    @include section-padding-m;
+    padding-bottom: 5rem;
+  }
 
   ul {
     margin: 0;
@@ -46,14 +51,34 @@
 
   h1 {
     margin: 0;
-    font-size: 3.5rem;
+    font-size: 2rem;
     color: $white;
     text-align: center;
     line-height: 1.3;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 5.5rem;
+      font-size: 4.5rem;
+      @include contained-width-m;
     }
+  }
+  
+
+  p {
+    font-size: 1.2rem;
+    // font-weight: bold;
+    text-align: center;
+    line-height: 1.1;
+    color: $white;
+    // @include standard-padding
+
+    @media screen and (min-width: $breakpoint-m) {
+      font-size: 1.5rem;
+    }
+  }
+
+  a {
+    @include button;
+    width: auto;
   }
 }
 
