@@ -16,12 +16,8 @@
 }
 
 .header {
-  background: $black;
+  background: $green;
   color: $white;
-
-  @media screen and (min-width: $breakpoint-m) {
-    background: $green;
-  }
 }
 
 .inner {
