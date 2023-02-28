@@ -134,7 +134,7 @@
     font-size: 1.1rem;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
 
     &:last-child {
@@ -144,8 +144,12 @@
     }
   }
 
+  .iconContainer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
   img {
-    height: 3rem;
+    height: 3.5rem;
     width: auto;
   }
 }
@@ -321,7 +325,7 @@
     font-size: 1.2rem;
 
     @media screen and (min-width: $breakpoint-m) {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
   }
 }

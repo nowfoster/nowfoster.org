@@ -43,7 +43,9 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           <div className={s.optionsList}>
             {fosteringOptions.map(option => (
               <article key={option.id}>
-                <img src={option.icon?.fields.file.url} />
+                <div className={s.iconContainer}>
+                  <img src={option.icon?.fields.file.url} />
+                </div>
                 <h3>{option.title}</h3>
                 <p>{option.description}</p>
                 <p>{option.conclusion}</p>
