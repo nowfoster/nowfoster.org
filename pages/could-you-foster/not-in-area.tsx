@@ -9,7 +9,11 @@ const CheckPostcode = () => {
       <CentredQuestion>
         <div>
           <h1>Sorry, we&apos;re hoping to be in your area soon</h1>
-          <p></p> {/*awaiting text*/}
+          <p>
+            We don&apos;t always get it right, if you think your postcode is
+            within an hour&apos;s commute to Newham please email us at{" "}
+            <strong>introchat@nowfoster.org</strong>.
+          </p>
           <div className="optionList">
             <Link
               href="https://www.thefosteringnetwork.org.uk/providers"
@@ -17,7 +21,10 @@ const CheckPostcode = () => {
             >
               Find a local fostering service
             </Link>
-            <Link href="https://tinyletter.com/NowFoster" className="squaredButton">
+            <Link
+              href="https://tinyletter.com/NowFoster"
+              className="squaredButton"
+            >
               Join our mailing list to stay in touch
             </Link>
           </div>

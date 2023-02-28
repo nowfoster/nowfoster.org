@@ -24,8 +24,9 @@ const CheckAnswers = ({ quiz }: Props) => {
       <QuizMain padded>
         <h2>Almost done</h2>
         <p>
-          Book a 30 minute intro chat to ask us anything about fostering. Just a
-          chat over the phone, video call or text. At a time that suits you.
+          We hope you learned some new things around fostering and are still
+          curious. Book a 30 minute intro chat to ask us anything. Over the
+          phone, video call or WhatsApp, at a time that suits you.
         </p>
 
         <h3 className={s.subheading}>Your answers</h3>

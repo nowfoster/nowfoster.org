@@ -57,7 +57,6 @@ const Layout = ({ children, quiz }: Props) => {
         <title>Now Foster · Forget everything you know about fostering</title>
       </Head>
 
-
       <a className={s.skip} href="#main-content">
         Skip to main content
       </a>
@@ -140,7 +139,7 @@ const Layout = ({ children, quiz }: Props) => {
               foster carers.
             </p>
             <div className={s.logoBlock}>
-              <p>In partnership with</p>
+              <p>Working with</p>
               <Link href="https://www.newham.gov.uk/" className="logo">
                 <svg
                   width="161"

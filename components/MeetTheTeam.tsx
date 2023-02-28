@@ -35,10 +35,8 @@ const MeetTheTeam = ({ teamMembers }: { teamMembers: TeamMember[] }) => (
     </div>
     <div className={s.container} id="team">
       <div className={s.heading}>
-        <h1 className="section-heading">Our board</h1>
-        <p className="section-caption">
-        
-        </p>
+        <h1 className="section-heading">Advisors</h1>
+        <p className="section-caption"></p>
       </div>
       <div className={s.cards}>
         <div className={s.row}>
