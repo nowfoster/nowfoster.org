@@ -73,3 +73,15 @@ Most values are required for normal functionality.
 | `GOOGLE_CLIENT_ID`                   | Yes, to apply | Google cloud project credentials, with the calendar API enabled                                                                                                                                                         |
 | `GOOGLE_CLIENT_SECRET`               | Yes, to apply | Google cloud project credentials, with the calendar API enabled                                                                                                                                                         |
 | `GOOGLE_REFRESH_TOKEN`               | Yes, to apply | OAuth2 refresh token for a user who has read/write access to the calendar above, and scopes to access the calendar API. You can generate one with the [OAuth playground](https://developers.google.com/oauthplayground) |
+
+## Google calendar integration
+
+Integrating successfully with Google Calendar needs four things:
+
+- `GOOGLE_CALENDAR_ID`, which can be found in the calendar settings, under "Integrate calendar". It might be the email address of the account the calendar is on.
+- `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` from [console.cloud.google.com](https://console.cloud.google.com), which are:
+  - able to access the Google Calendar API
+  - has `https://developers.google.com/oauthplayground` as an authorised redirect URI
+- `GOOGLE_REFRESH_TOKEN`, generated at [developers.google.com/oauthplayground](https://developers.google.com/oauthplayground)
+  - authorised for the relevant Google Calendar API scopes
+  - has "Use your own OAuth credentials" checked, with the client ID and secret from earlier

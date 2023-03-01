@@ -27,7 +27,7 @@ export const getAvailability = async (): Promise<Event[]> => {
     singleEvents: true,
     maxResults: 50, // only show soonest 50 slots
     orderBy: "starttime",
-    timeMin: DateTime.now().plus({ hours: 24 }).toISODate(), // only show future events
+    timeMin: DateTime.now().plus({ hours: 24 }).toString(),
   })
 
   return (
