@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link"
 import { TeamMember } from "../types"
 import s from "./MeetTheTeam.module.scss"
 
@@ -8,7 +10,10 @@ const Card = (teamMember: TeamMember) => (
       alt={teamMember.portrait?.fields.title || ""}
       width={250}
     />
-    <h2>{teamMember.name}</h2>
+    <h3>
+      <Link href={teamMember.link || "/"}>{teamMember.name}</Link>
+    </h3>
+    <p>{teamMember.role}</p>
     <p>{teamMember.biography}</p>
   </div>
 )

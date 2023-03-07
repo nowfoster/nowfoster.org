@@ -253,6 +253,12 @@ export interface ITeamMemberFields {
   /** Name */
   name?: string | undefined;
 
+  /** Link */
+  link: string;
+
+  /** Role */
+  role: string;
+
   /** What kind of team member? */
   type: "Team" | "Board";
 
