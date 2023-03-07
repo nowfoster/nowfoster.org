@@ -36,13 +36,32 @@
   flex-direction: column;
   gap: 40px
 }
-
 .row {
   display: flex;
   justify-content: center;
   gap: 60px;
   flex-wrap: wrap;
 }
+
+
+.supporters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media screen and (min-width: $breakpoint-m) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  img{
+    width: 100%;
+  }
+}
+
 
 .card {
   width: min-content;

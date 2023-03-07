@@ -53,6 +53,20 @@ const MeetTheTeam = ({ teamMembers }: { teamMembers: TeamMember[] }) => (
         </div>
       </div>
     </div>
+
+    <div className={s.container} id="team">
+      <div className={s.heading}>
+        <h1 className="section-heading">Supporters</h1>
+      </div>
+      <div className={s.cards}>
+        <div className={s.supporters}>
+          <img src="/supporters/1.png" alt="Frontline" />
+          <img src="/supporters/2.jpg" alt="The Alex Timpson Trust" />
+          <img src="/supporters/3.png" alt="Impossible Ideas, Inc" />
+          <img src="/supporters/4.jpg" alt="Newham London" />
+        </div>
+      </div>
+    </div>
   </section>
 )
 
