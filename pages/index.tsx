@@ -63,7 +63,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         <div className="container">
           <h2>
             Whether you&apos;re a brilliant barrister, a crap baker, a multitasking manager, 
-            a software developer or a shakey skateboarder.
+            a software developer or a shaky skateboarder.
           </h2>
           <h1>You&apos;re you <span>+</span> Fostering.</h1>
         </div>
