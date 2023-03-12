@@ -34,7 +34,7 @@ const CheckPostcode = ({ quiz }: Props) => {
 
   const onSubmit = (values: FormAnswers) => {
     event("readiness_checker", {
-      category: "Check",
+      category: "Postcode checked",
       label: values.postcode,
     })
 
