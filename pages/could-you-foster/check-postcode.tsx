@@ -14,6 +14,7 @@ import { getQuizContent } from "../../lib/cms"
 import { postcodeSchema } from "../../lib/validators"
 import { Quiz as IQuiz } from "../../types"
 import { allowedPrefixes } from "../../config"
+import { event } from "nextjs-google-analytics"
 
 interface Props {
   quiz: IQuiz
@@ -32,12 +33,18 @@ const CheckPostcode = ({ quiz }: Props) => {
   })
 
   const onSubmit = (values: FormAnswers) => {
-    if (!!allowedPrefixes.find(prefix =>
-      values.postcode?.toLowerCase().startsWith(prefix.toLowerCase())
-    )) {
+    event("readiness_checker", {
+      category: "Check",
+      label: values,
+    })
+
+    if (
+      !!allowedPrefixes.find(prefix =>
+        values.postcode?.toLowerCase().startsWith(prefix.toLowerCase())
+      )
+    ) {
       push("/apply")
-    }
-    else {
+    } else {
       push("/could-you-foster/not-in-area")
     }
   }
@@ -55,7 +62,7 @@ const CheckPostcode = ({ quiz }: Props) => {
         </CentredQuestion>
 
         <QuizFooter goBack="/could-you-foster/check-answers">
-          <button className="button" >
+          <button className="button">
             Continue <Icon />
           </button>
         </QuizFooter>
