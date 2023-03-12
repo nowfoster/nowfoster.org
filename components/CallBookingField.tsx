@@ -38,7 +38,14 @@ const CallBookingField = ({ availability }: Props) => {
 
   return (
     <fieldset className={s.fieldset}>
-      <legend className={s.legend}>When shall we call you?</legend>
+      <div>
+        <legend className={s.legend}>Select a date and time</legend>
+        <p>
+          If none of these slots work, complete the form without selecting one
+          and we’ll email you to arrange a time that does.
+        </p>
+      </div>
+
       {errors.eventId && (
         <p className={ss.error}>{errors.eventId.message?.toString()}</p>
       )}

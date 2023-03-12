@@ -7,8 +7,8 @@ const ProcessTimeline = () => (
       <p>A short virtual chat to ask us anything about fostering. </p>
     </li>
     <li>
-      <h3>Step 2: Introductory training (3 days)</h3>
-      <p>A virtual Training session about the basics of fostering. </p>
+      <h3>Step 2: Taster training (3 days)</h3>
+      <p>Virtual training sessions about the basics of fostering. </p>
     </li>
     <li>
       <h3>Step 3: Train and apply (12 weeks)</h3>

@@ -135,8 +135,8 @@ const Layout = ({ children, quiz }: Props) => {
         <div className={s.footerInner}>
           <div className={s.footerLeft}>
             <p className={s.message}>
-              Now Foster exists to find and support the next generation of
-              foster carers.
+              Fostering reimagined. Helping you give children and young people a
+              safe and supportive home.
             </p>
             <div className={s.logoBlock}>
               <p>Working with</p>
@@ -185,7 +185,9 @@ const Layout = ({ children, quiz }: Props) => {
                 <Link href="http://blog.nowfoster.org">What we think</Link>
               </li>
               <li>
-                <Link href="/privacy">Privacy</Link>
+                <Link href="https://docs.google.com/forms/d/1r5M822tUnbD9IraC44-t3b1gUSJQUKhFOiGl-j1GQf8/edit">
+                  Contact us
+                </Link>
               </li>
             </ul>
           </nav>

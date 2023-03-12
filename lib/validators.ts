@@ -21,12 +21,14 @@ export const generateApplicationSchema = (eventsAvailable: boolean) =>
     firstName: yup.string().required("You need to give your first name"),
     lastName: yup.string().required("You need to give your last name"),
     includeAnswers: yup.boolean(),
-    eventId: eventsAvailable
-      ? yup
-          .string()
-          .typeError("You need to choose a time for a call")
-          .required("You need to choose a time for a call")
-      : yup.string().nullable(),
+    eventId:
+      // eventsAvailable
+      // ? yup
+      //     .string()
+      //     .typeError("You need to choose a time for a call")
+      //     .required("You need to choose a time for a call")
+      // :
+      yup.string().nullable(),
     contactPreference: yup
       .string()
       .typeError("You need to tell us how you'd prefer to be contacted")
@@ -65,5 +67,5 @@ export const postcodeSchema = yup.object({
     .matches(
       /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})/,
       "That doesn't look like a valid postcode"
-    )
+    ),
 })

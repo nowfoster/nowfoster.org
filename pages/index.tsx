@@ -24,12 +24,38 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         <div className="container">
           <h1>Forget everything you think you know about fostering</h1>
 
-          <p>Find out what it could add to your life.</p>
+          <p>
+            Fostering reimagined. Helping you give children and young people a
+            safe and supportive home.
+          </p>
 
           <Link href={lastVisitedPage} className="button button--primary">
             Could you foster?
           </Link>
         </div>
+      </section>
+
+      <section className={s.transition}>
+        <div className="container">
+          <h2>
+            Whether you&apos;re a busy barrister, a multitasking manager, a
+            retired radiologist or a shaky skateboarder
+          </h2>
+          <h1>
+            You&apos;re you <span>+</span> Fostering.
+          </h1>
+        </div>
+      </section>
+
+      <section className={s.stories}>
+        <h2 className="section-heading">Fostering stories</h2>
+        <p className="section-caption">Hear about people&apos;s experiences</p>
+
+        <Slider stories={fosteringStories} />
+
+        <a href={blogUrl} className="button button--primary">
+          Explore more
+        </a>
       </section>
 
       <section className={s.options} id="kinds-of-fostering">
@@ -59,47 +85,24 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         </div>
       </section>
 
-      <section className={s.transition}>
-        <div className="container">
-          <h2>
-            Whether you&apos;re a brilliant barrister, a crap baker, a multitasking manager, 
-            a software developer or a shaky skateboarder.
-          </h2>
-          <h1>You&apos;re you <span>+</span> Fostering.</h1>
-        </div>
-      </section>
-
-      <section className={s.stories}>
-        <h2 className="section-heading">Fostering stories</h2>
-        <p className="section-caption">
-          Hear about people&apos;s experiences
-        </p>
-
-        <Slider stories={fosteringStories} />
-
-        <a href={blogUrl} className="button button--primary">
-          Explore more
-        </a>
-      </section>
-
-      <section className={s.story}>
+      {/* <section className={s.story}>
         <div className="container">
           <h2 className="section-heading">Who we are</h2>
-            <div className={s.story__body}>
-              <p className="section-caption">
-                Now Foster is a team of innovative social workers, designers and
-                entrepreneurs who want to change how fostering is done.
-              </p>
-              <p className="section-caption">
-                We work alongside innovative councils across the UK to find and
-                empower brilliant people to care for children and young people.
-              </p>
-            </div>
+          <div className={s.story__body}>
+            <p className="section-caption">
+              Now Foster is a team of innovative social workers, designers and
+              entrepreneurs who want to change how fostering is done.
+            </p>
+            <p className="section-caption">
+              We work alongside innovative councils across the UK to find and
+              empower brilliant people to care for children and young people.
+            </p>
+          </div>
           <Link href="/fostering-with-us" className="button button--primary">
             Learn more
           </Link>
         </div>
-      </section>
+      </section> */}
 
       <section className={s.story}>
         <div className="container">
@@ -121,7 +124,10 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             </div>
             <div>
               <h1>94,900</h1>
-              <p>the total number of Ukrainians staying with British families. Why can’t we do the same for UK children?</p>
+              <p>
+                the total number of Ukrainians staying with British families.
+                Why can’t we do the same for UK children?
+              </p>
             </div>
           </div>
           <Link href={lastVisitedPage} className="button button--primary">

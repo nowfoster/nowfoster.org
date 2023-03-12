@@ -78,13 +78,13 @@ const ApplicationForm = ({ quiz }: Props) => {
               label="Email"
               name="email"
               type="email"
-              hint="We'll send a copy of your application to this address."
+              hint="We'll send a confirmation email to this address."
             />
             <Field
               label="Include my answers?"
               hint={
                 watch("includeAnswers")
-                  ? "A copy of your answers will be sent to help shape our initial chat."
+                  ? "A copy of your answers will be sent to help shape our chat."
                   : "Your answers won't be shared."
               }
               name="includeAnswers"
@@ -133,8 +133,9 @@ const ApplicationForm = ({ quiz }: Props) => {
                 <CallBookingField availability={availability} />
               ) : (
                 <p className={s.noSlots}>
-                  Oops, it looks like we&apos;re really busy at the moment. 
-                  Please complete the form and Laurie will be in touch as soon as she can with the next available time slots.
+                  Oops, it looks like we&apos;re really busy at the moment.
+                  Please complete the form and Laurie will be in touch as soon
+                  as she can with the next available time slots.
                 </p>
               )
             ) : (

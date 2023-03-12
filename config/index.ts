@@ -127,6 +127,6 @@ export const allowedPrefixes = [
 export const blogUrl = "http://blog.nowfoster.org"
 
 export const linkedInUrl = "https://www.linkedin.com/company/nowfoster/"
-export const facebookUrl = "https://www.facebook.com/NowFosterUK"
+export const facebookUrl = "https://www.facebook.com/nowfostering"
 export const instaUrl = "https://www.instagram.com/nowfosteruk/"
 export const twitterUrl = "https://twitter.com/nowfostering"

@@ -18,7 +18,7 @@ const Slider = ({ stories }: Props) => {
       spaceBetween={50}
       slidesPerView={1}
       centeredSlides={true}
-      initialSlide={2}
+      initialSlide={1}
       breakpoints={{
         700: {
           slidesPerView: 2,

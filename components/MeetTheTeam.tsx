@@ -60,10 +60,18 @@ const MeetTheTeam = ({ teamMembers }: { teamMembers: TeamMember[] }) => (
       </div>
       <div className={s.cards}>
         <div className={s.supporters}>
-          <img src="/supporters/1.png" alt="Frontline" />
-          <img src="/supporters/2.jpg" alt="The Alex Timpson Trust" />
-          <img src="/supporters/3.png" alt="Impossible Ideas, Inc" />
-          <img src="/supporters/4.jpg" alt="Newham London" />
+          <Link href="https://thefrontline.org.uk/">
+            <img src="/supporters/1.png" alt="Frontline" />
+          </Link>
+          <Link href="https://www.timpson-group.co.uk/alex-timpson-trust/ ">
+            <img src="/supporters/2.jpg" alt="The Alex Timpson Trust" />
+          </Link>
+          <Link href="https://ideasimpossible.org/">
+            <img src="/supporters/3.png" alt="Impossible Ideas, Inc" />
+          </Link>
+          <Link href="https://www.newham.gov.uk/">
+            <img src="/supporters/4.jpg" alt="Newham London" />
+          </Link>
         </div>
       </div>
     </div>
