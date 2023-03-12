@@ -123,10 +123,20 @@ export const QuizForm = ({ children, ...props }: QuizFormProps) => (
 export const QuizMain = ({
   children,
   padded,
+  inverted,
 }: {
   children: React.ReactNode
   padded?: boolean
-}) => <main className={padded ? s.paddedMain : s.main}>{children}</main>
+  inverted?: boolean
+}) => (
+  <main
+    className={`${padded ? s.paddedMain : s.main} ${
+      inverted ? s.invertedMain : ""
+    }`}
+  >
+    {children}
+  </main>
+)
 
 export const CentredQuestion = ({
   children,

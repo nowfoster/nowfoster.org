@@ -235,6 +235,16 @@
   }
 }
 
+.invertedMain {
+  background: $green;
+
+  *,
+  h2,
+  p {
+    color: $white;
+  }
+}
+
 .suggestion {
   background: $green;
 }

@@ -30,7 +30,7 @@ const SectionPage = ({ section, sectionIndex, quiz }: Props) => {
 
   return (
     <>
-      <QuizMain padded>
+      <QuizMain padded inverted={!section.image}>
         <div className={s.columns}>
           <div>
             <h2>{section.title}</h2>
@@ -39,19 +39,22 @@ const SectionPage = ({ section, sectionIndex, quiz }: Props) => {
             )}
           </div>
 
-          {hasQuestions ? (
-            <ProgressTimeline
-              sections={quiz.sections}
-              currentSectionIndex={sectionIndex}
-            />
-          ) : section.image ? (
-            <Image
-              width={500}
-              height={500}
-              src={`https:${section.image?.fields.file.url}`}
-              alt={section.image?.fields.description}
-            />
-          ) : null}
+          {
+            // hasQuestions ? (
+            //   <ProgressTimeline
+            //     sections={quiz.sections}
+            //     currentSectionIndex={sectionIndex}
+            //   />
+            // ) :
+            section.image ? (
+              <Image
+                width={500}
+                height={500}
+                src={`https:${section.image?.fields.file.url}`}
+                alt={section.image?.fields.description}
+              />
+            ) : null
+          }
         </div>
       </QuizMain>
 

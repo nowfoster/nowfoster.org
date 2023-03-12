@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <SWRConfig value={{ fetcher: url => fetch(url).then(res => res.json()) }}>
       <QuizAnswersProvider>
-        <GoogleAnalytics trackPageViews />
+        <GoogleAnalytics trackPageViews  />
         <Layout {...pageProps}>
           {pageProps?.showPreviewBanner && <PreviewBanner />}
           <ConfirmationMessage />
