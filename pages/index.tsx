@@ -42,20 +42,9 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             retired radiologist or a shaky skateboarder
           </h2>
           <h1>
-            You&apos;re you <span>+</span> Fostering.
+            You&apos;re you <span>+</span> fostering.
           </h1>
         </div>
-      </section>
-
-      <section className={s.stories}>
-        <h2 className="section-heading">Fostering stories</h2>
-        <p className="section-caption">Hear about people&apos;s experiences</p>
-
-        <Slider stories={fosteringStories} />
-
-        <a href={blogUrl} className="button button--primary">
-          Explore more
-        </a>
       </section>
 
       <section className={s.options} id="kinds-of-fostering">
@@ -83,6 +72,17 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             Could you foster?
           </Link>
         </div>
+      </section>
+
+      <section className={s.stories}>
+        <h2 className="section-heading">Fostering stories</h2>
+        <p className="section-caption">Hear about people&apos;s experiences</p>
+
+        <Slider stories={fosteringStories} />
+
+        <a href={blogUrl} className="button button--primary">
+          Explore more
+        </a>
       </section>
 
       {/* <section className={s.story}>

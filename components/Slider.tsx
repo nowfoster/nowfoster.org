@@ -17,7 +17,7 @@ const Slider = ({ stories }: Props) => {
       className={s.swiper}
       spaceBetween={50}
       slidesPerView={1}
-      centeredSlides={true}
+      centeredSlides={false}
       initialSlide={1}
       breakpoints={{
         700: {
