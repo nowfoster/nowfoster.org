@@ -5,7 +5,11 @@ const BetaBanner = () => (
     <div className={s.inner}>
       <p>
         <strong>Beta:</strong> This is a new service - your{" "}
-        <a href="https://forms.gle/hfMDfMp6UiDXdgfm6" target="_blank">
+        <a
+          href="https://forms.gle/hfMDfMp6UiDXdgfm6"
+          target="_blank"
+          rel="noreferrer"
+        >
           feedback
         </a>{" "}
         will help us improve it.
