@@ -46,7 +46,7 @@ const Question = ({ question, setSuggestion }: Props) => {
               type={question.questionType === "checkbox" ? "checkbox" : "radio"}
               value={option.optionText}
               id={`${i}-${option.id}`}
-              {...register(question)}
+              {...register(question.question)}
               onClick={e => setSuggestion(option)}
             />
             <label htmlFor={`${i}-${option.id}`}>{option.optionText}</label>
