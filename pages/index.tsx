@@ -59,7 +59,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             {fosteringOptions.map(option => (
               <article key={option.id}>
                 <div className={s.iconContainer}>
-                  <img src={option.icon?.fields.file.url} />
+                  <img src={option.icon?.fields.file.url} alt="" />
                 </div>
                 <h3>{option.title}</h3>
                 <p>{option.description}</p>
@@ -123,10 +123,10 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
               </p>
             </div>
             <div>
-              <h1>94,900</h1>
+              <h1>13%</h1>
               <p>
-                the total number of Ukrainians staying with British families.
-                Why can’t we do the same for UK children?
+                Just 13% of care experienced young people enter higher
+                education, compared to 45% of their peers
               </p>
             </div>
           </div>

@@ -53,12 +53,7 @@ const CheckPostcode = ({ quiz }: Props) => {
     <FormProvider {...methods}>
       <QuizForm onSubmit={methods.handleSubmit(onSubmit)}>
         <CentredQuestion>
-          <Field
-            big
-            label="What is your postcode?"
-            hint="So we can direct you to the right person to talk to"
-            name="postcode"
-          />
+          <Field big label="What is your postcode?" name="postcode" />
         </CentredQuestion>
 
         <QuizFooter goBack="/could-you-foster/check-answers">

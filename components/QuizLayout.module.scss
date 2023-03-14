@@ -167,7 +167,7 @@
     margin-left: 0px;
   }
 
-  @media screen and (min-width: $breakpoint-m) {
+  @media screen and (min-width: $breakpoint-xs) {
     flex-direction: row;
 
     &>*:first-child {

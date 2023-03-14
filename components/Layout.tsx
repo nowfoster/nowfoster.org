@@ -35,6 +35,9 @@ const NavLinks = () => {
         <Link href={blogUrl}>What we think</Link>
       </li>
       <li>
+        <Link href="/fostering-with-us">Get involved</Link>
+      </li>
+      <li>
         <Link href={lastVisitedPage} className={s.primary}>
           {quizStarted ? "Continue" : "Could you foster?"}
         </Link>
