@@ -35,7 +35,9 @@ const NavLinks = () => {
         <Link href={blogUrl}>What we think</Link>
       </li>
       <li>
-        <Link href="/fostering-with-us">Get involved</Link>
+        <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfsDOFKBaFFpU_vhLWgCiACvYwkQ0AQUFZj-YeCxCGxX6aNbA/viewform?usp=sf_link">
+          Get involved
+        </Link>
       </li>
       <li>
         <Link href={lastVisitedPage} className={s.primary}>
