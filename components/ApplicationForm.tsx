@@ -44,7 +44,13 @@ const ApplicationForm = ({ quiz }: Props) => {
 
   const {
     handleSubmit,
-    formState: { isSubmitting, isValid, submitCount },
+    formState: {
+      isSubmitting,
+      isValid,
+      submitCount,
+      errors,
+      isSubmitSuccessful,
+    },
     watch,
   } = methods
 
@@ -144,7 +150,7 @@ const ApplicationForm = ({ quiz }: Props) => {
           </div>
         </div>
 
-        {!isValid && submitCount > 0 && (
+        {!isValid && submitCount > 0 && !isSubmitSuccessful && (
           <p className={s.error}>There were some problems with your answers</p>
         )}
 
