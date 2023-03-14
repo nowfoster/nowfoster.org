@@ -298,6 +298,8 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 50px;
+    justify-content: center;
+    align-items: center;
 
     @media screen and (min-width: $breakpoint-m) {
       flex-direction: row;

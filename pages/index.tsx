@@ -116,17 +116,19 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
               </p>
             </div>
             <div>
-              <h1>3 in 4</h1>
+              <p>More than </p>
+              <h1>1 in 3</h1>
               <p>
-                siblings are separated in foster care. The main reason... not
+                siblings are separated in foster care. The main reason: not
                 enough bedrooms
               </p>
             </div>
             <div>
+              <p>Just</p>
               <h1>13%</h1>
               <p>
-                Just 13% of care experienced young people enter higher
-                education, compared to 45% of their peers
+                of care experienced young people enter higher education,
+                compared to 45% of their peers
               </p>
             </div>
           </div>
