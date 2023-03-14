@@ -72,6 +72,7 @@ export interface Application {
   includeAnswers: boolean
   answers?: Answers
   eventId: string // gcal event id
+  introChatAt?: string
   createdAt: string
   // more qs
   contactPreference: ContactPreference

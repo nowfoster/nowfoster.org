@@ -15,8 +15,14 @@ const handler = async (
         const data = JSON.parse(req.body)
         generateApplicationSchema(!!req.body.eventId).validate(data)
         const result = await createApplication(data)
-        if (result.data.eventId) await bookSlot(result.data)
-        await sendNotifications(result.data)
+
+        if (result.data.eventId) {
+          const event = await bookSlot(result.data)
+          await sendNotifications(result.data, event)
+        } else {
+          await sendNotifications(result.data)
+        }
+
         res.status(201).json(result)
         break
 

@@ -21,6 +21,12 @@ auth.setCredentials({
 
 const calendar = google.calendar({ auth, version: "v3" })
 
+export const convertEvent = (event: calendar_v3.Schema$Event): Event => ({
+  id: event.id,
+  start: event.start,
+  end: event.end,
+})
+
 export const getAvailability = async (): Promise<Event[]> => {
   const res = await calendar.events.list({
     calendarId: GOOGLE_CALENDAR_ID,
@@ -33,12 +39,11 @@ export const getAvailability = async (): Promise<Event[]> => {
   return (
     res.data?.items
       ?.filter(event => !event.attendees) // only return events with no attendees booked on
-      .map(event => ({ id: event.id, start: event.start, end: event.end })) ||
-    []
+      .map(event => convertEvent(event)) || []
   )
 }
 
-export const bookSlot = async (application: Application): Promise<void> => {
+export const bookSlot = async (application: Application): Promise<Event> => {
   const res = await calendar.events.get({
     calendarId: GOOGLE_CALENDAR_ID,
     eventId: application.eventId,
@@ -62,7 +67,7 @@ export const bookSlot = async (application: Application): Promise<void> => {
 
   if (res2.status !== 200) throw "Failed to book slot"
 
-  return
+  return convertEvent(res2.data)
 }
 
 const buildEventDescription = (application: Application): string =>

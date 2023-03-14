@@ -1,5 +1,5 @@
 import sg from "@sendgrid/mail"
-import { Answers, Application } from "../types"
+import { Answers, Application, Event } from "../types"
 
 sg.setApiKey(process.env.SENDGRID_API_KEY as string)
 
@@ -38,7 +38,10 @@ export const notifyAdmin = async (application: Application) =>
   })
 
 /** send copy of responses back to applicant */
-export const notifyApplicant = async (application: Application) =>
+export const notifyApplicant = async (
+  application: Application,
+  event?: Event
+) => {
   await sg.send({
     from: process.env.DEFAULT_FROM as string,
     templateId: process.env.NOTIFY_APPLICANT_TEMPLATE_ID as string,
@@ -47,13 +50,21 @@ export const notifyApplicant = async (application: Application) =>
         to: application.email,
         dynamicTemplateData: {
           ...application,
+          introChatAt: event?.start?.dateTime,
           answers:
             application.answers && prettyAnswersPlain(application.answers),
         },
       },
     ],
   })
+}
 
 /** save a smidge of time by doing both in parallel */
-export const sendNotifications = async (application: Application) =>
-  await Promise.all([notifyAdmin(application), notifyApplicant(application)])
+export const sendNotifications = async (
+  application: Application,
+  event?: Event
+) =>
+  await Promise.all([
+    notifyAdmin(application),
+    notifyApplicant(application, event),
+  ])
