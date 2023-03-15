@@ -28,7 +28,9 @@ const ConfirmationMessage = () => {
           <div>
             <h2>You&apos;ve booked your intro chat</h2>
             <p>
-              Look out for a confirmation email in your inbox. If you have any questions, please reply to that email.
+              Look out for your confirmation email. Please check your junk or
+              spam folder if you can&apos;t see it within a few minutes! If you
+              have any questions, please reply to that email.
             </p>
             <Link href="/">Close message</Link>
           </div>
