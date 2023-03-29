@@ -20,7 +20,7 @@ export const prettyAnswersPlain = (answers: Answers): string =>
     .join("")
 
 /** send alert to admin inbox that new application has been made */
-export const notifyAdmin = async (application: Application) =>
+export const notifyAdmin = async (application: Application, event?: Event) =>
   await sg.send({
     from: process.env.DEFAULT_FROM as string,
     replyTo: application.email,
@@ -30,6 +30,7 @@ export const notifyAdmin = async (application: Application) =>
         to: process.env.ADMIN_MAILBOX as string,
         dynamicTemplateData: {
           ...application,
+          introChatAt: event?.start?.dateTime,
           answers:
             application.answers && prettyAnswersPlain(application.answers),
         },
@@ -65,6 +66,6 @@ export const sendNotifications = async (
   event?: Event
 ) =>
   await Promise.all([
-    notifyAdmin(application),
+    notifyAdmin(application, event),
     notifyApplicant(application, event),
   ])
