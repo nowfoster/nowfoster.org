@@ -44,7 +44,9 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);`}
       <img
         height="1"
         width="1"
-        style="display:none;"
+        style={{
+          display: "none",
+        }}
         alt=""
         src="https://px.ads.linkedin.com/collect/?pid=4792546&fmt=gif"
       />
@@ -67,7 +69,9 @@ fbq('track', 'PageView');`}
       <img
         height="1"
         width="1"
-        style="display:none"
+        style={{
+          display: "none",
+        }}
         src="https://www.facebook.com/tr?id=838597620972759&ev=PageView&noscript=1"
       />
     </noscript>
