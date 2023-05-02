@@ -23,7 +23,9 @@ export const createApplication = async (data: ApplicationInput) => {
 export const listApplications = async () => {
   const results: values.Document<Application> = await db.query(
     q.Map(
-      q.Paginate(q.Documents(q.Collection("applications"))),
+      q.Paginate(q.Documents(q.Collection("applications")), {
+        size: 500,
+      }),
       q.Lambda(doc => q.Get(doc))
     )
   )

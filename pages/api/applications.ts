@@ -27,6 +27,8 @@ const handler = async (
         break
 
       case "GET":
+        if (process.env.NODE_ENV === "production") throw "Not authorised"
+
         const results = await listApplications()
         res.status(200).json(results)
         break
