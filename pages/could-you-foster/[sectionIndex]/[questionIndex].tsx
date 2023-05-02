@@ -23,6 +23,7 @@ import {
   SectionAnswers,
   Suggestion as ISuggestion,
 } from "../../../types"
+import { event } from "nextjs-google-analytics"
 
 interface Props {
   quiz: Quiz
@@ -76,6 +77,11 @@ const QuestionPage = ({
   const isLastSection = quiz.sections.length - 1 === sectionIndex
 
   const onSubmit = (answers: SectionAnswers) => {
+    event("readiness_checker_question_answered", {
+      category: question.question,
+      label: JSON.stringify(answers),
+    })
+
     if (question.questionType !== "explorer")
       answerQuestion(section.title, answers)
     push(
