@@ -36,12 +36,12 @@ const NavLinks = () => {
       </li>
       <li>
         <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfsDOFKBaFFpU_vhLWgCiACvYwkQ0AQUFZj-YeCxCGxX6aNbA/viewform?usp=sf_link">
-          Get involved
+          Contact us
         </Link>
       </li>
       <li>
         <Link href={lastVisitedPage} className={s.primary}>
-          {quizStarted ? "Continue" : "Could you foster?"}
+          {quizStarted ? "Continue" : "Explore more"}
         </Link>
       </li>
     </ul>
