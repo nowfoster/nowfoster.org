@@ -46,7 +46,7 @@ const MeetTheTeam = ({ teamMembers }: { teamMembers: TeamMember[] }) => (
       <div className={s.cards}>
         <div className={s.row}>
           {teamMembers
-            .sort((a,b) => a.name.localeCompare(b.name)) //sort alphabetically
+            .sort((a,b) => a.name!.localeCompare(b.name!)) //sort alphabetically
             .filter(m => m.type === "Board")
             .map(m => (
               <Card {...m} key={m.id} />
