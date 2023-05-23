@@ -194,6 +194,9 @@ const Layout = ({ children, quiz }: Props) => {
                   Contact us
                 </Link>
               </li>
+              <li>
+                <Link href="/privacy">Privacy policy</Link>
+              </li>
             </ul>
           </nav>
 
