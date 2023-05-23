@@ -30,7 +30,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           </p>
 
           <Link href={lastVisitedPage} className="button button--primary">
-            Could you foster?
+            Explore more
           </Link>
         </div>
       </section>
@@ -52,7 +52,8 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           <h2 className="section-heading">Your fostering options</h2>
 
           <p className="section-caption">
-            There&apos;s lots of choice and flexibility in fostering.
+            There&apos;s lots of choice and flexibility in fostering.<br/>
+            And you&apos;ll receive an allowance of £300+ per week per child, which is generally tax free.
           </p>
 
           <div className={s.optionsList}>
@@ -69,7 +70,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
           </div>
 
           <Link href={lastVisitedPage} className="button button--primary">
-            Could you foster?
+            Explore more
           </Link>
         </div>
       </section>
@@ -133,7 +134,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             </div>
           </div>
           <Link href={lastVisitedPage} className="button button--primary">
-            Could you foster?
+            Explore more
           </Link>
         </div>
       </section>
