@@ -82,7 +82,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
         <Slider stories={fosteringStories} />
 
         <a href={blogUrl} className="button button--primary">
-          Explore more
+          Read stories
         </a>
       </section>
 
