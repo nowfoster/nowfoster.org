@@ -187,7 +187,7 @@ const Layout = ({ children, quiz }: Props) => {
                 <Link href="/process">How it works</Link>
               </li>
               <li>
-                <Link href="http://blog.nowfoster.org">What we think</Link>
+                <Link href="http://blog.nowfoster.org">Our blog</Link>
               </li>
               <li>
                 <Link href="https://docs.google.com/forms/d/1r5M822tUnbD9IraC44-t3b1gUSJQUKhFOiGl-j1GQf8/">
