@@ -105,7 +105,7 @@ const ApplicationForm = ({ quiz }: Props) => {
 
             {contactPref === ContactPreference.Text && (
               <Field
-                label="Mobile phone"
+                label="Confirm mobile number"
                 name="phone"
                 type="tel"
                 hint="We'll text you on this number"
@@ -114,7 +114,7 @@ const ApplicationForm = ({ quiz }: Props) => {
 
             {contactPref === ContactPreference.Phone && (
               <Field
-                label="Phone"
+                label="Confirm phone number"
                 name="phone"
                 type="tel"
                 hint="We'll call you on this number"
