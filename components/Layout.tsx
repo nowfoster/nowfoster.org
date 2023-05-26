@@ -32,7 +32,7 @@ const NavLinks = () => {
         <Link href="/process">How it works</Link>
       </li>
       <li>
-        <Link href={blogUrl}>What we think</Link>
+        <Link href={blogUrl}>Our blog</Link>
       </li>
       <li>
         <Link href="https://docs.google.com/forms/d/1r5M822tUnbD9IraC44-t3b1gUSJQUKhFOiGl-j1GQf8/">
