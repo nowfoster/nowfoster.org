@@ -14,17 +14,16 @@ const CheckPostcode = () => {
             within an hour&apos;s commute to Newham please email us at{" "}
             <strong>introchat@nowfoster.org</strong>.
           </p>
+          <br/><br/>
+          <h2>Want to stay in touch?</h2>
+          <p>
+            Stay up to date with our new areas, events and news by joining our mailing list.
+          </p>
           <div className="optionList">
             <Link
-              href="https://www.thefosteringnetwork.org.uk/providers"
-              className="squaredButton"
-            >
-              Find a local fostering service
-            </Link>
-            <Link
-              href="https://tinyletter.com/NowFoster"
-              className="squaredButton"
-            >
+                href="https://tinyletter.com/NowFoster"
+                className="squaredButton"
+              >
               Join our mailing list to stay in touch
             </Link>
           </div>
