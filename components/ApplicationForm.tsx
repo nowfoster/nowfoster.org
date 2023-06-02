@@ -84,7 +84,13 @@ const ApplicationForm = ({ quiz }: Props) => {
               label="Email"
               name="email"
               type="email"
-              hint="We'll send a confirmation email to this address."
+              hint="We'll send a confirmation email to this address"
+            />
+            <Field
+              label="Phone number"
+              name="optionalPhone"
+              type="optionalPhone"
+              hint="Optional"
             />
             <Field
               label="Include my answers?"
