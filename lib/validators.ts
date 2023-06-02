@@ -8,16 +8,13 @@ export const generateApplicationSchema = (eventsAvailable: boolean) =>
       .string()
       .required("That doesn't look like a valid email")
       .email("That doesn't look like a valid email"),
-    phone: yup.string().when("contactPreference", {
-      is: ContactPreference.Phone || ContactPreference.Text,
-      then: yup
-        .string()
-        .required("That doesn't look like a valid phone number")
-        .matches(
-          /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/,
-          "That doesn't look like a valid phone number"
-        ),
-    }),
+    phone: yup
+      .string()
+      .required("That doesn't look like a valid phone number")
+      .matches(
+        /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/,
+        "That doesn't look like a valid phone number"
+      ),
     firstName: yup.string().required("You need to give your first name"),
     lastName: yup.string().required("You need to give your last name"),
     includeAnswers: yup.boolean(),
@@ -38,16 +35,6 @@ export const generateApplicationSchema = (eventsAvailable: boolean) =>
       .typeError("You need to tell us how interested you are")
       .required("You need to tell us how interested you are"),
     discussionTopics: yup.string(),
-    optionalPhone: yup
-      .string()
-      .notRequired()
-      .matches(
-        /^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/,
-        {
-          message: "That doesn't look like a valid phone number",
-          excludeEmptyString: true,
-        }
-      ),
   })
 
 export const generateQuestionSchema = (question: Question) => {
