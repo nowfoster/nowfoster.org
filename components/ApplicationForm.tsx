@@ -84,7 +84,12 @@ const ApplicationForm = ({ quiz }: Props) => {
               label="Email"
               name="email"
               type="email"
-              hint="We'll send a confirmation email to this address."
+              hint="We'll send a confirmation email to this address"
+            />
+            <Field
+              label="Phone number"
+              name="phone"
+              type="phone"
             />
             <Field
               label="Include my answers?"
@@ -102,24 +107,6 @@ const ApplicationForm = ({ quiz }: Props) => {
               label="How would you like to chat with us?"
               options={ContactPreference}
             />
-
-            {contactPref === ContactPreference.Text && (
-              <Field
-                label="Mobile phone"
-                name="phone"
-                type="tel"
-                hint="We'll text you on this number"
-              />
-            )}
-
-            {contactPref === ContactPreference.Phone && (
-              <Field
-                label="Phone"
-                name="phone"
-                type="tel"
-                hint="We'll call you on this number"
-              />
-            )}
 
             <RadioField
               name="levelOfInterest"
