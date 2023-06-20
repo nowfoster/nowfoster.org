@@ -30,7 +30,9 @@ export const notifyAdmin = async (application: Application, event?: Event) =>
         to: process.env.ADMIN_MAILBOX as string,
         dynamicTemplateData: {
           ...application,
-          introChatAt: event?.start?.dateTime,
+          introChatAt: new Date(
+            event?.start?.dateTime as string
+          ).toLocaleString("en-GB"),
           answers:
             application.answers && prettyAnswersPlain(application.answers),
         },
@@ -51,7 +53,9 @@ export const notifyApplicant = async (
         to: application.email,
         dynamicTemplateData: {
           ...application,
-          introChatAt: event?.start?.dateTime,
+          introChatAt: new Date(
+            event?.start?.dateTime as string
+          ).toLocaleString("en-GB"),
           answers:
             application.answers && prettyAnswersPlain(application.answers),
         },
