@@ -18,6 +18,9 @@ const handler = async (
 
         if (result.data.eventId) {
           const event = await bookSlot(result.data)
+          // TODO
+          console.log(event.start)
+
           await sendNotifications(result.data, event)
         } else {
           await sendNotifications(result.data)

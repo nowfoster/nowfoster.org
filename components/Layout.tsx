@@ -14,6 +14,7 @@ import { Quiz } from "../types"
 import s from "./Layout.module.scss"
 import QuizLayout from "./QuizLayout"
 import BetaBanner from "./BetaBanner"
+import CookieBanner from "./CookieBanner"
 
 interface Props {
   quiz?: Quiz
@@ -65,6 +66,7 @@ const Layout = ({ children, quiz }: Props) => {
       <a className={s.skip} href="#main-content">
         Skip to main content
       </a>
+      <CookieBanner />
       <BetaBanner></BetaBanner>
       <header className={s.header}>
         <div className={s.inner}>

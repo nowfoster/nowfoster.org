@@ -76,8 +76,8 @@ const buildEventDescription = (application: Application): string =>
   }\n<strong>Email:</strong> ${application.email}\n${
     application.phone ? `<strong>Phone:</strong> ${application.phone}` : ""
   }\n\n<strong>Made at:</strong> ${new Date(
-    "2022-11-19T21:10:07.208Z"
-  ).toLocaleString()}\n<strong>Contact preference:</strong> ${
+    application.createdAt
+  ).toLocaleString("en-GB")}\n<strong>Contact preference:</strong> ${
     application.contactPreference
   }\n<strong>Level of interest:</strong> ${
     application.levelOfInterest

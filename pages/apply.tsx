@@ -19,8 +19,8 @@ const ApplyPage = ({ quiz }: Props) => {
 
       <PageMasthead title="Book an intro chat">
         <p className={s.subtitle}>
-          Choose how you’d like to chat with our Now Foster coach and the time
-          that suits you best.
+          Choose how you&apos;d like to chat with our Now Foster coach and the
+          time that suits you best.
         </p>
       </PageMasthead>
 
