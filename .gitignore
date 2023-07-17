@@ -46,3 +46,5 @@ cypress/screenshots
 
 # service account creds
 consent-297713-02e6953b457d.json
+
+data.csv
