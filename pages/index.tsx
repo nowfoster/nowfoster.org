@@ -23,7 +23,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
       <section className={s.hero}>
         <div className="container">
           <h1>
-            Join our pioneer programme for weekend foster carers in London.
+            Join our pioneer programme for weekend foster carers in London
           </h1>
 
           <p>
