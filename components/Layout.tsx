@@ -41,8 +41,12 @@ const NavLinks = () => {
         </Link>
       </li>
       <li>
-        <Link href={lastVisitedPage} className={s.primary}>
-          {quizStarted ? "Continue" : "Explore more"}
+        <Link
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd39mc1BHL3R_ywsgNrBBd7cBiUl1WuuiY0mU6SCtyRbeCwHQ/viewform"
+          className={s.primary}
+          target="_blank"
+        >
+          Get started
         </Link>
       </li>
     </ul>
@@ -67,7 +71,7 @@ const Layout = ({ children, quiz }: Props) => {
         Skip to main content
       </a>
       <CookieBanner />
-      <BetaBanner></BetaBanner>
+      {/* <BetaBanner></BetaBanner> */}
       <header className={s.header}>
         <div className={s.inner}>
           <Link href="/" className={s.masthead}>

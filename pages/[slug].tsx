@@ -1,26 +1,26 @@
-import { Entry } from "contentful"
-import type { GetServerSideProps } from "next"
-import Head from "next/head"
-import { getPageContentBySlug, getTeamMembers } from "../lib/cms"
-import { IPageFields } from "../types/generated/contentful"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import ContentBlock from "../components/ContentBlock"
-import PageMasthead from "../components/PageMasthead"
-import Link from "next/link"
-import { useQuiz } from "../contexts/quiz"
-import MeetTheTeam from "../components/MeetTheTeam"
-import { TeamMember } from "../types"
+import { Entry } from "contentful";
+import type { GetServerSideProps } from "next";
+import Head from "next/head";
+import { getPageContentBySlug, getTeamMembers } from "../lib/cms";
+import { IPageFields } from "../types/generated/contentful";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import ContentBlock from "../components/ContentBlock";
+import PageMasthead from "../components/PageMasthead";
+import Link from "next/link";
+import { useQuiz } from "../contexts/quiz";
+import MeetTheTeam from "../components/MeetTheTeam";
+import { TeamMember } from "../types";
 
 interface Props {
-  page: Entry<IPageFields>
-  teamMembers?: TeamMember[]
+  page: Entry<IPageFields>;
+  teamMembers?: TeamMember[];
 }
 
 const GenericPage = ({ page, teamMembers }: Props) => {
   const hasContentBlocks =
-    page.fields.contentBlocks && page.fields.contentBlocks.length > 0
+    page.fields.contentBlocks && page.fields.contentBlocks.length > 0;
 
-  const { lastVisitedPage } = useQuiz()
+  const { lastVisitedPage } = useQuiz();
 
   return (
     <>
@@ -31,19 +31,20 @@ const GenericPage = ({ page, teamMembers }: Props) => {
         </title>
       </Head>
 
-      <PageMasthead
-        title={page.fields.pageTitle}
-        lede={page.fields.lede}
-      >
+      <PageMasthead title={page.fields.pageTitle} lede={page.fields.lede}>
         {page.fields.lede && (
-          <Link href={lastVisitedPage} className="button button--primary">
-            Explore more
+          <Link
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd39mc1BHL3R_ywsgNrBBd7cBiUl1WuuiY0mU6SCtyRbeCwHQ/viewform"
+            className="button button--primary"
+            target="_blank"
+          >
+            Get started
           </Link>
         )}
       </PageMasthead>
 
       {hasContentBlocks &&
-        page.fields.contentBlocks?.map(block => (
+        page.fields.contentBlocks?.map((block) => (
           <ContentBlock key={block.sys.id} {...block.fields} />
         ))}
 
@@ -55,10 +56,10 @@ const GenericPage = ({ page, teamMembers }: Props) => {
 
       {teamMembers && <MeetTheTeam teamMembers={teamMembers} />}
     </>
-  )
-}
+  );
+};
 
-export default GenericPage
+export default GenericPage;
 
 export const getServerSideProps: GetServerSideProps = async ({
   preview,
@@ -66,15 +67,15 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const page = await getPageContentBySlug(query.slug as string, {
     preview: !!preview,
-  })
+  });
 
-  let teamMembers
-  if (query.slug === "fostering-with-us") teamMembers = await getTeamMembers()
+  let teamMembers;
+  if (query.slug === "fostering-with-us") teamMembers = await getTeamMembers();
 
   if (!page)
     return {
       notFound: true,
-    }
+    };
 
   return {
     props: {
@@ -82,5 +83,5 @@ export const getServerSideProps: GetServerSideProps = async ({
       teamMembers: teamMembers || null,
       showPreviewBanner: !!preview,
     },
-  }
-}
+  };
+};

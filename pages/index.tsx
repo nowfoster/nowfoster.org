@@ -141,8 +141,12 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
               </p>
             </div>
           </div>
-          <Link href={lastVisitedPage} className="button button--primary">
-            Explore more
+          <Link
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd39mc1BHL3R_ywsgNrBBd7cBiUl1WuuiY0mU6SCtyRbeCwHQ/viewform"
+            className="button button--primary"
+            target="_blank"
+          >
+            Get started
           </Link>
         </div>
       </section>
