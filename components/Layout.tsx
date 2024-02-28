@@ -27,10 +27,10 @@ const NavLinks = () => {
   return (
     <ul>
       <li>
-        <Link href="/fostering-with-us">Who we are</Link>
+        <Link href="/process">How it works</Link>
       </li>
       <li>
-        <Link href="/process">How it works</Link>
+        <Link href="/who-we-are">Who we are</Link>
       </li>
       <li>
         <Link href={blogUrl}>Our blog</Link>
