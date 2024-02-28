@@ -32,13 +32,22 @@ const GenericPage = ({ page, teamMembers }: Props) => {
       </Head>
 
       <PageMasthead title={page.fields.pageTitle} lede={page.fields.lede}>
-        {page.fields.lede && (
+        {page.fields.lede && page.fields.slug != "who-we-are" && (
           <Link
             href="https://docs.google.com/forms/d/e/1FAIpQLSd39mc1BHL3R_ywsgNrBBd7cBiUl1WuuiY0mU6SCtyRbeCwHQ/viewform"
             className="button button--primary"
             target="_blank"
           >
             Get started
+          </Link>
+        )}
+        {page.fields.lede && page.fields.slug == "who-we-are" && (
+          <Link
+            href="mailto:hello@nowfoster.org"
+            className="button button--primary"
+            target="_blank"
+          >
+            Get in touch
           </Link>
         )}
       </PageMasthead>
@@ -70,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   });
 
   let teamMembers;
-  if (query.slug === "fostering-with-us") teamMembers = await getTeamMembers();
+  if (query.slug === "who-we-are") teamMembers = await getTeamMembers();
 
   if (!page)
     return {

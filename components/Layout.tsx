@@ -27,7 +27,7 @@ const NavLinks = () => {
   return (
     <ul>
       <li>
-        <Link href="/process">How it works</Link>
+        <Link href="/how-it-works">How it works</Link>
       </li>
       <li>
         <Link href="/who-we-are">Who we are</Link>
@@ -153,7 +153,7 @@ const Layout = ({ children, quiz }: Props) => {
           <nav className={s.footerMenu}>
             <ul>
               <li>
-                <Link href="/fostering-with-us">Who we are</Link>
+                <Link href="/who-we-are">Who we are</Link>
               </li>
               <li>
                 <Link href="/process">How it works</Link>
