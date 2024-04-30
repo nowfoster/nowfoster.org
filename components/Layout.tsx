@@ -146,8 +146,8 @@ const Layout = ({ children, quiz }: Props) => {
         <div className={s.footerInner}>
           <div className={s.footerLeft}>
             <p className={s.message}>
-              Fostering reimagined. Helping you give children and young people a
-              safe and supportive home.
+              Fostering reimagined. Now Foster is a Registered Charity in
+              England and Wales number 1207932.
             </p>
           </div>
           <nav className={s.footerMenu}>
