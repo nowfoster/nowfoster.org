@@ -4,7 +4,7 @@ const ProcessTimeline = () => (
   <ol className={s.timeline}>
     <li>
       <h3>Step 1: Intro Chat (30 min)</h3>
-      <p>A short virtual chat to ask us anything about fostering.</p>
+      <p>A short virtual chat to ask us about weekend fostering.</p>
     </li>
     <li>
       <h3>Step 2: Home visit (2 hours)</h3>
