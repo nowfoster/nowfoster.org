@@ -36,16 +36,12 @@ const NavLinks = () => {
         <Link href={blogUrl}>Our blog</Link>
       </li>
       <li>
-        <Link href="https://docs.google.com/forms/d/1r5M822tUnbD9IraC44-t3b1gUSJQUKhFOiGl-j1GQf8/">
+        <Link href="mailto:hello@nowfoster.org" target="_blank">
           Contact us
         </Link>
       </li>
       <li>
-        <Link
-          href="https://docs.google.com/forms/d/e/1FAIpQLSd39mc1BHL3R_ywsgNrBBd7cBiUl1WuuiY0mU6SCtyRbeCwHQ/viewform"
-          className={s.primary}
-          target="_blank"
-        >
+        <Link href={lastVisitedPage} className={s.primary}>
           Get started
         </Link>
       </li>
@@ -162,7 +158,7 @@ const Layout = ({ children, quiz }: Props) => {
                 <Link href="http://blog.nowfoster.org">Our blog</Link>
               </li>
               <li>
-                <Link href="https://docs.google.com/forms/d/1r5M822tUnbD9IraC44-t3b1gUSJQUKhFOiGl-j1GQf8/">
+                <Link href="mailto:hello@nowfoster.org" target="_blank">
                   Contact us
                 </Link>
               </li>
