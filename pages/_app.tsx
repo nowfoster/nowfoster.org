@@ -7,7 +7,6 @@ import ConfirmationMessage from "../components/ConfirmationMessage";
 import { SWRConfig } from "swr";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import Script from "next/script";
-import Noscript from "next/noscript";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
