@@ -91,11 +91,11 @@
     margin-top: 2.5rem;
 
     @media screen and (min-width: $breakpoint-m) {
-      grid-template-columns: 1fr 1fr; // 2x2 grid
+      grid-template-columns: 1fr 1fr 1fr; // 1x3 grid
     }
 
     @media screen and (min-width: $breakpoint-l) {
-      grid-template-columns: 1fr 1fr 1fr 1fr; // 1x4 grid
+      grid-template-columns: 1fr 1fr 1fr // 1x3 grid
     }
 
     article {

@@ -10,6 +10,7 @@ import { FosteringOption, FosteringStory as IFosteringStory } from "../types";
 import Slider from "../components/Slider";
 import Link from "next/link";
 import { useQuiz } from "../contexts/quiz";
+import Image from "next/image";
 
 interface Props {
   fosteringOptions: FosteringOption[];
@@ -22,28 +23,44 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
     <>
       <section className={s.hero}>
         <div className="container">
-          <h1>
-            Join our pioneer programme for weekend foster carers in London
-          </h1>
+          <h1>Fostering reimagined.</h1>
 
           <p>
-            We help you to inspire children and build meaningful relationships.
+            Now Foster is a charity that enables more people to experience the
+            joy of fostering. We work with public sector organisations across
+            the UK to reimagine fostering and empower brilliant foster carers to
+            support children and young people.
           </p>
 
-          <Link href={lastVisitedPage} className="button button--primary">
-            Get started
+          <Link
+            href="mailto:hello@nowfoster.org"
+            className="button button--primary"
+            target="_blank"
+          >
+            Get in touch
           </Link>
         </div>
       </section>
 
       <section className={s.transition}>
         <div className="container">
-          <h2>
-            Whether you&apos;re a busy barrister, a multitasking manager, a
-            retired radiologist or a shaky skateboarder
-          </h2>
-          <h1>Become a Weekender</h1>
+          <h2>Our mission:</h2>
+          <h3>
+            To mainstream foster care so more amazing people will empower and
+            inspire young people in care.
+          </h3>
         </div>
+      </section>
+
+      <section>
+        <Image
+          src="/../public/rivage-OV44gxH71DU-unsplash.jpg"
+          alt="children playing with pens"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: "100%", height: "auto" }}
+        />
       </section>
 
       <section className={s.options} id="kinds-of-fostering">
@@ -69,21 +86,14 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
             ))}
           </div>
 
-          <Link href={lastVisitedPage} className="button button--primary">
-            Get started
+          <Link
+            href="mailto:hello@nowfoster.org"
+            className="button button--primary"
+            target="_blank"
+          >
+            Get in touch
           </Link>
         </div>
-      </section>
-
-      <section className={s.stories}>
-        <h2 className="section-heading">Fostering stories</h2>
-        <p className="section-caption">Hear about people&apos;s experiences</p>
-
-        <Slider stories={fosteringStories} />
-
-        <a href={blogUrl} className="button button--primary">
-          Read stories
-        </a>
       </section>
 
       {/* <section className={s.story}>
@@ -107,7 +117,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
       <section className={s.story}>
         <div className="container">
-          <h2 className="section-heading">Why foster?</h2>
+          <h2 className="section-heading">Why fostering matters</h2>
           <div className={s.inner}>
             <div>
               <h1>25,000</h1>
@@ -133,9 +143,6 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
               </p>
             </div>
           </div>
-          <Link href={lastVisitedPage} className="button button--primary">
-            Get started
-          </Link>
         </div>
       </section>
     </>

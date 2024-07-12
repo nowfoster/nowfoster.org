@@ -27,10 +27,10 @@ const NavLinks = () => {
   return (
     <ul>
       <li>
-        <Link href="/how-it-works">How it works</Link>
+        <Link href="/weekenders">Weekenders</Link>
       </li>
       <li>
-        <Link href="/who-we-are">Who we are</Link>
+        <Link href="/about-us">About us</Link>
       </li>
       <li>
         <Link href={blogUrl}>Our blog</Link>
@@ -149,10 +149,10 @@ const Layout = ({ children, quiz }: Props) => {
           <nav className={s.footerMenu}>
             <ul>
               <li>
-                <Link href="/who-we-are">Who we are</Link>
+                <Link href="/about-us">About us</Link>
               </li>
               <li>
-                <Link href="/process">How it works</Link>
+                <Link href="/weekenders">Weekenders</Link>
               </li>
               <li>
                 <Link href="http://blog.nowfoster.org">Our blog</Link>
