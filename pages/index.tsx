@@ -1,13 +1,11 @@
 import type { GetServerSideProps, GetStaticProps } from "next";
 import s from "./index.module.scss";
-import { blogUrl } from "../config";
 import {
   getFosteringOptions,
   getFosteringStories,
   getQuizContent,
 } from "../lib/cms";
 import { FosteringOption, FosteringStory as IFosteringStory } from "../types";
-import Slider from "../components/Slider";
 import Link from "next/link";
 import { useQuiz } from "../contexts/quiz";
 import Image from "next/image";
@@ -54,7 +52,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
       <section>
         <Image
-          src="/../public/rivage-OV44gxH71DU-unsplash.jpg"
+          src="/rivage-OV44gxH71DU-unsplash.jpg"
           alt="children playing with pens"
           width={0}
           height={0}

@@ -1,9 +1,10 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Image from "next/image"
-import { IContentBlockFields } from "../types/generated/contentful"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Image from "next/image";
+import { IContentBlockFields } from "../types/generated/contentful";
 
-import s from "./ContentBlock.module.scss"
-import ProcessTimeline from "./ProcessTimeline"
+import s from "./ContentBlock.module.scss";
+import ProcessTimeline from "./ProcessTimeline";
+import FosteringStories from "./FosteringStories";
 
 const ContentBlock = (contentBlock: IContentBlockFields) => (
   <section className={s.contentBlock}>
@@ -31,6 +32,6 @@ const ContentBlock = (contentBlock: IContentBlockFields) => (
       </div>
     </div>
   </section>
-)
+);
 
-export default ContentBlock
+export default ContentBlock;
