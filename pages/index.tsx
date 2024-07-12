@@ -63,12 +63,12 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
 
       <section className={s.options} id="kinds-of-fostering">
         <div className="container">
-          <h2 className="section-heading">Weekend fostering</h2>
+          <h2 className="section-heading">What we do</h2>
 
           <p className="section-caption">
-            As a Weekender you will usually spend one weekend per month with a
-            child or a young person in care to help them achieve their goals,
-            try new things and have fun!
+            We are an innovation partner for the foster care sector, developing
+            groundbreaking approaches that disrupt traditional models and
+            modernise services.
           </p>
 
           <div className={s.optionsList}>
