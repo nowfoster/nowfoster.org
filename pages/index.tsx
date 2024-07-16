@@ -107,7 +107,7 @@ const Home = ({ fosteringOptions, fosteringStories }: Props) => {
               empower brilliant people to care for children and young people.
             </p>
           </div>
-          <Link href="/who-we-are" className="button button--primary">
+          <Link href="/about-us" className="button button--primary">
             Learn more
           </Link>
         </div>
