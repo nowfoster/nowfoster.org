@@ -1,4 +1,4 @@
-import { Application, ContactPreference, LevelOfInterest } from "./types"
+import { Application, ContactPreference, LevelOfInterest } from "./types";
 
 export const mockApplication: Application = {
   firstName: "Foo",
@@ -10,5 +10,5 @@ export const mockApplication: Application = {
   eventId: "123abc",
   discussionTopics: "",
   levelOfInterest: LevelOfInterest.Definitely,
-  contactPreference: ContactPreference.Text,
-}
+  contactPreference: ContactPreference.Video,
+};
