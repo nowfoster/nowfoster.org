@@ -1,5 +1,5 @@
-import { values } from "faunadb"
-import { calendar_v3 } from "googleapis"
+import { values } from "faunadb";
+import { calendar_v3 } from "googleapis";
 import {
   IFosteringOption,
   IFosteringOptionFields,
@@ -8,54 +8,53 @@ import {
   IQuizSectionFields,
   ISuggestionFields,
   ITeamMemberFields,
-} from "./generated/contentful"
+} from "./generated/contentful";
 
 export interface Option extends ISuggestionFields {
-  id: string
+  id: string;
 }
 
-export type Suggestion = Omit<ISuggestionFields, "optionText">
+export type Suggestion = Omit<ISuggestionFields, "optionText">;
 
 export interface FosteringOption extends IFosteringOptionFields {
-  id: string
+  id: string;
 }
 
 export interface FosteringStory extends IFosteringStoriesFields {
-  id: string
+  id: string;
 }
 
 export interface TeamMember extends ITeamMemberFields {
-  id: string
+  id: string;
 }
 
 export interface Question extends Omit<IQuestionFields, "options"> {
-  id: string
-  options: Option[]
+  id: string;
+  options: Option[];
 }
 
 export interface QuizSection extends Omit<IQuizSectionFields, "questions"> {
-  id: string
-  questions: Question[]
+  id: string;
+  questions: Question[];
 }
 
 export interface Quiz {
-  sections: QuizSection[]
+  sections: QuizSection[];
 }
 
-export type Answer = string | string[]
+export type Answer = string | string[];
 
 export interface SectionAnswers {
-  [key: string]: Answer
+  [key: string]: Answer;
 }
 
 export interface Answers {
-  [key: string]: SectionAnswers
+  [key: string]: SectionAnswers;
 }
 
 export enum ContactPreference {
   Video = "Video call",
   Phone = "Phone",
-  Text = "WhatsApp chat",
 }
 
 export enum LevelOfInterest {
@@ -65,25 +64,25 @@ export enum LevelOfInterest {
 }
 
 export interface Application {
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  includeAnswers: boolean
-  answers?: Answers
-  eventId: string // gcal event id
-  introChatAt?: string
-  createdAt: string
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  includeAnswers: boolean;
+  answers?: Answers;
+  eventId: string; // gcal event id
+  introChatAt?: string;
+  createdAt: string;
   // more qs
-  contactPreference: ContactPreference
-  levelOfInterest: LevelOfInterest
-  discussionTopics: string
+  contactPreference: ContactPreference;
+  levelOfInterest: LevelOfInterest;
+  discussionTopics: string;
 }
 
-export type ApplicationInput = Omit<Application, "createdAt">
+export type ApplicationInput = Omit<Application, "createdAt">;
 
-export type ApiResponseBody = values.Document<Application> | { error: string }
+export type ApiResponseBody = values.Document<Application> | { error: string };
 
-export type EventResponseBody = Event[] | { error: string }
+export type EventResponseBody = Event[] | { error: string };
 
-export type Event = Pick<calendar_v3.Schema$Event, "id" | "end" | "start">
+export type Event = Pick<calendar_v3.Schema$Event, "id" | "end" | "start">;

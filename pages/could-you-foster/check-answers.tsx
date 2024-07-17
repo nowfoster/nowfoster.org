@@ -1,23 +1,23 @@
-import { GetStaticProps } from "next"
-import Link from "next/link"
-import { Icon } from "../../components/LoaderButton"
-import { QuizFooter, QuizMain } from "../../components/QuizLayout"
-import { useQuiz } from "../../contexts/quiz"
-import { getQuizContent } from "../../lib/cms"
-import { Quiz as IQuiz } from "../../types"
-import s from "./check-answers.module.scss"
+import { GetStaticProps } from "next";
+import Link from "next/link";
+import { Icon } from "../../components/LoaderButton";
+import { QuizFooter, QuizMain } from "../../components/QuizLayout";
+import { useQuiz } from "../../contexts/quiz";
+import { getQuizContent } from "../../lib/cms";
+import { Quiz as IQuiz } from "../../types";
+import s from "./check-answers.module.scss";
 
 interface Props {
-  quiz: IQuiz
+  quiz: IQuiz;
 }
 
 const CheckAnswers = ({ quiz }: Props) => {
-  const { quizAnswers } = useQuiz()
+  const { quizAnswers } = useQuiz();
 
-  const lastSectionIndex = quiz.sections.length - 1
+  const lastSectionIndex = quiz.sections.length - 1;
   const goBackLink = `/could-you-foster/${lastSectionIndex}/${
     quiz.sections?.[lastSectionIndex].questions.length - 1
-  }`
+  }`;
 
   return (
     <>
@@ -26,7 +26,7 @@ const CheckAnswers = ({ quiz }: Props) => {
         <p>
           We hope you learned some new things around fostering and are still
           curious. Book a 30 minute intro chat to ask us anything. Over the
-          phone, video call or WhatsApp, at a time that suits you.
+          phone or video call, at a time that suits you.
         </p>
 
         <h3 className={s.subheading}>Your answers</h3>
@@ -63,18 +63,18 @@ const CheckAnswers = ({ quiz }: Props) => {
         </div>
       </QuizFooter>
     </>
-  )
-}
+  );
+};
 
-export default CheckAnswers
+export default CheckAnswers;
 
 export const getStaticProps: GetStaticProps = async ({ preview }) => {
-  const quiz = await getQuizContent({ preview: !!preview })
+  const quiz = await getQuizContent({ preview: !!preview });
 
   return {
     props: {
       quiz,
       showPreviewBanner: !!preview,
     },
-  }
-}
+  };
+};
